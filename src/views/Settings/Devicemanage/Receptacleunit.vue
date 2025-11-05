@@ -1,29 +1,18 @@
 <template>
-    <div style="margin-left: 151px;width: 1182px;">
-        <div style="border: 1px solid #000000;">
-            {{ lang.title }}
-            <span style="margin-left: 300px;cursor: pointer;" @click="onClickView('/settings/devicemanage/userterminal')">{{ lang.userterminal }}</span>
-            <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/settings/devicemanage/receptacleunit')">{{ lang.receptacleunit }}</span>
-        </div>
-        <div>
-            리셉터클유닛 내용
-        </div>
+    <div>
+        {{ lang.title }}
     </div>
 </template>
 
 <script>
-import router from "@/router";
+import G from '@/config/global.js'
 
 const ko = {
-    "title": "설정/단말관리",
-    "userterminal": "사용자단말",
-    "receptacleunit": "리셉터클유닛"
+    "title": "리셉터클유닛 내용"
 }
 
 const en = {
-    "title": "설정/단말관리",
-    "userterminal": "사용자단말",
-    "receptacleunit": "리셉터클유닛"
+    "title": "리셉터클유닛 내용"
 }
 
 export default {
@@ -34,17 +23,11 @@ export default {
         };
     },
     mounted() {
-        if(localStorage.getItem('lang') === 'ko') {
+        if(G.lang === 'ko') {
             this.lang = ko;
         }else {
             this.lang = en;
         }
-    },
-    methods: {
-        onClickView(item) {
-            router.push("/default").catch(() => {});
-            router.push(item);
-        }
-    },
+    }
 };
 </script>

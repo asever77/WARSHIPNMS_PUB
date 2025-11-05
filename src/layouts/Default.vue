@@ -32,9 +32,10 @@
 </template>
 
 <script>
+import G from '@/config/global.js'
 import router from "@/router";
 
-const ko_lnd = {
+const ko = {
     "image": "이미지",
     "logout": "로그아웃",
     "dashboard": "대시보드",
@@ -54,7 +55,7 @@ const ko_lnd = {
     "record": "이력"
 }
 
-const en_lnd = {
+const en = {
     "image": "이미지",
     "logout": "Logout",
     "dashboard": "Dashboard",
@@ -82,10 +83,10 @@ export default {
         };
     },
     mounted() {
-        if(localStorage.getItem('lang') === 'ko') {
-            this.lang = ko_lnd;
+        if(G.lang === 'ko') {
+            this.lang = ko;
         }else {
-            this.lang = en_lnd;
+            this.lang = en;
         }
     },
     methods: {

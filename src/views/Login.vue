@@ -7,13 +7,11 @@
         <button type="button" @click="login">
             {{ lang.login }}
         </button>
-        <button @click="switchLang">
-            {{ lang.changeLang }}
-        </button>
     </div>
 </template>
 
 <script>
+import G from '@/config/global.js'
 import router from "@/router";
 
 const ko = {
@@ -42,16 +40,8 @@ export default {
             lang: {}
         };
     },
-    computed: {
-        t() {
-            return this.$t
-        }
-    },
     mounted() {
-        const savedLang = localStorage.getItem('lang') || 'ko'
-        localStorage.setItem('lang', savedLang);
-
-        if(localStorage.getItem('lang') === 'ko') {
+        if(G.lang === 'ko') {
             this.lang = ko;
         }else {
             this.lang = en;
@@ -60,12 +50,6 @@ export default {
     methods: {
         login: function() {
             router.push("/dashboard/network");
-        },
-        switchLang: function() {
-            let langValue = localStorage.getItem('lang') === 'ko' ? 'en' : 'ko';
-            localStorage.setItem('lang', langValue);
-            
-            window.location.reload();
         }
     },
 };
