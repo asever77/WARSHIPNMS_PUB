@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div style="float: left;border: 1px solid rgb(0, 0, 0);width: 150px;height: 751px;">
+        <div style="float: left;border: 1px solid rgb(0, 0, 0);width: 150px;height: 768px;">
             <ui>
                 <li>{{ lang.image }}</li>
                 <li>admin(관리자)</li>

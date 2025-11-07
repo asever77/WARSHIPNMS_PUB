@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div style="margin-left: 151px;width: 1182px;">
+        <div style="margin-left: 150px;width: 1200px;">
             <div style="border: 1px solid #000000;">
                 {{ lang.title }}
                 <span style="margin-left: 300px;cursor: pointer;" @click="onClickView('/settings/externallinkagemanage/broadcastequipmanage')">{{ lang.broadcastequipmanage }}</span>

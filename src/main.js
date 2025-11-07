@@ -4,9 +4,16 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
+// Bootstrap 및 BootstrapVueNext import
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
+
+import * as BootstrapVueNext from 'bootstrap-vue-next'
+
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
+app.use(BootstrapVueNext)
 
 app.mount('#app')

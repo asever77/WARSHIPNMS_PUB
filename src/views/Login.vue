@@ -7,11 +7,14 @@
         <button type="button" @click="login">
             {{ lang.login }}
         </button>
+        <button type="button" @click="basicfunctions">
+            기본기능
+        </button>
     </div>
 </template>
 
 <script>
-import G from '@/config/global.js'
+import G from '@/config/global.js';
 import router from "@/router";
 
 const ko = {
@@ -50,6 +53,9 @@ export default {
     methods: {
         login: function() {
             router.push("/dashboard/network");
+        },
+        basicfunctions: function() {
+            router.push("/basicfunctions");
         }
     },
 };
