@@ -3,6 +3,54 @@ import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    
+    // test page 
+    {
+      path: '/guide/',
+      name: 'GuideIndex',
+      component: () => import('../views/_Guide/index.vue')
+    },
+    {
+      path: '/guide/tabs',
+      name: 'TabsView',
+      component: () => import('../views/_Guide/Tabs.vue')
+    },
+    {
+      path: '/guide/modal',
+      name: 'ModalView',
+      component: () => import('../views/_Guide/Modal.vue')
+    },
+    {
+      path: '/guide/accordion',
+      name: 'AccordionView',
+      component: () => import('../views/_Guide/Accordion.vue')
+    },
+    {
+      path: '/guide/dropdowns',
+      name: 'DropdownsView',
+      component: () => import('../views/_Guide/Dropdowns.vue')
+    },
+    {
+      path: '/guide/toasts',
+      name: 'ToastsView',
+      component: () => import('../views/_Guide/Toasts.vue')
+    },
+    {
+      path: '/guide/tooltips',
+      name: 'TooltipsView',
+      component: () => import('../views/_Guide/Tooltips.vue')
+    },
+    {
+      path: '/guide/table',
+      name: 'TableView',
+      component: () => import('../views/_Guide/Table.vue')
+    },
+
+    {
+      path: '/tree',
+      name: 'TreeView',
+      component: () => import('../views/TreeView.vue')
+    },
     {
       path: '/basicfunctions',
       name: 'BasicFunctionsView',
