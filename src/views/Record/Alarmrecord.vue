@@ -4,30 +4,21 @@
     </div>
 </template>
 
-<script>
-import G from '@/config/global.js'
+<script setup>
+import { ref, onMounted } from "vue";
+import G from "@/config/global.js";
 
 const ko = {
-    "title": "Alarm이력 내용"
-}
+  "title": "Alarm이력 내용"
+};
 
 const en = {
-    "title": "Alarm이력 내용"
-}
-
-export default {
-    name: "RecordAlarmrecordView",
-    data() {
-        return {
-            lang: {}
-        };
-    },
-    mounted() {
-        if(G.lang === 'ko') {
-            this.lang = ko;
-        }else {
-            this.lang = en;
-        }
-    }
+  "title": "Alarm이력 내용"
 };
+
+const lang = ref({});
+
+onMounted(() => {
+  lang.value = (G.lang === "ko") ? ko : en;
+});
 </script>

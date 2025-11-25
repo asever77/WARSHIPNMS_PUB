@@ -48,13 +48,9 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { BButton } from 'bootstrap-vue-next'
 
-export default {
-  name: 'TooltipsGuide',
-  components: { BButton },
-}
 </script>
 
 <style>

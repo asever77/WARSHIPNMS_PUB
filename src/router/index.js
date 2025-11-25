@@ -41,6 +41,11 @@ const router = createRouter({
       component: () => import('../views/_Guide/Tooltips.vue')
     },
     {
+      path: '/guide/form',
+      name: 'FormView',
+      component: () => import('../views/_Guide/Form.vue')
+    },
+    {
       path: '/guide/table',
       name: 'TableView',
       component: () => import('../views/_Guide/Table.vue')

@@ -13,41 +13,32 @@
     </div>
 </template>
 
-<script>
-import G from '@/config/global.js'
-import router from "@/router";
+<script setup>
+import { ref, onMounted } from "vue";
+import G from "@/config/global.js";
+import { useRouter } from "vue-router";
 
 const ko = {
-    "title": "설정/외부연계관리",
-    "broadcastequipmanage": "방송장비관리",
-    "alarmdevicemanage": "경보장치관리"
-}
+  "title": "설정/외부연계관리",
+  "broadcastequipmanage": "방송장비관리",
+  "alarmdevicemanage": "경보장치관리"
+};
 
 const en = {
-    "title": "설정/외부연계관리",
-    "broadcastequipmanage": "방송장비관리",
-    "alarmdevicemanage": "경보장치관리"
-}
+  "title": "설정/외부연계관리",
+  "broadcastequipmanage": "방송장비관리",
+  "alarmdevicemanage": "경보장치관리"
+};
 
-export default {
-    name: "SettingsExternallinkagemanageDefaultLayout",
-    data() {
-        return {
-            lang: {}
-        };
-    },
-    mounted() {
-        if(G.lang === 'ko') {
-            this.lang = ko;
-        }else {
-            this.lang = en;
-        }
-    },
-    methods: {
-        onClickView(item) {
-            router.push("/default").catch(() => {});
-            router.push(item);
-        }
-    },
+const lang = ref({});
+const router = useRouter();
+
+onMounted(() => {
+  lang.value = (G.lang === "ko") ? ko : en;
+});
+
+const onClickView = (item) => {
+  router.push("/default").catch(() => {});
+  router.push(item);
 };
 </script>

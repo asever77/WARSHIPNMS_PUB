@@ -33,41 +33,37 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 import UiAccordion from '@/components/UiAccordion.vue'
 
-export default {
+defineOptions({
   name: 'AccordionGuide',
-  components: { UiAccordion },
-  setup() {
-    const basicItems = ref([
-      { title: '첫 번째 아이템', content: '첫 번째 아이템의 내용입니다.' },
-      { title: '두 번째 아이템', content: '두 번째 아이템의 내용입니다.' },
-    ])
+})
 
-    const lineItems = ref([
-      { title: 'Line 스타일 아이템 #1', content: '이것은 라인 스타일의 첫 번째 아이템입니다.' },
-      { title: 'Line 스타일 아이템 #2', content: '이것은 라인 스타일의 두 번째 아이템입니다.' },
-    ])
+const basicItems = ref([
+  { title: '첫 번째 아이템', content: '첫 번째 아이템의 내용입니다.' },
+  { title: '두 번째 아이템', content: '두 번째 아이템의 내용입니다.' },
+])
 
-    const flushItems = ref([
-      { title: 'Flush 아이템 #1', content: '이것은 첫 번째 아이템입니다.' },
-      { title: 'Flush 아이템 #2', content: '이것은 두 번째 아이템입니다.', visible: true },
-      { title: 'Flush 아이템 #3', content: '이것은 세 번째 아이템입니다.' },
-    ])
+const lineItems = ref([
+  { title: 'Line 스타일 아이템 #1', content: '이것은 라인 스타일의 첫 번째 아이템입니다.' },
+  { title: 'Line 스타일 아이템 #2', content: '이것은 라인 스타일의 두 번째 아이템입니다.' },
+])
 
-    const freeItems = ref([
-      { title: 'Free 아이템 #1', content: '이 아이템은 다른 아이템과 함께 열려있을 수 있습니다.' },
-      { title: 'Free 아이템 #2', content: '이 아이템도 마찬가지입니다.' },
-    ])
+const flushItems = ref([
+  { title: 'Flush 아이템 #1', content: '이것은 첫 번째 아이템입니다.' },
+  { title: 'Flush 아이템 #2', content: '이것은 두 번째 아이템입니다.', visible: true },
+  { title: 'Flush 아이템 #3', content: '이것은 세 번째 아이템입니다.' },
+])
 
-    const customContentItems = ref([
-      { title: '기본 컨텐츠 아이템', content: '이 내용은 items prop을 통해 전달되었습니다.' },
-      { title: '슬롯 컨텐츠 아이템' },
-    ])
+const freeItems = ref([
+  { title: 'Free 아이템 #1', content: '이 아이템은 다른 아이템과 함께 열려있을 수 있습니다.' },
+  { title: 'Free 아이템 #2', content: '이 아이템도 마찬가지입니다.' },
+])
 
-    return { basicItems, lineItems, flushItems, freeItems, customContentItems }
-  },
-}
+const customContentItems = ref([
+  { title: '기본 컨텐츠 아이템', content: '이 내용은 items prop을 통해 전달되었습니다.' },
+  { title: '슬롯 컨텐츠 아이템' },
+])
 </script>

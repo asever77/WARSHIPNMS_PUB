@@ -72,31 +72,24 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { reactive } from 'vue'
 import UiModal from '@/components/UiModal.vue'
 import { BButton } from 'bootstrap-vue-next'
 
-export default {
-  name: 'ModalGuide',
-  components: { UiModal, BButton },
-  setup() {
-    // reactive를 사용하여 여러 모달의 상태를 하나의 객체로 관리합니다.
-    const modals = reactive({
-      modalName: { show: false },
-      systemName: { show: false },
-      fullPageName: { show: false },
-      bottomSheetName: { show: false },
-      sideRightName: { show: false },
-      sideLeftName: { show: false },
-    })
+// 여러 모달 상태를 reactive로 관리
+const modals = reactive({
+  modalName: { show: false },
+  systemName: { show: false },
+  fullPageName: { show: false },
+  bottomSheetName: { show: false },
+  sideRightName: { show: false },
+  sideLeftName: { show: false },
+})
 
-    const handleConfirm = () => {
-      alert('확인 버튼을 클릭했습니다.')
-      modals.systemName.show = false
-    }
-
-    return { modals, handleConfirm }
-  },
+// confirm 처리 함수
+const handleConfirm = () => {
+  alert('확인 버튼을 클릭했습니다.')
+  modals.systemName.show = false
 }
 </script>

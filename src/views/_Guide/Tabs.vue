@@ -30,15 +30,10 @@
   </div>
 </template>
 
-<script>
-import { BTab } from 'bootstrap-vue-next' // BTab은 여전히 이 파일에서 직접 사용되므로 import합니다.
-import UiTabs from '@/components/UiTabs.vue' // 새로 만든 컴포넌트를 import합니다.
+<script setup>
+import { BTab } from 'bootstrap-vue-next'
+import UiTabs from '@/components/UiTabs.vue'
 
-export default {
-  name: 'TabsView',
-  components: {
-    UiTabs, // 컴포넌트를 등록합니다.
-    BTab,
-  },
-}
+// `<script setup>`에서는 components 등록이 필요 없음
+// import 된 컴포넌트는 자동으로 템플릿에서 사용 가능
 </script>

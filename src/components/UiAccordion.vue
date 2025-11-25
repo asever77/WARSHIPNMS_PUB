@@ -17,37 +17,32 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue'
 import { BAccordion, BAccordionItem } from 'bootstrap-vue-next'
 
-export default {
-  name: 'UiAccordion',
-  components: {
-    BAccordion,
-    BAccordionItem,
+// props
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true,
   },
-  computed: {
-    wrapperClass() {
-      switch (this.type) {
-        case 'line':
-          return 'accordion-line'
-        case 'box':
-        default:
-          return '' // 'box' 타입 및 기본값은 추가 클래스 없음
-      }
-    },
+  type: {
+    type: String,
+    default: 'box', // 'box', 'line'
   },
-  props: {
-    items: {
-      type: Array,
-      required: true,
-    },
-    type: {
-      type: String,
-      default: 'box', // 'box', 'line'
-    },
-  },
-}
+})
+
+// computed
+const wrapperClass = computed(() => {
+  switch (props.type) {
+    case 'line':
+      return 'accordion-line'
+    case 'box':
+    default:
+      return ''
+  }
+})
 </script>
 
 <style scoped>

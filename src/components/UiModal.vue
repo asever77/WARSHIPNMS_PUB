@@ -24,92 +24,93 @@
   </BModal>
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue'
 import { BModal, BButton } from 'bootstrap-vue-next'
 
-export default {
-  name: 'UiModal',
-  components: {
-    BModal,
-    BButton,
+// props 정의
+const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    default: false,
   },
-  props: {
-    // v-model을 통해 부모 컴포넌트에서 모달의 노출 여부를 제어합니다.
-    modelValue: {
-      type: Boolean,
-      default: false,
-    },
-    title: {
-      type: String,
-      default: 'Modal Title',
-    },
-    // 모달의 스타일과 위치를 결정하는 type prop
-    type: {
-      type: String,
-      default: 'modal', // 'system', 'modal', 'bottom-sheet', 'side-left', 'side-right', 'full-page'
-    },
+  title: {
+    type: String,
+    default: 'Modal Title',
   },
-  emits: ['update:modelValue'],
-  computed: {
-    show: {
-      get() {
-        return this.modelValue
-      },
-      set(value) {
-        this.$emit('update:modelValue', value)
-      },
-    },
-    // type prop에 따라 BModal에 적용할 속성들을 계산합니다.
-    modalConfig() {
-      const config = {
-        modalClass: [],
-        contentClass: [],
-        centered: false,
-        fullscreen: false,
-        size: 'md', // BModal의 기본 사이즈
-        noFade: false, // 애니메이션 효과
-      }
+  type: {
+    type: String,
+    default: 'modal', 
+    // 'system', 'modal', 'bottom-sheet', 'side-left', 'side-right', 'full-page'
+  },
+})
 
-      switch (this.type) {
-        case 'system':
-          config.centered = true
-          config.size = 'sm'
-          break
-        case 'modal':
-          config.centered = true
-          break
-        case 'bottom-sheet':
-          config.modalClass.push('modal-bottom-sheet')
-          config.centered = false // 위치 충돌 방지
-          config.noFade = true // 슬라이드 애니메이션을 위해 기본 fade 효과를 끕니다.
-          break
-        case 'side-left':
-          config.modalClass.push('modal-side-left')
-          config.centered = false // 위치 충돌 방지
-          config.noFade = true
-          break
-        case 'side-right':
-          config.modalClass.push('modal-side-right')
-          config.centered = false // 위치 충돌 방지
-          config.noFade = true
-          break
-        case 'full-page':
-          config.fullscreen = true
-          break
-      }
-      return config
-    },
-  },
-  methods: {
-    hide() {
-      this.show = false
-    },
-    onHidden() {
-      if (this.show) {
-        this.show = false
-      }
-    },
-  },
+// emits 정의
+const emit = defineEmits(['update:modelValue'])
+
+// v-model 역할
+const show = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value),
+})
+
+// type에 따라 modal 속성 계산
+const modalConfig = computed(() => {
+  const config = {
+    modalClass: [],
+    contentClass: [],
+    centered: false,
+    fullscreen: false,
+    size: 'md',
+    noFade: false,
+  }
+
+  switch (props.type) {
+    case 'system':
+      config.centered = true
+      config.size = 'sm'
+      break
+
+    case 'modal':
+      config.centered = true
+      break
+
+    case 'bottom-sheet':
+      config.modalClass.push('modal-bottom-sheet')
+      config.centered = false
+      config.noFade = true
+      break
+
+    case 'side-left':
+      config.modalClass.push('modal-side-left')
+      config.centered = false
+      config.noFade = true
+      break
+
+    case 'side-right':
+      config.modalClass.push('modal-side-right')
+      config.centered = false
+      config.noFade = true
+      break
+
+    case 'full-page':
+      config.fullscreen = true
+      break
+  }
+
+  return config
+})
+
+// 모달 닫기
+const hide = () => {
+  show.value = false
+}
+
+// BModal hidden 이벤트 처리
+const onHidden = () => {
+  if (show.value) {
+    show.value = false
+  }
 }
 </script>
 

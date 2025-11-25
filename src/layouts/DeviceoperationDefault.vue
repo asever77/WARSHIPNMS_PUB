@@ -15,45 +15,36 @@
     </div>
 </template>
 
-<script>
-import G from '@/config/global.js'
-import router from "@/router";
+<script setup>
+import { ref, onMounted } from "vue";
+import G from "@/config/global.js";
+import { useRouter } from "vue-router";
 
 const ko = {
-    "title": "장치운영",
-    "firmwaremanage": "펌웨어관리",
-    "firmwareupgrade": "펌웨어업그레이드",
-    "devicecontrol": "장치제어",
-    "resultinquiry": "결과조회"
-}
+  "title": "장치운영",
+  "firmwaremanage": "펌웨어관리",
+  "firmwareupgrade": "펌웨어업그레이드",
+  "devicecontrol": "장치제어",
+  "resultinquiry": "결과조회"
+};
 
 const en = {
-    "title": "장치운영",
-    "firmwaremanage": "펌웨어관리",
-    "firmwareupgrade": "펌웨어업그레이드",
-    "devicecontrol": "장치제어",
-    "resultinquiry": "결과조회"
-}
+  "title": "장치운영",
+  "firmwaremanage": "펌웨어관리",
+  "firmwareupgrade": "펌웨어업그레이드",
+  "devicecontrol": "장치제어",
+  "resultinquiry": "결과조회"
+};
 
-export default {
-    name: "DeviceoperationDefaultLayout",
-    data() {
-        return {
-            lang: {}
-        };
-    },
-    mounted() {
-        if(G.lang === 'ko') {
-            this.lang = ko;
-        }else {
-            this.lang = en;
-        }
-    },
-    methods: {
-        onClickView(item) {
-            router.push("/default").catch(() => {});
-            router.push(item);
-        }
-    },
+const lang = ref({});
+const router = useRouter();
+
+onMounted(() => {
+  lang.value = (G.lang === "ko") ? ko : en;
+});
+
+const onClickView = (item) => {
+  router.push("/default").catch(() => {});
+  router.push(item);
 };
 </script>

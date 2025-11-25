@@ -18,29 +18,29 @@
   </BDropdown>
 </template>
 
-<script>
+<script setup>
 import { BDropdown, BDropdownItem, BDropdownDivider, BDropdownHeader } from 'bootstrap-vue-next'
+import { defineProps, defineEmits } from 'vue'
 
-export default {
-  name: 'UiDropdowns',
-  components: { BDropdown, BDropdownItem, BDropdownDivider, BDropdownHeader },
-  props: {
-    text: {
-      type: String,
-      default: 'Dropdown',
-    },
-    items: {
-      type: Array,
-      required: true,
-    },
+// props 정의
+const props = defineProps({
+  text: {
+    type: String,
+    default: 'Dropdown',
   },
-  emits: ['select'],
-  methods: {
-    onItemClick(item) {
-      if (!item.disabled) {
-        this.$emit('select', item)
-      }
-    },
+  items: {
+    type: Array,
+    required: true,
   },
+})
+
+// emit 정의
+const emit = defineEmits(['select'])
+
+// 클릭 핸들러
+function onItemClick(item) {
+  if (!item.disabled) {
+    emit('select', item)
+  }
 }
 </script>

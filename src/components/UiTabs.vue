@@ -12,39 +12,33 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { BTabs } from 'bootstrap-vue-next'
+import { computed } from 'vue'
 
-export default {
-  name: 'UiTabs',
-  components: {
-    BTabs,
+// Props 정의
+const props = defineProps({
+  contentClass: {
+    type: String,
+    default: 'mt-3',
   },
-  computed: {
-    wrapperClass() {
-      switch (this.type) {
-        case 'line':
-          return 'tabs-line'
-        case 'base':
-          return '' // 'base' 타입일 때는 추가 클래스 없음
-        default:
-          return '' // 그 외의 경우에도 추가 클래스 없음
-      }
-    },
+  type: {
+    type: String,
+    default: 'base', // 'base', 'line'
   },
-  props: {
-    // 탭 콘텐츠 영역에 적용할 CSS 클래스를 props로 받습니다.
-    contentClass: {
-      type: String,
-      default: 'mt-3', // 기본값으로 'mt-3'을 설정합니다.
-    },
-    // 탭 스타일을 구분하기 위한 type prop
-    type: {
-      type: String,
-      default: 'base', // 'base', 'line'
-    },
-  },
-}
+})
+
+// computed 변환
+const wrapperClass = computed(() => {
+  switch (props.type) {
+    case 'line':
+      return 'tabs-line'
+    case 'base':
+      return ''
+    default:
+      return ''
+  }
+})
 </script>
 
 <style scoped>

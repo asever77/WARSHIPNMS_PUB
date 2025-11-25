@@ -105,7 +105,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 // BForm* 컴포넌트들은 'bootstrap-vue-next/components'에서 가져와야 합니다.
 import {
@@ -118,77 +118,45 @@ import {
   BFormRadioGroup,
 } from 'bootstrap-vue-next/components'
 
-export default {
-  name: 'FormGuide',
-  components: {
-    BFormCheckbox,
-    BFormRadio,
-    BFormInput,
-    BFormSelect,
-    BFormGroup,
-    BFormCheckboxGroup,
-    BFormRadioGroup,
-  },
-  setup() {
-    // BFormInput
-    const text = ref('')
-    const number = ref(0)
+// BFormInput
+const text = ref('')
+const number = ref(0)
 
-    // BFormSelect
-    const selected = ref(null)
-    const options = ref([
-      { value: null, text: '선택해주세요' },
-      { value: 'a', text: '옵션 A' },
-      { value: 'b', text: '옵션 B' },
-      { value: 'c', text: '옵션 C (비활성화)', disabled: true },
-    ])
+// BFormSelect
+const selected = ref(null)
+const options = ref([
+  { value: null, text: '선택해주세요' },
+  { value: 'a', text: '옵션 A' },
+  { value: 'b', text: '옵션 B' },
+  { value: 'c', text: '옵션 C (비활성화)', disabled: true },
+])
 
-    const selectedObject = ref('C')
-    const objectOptions = ref([
-      { item: 'A', name: '아이템 A' },
-      { item: 'B', name: '아이템 B' },
-      { item: 'C', name: '아이템 C' },
-      { item: 'D', name: '아이템 D (비활성화)', notEnabled: true },
-    ])
+const selectedObject = ref('C')
+const objectOptions = ref([
+  { item: 'A', name: '아이템 A' },
+  { item: 'B', name: '아이템 B' },
+  { item: 'C', name: '아이템 C' },
+  { item: 'D', name: '아이템 D (비활성화)', notEnabled: true },
+])
 
-    // BFormCheckbox
-    const statusCheck1 = ref(false)
-    const statusCheck2 = ref([])
-    const statusCheck3 = ref([])
+// BFormCheckbox
+const statusCheck1 = ref(false)
+const statusCheck2 = ref([])
+const statusCheck3 = ref([])
 
-    const optionsCheck = [
-      { text: 'Orange', value: 'orange' },
-      { text: 'Apple', value: 'apple' },
-      { text: 'Pineapple', value: 'pineapple' },
-      { text: 'Grape', value: 'grape' },
-    ]
+const optionsCheck = [
+  { text: 'Orange', value: 'orange' },
+  { text: 'Apple', value: 'apple' },
+  { text: 'Pineapple', value: 'pineapple' },
+  { text: 'Grape', value: 'grape' },
+]
 
-    // BFormRadio
-    const radioSelected = ref('A')
-    const radioSelected2 = ref('one')
-    const radioOptions = ref([
-      { text: '옵션 One', value: 'one' },
-      { text: '옵션 Two', value: 'two' },
-      { text: '옵션 Three (비활성화)', value: 'three', disabled: true },
-    ])
-
-    return {
-      text,
-      number,
-      selected,
-      options,
-      selectedObject,
-      objectOptions,
-
-      radioSelected,
-      radioSelected2,
-      radioOptions,
-
-      statusCheck1,
-      statusCheck2,
-      statusCheck3,
-      optionsCheck,
-    }
-  },
-}
+// BFormRadio
+const radioSelected = ref('A')
+const radioSelected2 = ref('one')
+const radioOptions = ref([
+  { text: '옵션 One', value: 'one' },
+  { text: '옵션 Two', value: 'two' },
+  { text: '옵션 Three (비활성화)', value: 'three', disabled: true },
+])
 </script>

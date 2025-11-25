@@ -66,73 +66,49 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, computed } from 'vue'
 import { BTable, BPagination, BButton, BInputGroup } from 'bootstrap-vue-next'
 import { BFormGroup, BFormInput } from 'bootstrap-vue-next/components'
 
-export default {
-  name: 'TableGuide',
-  components: {
-    BTable,
-    BPagination,
-    BButton,
-    BInputGroup,
-    BFormGroup,
-    BFormInput,
-  },
-  setup() {
-    // 1. 기본 테이블 데이터
-    const basicFields = ref(['first_name', 'last_name', 'age'])
-    const basicItems = ref([
-      { age: 40, first_name: 'Dickerson', last_name: 'Macdonald', isActive: true },
-      { age: 21, first_name: 'Larsen', last_name: 'Shaw', isActive: false },
-      { age: 89, first_name: 'Geneva', last_name: 'Wilson', isActive: true },
-    ])
+// 1. 기본 테이블 데이터
+const basicFields = ref(['first_name', 'last_name', 'age'])
+const basicItems = ref([
+  { age: 40, first_name: 'Dickerson', last_name: 'Macdonald', isActive: true },
+  { age: 21, first_name: 'Larsen', last_name: 'Shaw', isActive: false },
+  { age: 89, first_name: 'Geneva', last_name: 'Wilson', isActive: true },
+])
 
-    // 2. 커스텀 필드 데이터
-    const customFields = ref([
-      { key: 'first_name', label: '이름' },
-      { key: 'last_name', label: '성' },
-      { key: 'age', label: '나이' },
-      { key: 'isActive', label: '활성 상태' },
-    ])
+// 2. 커스텀 필드 데이터
+const customFields = ref([
+  { key: 'first_name', label: '이름' },
+  { key: 'last_name', label: '성' },
+  { key: 'age', label: '나이' },
+  { key: 'isActive', label: '활성 상태' },
+])
 
-    // 3. 페이지네이션 테이블 데이터
-    const pagedFields = ref([
-      { key: 'id', label: 'ID', sortable: true },
-      { key: 'name', label: '이름', sortable: true },
-      { key: 'category', label: '카테고리', sortable: true },
-    ])
-    const pagedItems = ref(
-      Array.from({ length: 50 }, (_, i) => ({
-        id: i + 1,
-        name: `아이템 ${i + 1}`,
-        category: `카테고리 ${String.fromCharCode(65 + (i % 5))}`,
-      })),
-    )
-    const filter = ref('')
-    const currentPage = ref(1)
-    const perPage = ref(5)
-    const totalRows = computed(() => pagedItems.value.length)
+// 3. 페이지네이션 테이블 데이터
+const pagedFields = ref([
+  { key: 'id', label: 'ID', sortable: true },
+  { key: 'name', label: '이름', sortable: true },
+  { key: 'category', label: '카테고리', sortable: true },
+])
 
-    const onFiltered = (filteredItems) => {
-      totalRows.value = filteredItems.length
-      currentPage.value = 1
-    }
+const pagedItems = ref(
+  Array.from({ length: 50 }, (_, i) => ({
+    id: i + 1,
+    name: `아이템 ${i + 1}`,
+    category: `카테고리 ${String.fromCharCode(65 + (i % 5))}`,
+  })),
+)
 
-    return {
-      basicFields,
-      basicItems,
-      customFields,
-      pagedFields,
-      pagedItems,
-      filter,
-      currentPage,
-      perPage,
-      totalRows,
-      onFiltered,
-    }
-  },
+const filter = ref('')
+const currentPage = ref(1)
+const perPage = ref(5)
+const totalRows = computed(() => pagedItems.value.length)
+
+const onFiltered = (filteredItems) => {
+  totalRows.value = filteredItems.length
+  currentPage.value = 1
 }
 </script>

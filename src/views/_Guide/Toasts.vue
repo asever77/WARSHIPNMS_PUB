@@ -36,72 +36,63 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { h } from 'vue'
 import { BButton, useToast } from 'bootstrap-vue-next'
 
-export default {
-  name: 'ToastsGuide',
-  components: { BButton },
-  setup() {
-    const toast = useToast()
+const toast = useToast()
 
-    const showBasicToast = () => {
-      toast.show({
-        title: '기본 토스트',
-        body: '이것은 기본 토스트 메시지입니다.',
-      })
-    }
+// 기본 토스트
+const showBasicToast = () => {
+  toast.show({
+    title: '기본 토스트',
+    body: '이것은 기본 토스트 메시지입니다.',
+  })
+}
 
-    const showVariantToast = (variant, title) => {
-      toast.show({
-        title: `${title} 메시지`,
-        body: `이것은 ${variant} 토스트입니다.`,
-        variant: variant,
-      })
-    }
+// variant 토스트
+const showVariantToast = (variant, title) => {
+  toast.show({
+    title: `${title} 메시지`,
+    body: `이것은 ${variant} 토스트입니다.`,
+    variant: variant,
+  })
+}
 
-    const showComplexToast = () => {
-      toast.show({
-        title: '알림',
-        body: h('div', {}, [h('strong', 'HTML'), ' 컨텐츠를 포함할 수 있습니다.']),
-      })
-    }
+// HTML 포함 토스트
+const showComplexToast = () => {
+  toast.show({
+    title: '알림',
+    body: h('div', {}, [h('strong', 'HTML'), ' 컨텐츠를 포함할 수 있습니다.']),
+  })
+}
 
-    const showNoAutoHideToast = () => {
-      toast.show({
-        title: '사라지지 않는 토스트',
-        body: '우측 상단의 닫기 버튼을 눌러야 사라집니다.',
-        value: 0, // 0으로 설정하여 자동으로 사라지지 않게 합니다.
-        noProgress: true, // 진행 표시줄을 숨깁니다.
-      })
-    }
+// 자동 사라지지 않는 토스트
+const showNoAutoHideToast = () => {
+  toast.show({
+    title: '사라지지 않는 토스트',
+    body: '우측 상단의 닫기 버튼을 눌러야 사라집니다.',
+    value: 0,
+    noProgress: true,
+  })
+}
 
-    const showPositionedToast = () => {
-      toast.show({
-        title: '위치 지정',
-        body: '이 토스트는 화면 하단 중앙에 나타납니다.',
-        pos: 'bottom-center', // 토스트 위치 지정
-      })
-    }
+// 위치 지정 토스트
+const showPositionedToast = () => {
+  toast.show({
+    title: '위치 지정',
+    body: '이 토스트는 화면 하단 중앙에 나타납니다.',
+    pos: 'bottom-center',
+  })
+}
 
-    const showSolidToast = () => {
-      toast.show({
-        title: '단색 배경 토스트',
-        body: 'solid: true 옵션이 적용되었습니다.',
-        variant: 'primary',
-        solid: true,
-      })
-    }
-
-    return {
-      showBasicToast,
-      showVariantToast,
-      showComplexToast,
-      showNoAutoHideToast,
-      showPositionedToast,
-      showSolidToast,
-    }
-  },
+// 단색 배경 토스트
+const showSolidToast = () => {
+  toast.show({
+    title: '단색 배경 토스트',
+    body: 'solid: true 옵션이 적용되었습니다.',
+    variant: 'primary',
+    solid: true,
+  })
 }
 </script>

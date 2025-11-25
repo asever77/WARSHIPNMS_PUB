@@ -31,74 +31,66 @@
     </div>
 </template>
 
-<script>
-import G from '@/config/global.js'
-import router from "@/router";
+<script setup>
+import { ref, onMounted } from "vue";
+import G from "@/config/global.js";
+import { useRouter } from "vue-router";
 
 const ko = {
-    "image": "이미지",
-    "logout": "로그아웃",
-    "dashboard": "대시보드",
-    "settings": "설정",
-    "devicemanage": "단말관리",
-    "connectconfigmanage": "연결설정관리",
-    "callmanage": "통화관리",
-    "externallinkagemanage": "외부연계관리",
-    "operationconfigmanage": "운영정보관리",
-    "equipmanage": "장치관리",
-    "planmanage": "도면관리",
-    "callconnectconfig": "통화연결설정",
-    "recordingmanagement": "녹음관리",
-    "deviceoperation": "장치운영",
-    "documentmanage": "문서관리",
-    "usermanage": "사용자관리",
-    "record": "이력"
-}
+  "image": "이미지",
+  "logout": "로그아웃",
+  "dashboard": "대시보드",
+  "settings": "설정",
+  "devicemanage": "단말관리",
+  "connectconfigmanage": "연결설정관리",
+  "callmanage": "통화관리",
+  "externallinkagemanage": "외부연계관리",
+  "operationconfigmanage": "운영정보관리",
+  "equipmanage": "장치관리",
+  "planmanage": "도면관리",
+  "callconnectconfig": "통화연결설정",
+  "recordingmanagement": "녹음관리",
+  "deviceoperation": "장치운영",
+  "documentmanage": "문서관리",
+  "usermanage": "사용자관리",
+  "record": "이력"
+};
 
 const en = {
-    "image": "이미지",
-    "logout": "Logout",
-    "dashboard": "Dashboard",
-    "settings": "Settings",
-    "devicemanage": "Devicemanage",
-    "connectconfigmanage": "Connectconfigmanage",
-    "callmanage": "Callmanage",
-    "externallinkagemanage": "Externallinkagemanage",
-    "operationconfigmanage": "Operationconfigmanage",
-    "equipmanage": "Equipmanage",
-    "planmanage": "Planmanage",
-    "callconnectconfig": "Callconnectconfig",
-    "recordingmanagement": "Recordingmanagement",
-    "deviceoperation": "Deviceoperation",
-    "documentmanage": "Documentmanage",
-    "usermanage": "Usermanage",
-    "record": "Record"
-}
+  "image": "이미지",
+  "logout": "Logout",
+  "dashboard": "Dashboard",
+  "settings": "Settings",
+  "devicemanage": "Devicemanage",
+  "connectconfigmanage": "Connectconfigmanage",
+  "callmanage": "Callmanage",
+  "externallinkagemanage": "Externallinkagemanage",
+  "operationconfigmanage": "Operationconfigmanage",
+  "equipmanage": "Equipmanage",
+  "planmanage": "Planmanage",
+  "callconnectconfig": "Callconnectconfig",
+  "recordingmanagement": "Recordingmanagement",
+  "deviceoperation": "Deviceoperation",
+  "documentmanage": "Documentmanage",
+  "usermanage": "Usermanage",
+  "record": "Record"
+};
 
-export default {
-    name: "DefaultLayout",
-    data() {
-        return {
-            lang: {}
-        };
-    },
-    mounted() {
-        if(G.lang === 'ko') {
-            this.lang = ko;
-        }else {
-            this.lang = en;
-        }
-    },
-    methods: {
-        onClickView(item) {
-            router.push("/default").catch(() => {});
-            router.push(item);
-        },
-        openPopup(item) {
-            const name = 'popup'
-            const features = 'width=800,height=600,left=300,top=200,resizable=yes,scrollbars=yes'
-            window.open(item, name, features)
-        },
-    },
+const lang = ref({});
+const router = useRouter();
+
+onMounted(() => {
+  lang.value = (G.lang === "ko") ? ko : en;
+});
+
+const onClickView = (item) => {
+  router.push("/default").catch(() => {});
+  router.push(item);
+};
+
+const openPopup = (item) => {
+  const name = 'popup';
+  const features = 'width=800,height=600,left=300,top=200,resizable=yes,scrollbars=yes';
+  window.open(item, name, features);
 };
 </script>

@@ -17,49 +17,40 @@
     </div>
 </template>
 
-<script>
-import G from '@/config/global.js'
-import router from "@/router";
+<script setup>
+import { ref, onMounted } from "vue";
+import G from "@/config/global.js";
+import { useRouter } from "vue-router";
 
 const ko = {
-    "title": "설정/연결설정관리",
-    "specialprocessunit": "전문처리장치",
-    "interlockdevice": "보안장비연동장치",
-    "wirelesslink": "무선링크",
-    "repeater": "유무선통합중계기",
-    "etc": "기타",
-    "wirelesschannelbond": "무선채널조합"
-}
+  "title": "설정/연결설정관리",
+  "specialprocessunit": "전문처리장치",
+  "interlockdevice": "보안장비연동장치",
+  "wirelesslink": "무선링크",
+  "repeater": "유무선통합중계기",
+  "etc": "기타",
+  "wirelesschannelbond": "무선채널조합"
+};
 
 const en = {
-    "title": "설정/연결설정관리",
-    "specialprocessunit": "전문처리장치",
-    "interlockdevice": "보안장비연동장치",
-    "wirelesslink": "무선링크",
-    "repeater": "유무선통합중계기",
-    "etc": "기타",
-    "wirelesschannelbond": "무선채널조합"
-}
+  "title": "설정/연결설정관리",
+  "specialprocessunit": "전문처리장치",
+  "interlockdevice": "보안장비연동장치",
+  "wirelesslink": "무선링크",
+  "repeater": "유무선통합중계기",
+  "etc": "기타",
+  "wirelesschannelbond": "무선채널조합"
+};
 
-export default {
-    name: "SettingsConnectconfigmanageDefaultLayout",
-    data() {
-        return {
-            lang: {}
-        };
-    },
-    mounted() {
-        if(G.lang === 'ko') {
-            this.lang = ko;
-        }else {
-            this.lang = en;
-        }
-    },
-    methods: {
-        onClickView(item) {
-            router.push("/default").catch(() => {});
-            router.push(item);
-        }
-    },
+const lang = ref({});
+const router = useRouter();
+
+onMounted(() => {
+  lang.value = (G.lang === "ko") ? ko : en;
+});
+
+const onClickView = (item) => {
+  router.push("/default").catch(() => {});
+  router.push(item);
 };
 </script>

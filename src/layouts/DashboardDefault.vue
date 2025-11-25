@@ -16,47 +16,38 @@
     </div>
 </template>
 
-<script>
-import G from '@/config/global.js'
-import router from "@/router";
+<script setup>
+import { ref, onMounted } from "vue";
+import G from "@/config/global.js";
+import { useRouter } from "vue-router";
 
 const ko = {
-    "title": "대시보드",
-    "network": "네트워크",
-    "userterminal": "사용자단말",
-    "receptacleunit": "리셉터클유닛",
-    "rack": "랙",
-    "activealarm": "활성경보"
-}
+  "title": "대시보드",
+  "network": "네트워크",
+  "userterminal": "사용자단말",
+  "receptacleunit": "리셉터클유닛",
+  "rack": "랙",
+  "activealarm": "활성경보"
+};
 
 const en = {
-    "title": "대시보드",
-    "network": "네트워크",
-    "userterminal": "사용자단말",
-    "receptacleunit": "리셉터클유닛",
-    "rack": "랙",
-    "activealarm": "활성경보"
-}
+  "title": "대시보드",
+  "network": "네트워크",
+  "userterminal": "사용자단말",
+  "receptacleunit": "리셉터클유닛",
+  "rack": "랙",
+  "activealarm": "활성경보"
+};
 
-export default {
-    name: "DashboardDefaultLayout",
-    data() {
-        return {
-            lang: {}
-        };
-    },
-    mounted() {
-        if(G.lang === 'ko') {
-            this.lang = ko;
-        }else {
-            this.lang = en;
-        }
-    },
-    methods: {
-        onClickView(item) {
-            router.push("/default").catch(() => {});
-            router.push(item);
-        }
-    },
+const lang = ref({});
+const router = useRouter();
+
+onMounted(() => {
+  lang.value = (G.lang === "ko") ? ko : en;
+});
+
+const onClickView = (item) => {
+  router.push("/default").catch(() => {});
+  router.push(item);
 };
 </script>
