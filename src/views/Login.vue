@@ -65,6 +65,9 @@ const login = () => {
     return;
   }
 
+  router.push('/dashboard/network');
+
+  /*
   const url = config.getHost() + '/login';
   const data = {
     loginId: username.value,
@@ -88,6 +91,7 @@ const login = () => {
     .catch(error => {
       httpUtils.errorHandler(error);
     });
+    */
 };
 
 // 기본 기능 페이지 이동
