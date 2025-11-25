@@ -35,79 +35,75 @@
   </li>
 </template>
 
-<script>
-export default {
-  name: "TreeNode",
-  components: {
-    TreeNode: () => import("./TreeNode.vue")
-  },
-  props: {
-    node: Object
-  },
-  data() {
-    return {
-      isOpen: false
-    };
-  },
-  methods: {
-    toggle() {
-      this.isOpen = !this.isOpen;
-    },
-    onCheck(checked) {
-      // 현재 노드 체크 상태 변경
-      this.node.checked = checked;
-      this.node.indeterminate = false;
+<script setup>
+import { ref, reactive, watch, toRefs } from "vue";
 
-      // 하위 노드 체크 상태 모두 변경
-      if (this.node.children && this.node.children.length) {
-        this.node.children.forEach(child => {
-          this.setChildChecked(child, checked);
-        });
-      }
+// 재귀 컴포넌트 정의
+const props = defineProps({
+  node: Object
+});
 
-      // 상위 노드 상태 갱신
-      this.$emit("update-parent");
-      this.$emit("checked-nodes");
-    },
-    setChildChecked(node, checked) {
-      node.checked = checked;
-      node.indeterminate = false;
-      if (node.children && node.children.length) {
-        node.children.forEach(child => this.setChildChecked(child, checked));
-      }
-    },
-    updateParentStatus() {
-      if (!this.node.children || !this.node.children.length) return;
+const emit = defineEmits(["update-parent", "checked-nodes"]);
 
-      const total = this.node.children.length;
-      const checkedCount = this.node.children.filter(c => c.checked).length;
-      const indeterminateCount = this.node.children.filter(c => c.indeterminate).length;
+const isOpen = ref(false);
 
-      if (checkedCount === total) {
-        this.node.checked = true;
-        this.node.indeterminate = false;
-      } else if (checkedCount === 0 && indeterminateCount === 0) {
-        this.node.checked = false;
-        this.node.indeterminate = false;
-      } else {
-        this.node.checked = false;
-        this.node.indeterminate = true;
-      }
+// --- 초기 체크 상태 설정 ---
+if (props.node.children && props.node.children.length) {
+  props.node.children.forEach(child => {
+    child.checked = child.checked ?? false;
+    child.indeterminate = false;
+  });
+}
+props.node.checked = props.node.checked ?? false;
+props.node.indeterminate = false;
 
-      // 상위로 재귀 호출
-      this.$emit("update-parent");
-      this.$emit("checked-nodes");
-    }
-  },
-  created() {
-    if (this.node.children && this.node.children.length) {
-      this.node.children.forEach(child => {
-        child.checked = child.checked ?? false;
-        child.indeterminate = false;
-      });
-    }
-    this.node.checked = this.node.checked ?? false;
-    this.node.indeterminate = false;
+// --- 토글 ---
+const toggle = () => {
+  isOpen.value = !isOpen.value;
+};
+
+// --- 자식 체크 상태 변경 ---
+const setChildChecked = (node, checked) => {
+  node.checked = checked;
+  node.indeterminate = false;
+  if (node.children && node.children.length) {
+    node.children.forEach(child => setChildChecked(child, checked));
   }
+};
+
+// --- 체크박스 클릭 처리 ---
+const onCheck = (checked) => {
+  props.node.checked = checked;
+  props.node.indeterminate = false;
+
+  if (props.node.children && props.node.children.length) {
+    props.node.children.forEach(child => setChildChecked(child, checked));
+  }
+
+  emit("update-parent");
+  emit("checked-nodes");
+};
+
+// --- 부모 상태 업데이트 (재귀 호출) ---
+const updateParentStatus = () => {
+  if (!props.node.children || !props.node.children.length) return;
+
+  const total = props.node.children.length;
+  const checkedCount = props.node.children.filter(c => c.checked).length;
+  const indeterminateCount = props.node.children.filter(c => c.indeterminate).length;
+
+  if (checkedCount === total) {
+    props.node.checked = true;
+    props.node.indeterminate = false;
+  } else if (checkedCount === 0 && indeterminateCount === 0) {
+    props.node.checked = false;
+    props.node.indeterminate = false;
+  } else {
+    props.node.checked = false;
+    props.node.indeterminate = true;
+  }
+
+  emit("update-parent");
+  emit("checked-nodes");
 };
 </script>

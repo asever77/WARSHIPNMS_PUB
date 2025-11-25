@@ -152,125 +152,128 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, watch } from 'vue'
 import { BTable, BButton, BFormCheckbox, BFormRadio, BFormInput, BFormSelect, BPagination } from 'bootstrap-vue-next'
 
-export default {
-  name: 'BasicFunctionsView',
-  components: {
-    BTable,
-    BButton,
-    BFormCheckbox,
-    BFormRadio,
-    BFormInput,
-    BFormSelect,
-    BPagination,
-  },
-  data() {
-    return {
-      sortBy: ['name'],
-      sortDesc: false,
-      perPage: 5,
-      currentPage: 1,
-      fieldsNoSort: [
-        { key: 'select', label: '', class: 'text-center' },
-        { key: 'select2', label: '', class: 'text-center' },
-        { key: 'id', label: 'ID' },
-        { key: 'name', label: '이름' },
-        { key: 'email', label: '이메일' },
-        { key: 'status', label: '상태' },
-        { key: 'actions', label: '작업' },
-      ],
-      fields: [
-        { key: 'select', label: '', class: 'text-center', sortable: false },
-        { key: 'select2', label: '', class: 'text-center', sortable: false },
-        { key: 'id', label: 'ID', sortable: true },
-        { key: 'name', label: '이름', sortable: true },
-        { key: 'email', label: '이메일', sortable: true },
-        { key: 'status', label: '상태', sortable: true },
-        { key: 'actions', label: '작업', sortable: false },
-      ],
-      items: [
-        { id: 1, name: '홍길동', email: 'hong@example.com', status: 'active' },
-        { id: 2, name: '김철수', email: 'kim@example.com', status: 'pending' },
-        { id: 3, name: '이영희', email: 'lee@example.com', status: 'inactive' },
-        { id: 4, name: '박보검', email: 'park@example.com', status: 'active' },
-      ],
-      selectedIds: [],
-      selectedId: null,
-      statusOptions: [
-        { value: 'active', text: '활성' },
-        { value: 'pending', text: '대기' },
-        { value: 'inactive', text: '비활성' },
-      ],
-      filterField: 'name',
-      filterFieldOptions: [
-        { value: 'name', text: '이름' },
-        { value: 'email', text: '이메일' },
-      ],
-      filterText: '',
-      filteredItems: [],
-    }
-  },
+// --- 데이터 ---
+const sortBy = ref(['name'])
+const sortDesc = ref(false)
+const perPage = ref(5)
+const currentPage = ref(1)
 
-  computed: {
-    rows() {
-      return 12
-    },
-    pagedItems() {
-      const start = (this.currentPage - 1) * this.perPage
-      const end = start + this.perPage
-      return this.items.slice(start, end)
-    },
-  },
+const fields = [
+  { key: 'select', label: '', class: 'text-center', sortable: false },
+  { key: 'select2', label: '', class: 'text-center', sortable: false },
+  { key: 'id', label: 'ID', sortable: true },
+  { key: 'name', label: '이름', sortable: true },
+  { key: 'email', label: '이메일', sortable: true },
+  { key: 'status', label: '상태', sortable: true },
+  { key: 'actions', label: '작업', sortable: false },
+]
 
-  mounted() {
-    this.filteredItems = this.items
-  },
+const items = ref([
+  { id: 1, name: '홍길동', email: 'hong@example.com', status: 'active' },
+  { id: 2, name: '김철수', email: 'kim@example.com', status: 'pending' },
+  { id: 3, name: '이영희', email: 'lee@example.com', status: 'inactive' },
+  { id: 4, name: '박보검', email: 'park@example.com', status: 'active' },
+])
 
-  methods: {
-    onPageChange(page) {
-      this.currentPage = page;
-    },
-    onSelectChange() {
-      console.log('선택된 항목:', this.selectedIds)
-    },
-    handleDelete(item) {
-      if (confirm(`${item.name}님을 삭제하시겠습니까?`)) {
-        this.items = this.items.filter((i) => i.id !== item.id)
-        this.selectedIds = this.selectedIds.filter((id) => id !== item.id)
-      }
-    },
-    onRadioChange(item) {
-      console.log('선택된 사용자:', item)
-    },
-    onStatusChange(item) {
-      console.log(`행 ${item.id}의 상태 변경 →`, item.status)
-    },
-    onInputChange(item, field) {
-      console.log(`입력 변경됨: ${field} (${item.id}) →`, item[field])
-    },
-    onSortChanged(ctx) {
-      this.sortBy = ctx.sortBy
-      this.sortDesc = ctx.sortDesc
-    },
-    onFilter() {
-      const keyword = this.filterText.trim().toLowerCase()
-      if (!keyword) {
-        this.filteredItems = this.items
-        return
-      }
-      this.filteredItems = this.items.filter((item) => {
-        const value = String(item[this.filterField]).toLowerCase()
-        return value.includes(keyword)
-      })
-    },
-    onReset() {
-      this.filterText = ''
-      this.filteredItems = this.items
-    },
-  },
+const selectedIds = ref([])
+const selectedId = ref(null)
+
+const statusOptions = [
+  { value: 'active', text: '활성' },
+  { value: 'pending', text: '대기' },
+  { value: 'inactive', text: '비활성' },
+]
+
+const filterField = ref('name')
+const filterFieldOptions = [
+  { value: 'name', text: '이름' },
+  { value: 'email', text: '이메일' },
+]
+const filterText = ref('')
+
+// --- 필터링 / 정렬 ---
+const filteredItems = ref([...items.value])
+
+const sortedItems = computed(() => {
+  let list = [...filteredItems.value]
+  if (sortBy.value.length) {
+    const key = sortBy.value[0]
+    list.sort((a, b) => {
+      if (a[key] < b[key]) return sortDesc.value ? 1 : -1
+      if (a[key] > b[key]) return sortDesc.value ? -1 : 1
+      return 0
+    })
+  }
+  return list
+})
+
+const pagedItems = computed(() => {
+  const start = (currentPage.value - 1) * perPage.value
+  const end = start + perPage.value
+  return sortedItems.value.slice(start, end)
+})
+
+// --- 메서드 ---
+const onPageChange = (page) => {
+  currentPage.value = page
 }
+
+const onSelectChange = () => {
+  console.log('선택된 항목:', selectedIds.value)
+}
+
+const handleDelete = (item) => {
+  if (confirm(`${item.name}님을 삭제하시겠습니까?`)) {
+    items.value = items.value.filter(i => i.id !== item.id)
+    selectedIds.value = selectedIds.value.filter(id => id !== item.id)
+    filteredItems.value = filteredItems.value.filter(i => i.id !== item.id)
+  }
+}
+
+const onRadioChange = (item) => {
+  console.log('선택된 사용자:', item)
+}
+
+const onStatusChange = (item) => {
+  console.log(`행 ${item.id}의 상태 변경 →`, item.status)
+}
+
+const onInputChange = (item, field) => {
+  console.log(`입력 변경됨: ${field} (${item.id}) →`, item[field])
+}
+
+const onSortChanged = (ctx) => {
+  sortBy.value = ctx.sortBy
+  sortDesc.value = ctx.sortDesc
+}
+
+const onFilter = () => {
+  const keyword = filterText.value.trim().toLowerCase()
+  if (!keyword) {
+    filteredItems.value = [...items.value]
+    return
+  }
+  filteredItems.value = items.value.filter(item => {
+    const value = String(item[filterField.value]).toLowerCase()
+    return value.includes(keyword)
+  })
+  currentPage.value = 1
+}
+
+const onReset = () => {
+  filterText.value = ''
+  filteredItems.value = [...items.value]
+  currentPage.value = 1
+}
+
+// --- watch items 변경시 filteredItems 초기화 ---
+watch(items, () => {
+  filteredItems.value = [...items.value]
+})
 </script>
 
 <style scoped>

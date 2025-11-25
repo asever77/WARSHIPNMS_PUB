@@ -19,75 +19,66 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue";
 import TreeNode from "@/components/TreeNode.vue";
 
-export default {
-  name: "App",
-  components: { TreeNode },
-  data() {
-    return {
-      checkedIds: [],
-      treeData: [
-        {
-          id: "1",
-          label: "1단계 A",
-          leaf: false,
-          children: [
-            { id: "1-1", label: "2단계 Leaf A-1", leaf: true },
-            {
-              id: "1-2",
-              label: "2단계 A-2",
-              leaf: false,
-              children: [
-                { id: "1-2-1", label: "3단계 Leaf A-2-1", leaf: true },
-                {
-                  id: "1-2-2",
-                  label: "3단계 A-2-2",
-                  leaf: false,
-                  children: [
-                    { id: "1-2-2-1", label: "4단계 Leaf A-2-2-1", leaf: true },
-                    { id: "1-2-2-2", label: "4단계 Leaf A-2-2-2", leaf: true }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: "2",
-          label: "1단계 B",
-          leaf: false,
-          children: [
-            { id: "2-1", label: "2단계 Leaf B-1", leaf: true },
-            {
-              id: "2-2",
-              label: "2단계 B-2",
-              leaf: false,
-              children: [
-                {
-                  id: "2-2-1",
-                  label: "3단계 B-2-1",
-                  leaf: true
-                }
-              ]
-            }
-          ]
-        },
-        { id: "3", label: "1단계 Leaf C", leaf: true }
-      ]
-    };
+// --- 상태 ---
+const checkedIds = ref([])
+
+const treeData = ref([
+  {
+    id: "1",
+    label: "1단계 A",
+    leaf: false,
+    children: [
+      { id: "1-1", label: "2단계 Leaf A-1", leaf: true },
+      {
+        id: "1-2",
+        label: "2단계 A-2",
+        leaf: false,
+        children: [
+          { id: "1-2-1", label: "3단계 Leaf A-2-1", leaf: true },
+          {
+            id: "1-2-2",
+            label: "3단계 A-2-2",
+            leaf: false,
+            children: [
+              { id: "1-2-2-1", label: "4단계 Leaf A-2-2-1", leaf: true },
+              { id: "1-2-2-2", label: "4단계 Leaf A-2-2-2", leaf: true }
+            ]
+          }
+        ]
+      }
+    ]
   },
-  methods: {
-    updateChecked() {
-      const result = [];
-      const traverse = node => {
-        if (node.checked) result.push(node.id);
-        if (node.children) node.children.forEach(traverse);
-      };
-      this.treeData.forEach(traverse);
-      this.checkedIds = result;
-    }
-  }
+  {
+    id: "2",
+    label: "1단계 B",
+    leaf: false,
+    children: [
+      { id: "2-1", label: "2단계 Leaf B-1", leaf: true },
+      {
+        id: "2-2",
+        label: "2단계 B-2",
+        leaf: false,
+        children: [
+          { id: "2-2-1", label: "3단계 B-2-1", leaf: true }
+        ]
+      }
+    ]
+  },
+  { id: "3", label: "1단계 Leaf C", leaf: true }
+]);
+
+// --- 체크된 노드 업데이트 ---
+const updateChecked = () => {
+  const result = [];
+  const traverse = (node) => {
+    if (node.checked) result.push(node.id);
+    if (node.children) node.children.forEach(traverse);
+  };
+  treeData.value.forEach(traverse);
+  checkedIds.value = result;
 };
 </script>
