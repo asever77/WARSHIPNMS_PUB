@@ -10,14 +10,6 @@
       >
         bootstrap-vue-next 공식 문서
       </a>
-      <a
-        href="https://getbootstrap.com/docs/5.3/getting-started/introduction/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="list-group-item list-group-item-action"
-      >
-        bootstrap v5.3 공식 문서
-      </a>
       <router-link to="/guide/tabs" class="list-group-item list-group-item-action">
         Tabs Guide(next)
       </router-link>

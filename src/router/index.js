@@ -3,12 +3,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-
-    // test page
+    
+    // test page 
     {
       path: '/guide/',
       name: 'GuideIndex',
-      component: () => import('../views/_Guide/Index.vue')
+      component: () => import('../views/_Guide/index.vue')
     },
     {
       path: '/guide/tabs',
