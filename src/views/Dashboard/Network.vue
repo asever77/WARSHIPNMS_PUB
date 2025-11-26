@@ -3,7 +3,7 @@
         {{ lang.title }}
         <br/>
         권한 테스트
-        
+
         <br/>
         <button type="button" @click="adminTest">
             ADMIN

@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 
 // Bootstrap 및 BootstrapVueNext import
+import './assets/global.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js' // 이 라인을 추가합니다.
 import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
