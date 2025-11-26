@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-4">
+  <div class="container mt-4 p-4" style="background-color: gray;">
     <!-- type="base" 또는 props를 생략하여 기본 스타일을 사용합니다. -->
     <UiTabs id="tabs-group-1" class="mb-5" type="base">
       <!-- 슬롯을 통해 BTab 컴포넌트들을 전달합니다. -->

@@ -3,8 +3,8 @@
   <div :class="wrapperClass">
     <!-- BTabs 컴포넌트를 사용하여 탭의 기본 구조를 정의합니다. -->
     <BTabs :content-class="contentClass" v-bind="$attrs">
-      <!-- 
-        <slot>을 통해 부모 컴포넌트에서 전달하는 
+      <!--
+        <slot>을 통해 부모 컴포넌트에서 전달하는
         <BTab> 컴포넌트들을 이 위치에 렌더링합니다.
       -->
       <slot></slot>
@@ -34,18 +34,36 @@ const wrapperClass = computed(() => {
     case 'line':
       return 'tabs-line'
     case 'base':
-      return ''
+      return 'tabs-base'
     default:
-      return ''
+      return 'tabs-base'
   }
 })
 </script>
 
 <style scoped>
-/* 
+/*
   :deep() 선택자를 사용하여 자식 컴포넌트인 BTabs의 내부 요소(nav-link)에 스타일을 적용합니다.
   .tabs-line 클래스가 있을 때만 이 스타일이 적용됩니다.
 */
+.tabs-base:deep(.nav-link) {
+  border: none;
+  border-radius: .5rem .5rem 0 0;
+  background-color: #C5C5C5;
+  font-weight: 700;
+  color: #3E3E3E;
+  min-width: 10rem;
+  width: 100%;
+}
+.tabs-base:deep(.nav-tabs) {
+  gap:0.5rem;
+}
+
+.tabs-base:deep(.nav-link.active) {
+  background-color: white;
+  color: #002745;
+}
+
 .tabs-line:deep(.nav-link) {
   border: none;
   border-bottom: 2px solid transparent;
