@@ -29,6 +29,7 @@
       </div>
       <img src="/images/login/login-text.png" alt="국민이 신뢰하고 적이 두려워하는 강한해군, 해양강국!!" class="login-text" />
     </div>
+    <p class="login-copy">Copyright(c)NAVY.MIL.KR. All Rights Reserved.</p>
     <!--
     <button type="button" @click="basicfunctions">기본기능</button>
     -->
@@ -99,6 +100,7 @@
   justify-content:center;
   box-shadow:0 0 1rem 0 #00000040;
 }
+.login-copy {position:fixed;bottom:2rem;text-align:center;left:0;right:0;font-size:1rem;color:#AFAFAF}
 </style>
 
 <script setup>
