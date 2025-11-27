@@ -1,49 +1,56 @@
 <template>
-    <div>
-        <div style="margin-left: 150px;width: 1200px;">
-            <div style="border: 1px solid #000000;">
-                {{ lang.title }}
-                <span style="margin-left: 300px;cursor: pointer;" @click="onClickView('/usermanage/accountmanage')">{{ lang.accountmanage }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/usermanage/permissionmanage')">{{ lang.permissionmanage }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/usermanage/changepassword')">{{ lang.changepassword }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/usermanage/shortcutconfig')">{{ lang.shortcutconfig }}</span>
-            </div>
-            <div>
-                <router-view />
-            </div>
-        </div>
+  <div class="base-content">
+    <div class="base-content--header">
+      <div class="base-content--header-title">
+         {{ lang.title }}
+      </div>
+      <TabBase :tabs="tabList" :selected="selectedTab" @select="onClickView" />
     </div>
+    <div class="base-content--body">
+        <router-view />
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import G from "@/config/global.js";
 import { useRouter } from "vue-router";
+import TabBase from '@/components/TabBase.vue';
 
 const ko = {
   "title": "사용자관리",
   "accountmanage": "계정관리",
-  "permissionmanage": "권한관리",
   "changepassword": "비밀번호변경",
-  "shortcutconfig": "바로가기설정"
+  "permissionmanage": "권한관리",
+  "shortcutconfig": "단축키설정"
 };
 
 const en = {
-  "title": "사용자관리",
-  "accountmanage": "계정관리",
-  "permissionmanage": "권한관리",
-  "changepassword": "비밀번호변경",
-  "shortcutconfig": "바로가기설정"
+  "title": "Usermanage",
+  "accountmanage": "Accountmanage",
+  "changepassword": "Changepassword",
+  "permissionmanage": "Permissionmanage",
+  "shortcutconfig": "Shortcutconfig"
 };
 
 const lang = ref({});
 const router = useRouter();
+const selectedTab = ref('/usermanage/accountmanage');
+const tabList = ref([]);
 
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
+  tabList.value = [
+    { label: lang.value.accountmanage, path: '/usermanage/accountmanage' },
+    { label: lang.value.changepassword, path: '/usermanage/changepassword' },
+    { label: lang.value.permissionmanage, path: '/usermanage/permissionmanage' },
+    { label: lang.value.shortcutconfig, path: '/usermanage/shortcutconfig' }
+  ];
 });
 
 const onClickView = (item) => {
+  selectedTab.value = item;
   router.push("/default").catch(() => {});
   router.push(item);
 };
