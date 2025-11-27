@@ -11,7 +11,7 @@
             <img src="/images/icon/icon-aspect-user.svg" alt="">
           </div>
           <div class="d-flex flex-column gap-1">
-            <span>관리자 : 김운영</span>
+            <span>{{ lang.adminName }}</span>
             <BButton variant="primary" @click="onClickView('/')">{{ lang.logout }}</BButton>
           </div>
         </div>
@@ -102,7 +102,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
   background-color: var(--color-secondary-blue);
   padding:1.8rem 0 1.8rem;
   gap:1.7rem;
@@ -129,6 +128,9 @@
   color:#65BBF3;
   font-size:1rem;
   max-width: 7.6rem;
+  display:inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .admin-area--avata {
   width: 4.5rem;
@@ -194,6 +196,7 @@ import { useRouter } from "vue-router";
 import { BButton } from 'bootstrap-vue-next'
 
 const ko = {
+  "adminName" : "관리자 : 김운영",
   "image": "이미지",
   "logout": "Logout",
   "dashboard": "대시보드",
@@ -214,6 +217,7 @@ const ko = {
 };
 
 const en = {
+  "adminName" : "관리자 : 김운영",
   "image": "이미지",
   "logout": "Logout",
   "dashboard": "Dashboard",
