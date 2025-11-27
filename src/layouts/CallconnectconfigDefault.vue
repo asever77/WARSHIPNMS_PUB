@@ -4,15 +4,7 @@
       <div class="base-content--header-title">
          {{ lang.title }}
       </div>
-      <div>
-        <button type="button" @click="onClickView('/callconnectconfig/pointtopoint')">{{ lang.pointtopoint }}</button>
-        <button type="button" @click="onClickView('/callconnectconfig/meetingcall')">{{ lang.meetingcall }}</button>
-        <button type="button" @click="onClickView('/callconnectconfig/groupcall')">{{ lang.groupcall }}</button>
-        <button type="button" @click="onClickView('/callconnectconfig/wirelessequip')">{{ lang.wirelessequip }}</button>
-        <button type="button" @click="onClickView('/callconnectconfig/broadcastequip')">{{ lang.broadcastequip }}</button>
-        <button type="button" @click="onClickView('/callconnectconfig/alarm')">{{ lang.alarm }}</button>
-        <button type="button" @click="onClickView('/callconnectconfig/wireless')">{{ lang.wireless }}</button>
-      </div>
+      <TabBase :tabs="tabList" :selected="selectedTab" @select="onClickView" />
     </div>
     <div class="base-content--body">
         <router-view />
@@ -24,6 +16,7 @@
 import { ref, onMounted } from "vue";
 import G from "@/config/global.js";
 import { useRouter } from "vue-router";
+import TabBase from '@/components/TabBase.vue';
 
 const ko = {
   "title": "통화연결설정",
@@ -49,12 +42,24 @@ const en = {
 
 const lang = ref({});
 const router = useRouter();
+const selectedTab = ref('/callconnectconfig/pointtopoint');
+const tabList = ref([]);
 
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
+  tabList.value = [
+    { label: lang.value.pointtopoint, path: '/callconnectconfig/pointtopoint' },
+    { label: lang.value.meetingcall, path: '/callconnectconfig/meetingcall' },
+    { label: lang.value.groupcall, path: '/callconnectconfig/groupcall' },
+    { label: lang.value.wirelessequip, path: '/callconnectconfig/wirelessequip' },
+    { label: lang.value.broadcastequip, path: '/callconnectconfig/broadcastequip' },
+    { label: lang.value.alarm, path: '/callconnectconfig/alarm' },
+    { label: lang.value.wireless, path: '/callconnectconfig/wireless' }
+  ];
 });
 
 const onClickView = (item) => {
+  selectedTab.value = item;
   router.push("/default").catch(() => {});
   router.push(item);
 };

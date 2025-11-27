@@ -103,9 +103,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import router from '@/router';
-import axios from 'axios';
+// import axios from 'axios';
 import G from '@/config/global.js';
-import config from '@/config/config';
+// import config from '@/config/config';
 import { BFormCheckbox } from 'bootstrap-vue-next'
 
 const ko = {

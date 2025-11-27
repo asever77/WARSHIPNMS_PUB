@@ -1,23 +1,22 @@
 <template>
-    <div>
-        <div style="margin-left: 150px;width: 1200px;">
-            <div style="border: 1px solid #000000;">
-                {{ lang.title }}
-                <span style="margin-left: 300px;cursor: pointer;" @click="onClickView('/record/callrecord')">{{ lang.callrecord }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/record/alarmrecord')">{{ lang.alarmrecord }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/record/changerecord')">{{ lang.changerecord }}</span>
-            </div>
-            <div>
-                <router-view />
-            </div>
-        </div>
+  <div class="base-content">
+    <div class="base-content--header">
+      <div class="base-content--header-title">
+         {{ lang.title }}
+      </div>
+      <TabBase :tabs="tabList" :selected="selectedTab" @select="onClickView" />
     </div>
+    <div class="base-content--body">
+        <router-view />
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import G from "@/config/global.js";
 import { useRouter } from "vue-router";
+import TabBase from '@/components/TabBase.vue';
 
 const ko = {
   "title": "이력",
@@ -27,20 +26,28 @@ const ko = {
 };
 
 const en = {
-  "title": "이력",
-  "callrecord": "Call이력",
-  "alarmrecord": "Alarm이력",
-  "changerecord": "변경이력"
+  "title": "Record",
+  "callrecord": "Callrecord",
+  "alarmrecord": "Alarmrecord",
+  "changerecord": "Changerecord"
 };
 
 const lang = ref({});
 const router = useRouter();
+const selectedTab = ref('/record/callrecord');
+const tabList = ref([]);
 
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
+  tabList.value = [
+    { label: lang.value.callrecord, path: '/record/callrecord' },
+    { label: lang.value.alarmrecord, path: '/record/alarmrecord' },
+    { label: lang.value.changerecord, path: '/record/changerecord' }
+  ];
 });
 
 const onClickView = (item) => {
+  selectedTab.value = item;
   router.push("/default").catch(() => {});
   router.push(item);
 };
