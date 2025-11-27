@@ -11,7 +11,7 @@
             <img src="/images/icon/icon-aspect-user.svg" alt="">
           </div>
           <div class="d-flex flex-column gap-1">
-            <span>관리자 : 김운영</span>
+            <span>{{ lang.adminName }}</span>
             <BButton variant="primary" @click="onClickView('/')">{{ lang.logout }}</BButton>
           </div>
         </div>
@@ -35,6 +35,7 @@ import { BButton } from 'bootstrap-vue-next';
 import UiTree from '@/components/UiTree.vue';
 
 const ko = {
+  "adminName" : "관리자 : 김운영",
   "image": "이미지",
   "logout": "Logout",
   "dashboard": "대시보드",
@@ -55,6 +56,7 @@ const ko = {
 };
 
 const en = {
+  "adminName" : "관리자 : 김운영",
   "image": "이미지",
   "logout": "Logout",
   "dashboard": "Dashboard",

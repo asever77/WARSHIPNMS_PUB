@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+@import 'SUIT.css';
 
 :root {
   /*primary*/
@@ -18,13 +19,13 @@
   --color-font-primary: #002745;
   --color-font-gray: #3E3E3E;
 
-  --main-font: 'Noto Sans KR', sans-serif;
+  --main-font: 'SUIT', sans-serif;
 }
 
 html {
   font-size: 10px;
 }
-body {
+body, * {
   font-family: var(--main-font);
 }
 
