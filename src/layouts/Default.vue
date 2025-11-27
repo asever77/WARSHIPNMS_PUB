@@ -2,15 +2,15 @@
   <div class="base-wrapper">
     <div class="base-side">
       <header class="base-header">
-        <h1>
-          <img src="/images/common/lnb-logo-big.svg" alt="대한민국해군 REPUBLIC OF KOREA NAVY" class="logo" />
+        <h1 class="base-header--logo">
+          <span class="a11y-hidden">대한민국해군 REPUBLIC OF KOREA NAVY</span>
         </h1>
 
         <div class="admin-area">
           <div class="admin-area--avata">
             <img src="/images/icon/icon-aspect-user.svg" alt="">
           </div>
-          <div class="d-flex flex-column gap-1">
+          <div class="admin-area--info">
             <span>{{ lang.adminName }}</span>
             <BButton variant="primary" @click="onClickView('/')">{{ lang.logout }}</BButton>
           </div>

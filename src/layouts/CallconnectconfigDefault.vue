@@ -1,21 +1,23 @@
 <template>
-    <div>
-        <div style="margin-left: 150px;width: 1200px;">
-            <div style="border: 1px solid #000000;">
-                {{ lang.title }}
-                <span style="margin-left: 300px;cursor: pointer;" @click="onClickView('/callconnectconfig/pointtopoint')">{{ lang.pointtopoint }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/callconnectconfig/meetingcall')">{{ lang.meetingcall }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/callconnectconfig/groupcall')">{{ lang.groupcall }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/callconnectconfig/wirelessequip')">{{ lang.wirelessequip }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/callconnectconfig/broadcastequip')">{{ lang.broadcastequip }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/callconnectconfig/alarm')">{{ lang.alarm }}</span>
-                <span style="margin-left: 10px;cursor: pointer;" @click="onClickView('/callconnectconfig/wireless')">{{ lang.wireless }}</span>
-            </div>
-            <div>
-                <router-view />
-            </div>
-        </div>
+  <div class="base-content">
+    <div class="base-content--header">
+      <div class="base-content--header-title">
+         {{ lang.title }}
+      </div>
+      <div>
+        <button type="button" @click="onClickView('/callconnectconfig/pointtopoint')">{{ lang.pointtopoint }}</button>
+        <button type="button" @click="onClickView('/callconnectconfig/meetingcall')">{{ lang.meetingcall }}</button>
+        <button type="button" @click="onClickView('/callconnectconfig/groupcall')">{{ lang.groupcall }}</button>
+        <button type="button" @click="onClickView('/callconnectconfig/wirelessequip')">{{ lang.wirelessequip }}</button>
+        <button type="button" @click="onClickView('/callconnectconfig/broadcastequip')">{{ lang.broadcastequip }}</button>
+        <button type="button" @click="onClickView('/callconnectconfig/alarm')">{{ lang.alarm }}</button>
+        <button type="button" @click="onClickView('/callconnectconfig/wireless')">{{ lang.wireless }}</button>
+      </div>
     </div>
+    <div class="base-content--body">
+        <router-view />
+    </div>
+  </div>
 </template>
 
 <script setup>

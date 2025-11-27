@@ -33,7 +33,17 @@ dl, dt, dd, ul, ol, li {box-sizing:border-box;list-style:none;padding:0;margin:0
 h1, h2, h3, h4, h5, h6, dt {font-weight:normal;}
 img, fieldset, iframe, button {border:0 none;}
 
-
+.a11y-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
 .base-wrapper {
   display: flex;
   width: 100%;
@@ -51,6 +61,7 @@ img, fieldset, iframe, button {border:0 none;}
 .base-side[data-state="close"] {
   width: 5rem;
 }
+
 .base-header {
   display: flex;
   flex-direction: column;
@@ -60,10 +71,15 @@ img, fieldset, iframe, button {border:0 none;}
   padding:1.8rem 0 1.8rem;
   gap:1.7rem;
 }
-.base-header .logo {
+.base-header--logo {
+  width: 100%;
   height: 7.2rem;
-  width: auto;
   display: block;
+  background: url(/images/common/lnb-logo-big.svg) no-repeat 50% 50% / contain;
+}
+.base-side[data-state="close"] .base-header--logo {
+  height: 4.7rem;
+  background: url(/images/common/login-logo.svg) no-repeat 50% 50% / contain;
 }
 .admin-area {
   display: flex;
@@ -74,7 +90,7 @@ img, fieldset, iframe, button {border:0 none;}
   font-size: 1.2rem;
   color:#FFFFFF;
 }
-.admin-area:deep(button) {
+.admin-area button {
   background-color: var(--color-primary);
   border-radius: .9rem;
   height: 1.8rem;
@@ -82,6 +98,7 @@ img, fieldset, iframe, button {border:0 none;}
   color:#65BBF3;
   font-size:1rem;
   max-width: 7.6rem;
+  width: 100%;
 }
 .admin-area--avata {
   width: 4.5rem;
@@ -97,4 +114,42 @@ img, fieldset, iframe, button {border:0 none;}
   width:3rem;
   height:3rem;
 }
+.admin-area--info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: center;
+}
 
+.base-main {
+  width: 100%;
+  flex: 1;
+}
+
+.base-content {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  flex-direction: column;
+}
+.base-content--header {
+  display: flex;
+  justify-content: space-between;
+  padding:0 5rem 0 1rem;
+  background-color: #000;
+  min-height: 4.5rem;
+}
+.base-content--header-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color:var(--color-secondary-yellow);
+  display: flex;
+  align-items: center;
+}
+.base-content--body{
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
