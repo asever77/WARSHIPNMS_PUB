@@ -207,6 +207,7 @@ export default {
     color:#fff;
     border-radius: .5rem;
     position: relative;
+    text-decoration: none;
 
     svg {
       position: absolute;
