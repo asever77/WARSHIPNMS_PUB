@@ -51,6 +51,9 @@ ul {
   display: flex;
   flex-direction: column;
 }
+.base-side[data-state="close"] {
+  width: 5rem;
+}
 .base-header {
   display: flex;
   flex-direction: column;

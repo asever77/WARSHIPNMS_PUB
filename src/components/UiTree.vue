@@ -76,6 +76,8 @@
 				</ul>
 			</li>
 		</ul>
+
+    <button type="button" aria-label="열고닫기" class="base-nav--toggle" @click="toggleSide"></button>
 	</nav>
 </template>
 
@@ -117,6 +119,13 @@ export default {
 		},
 		openExternal(url) {
 			window.open(url, 'popup', 'width=800,height=600');
+		},
+		toggleSide() {
+			const baseSide = this.$el.closest('.base-side');
+			if (baseSide) {
+				const current = baseSide.getAttribute('data-state');
+				baseSide.setAttribute('data-state', current === 'open' || !current ? 'close' : 'open');
+			}
 		}
 	}
 };
@@ -149,6 +158,7 @@ export default {
 
 .base-nav[data-style="base"] {
   position: relative;
+  flex: 1;
   padding: 1.5rem;
   li {
     margin: 0;
@@ -175,6 +185,40 @@ export default {
   }
   .router-link-active {
     background-color: var(--color-secondary-blue);
+  }
+  .tree-submenu {
+    .tree-page,
+    .tree-toggle,
+    .tree-link {
+      display: flex;
+      min-height: 2.8rem;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 4.9rem;
+      gap:1.5rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color:#fff;
+      position: relative;
+      &:hover {
+        color: var(--color-secondary-yellow);
+      }
+    }
+    .router-link-active {
+      background-color:  transparent;
+      color: var(--color-secondary-yellow);
+      font-weight: 700;
+
+      &::before {
+        content:"";
+        display: block;
+        position: absolute;
+        left: 3.5rem;
+        width: .6rem;
+        height: 1rem;
+        background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0.667802C0 0.0998024 0.7395 -0.196864 1.21725 0.145802L1.28025 0.196469L5.78025 4.19647C5.90938 4.31126 5.98696 4.464 5.99842 4.62602C6.00988 4.78803 5.95444 4.9482 5.8425 5.07647L5.78025 5.13914L1.28025 9.13914L1.20975 9.19447L1.152 9.23047L1.08 9.26647L1.053 9.2778L1.00275 9.2958L0.92175 9.31714L0.882 9.3238L0.837 9.33047L0.79425 9.33314L0.75 9.33447L0.70575 9.33314L0.66225 9.3298L0.61725 9.3238L0.57825 9.31714L0.49725 9.2958L0.447 9.2778L0.348 9.23114L0.2805 9.1878L0.21975 9.13914L0.1575 9.07647L0.117 9.02514L0.0765002 8.96114L0.06375 8.93714L0.0434997 8.89247L0.0195 8.82047L0.0119998 8.78514L0.00449967 8.74514L0.00149989 8.70714L0 0.667802Z' fill='%23F8E56C'/%3E%3C/svg%3E%0A");
+      }
+    }
   }
   [data-icon]::before {
     content:"";
@@ -212,6 +256,36 @@ export default {
   }
   [data-icon="nav10"]::before {
     background: url('/images/icon/icon-aspect-nav10.svg') no-repeat 50% 50% / 2.4rem;
+  }
+}
+.base-nav--toggle {
+  position: absolute;
+  bottom: 1.3rem;
+  right: 2.2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: url('/images/icon/icon-aspect-nav-menu.svg') no-repeat 50% 50% / contain;
+  border: none;
+  cursor: pointer;
+}
+
+.base-side[data-state="close"] .base-nav[data-style="base"] {
+  padding: 1.5rem 0 0 0.7rem;
+  .tree-page,
+  .tree-toggle,
+  .tree-link {
+    min-height: 3.4rem;
+    max-height: 3.4rem;
+    overflow: hidden;
+    padding-left: 1rem;
+    gap:0;
+    font-size: .1rem;
+    color: transparent;
+    border-radius: 0.5rem 0 0 .5rem;
+  }
+  .base-nav--toggle{
+    right: 1.2rem;
+    transform: rotate(180deg);
   }
 }
 </style>
