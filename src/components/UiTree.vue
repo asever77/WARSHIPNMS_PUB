@@ -285,6 +285,7 @@ export default {
       background-color:  transparent;
       color: var(--color-secondary-yellow);
       font-weight: 700;
+      pointer-events: none;
 
       &::before {
         content:"";
