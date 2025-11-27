@@ -166,7 +166,8 @@ export default {
     min-height: 3.6rem;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 2rem;
+    padding-left: 2.4rem;
+    gap:1.5rem;
     font-size: 1.6rem;
     font-weight: 700;
     color:#fff;
@@ -175,13 +176,42 @@ export default {
   .router-link-active {
     background-color: var(--color-secondary-blue);
   }
-
-  [data-icon="document"]::before {
+  [data-icon]::before {
     content:"";
     display: block;
     background: url('/images/icon/icon-aspect-nav8.svg') no-repeat 50% 50% / 2.4rem;
     width: 2.4rem;
-    height: 3.4rem;
+    height: 2.4rem;
+  }
+  [data-icon="nav1"]::before {
+    background: url('/images/icon/icon-aspect-nav1.svg') no-repeat 50% 50% / 2.4rem;
+  }
+  [data-icon="nav2"]::before {
+    background: url('/images/icon/icon-aspect-nav2.svg') no-repeat 50% 50% / 2.4rem;
+  }
+  [data-icon="nav3"]::before {
+    background: url('/images/icon/icon-aspect-nav3.svg') no-repeat 50% 50% / 2.4rem;
+  }
+  [data-icon="nav4"]::before {
+    background: url('/images/icon/icon-aspect-nav4.svg') no-repeat 50% 50% / 2.4rem;
+  }
+  [data-icon="nav5"]::before {
+    background: url('/images/icon/icon-aspect-nav5.svg') no-repeat 50% 50% / 2.4rem;
+  }
+  [data-icon="nav6"]::before {
+    background: url('/images/icon/icon-aspect-nav6.svg') no-repeat 50% 50% / 2.4rem;
+  }
+  [data-icon="nav7"]::before {
+    background: url('/images/icon/icon-aspect-nav7.svg') no-repeat 50% 50% / 2.4rem;
+  }
+  [data-icon="nav8"]::before {
+    background: url('/images/icon/icon-aspect-nav8.svg') no-repeat 50% 50% / 2.4rem;
+  }
+  [data-icon="nav9"]::before {
+    background: url('/images/icon/icon-aspect-nav9.svg') no-repeat 50% 50% / 2.4rem;
+  }
+  [data-icon="nav10"]::before {
+    background: url('/images/icon/icon-aspect-nav10.svg') no-repeat 50% 50% / 2.4rem;
   }
 }
 </style>
