@@ -2,7 +2,7 @@
   <div class="base-wrapper">
     <div class="base-side">
       <header class="base-header">
-        <h1>
+        <h1 class="base-header-title">
           <img src="/images/common/lnb-logo-big.svg" alt="대한민국해군 REPUBLIC OF KOREA NAVY" class="logo" />
         </h1>
 
@@ -96,6 +96,7 @@
   background-color: #001B30;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 .base-header {
   display: flex;
@@ -104,7 +105,9 @@
   justify-content: space-between;
   background-color: var(--color-secondary-blue);
   padding:1.8rem 0 1.8rem;
-  gap:1.7rem;
+}
+.base-header-title {
+  margin-bottom:1.6rem;
 }
 .base-header .logo {
   height: 7.2rem;
