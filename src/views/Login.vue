@@ -19,6 +19,7 @@
             name="checkbox-1"
             value="accepted"
             unchecked-value="not_accepted"
+            class="my-checkbox"
           >
             {{ lang.idremember }}
           </BFormCheckbox>
@@ -83,10 +84,6 @@
   margin-top:1.5rem;
   padding-top:1.2rem;
   margin-bottom:2.4rem;
-  label {
-    font-size:1.4rem;
-    color:#000;
-  }
 }
 .btn-login {
   height:4rem;

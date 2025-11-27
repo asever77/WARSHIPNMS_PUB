@@ -156,4 +156,19 @@ img, fieldset, iframe, button {border:0 none;}
   overflow-y: auto;
   padding: 1.5rem;
 }
-
+.my-checkbox.form-check {
+  display:inline-flex;
+  gap:.5rem;
+  align-items:center;
+  margin:0;
+}
+.my-checkbox .form-check-input {
+  width:2rem;
+  height:2rem;
+  margin:0;
+}
+.my-checkbox .form-check-label {
+  font-size:1.4rem;
+  color:#000;
+  line-height:2rem;
+}
