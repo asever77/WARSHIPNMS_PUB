@@ -253,7 +253,7 @@ export default {
 .base-nav[data-style="base"] {
   position: relative;
   flex: 1;
-  padding: 1.5rem 1.5rem 10rem;
+  padding: 1.5rem 1.5rem 4rem;
   li {
     margin: 0;
   }
@@ -472,6 +472,12 @@ export default {
         color: #fff;
         text-decoration: none;
         min-height: 2.8rem;
+      }
+      .router-link-active {
+        color:var(--color-secondary-yellow);
+        &::before {
+          display:none;
+        }
       }
 
     }
