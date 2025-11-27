@@ -6,8 +6,9 @@
           v-if="item.children"
           type="button"
           @click="toggleMenu(item.id)"
-          :aria-expanded="isOpen(item.id)"
+          :aria-expanded="isSubmenuVisible(item)"
           class="tree-toggle"
+          :class="{ 'active': isSubmenuVisible(item) }"
           :data-name="item.dep1"
           v-bind="item.icon ? { 'data-icon': item.icon } : {}"
         >
@@ -41,44 +42,46 @@
         </router-link>
 				<span v-else>{{ item.label }}</span>
         <transition name="tree-submenu-slide">
-          <ul v-if="item.children && isOpen(item.id)" class="tree-submenu">
-            <li v-for="child in item.children" :key="child.id">
-              <button
-                v-if="child.children"
-                type="button"
-                @click="toggleMenu(child.id)"
-                :aria-expanded="isOpen(child.id)"
-                class="tree-toggle"
-                v-bind="child.icon ? { 'data-icon': child.icon } : {}"
-              >
-                {{ child.label }}
-              </button>
-              <a
-                v-else-if="child.popup"
-                :href="child.popup"
-                target="_blank"
-                rel="noopener"
-                @click.prevent="openExternal(child.popup)"
-                class="tree-link"
-                v-bind="child.icon ? { 'data-icon': child.icon } : {}"
-              >
-                {{ child.label }}
-              </a>
-              <router-link
-                v-else-if="child.path"
-                :to="child.path"
-                @click="goToPage(child.path, item.path)"
-                class="tree-page"
-                active-class="router-link-active"
-                v-bind="child.icon ? { 'data-icon': child.icon } : {}"
-              >
-                {{ child.label }}
-              </router-link>
-              <span v-else>{{ child.label }}</span>
-            </li>
-          </ul>
+          <template v-if="item.children">
+            <ul :aria-hidden="!isSubmenuVisible(item)" class="tree-submenu">
+              <li v-for="child in item.children" :key="child.id">
+                <button
+                  v-if="child.children"
+                  type="button"
+                  @click="toggleMenu(child.id)"
+                  :aria-expanded="isOpen(child.id)"
+                  class="tree-toggle"
+                  v-bind="child.icon ? { 'data-icon': child.icon } : {}"
+                >
+                  {{ child.label }}
+                </button>
+                <a
+                  v-else-if="child.popup"
+                  :href="child.popup"
+                  target="_blank"
+                  rel="noopener"
+                  @click.prevent="openExternal(child.popup)"
+                  class="tree-link"
+                  v-bind="child.icon ? { 'data-icon': child.icon } : {}"
+                >
+                  {{ child.label }}
+                </a>
+                <router-link
+                  v-else-if="child.path"
+                  :to="child.path"
+                  @click="goToPage(child.path, item.path)"
+                  class="tree-page"
+                  active-class="router-link-active"
+                  v-bind="child.icon ? { 'data-icon': child.icon } : {}"
+                >
+                  {{ child.label }}
+                </router-link>
+                <span v-else>{{ child.label }}</span>
+              </li>
+            </ul>
+          </template>
         </transition>
-			</li>
+      </li>
 		</ul>
 
     <button type="button" aria-label="열고닫기" class="base-nav--toggle" @click="toggleSide"></button>
@@ -115,7 +118,14 @@ export default {
         immediate: true
       }
     },
-	methods: {
+  methods: {
+    isSubmenuVisible(item) {
+      if (this.isOpen(item.id)) return true;
+      if (item.children) {
+        return item.children.some(child => child.path && this.$route.path.startsWith(child.path));
+      }
+      return false;
+    },
     toggleMenu(id, isDep1 = false) {
       if (isDep1) {
         this.openMenus = [id];
@@ -138,19 +148,22 @@ export default {
         for (const item of this.menu) {
           if (item.path && this.$route.path.startsWith(item.path)) {
             this.dep1 = item.dep1;
-            return;
+              this.openMenus = [item.id];
+              return;
           }
           if (item.children) {
             for (const child of item.children) {
               if (child.path && this.$route.path.startsWith(child.path)) {
-                this.dep1 = item.dep1;
-                return;
+                  this.dep1 = item.dep1;
+                  this.openMenus = [item.id, child.id];
+                  return;
               }
             }
           }
         }
       }
-      this.dep1 = '';
+        this.dep1 = '';
+        this.openMenus = [];
     },
 		openExternal(url) {
 			window.open(url, 'popup', 'width=800,height=600');
@@ -213,21 +226,25 @@ export default {
       position: absolute;
       right: 1rem;
     }
+    &.active {
+      background-color: var(--color-secondary-blue);
+      color: var(--color-primary);
+    }
   }
   [aria-expanded="true"]{
      svg {
       transform: rotate(180deg);
     }
+    path {
+      stroke: var(--color-primary);
+    }
+    &::before {
+      background: url('/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem !important;
+    }
   }
   &[data-dep1="settings"] [data-name="settings"] {
     background-color: var(--color-secondary-blue);
     color: var(--color-primary);
-    &[data-icon="nav2"]::before {
-      background: url('/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem;
-    }
-    path {
-      stroke: var(--color-primary);
-    }
   }
   .router-link-active {
     background-color: var(--color-secondary-blue);
@@ -263,6 +280,9 @@ export default {
   }
   .tree-submenu {
     margin: 1rem 0 2rem;
+    &[aria-hidden="true"] {
+      display: none;
+    }
     .tree-page,
     .tree-toggle,
     .tree-link {
@@ -421,8 +441,8 @@ export default {
       overflow: hidden;
       padding-left: 1.5rem;
       gap:0;
-      font-size: .1rem;
-      color: transparent;
+      font-size: 1.2rem;
+      color: #fff;
       border-radius: 0.5rem;
       span,
       svg{display: none;}
