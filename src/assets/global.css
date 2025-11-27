@@ -28,6 +28,10 @@ html {
 body, * {
   font-family: var(--main-font);
 }
+body, div, h1, h2, h3, h4, h5, h6, form, fieldset, p, button, iframe, tr, tbody, thead, table, th, td, b, span, strong, label{margin:0;padding:0;box-sizing:border-box;}
+dl, dt, dd, ul, ol, li {box-sizing:border-box;list-style:none;padding:0;margin:0;}
+h1, h2, h3, h4, h5, h6, dt {font-weight:normal;}
+img, fieldset, iframe, button {border:0 none;}
 
 li {
   list-style: none;
@@ -50,6 +54,7 @@ ul {
   background-color: #001B30;
   display: flex;
   flex-direction: column;
+  flex-shrink:0;
 }
 .base-side[data-state="close"] {
   width: 5rem;
@@ -59,7 +64,6 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
   background-color: var(--color-secondary-blue);
   padding:1.8rem 0 1.8rem;
   gap:1.7rem;
