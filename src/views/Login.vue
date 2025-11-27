@@ -1,7 +1,7 @@
 <template>
   <div class="login-area">
     <div class="login-content">
-      <img src="/images/common/login-logo.svg" alt="대한민국해군 REPUBLIC OF KOREA NAVY" class="login-img" />
+      <img src="@/assets/images/common/login-logo.svg" alt="대한민국해군 REPUBLIC OF KOREA NAVY" class="login-img" />
       <div class="login-content-form">
         <input class="login-form" type="text" id="login-id" :placeholder="lang.id" v-model.trim="username" />
         <input
@@ -28,7 +28,7 @@
           {{ lang.login }}
         </button>
       </div>
-      <img src="/images/login/login-text.png" alt="국민이 신뢰하고 적이 두려워하는 강한해군, 해양강국!!" class="login-text" />
+      <img src="@/assets/images/login/login-text.png" alt="국민이 신뢰하고 적이 두려워하는 강한해군, 해양강국!!" class="login-text" />
     </div>
     <p class="login-copy">Copyright(c)NAVY.MIL.KR. All Rights Reserved.</p>
     <!--
@@ -41,7 +41,7 @@
 .login-area {
   width:100%;
   height:100vh;
-  background:url("/images/login/login-bg.png") no-repeat 50% 50% /cover;
+  background:url("@/assets/images/login/login-bg.png") no-repeat 50% 50% /cover;
   display:flex;
   align-items:center;
   justify-content:center;

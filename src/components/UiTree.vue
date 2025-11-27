@@ -297,7 +297,7 @@ export default {
       stroke: var(--color-primary);
     }
     &::before {
-      background: url('/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem !important;
+      background: url('@/assets/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem !important;
     }
   }
   &[data-dep1="settings"] button[data-name="settings"] {
@@ -309,31 +309,31 @@ export default {
     color: var(--color-primary);
 
     &[data-icon="nav1"]::before {
-      background: url('/images/icon/icon-aspect-nav1-on.svg') no-repeat 50% 50% / 2.4rem;
+      background: url('@/assets/images/icon/icon-aspect-nav1-on.svg') no-repeat 50% 50% / 2.4rem;
     }
     &[data-icon="nav3"]::before {
-      background: url('/images/icon/icon-aspect-nav3-on.svg') no-repeat 50% 50% / 2.4rem;
+      background: url('@/assets/images/icon/icon-aspect-nav3-on.svg') no-repeat 50% 50% / 2.4rem;
     }
     &[data-icon="nav4"]::before {
-      background: url('/images/icon/icon-aspect-nav4-on.svg') no-repeat 50% 50% / 2.4rem;
+      background: url('@/assets/images/icon/icon-aspect-nav4-on.svg') no-repeat 50% 50% / 2.4rem;
     }
     &[data-icon="nav5"]::before {
-      background: url('/images/icon/icon-aspect-nav5-on.svg') no-repeat 50% 50% / 2.4rem;
+      background: url('@/assets/images/icon/icon-aspect-nav5-on.svg') no-repeat 50% 50% / 2.4rem;
     }
     &[data-icon="nav6"]::before {
-      background: url('/images/icon/icon-aspect-nav6-on.svg') no-repeat 50% 50% / 2.4rem;
+      background: url('@/assets/images/icon/icon-aspect-nav6-on.svg') no-repeat 50% 50% / 2.4rem;
     }
     &[data-icon="nav7"]::before {
-      background: url('/images/icon/icon-aspect-nav7-on.svg') no-repeat 50% 50% / 2.4rem;
+      background: url('@/assets/images/icon/icon-aspect-nav7-on.svg') no-repeat 50% 50% / 2.4rem;
     }
     &[data-icon="nav8"]::before {
-      background: url('/images/icon/icon-aspect-nav8-on.svg') no-repeat 50% 50% / 2.4rem;
+      background: url('@/assets/images/icon/icon-aspect-nav8-on.svg') no-repeat 50% 50% / 2.4rem;
     }
     &[data-icon="nav9"]::before {
-      background: url('/images/icon/icon-aspect-nav9-on.svg') no-repeat 50% 50% / 2.4rem;
+      background: url('@/assets/images/icon/icon-aspect-nav9-on.svg') no-repeat 50% 50% / 2.4rem;
     }
     &[data-icon="nav10"]::before {
-      background: url('/images/icon/icon-aspect-nav10-on.svg') no-repeat 50% 50% / 2.4rem;
+      background: url('@/assets/images/icon/icon-aspect-nav10-on.svg') no-repeat 50% 50% / 2.4rem;
     }
   }
   .tree-submenu {
@@ -379,39 +379,39 @@ export default {
   [data-icon]::before {
     content:"";
     display: block;
-    background: url('/images/icon/icon-aspect-nav8.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav8.svg') no-repeat 50% 50% / 2.4rem;
     width: 2.4rem;
     height: 2.4rem;
   }
   [data-icon="nav1"]::before {
-    background: url('/images/icon/icon-aspect-nav1.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav1.svg') no-repeat 50% 50% / 2.4rem;
   }
   [data-icon="nav2"]::before {
-    background: url('/images/icon/icon-aspect-nav2.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav2.svg') no-repeat 50% 50% / 2.4rem;
   }
   [data-icon="nav3"]::before {
-    background: url('/images/icon/icon-aspect-nav3.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav3.svg') no-repeat 50% 50% / 2.4rem;
   }
   [data-icon="nav4"]::before {
-    background: url('/images/icon/icon-aspect-nav4.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav4.svg') no-repeat 50% 50% / 2.4rem;
   }
   [data-icon="nav5"]::before {
-    background: url('/images/icon/icon-aspect-nav5.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav5.svg') no-repeat 50% 50% / 2.4rem;
   }
   [data-icon="nav6"]::before {
-    background: url('/images/icon/icon-aspect-nav6.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav6.svg') no-repeat 50% 50% / 2.4rem;
   }
   [data-icon="nav7"]::before {
-    background: url('/images/icon/icon-aspect-nav7.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav7.svg') no-repeat 50% 50% / 2.4rem;
   }
   [data-icon="nav8"]::before {
-    background: url('/images/icon/icon-aspect-nav8.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav8.svg') no-repeat 50% 50% / 2.4rem;
   }
   [data-icon="nav9"]::before {
-    background: url('/images/icon/icon-aspect-nav9.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav9.svg') no-repeat 50% 50% / 2.4rem;
   }
   [data-icon="nav10"]::before {
-    background: url('/images/icon/icon-aspect-nav10.svg') no-repeat 50% 50% / 2.4rem;
+    background: url('@/assets/images/icon/icon-aspect-nav10.svg') no-repeat 50% 50% / 2.4rem;
   }
 }
 .base-nav--toggle {
@@ -420,7 +420,7 @@ export default {
   right: 2.2rem;
   width: 2.4rem;
   height: 2.4rem;
-  background: url('/images/icon/icon-aspect-nav-menu.svg') no-repeat 50% 50% / contain;
+  background: url('@/assets/images/icon/icon-aspect-nav-menu.svg') no-repeat 50% 50% / contain;
   border: none;
   cursor: pointer;
 }

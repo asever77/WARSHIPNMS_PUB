@@ -8,7 +8,7 @@
 
         <div class="admin-area">
           <div class="admin-area--avata">
-            <img src="/images/icon/icon-aspect-user.svg" alt="">
+            <img src="@/assets/images/icon/icon-aspect-user.svg" alt="">
           </div>
           <div class="admin-area--info">
             <span>{{ lang.adminName }}</span>
