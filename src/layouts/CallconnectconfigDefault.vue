@@ -7,15 +7,15 @@
       <TabBase :tabs="tabList" :selected="selectedTab" @select="onClickView" />
     </div>
     <div class="base-content--body">
-        <router-view />
+      <router-view />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import G from "@/config/global.js";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import TabBase from '@/components/TabBase.vue';
 
 const ko = {
@@ -42,7 +42,8 @@ const en = {
 
 const lang = ref({});
 const router = useRouter();
-const selectedTab = ref('/callconnectconfig/pointtopoint');
+const route = useRoute();
+const selectedTab = ref(route.path);
 const tabList = ref([]);
 
 onMounted(() => {
@@ -56,6 +57,11 @@ onMounted(() => {
     { label: lang.value.alarm, path: '/callconnectconfig/alarm' },
     { label: lang.value.wireless, path: '/callconnectconfig/wireless' }
   ];
+  selectedTab.value = route.path;
+});
+
+watch(() => route.path, (newPath) => {
+  selectedTab.value = newPath;
 });
 
 const onClickView = (item) => {

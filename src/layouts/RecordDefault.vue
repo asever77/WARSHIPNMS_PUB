@@ -13,9 +13,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import G from "@/config/global.js";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import TabBase from '@/components/TabBase.vue';
 
 const ko = {
@@ -34,7 +34,8 @@ const en = {
 
 const lang = ref({});
 const router = useRouter();
-const selectedTab = ref('/record/callrecord');
+const route = useRoute();
+const selectedTab = ref(route.path);
 const tabList = ref([]);
 
 onMounted(() => {
@@ -44,6 +45,11 @@ onMounted(() => {
     { label: lang.value.alarmrecord, path: '/record/alarmrecord' },
     { label: lang.value.changerecord, path: '/record/changerecord' }
   ];
+  selectedTab.value = route.path;
+});
+
+watch(() => route.path, (newPath) => {
+  selectedTab.value = newPath;
 });
 
 const onClickView = (item) => {

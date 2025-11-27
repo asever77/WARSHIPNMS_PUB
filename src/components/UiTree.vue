@@ -30,13 +30,13 @@
           <span>{{ item.label }}</span>
         </a>
         <router-link
-          v-else-if="item.path"
-          :to="item.path"
-          @click="goToPage(item.path, item.path)"
-          class="tree-page"
-          active-class="router-link-active"
-          v-bind="item.icon ? { 'data-icon': item.icon } : {}"
-          :class="{ 'router-link-active': $route.path.startsWith(item.path) && openMenus.includes(item.id) }"
+           v-else-if="item.path"
+           :to="item.path"
+           @click="goToPage(item.path, item.path)"
+           class="tree-page"
+           active-class="router-link-active"
+           v-bind="item.icon ? { 'data-icon': item.icon } : {}"
+           :class="{ 'router-link-active': isParentActive(item) }"
         >
           <span>{{ item.label }}</span>
         </router-link>
@@ -96,6 +96,7 @@ export default {
       type: Array,
       required: true
     },
+    // ...existing code...
     dataStyle: {
       type: String,
       default: 'base'
@@ -119,6 +120,27 @@ export default {
       }
     },
   methods: {
+    // 현재 경로의 첫 디렉토리 반환
+    getFirstDir(path) {
+      if (!path) return '';
+      const segments = path.split('/').filter(Boolean);
+      return segments.length > 0 ? '/' + segments[0] : '';
+    },
+
+    // 현재 경로와 메뉴 path의 첫 디렉토리로 비교
+    isParentActive(item) {
+      if (!item.path) return false;
+      const currentFirstDir = this.getFirstDir(this.$route.path);
+      const itemFirstDir = this.getFirstDir(item.path);
+      console.log('[isParentActive]', {
+        routePath: this.$route.path,
+        itemPath: item.path,
+        currentFirstDir,
+        itemFirstDir,
+        result: currentFirstDir === itemFirstDir
+      });
+      return currentFirstDir === itemFirstDir;
+    },
     isSubmenuVisible(item) {
       if (this.isOpen(item.id)) return true;
       if (item.children) {
