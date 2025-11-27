@@ -131,7 +131,6 @@ const en = {
 // reactive 변수 선언
 const username = ref('');
 const password = ref('');
-const checked = ref(false);
 const lang = ref({});
 const statusCheck1 = ref(false)
 
