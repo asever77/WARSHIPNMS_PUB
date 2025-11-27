@@ -61,6 +61,7 @@ img, fieldset, iframe, button {border:0 none;}
 }
 .base-side[data-state="close"] {
   width: 5rem;
+  overflow: visible;
 }
 
 .base-header {
@@ -108,6 +109,7 @@ img, fieldset, iframe, button {border:0 none;}
   overflow: hidden;
   background-color: #1E5379;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
 }
@@ -122,7 +124,22 @@ img, fieldset, iframe, button {border:0 none;}
   align-items: center;
   justify-content: center;
 }
-
+.base-side[data-state="close"] .admin-area {
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+.base-side[data-state="close"] .admin-area--info {
+  display: none;
+}
+.base-side[data-state="close"] .admin-area--avata {
+  width: 3.4rem;
+  height: 3.4rem;
+}
+.base-side[data-state="close"] .admin-area--avata img{
+  width:2.2rem;
+  height:2.2rem;
+}
 .base-main {
   width: 100%;
   flex: 1;

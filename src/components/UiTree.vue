@@ -1,79 +1,83 @@
 <template>
-	<nav aria-label="Main menu" class="base-nav" :data-style="dataStyle">
+  <nav aria-label="Main menu" class="base-nav" :data-style="dataStyle" :data-dep1="dep1">
 		<ul class="tree-menu">
-			<li v-for="item in menu" :key="item.id" :class="{ 'has-children': item.children }" :data-state="item.id === selectedId ? 'selected' : null">
-				<button
-					v-if="item.children"
-					type="button"
-					@click="toggleMenu(item.id)"
-					:aria-expanded="isOpen(item.id)"
-					class="tree-toggle"
-					:data-state="item.id === selectedId ? 'selected' : null"
-					v-bind="item.icon ? { 'data-icon': item.icon } : {}"
-				>
-					{{ item.label }}
-				</button>
-				<a
-					v-else-if="item.popup"
-					:href="item.popup"
-					target="_blank"
-					rel="noopener"
-					@click.prevent="openExternal(item.popup)"
-					class="tree-link"
-					:data-state="item.id === selectedId ? 'selected' : null"
-					v-bind="item.icon ? { 'data-icon': item.icon } : {}"
-				>
-					{{ item.label }}
-				</a>
-				<router-link
-					v-else-if="item.path"
-					:to="item.path"
-					@click="goToPage(item.path)"
-					class="tree-page"
-					:data-state="item.id === selectedId ? 'selected' : null"
-					v-bind="item.icon ? { 'data-icon': item.icon } : {}"
-				>
-					{{ item.label }}
-				</router-link>
+      <li v-for="item in menu" :key="item.id" :class="{ 'has-children': item.children }">
+        <button
+          v-if="item.children"
+          type="button"
+          @click="toggleMenu(item.id)"
+          :aria-expanded="isOpen(item.id)"
+          class="tree-toggle"
+          :data-name="item.dep1"
+          v-bind="item.icon ? { 'data-icon': item.icon } : {}"
+        >
+          <span>{{ item.label }}</span>
+          <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L7 7L13 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+        </button>
+        <a
+          v-else-if="item.popup"
+          :href="item.popup"
+          target="_blank"
+          rel="noopener"
+          @click.prevent="openExternal(item.popup)"
+          class="tree-link"
+          v-bind="item.icon ? { 'data-icon': item.icon } : {}"
+        >
+          <span>{{ item.label }}</span>
+        </a>
+        <router-link
+          v-else-if="item.path"
+          :to="item.path"
+          @click="goToPage(item.path, item.path)"
+          class="tree-page"
+          active-class="router-link-active"
+          v-bind="item.icon ? { 'data-icon': item.icon } : {}"
+          :class="{ 'router-link-active': $route.path.startsWith(item.path) && openMenus.includes(item.id) }"
+        >
+          <span>{{ item.label }}</span>
+        </router-link>
 				<span v-else>{{ item.label }}</span>
-				<ul v-if="item.children && isOpen(item.id)" class="tree-submenu">
-					<li v-for="child in item.children" :key="child.id" :data-state="child.id === selectedId ? 'selected' : null">
-						<button
-							v-if="child.children"
-							type="button"
-							@click="toggleMenu(child.id)"
-							:aria-expanded="isOpen(child.id)"
-							class="tree-toggle"
-							:data-state="child.id === selectedId ? 'selected' : null"
-							v-bind="child.icon ? { 'data-icon': child.icon } : {}"
-						>
-							{{ child.label }}
-						</button>
-						<a
-							v-else-if="child.popup"
-							:href="child.popup"
-							target="_blank"
-							rel="noopener"
-							@click.prevent="openExternal(child.popup)"
-							class="tree-link"
-							:data-state="child.id === selectedId ? 'selected' : null"
-							v-bind="child.icon ? { 'data-icon': child.icon } : {}"
-						>
-							{{ child.label }}
-						</a>
-						<router-link
-							v-else-if="child.path"
-							:to="child.path"
-							@click="goToPage(child.path)"
-							class="tree-page"
-							:data-state="child.id === selectedId ? 'selected' : null"
-							v-bind="child.icon ? { 'data-icon': child.icon } : {}"
-						>
-							{{ child.label }}
-						</router-link>
-						<span v-else>{{ child.label }}</span>
-					</li>
-				</ul>
+        <transition name="tree-submenu-slide">
+          <ul v-if="item.children && isOpen(item.id)" class="tree-submenu">
+            <li v-for="child in item.children" :key="child.id">
+              <button
+                v-if="child.children"
+                type="button"
+                @click="toggleMenu(child.id)"
+                :aria-expanded="isOpen(child.id)"
+                class="tree-toggle"
+                v-bind="child.icon ? { 'data-icon': child.icon } : {}"
+              >
+                {{ child.label }}
+              </button>
+              <a
+                v-else-if="child.popup"
+                :href="child.popup"
+                target="_blank"
+                rel="noopener"
+                @click.prevent="openExternal(child.popup)"
+                class="tree-link"
+                v-bind="child.icon ? { 'data-icon': child.icon } : {}"
+              >
+                {{ child.label }}
+              </a>
+              <router-link
+                v-else-if="child.path"
+                :to="child.path"
+                @click="goToPage(child.path, item.path)"
+                class="tree-page"
+                active-class="router-link-active"
+                v-bind="child.icon ? { 'data-icon': child.icon } : {}"
+              >
+                {{ child.label }}
+              </router-link>
+              <span v-else>{{ child.label }}</span>
+            </li>
+          </ul>
+        </transition>
 			</li>
 		</ul>
 
@@ -84,39 +88,70 @@
 <script>
 export default {
 	name: 'UiTree',
-	props: {
-		menu: {
-			type: Array,
-			required: true
-		},
-		dataStyle: {
-			type: String,
-			default: 'base'
-		},
-		selectedId: {
-			type: [String, Number],
-			default: null
-		}
-	},
-	data() {
-		return {
-			openMenus: []
-		};
-	},
+  props: {
+    menu: {
+      type: Array,
+      required: true
+    },
+    dataStyle: {
+      type: String,
+      default: 'base'
+    }
+  },
+  data() {
+    return {
+      openMenus: [],
+      dep1: ''
+    };
+  },
+    mounted() {
+      this.setDep1ByRoute();
+    },
+    watch: {
+      '$route.path': {
+        handler() {
+          this.setDep1ByRoute();
+        },
+        immediate: true
+      }
+    },
 	methods: {
-		toggleMenu(id) {
-			if (this.openMenus.includes(id)) {
-				this.openMenus = this.openMenus.filter(menuId => menuId !== id);
-			} else {
-				this.openMenus.push(id);
-			}
-		},
+    toggleMenu(id, isDep1 = false) {
+      if (isDep1) {
+        this.openMenus = [id];
+      } else {
+        this.openMenus = this.openMenus.includes(id) ? [] : [id];
+      }
+    },
 		isOpen(id) {
 			return this.openMenus.includes(id);
 		},
-		goToPage(path) {
-			if (path) this.$router.push(path);
-		},
+    goToPage(path, dep1) {
+      if (path) {
+        this.dep1 = dep1 || '';
+        this.$router.push(path);
+      }
+    },
+    setDep1ByRoute() {
+      // dep1: 첫번째 메뉴 path 기준
+      if (this.menu && this.menu.length > 0) {
+        for (const item of this.menu) {
+          if (item.path && this.$route.path.startsWith(item.path)) {
+            this.dep1 = item.dep1;
+            return;
+          }
+          if (item.children) {
+            for (const child of item.children) {
+              if (child.path && this.$route.path.startsWith(child.path)) {
+                this.dep1 = item.dep1;
+                return;
+              }
+            }
+          }
+        }
+      }
+      this.dep1 = '';
+    },
 		openExternal(url) {
 			window.open(url, 'popup', 'width=800,height=600');
 		},
@@ -137,23 +172,11 @@ export default {
 	padding: 0;
 	margin: 0;
 }
-.tree-menu > li {
-	margin-bottom: 8px;
-}
+
 .tree-toggle {
 	background: none;
 	border: none;
 	cursor: pointer;
-	font-weight: bold;
-}
-.tree-link, .tree-page {
-	text-decoration: none;
-	color: #007bff;
-	cursor: pointer;
-}
-.tree-submenu {
-	list-style: none;
-	padding-left: 16px;
 }
 
 .base-nav[data-style="base"] {
@@ -172,6 +195,7 @@ export default {
   .tree-page,
   .tree-toggle,
   .tree-link {
+    width: 100%;
     display: flex;
     min-height: 3.6rem;
     justify-content: flex-start;
@@ -182,15 +206,34 @@ export default {
     font-weight: 700;
     color:#fff;
     border-radius: .5rem;
+    position: relative;
+
+    svg {
+      position: absolute;
+      right: 1rem;
+    }
+  }
+  [aria-expanded="true"]{
+     svg {
+      transform: rotate(180deg);
+    }
+  }
+  &[data-dep1="settings"] [data-name="settings"] {
+    background-color: var(--color-secondary-blue);
+    color: var(--color-primary);
+    &[data-icon="nav2"]::before {
+      background: url('/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem;
+    }
+    path {
+      stroke: var(--color-primary);
+    }
   }
   .router-link-active {
     background-color: var(--color-secondary-blue);
     color: var(--color-primary);
+
     &[data-icon="nav1"]::before {
       background: url('/images/icon/icon-aspect-nav1-on.svg') no-repeat 50% 50% / 2.4rem;
-    }
-    &[data-icon="nav2"]::before {
-      background: url('/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem;
     }
     &[data-icon="nav3"]::before {
       background: url('/images/icon/icon-aspect-nav3-on.svg') no-repeat 50% 50% / 2.4rem;
@@ -218,10 +261,12 @@ export default {
     }
   }
   .tree-submenu {
+    margin: 1rem 0 2rem;
     .tree-page,
     .tree-toggle,
     .tree-link {
       display: flex;
+      width: 100%;
       min-height: 2.8rem;
       justify-content: flex-start;
       align-items: center;
@@ -300,23 +345,102 @@ export default {
   cursor: pointer;
 }
 
-.base-side[data-state="close"] .base-nav[data-style="base"] {
-  padding: 1.5rem 0 10rem 0.7rem;
-  .tree-page,
-  .tree-toggle,
-  .tree-link {
-    min-height: 3.4rem;
-    max-height: 3.4rem;
-    overflow: hidden;
-    padding-left: 1rem;
-    gap:0;
-    font-size: .1rem;
-    color: transparent;
-    border-radius: 0.5rem 0 0 .5rem;
+.base-side[data-state="close"] {
+  .admin-area--info {
+    display: none;
   }
-  .base-nav--toggle{
-    right: 1.2rem;
-    transform: rotate(180deg);
+  .base-nav[data-style="base"] {
+    padding: 1.5rem 0 10rem 0.7rem;
+    li {position: relative;}
+    .tree-page,
+    .tree-toggle,
+    .tree-link {
+      min-height: 3.4rem;
+      max-height: 3.4rem;
+      overflow: hidden;
+      padding-left: 0.6rem;
+      gap:0;
+      font-size: .1rem;
+      color: transparent;
+      border-radius: 0.5rem 0 0 .5rem;
+      span,
+      svg{display: none;}
+    }
+    .base-nav--toggle{
+      right: 1.2rem;
+      transform: rotate(180deg);
+    }
+    .tree-submenu {
+      position: absolute;
+      top:-2rem;
+      left:calc(100% + 1rem);
+      background-color: var(--color-primary);
+
+      &::after {
+        content: "◀";
+        color: var(--color-primary);
+        position: absolute;
+        display: block;
+        left: -1.2rem ;
+        top:1.2rem;
+        font-size: 2rem;
+      }
+      .tree-page,
+      .tree-toggle,
+      .tree-link {
+        font-size: 1.2rem;
+        color: #fff;
+        text-decoration: none;
+        min-height: 2.8rem;
+      }
+
+    }
   }
+
+  .tree-submenu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: var(--color-primary-dark);
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 1rem 0 #00000040;
+    z-index: 10;
+    width: max-content;
+    min-width: 15rem;
+    li {
+      margin-bottom: 0.5rem;
+    }
+    .tree-page,
+    .tree-toggle,
+    .tree-link {
+      min-height: 2.8rem;
+      max-height: 2.8rem;
+      overflow: hidden;
+      padding-left: 1.5rem;
+      gap:0;
+      font-size: .1rem;
+      color: transparent;
+      border-radius: 0.5rem;
+      span,
+      svg{display: none;}
+    }
+  }
+}
+
+.tree-submenu-slide-enter-active,
+.tree-submenu-slide-leave-active {
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.tree-submenu-slide-enter-from,
+.tree-submenu-slide-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+.tree-submenu-slide-enter-to,
+.tree-submenu-slide-leave-from {
+  max-height: 500px;
+  opacity: 1;
 }
 </style>

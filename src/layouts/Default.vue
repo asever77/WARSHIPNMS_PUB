@@ -85,27 +85,28 @@ function makeMenuTree(lang) {
   let id = 1;
   const nextId = () => id++;
   return [
-    { id: nextId(), label: lang.dashboard, path: '/dashboard/network', icon: 'nav1' },
+    { id: nextId(), label: lang.dashboard, path: '/dashboard/network', icon: 'nav1', dep1:'dashboard' },
     {
       id: nextId(),
       label: lang.settings,
       icon: 'nav2',
+      dep1:'settings',
       children: [
-        { id: nextId(), label: lang.devicemanage, path: '/settings/devicemanage/userterminal' },
-        { id: nextId(), label: lang.connectconfigmanage, path: '/settings/connectconfigmanage/specialprocessunit' },
-        { id: nextId(), label: lang.callmanage, path: '/settings/callmanage/membermanage' },
-        { id: nextId(), label: lang.externallinkagemanage, path: '/settings/externallinkagemanage/broadcastequipmanage' },
-        { id: nextId(), label: lang.operationconfigmanage, path: '/settings/operationconfigmanage/operationconfigbackup' },
-        { id: nextId(), label: lang.equipmanage, path: '/settings/equipmanage/devicemanage' },
-        { id: nextId(), label: lang.planmanage, path: '/settings/planmanage/drawingmanage' },
+        { id: nextId(), label: lang.devicemanage, path: '/settings/devicemanage/userterminal', dep1:'settings' },
+        { id: nextId(), label: lang.connectconfigmanage, path: '/settings/connectconfigmanage/specialprocessunit', dep1:'settings' },
+        { id: nextId(), label: lang.callmanage, path: '/settings/callmanage/membermanage', dep1:'settings' },
+        { id: nextId(), label: lang.externallinkagemanage, path: '/settings/externallinkagemanage/broadcastequipmanage', dep1:'settings' },
+        { id: nextId(), label: lang.operationconfigmanage, path: '/settings/operationconfigmanage/operationconfigbackup', dep1:'settings' },
+        { id: nextId(), label: lang.equipmanage, path: '/settings/equipmanage/devicemanage', dep1:'settings' },
+        { id: nextId(), label: lang.planmanage, path: '/settings/planmanage/drawingmanage', dep1:'settings' },
       ]
     },
-    { id: nextId(), label: lang.callconnectconfig, path: '/callconnectconfig/pointtopoint', icon: 'nav3' },
-    { id: nextId(), label: lang.recordingmanagement, popup: 'https://www.naver.com', icon: 'nav5' },
-    { id: nextId(), label: lang.deviceoperation, path: '/deviceoperation/firmwaremanage', icon: 'nav6' },
-    { id: nextId(), label: lang.documentmanage, path: '/documentmanage/manual', icon: 'nav7' },
-    { id: nextId(), label: lang.usermanage, path: '/usermanage/accountmanage', icon: 'nav8' },
-    { id: nextId(), label: lang.record, path: '/record/callrecord', icon: 'nav10' },
+    { id: nextId(), label: lang.callconnectconfig, path: '/callconnectconfig/pointtopoint', icon: 'nav3', dep1:'callconnectconfig' },
+    { id: nextId(), label: lang.recordingmanagement, popup: 'https://www.naver.com', icon: 'nav5'},
+    { id: nextId(), label: lang.deviceoperation, path: '/deviceoperation/firmwaremanage', icon: 'nav6', dep1:'deviceoperation' },
+    { id: nextId(), label: lang.documentmanage, path: '/documentmanage/manual', icon: 'nav7', dep1:'documentmanage' },
+    { id: nextId(), label: lang.usermanage, path: '/usermanage/accountmanage', icon: 'nav8', dep1:'usermanage' },
+    { id: nextId(), label: lang.record, path: '/record/callrecord', icon: 'nav10', dep1:'record' },
   ];
 }
 
