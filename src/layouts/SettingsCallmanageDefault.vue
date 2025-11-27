@@ -13,9 +13,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import G from "@/config/global.js";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import TabBase from '@/components/TabBase.vue';
 
 const ko = {
@@ -36,7 +36,8 @@ const en = {
 
 const lang = ref({});
 const router = useRouter();
-const selectedTab = ref('/settings/callmanage/membermanage');
+const route = useRoute();
+const selectedTab = ref(route.path);
 const tabList = ref([]);
 
 onMounted(() => {
@@ -47,6 +48,11 @@ onMounted(() => {
     { label: lang.value.groupcallmanage, path: '/settings/callmanage/groupcallmanage' },
     { label: lang.value.dscpmanage, path: '/settings/callmanage/dscpmanage' }
   ];
+  selectedTab.value = route.path;
+});
+
+watch(() => route.path, (newPath) => {
+  selectedTab.value = newPath;
 });
 
 const onClickView = (item) => {

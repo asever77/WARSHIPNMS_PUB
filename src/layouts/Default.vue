@@ -85,7 +85,13 @@ function makeMenuTree(lang) {
   let id = 1;
   const nextId = () => id++;
   return [
-    { id: nextId(), label: lang.dashboard, path: '/dashboard/network', icon: 'nav1', dep1:'dashboard' },
+    {
+      id: nextId(),
+      label: lang.dashboard,
+      path: '/dashboard/network',
+      icon: 'nav1',
+      dep1:'dashboard'
+    },
     {
       id: nextId(),
       label: lang.settings,

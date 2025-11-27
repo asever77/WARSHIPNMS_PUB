@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="Main menu" class="base-nav" :data-style="dataStyle" :data-dep1="dep1">
+  <nav aria-label="Main menu" class="base-nav" :data-style="dataStyle" :data-dep1="activeDep1">
 		<ul class="tree-menu">
       <li v-for="item in menu" :key="item.id" :class="{ 'has-children': item.children }">
         <button
@@ -43,14 +43,14 @@
 				<span v-else>{{ item.label }}</span>
         <transition name="tree-submenu-slide">
           <template v-if="item.children">
-            <ul :aria-hidden="!isSubmenuVisible(item)" class="tree-submenu">
+            <ul :aria-hidden="!isSubmenuVisible(item)" :class="['tree-submenu', { active: isSubmenuVisible(item) }]">
               <li v-for="child in item.children" :key="child.id">
                 <button
                   v-if="child.children"
                   type="button"
                   @click="toggleMenu(child.id)"
-                  :aria-expanded="isOpen(child.id)"
-                  class="tree-toggle"
+                  :aria-expanded="isSubActive(child) || isOpen(child.id)"
+                  :class="['tree-toggle', { active: isSubActive(child) }]"
                   v-bind="child.icon ? { 'data-icon': child.icon } : {}"
                 >
                   {{ child.label }}
@@ -73,6 +73,7 @@
                   class="tree-page"
                   active-class="router-link-active"
                   v-bind="child.icon ? { 'data-icon': child.icon } : {}"
+                  :class="{ 'router-link-active': isSubActive(child) }"
                 >
                   {{ child.label }}
                 </router-link>
@@ -108,6 +109,22 @@ export default {
       dep1: ''
     };
   },
+  computed: {
+    activeDep1() {
+      // 자식 중 isSubActive(child)가 true인 첫번째 child의 data-name 반환
+      if (this.menu && this.menu.length > 0) {
+        for (const item of this.menu) {
+          if (item.children) {
+            const activeChild = item.children.find(child => this.isSubActive(child));
+            if (activeChild) {
+              return item.dep1 || '';
+            }
+          }
+        }
+      }
+      return this.dep1;
+    }
+  },
     mounted() {
       this.setDep1ByRoute();
     },
@@ -126,38 +143,56 @@ export default {
       const segments = path.split('/').filter(Boolean);
       return segments.length > 0 ? '/' + segments[0] : '';
     },
+    getSecondDir(path) {
+      if (!path) return '';
+      const segments = path.split('/').filter(Boolean);
+      return segments.length > 1 ? '/' + segments[1] : '';
+    },
 
     // 현재 경로와 메뉴 path의 첫 디렉토리로 비교
     isParentActive(item) {
       if (!item.path) return false;
       const currentFirstDir = this.getFirstDir(this.$route.path);
       const itemFirstDir = this.getFirstDir(item.path);
-      console.log('[isParentActive]', {
-        routePath: this.$route.path,
-        itemPath: item.path,
-        currentFirstDir,
-        itemFirstDir,
-        result: currentFirstDir === itemFirstDir
-      });
+
       return currentFirstDir === itemFirstDir;
     },
+    isSubActive(child) {
+      if (!child.path) return false;
+      const currentSecondDir = this.getSecondDir(this.$route.path);
+      const childSecondDir = this.getSecondDir(child.path);
+      console.log('[isSubActive]', {
+        routePath: this.$route.path,
+        childPath: child.path,
+        currentSecondDir,
+        childSecondDir,
+        result: currentSecondDir === childSecondDir
+      });
+      return currentSecondDir === childSecondDir;
+    },
     isSubmenuVisible(item) {
-      if (this.isOpen(item.id)) return true;
-      if (item.children) {
-        return item.children.some(child => child.path && this.$route.path.startsWith(child.path));
-      }
-      return false;
+      // 클릭 토글(openMenus) 또는 경로 기반 활성화(isSubActive) 둘 중 하나라도 true면 열림
+      return this.isOpen(item.id) || (item.children && item.children.some(child => this.isSubActive(child)));
     },
     toggleMenu(id, isDep1 = false) {
       if (isDep1) {
         this.openMenus = [id];
       } else {
-        this.openMenus = this.openMenus.includes(id) ? [] : [id];
+        if (this.openMenus.includes(id)) {
+          // 이미 열려있으면 닫기
+          this.openMenus = this.openMenus.filter(menuId => menuId !== id);
+        } else {
+          // 닫혀있으면 열기
+          this.openMenus = [...this.openMenus, id];
+        }
       }
+      console.log('[toggleMenu] openMenus:', this.openMenus);
     },
-		isOpen(id) {
-			return this.openMenus.includes(id);
-		},
+    isOpen(id) {
+      const result = this.openMenus.includes(id);
+      console.log('[isOpen]', id, result, this.openMenus);
+      return result;
+    },
     goToPage(path, dep1) {
       if (path) {
         this.dep1 = dep1 || '';
@@ -184,9 +219,10 @@ export default {
           }
         }
       }
-        this.dep1 = '';
-        this.openMenus = [];
+      this.dep1 = '';
+      this.openMenus = [];
     },
+
 		openExternal(url) {
 			window.open(url, 'popup', 'width=800,height=600');
 		},
@@ -254,7 +290,7 @@ export default {
     }
   }
   [aria-expanded="true"]{
-     svg {
+    svg {
       transform: rotate(180deg);
     }
     path {
@@ -264,7 +300,7 @@ export default {
       background: url('/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem !important;
     }
   }
-  &[data-dep1="settings"] [data-name="settings"] {
+  &[data-dep1="settings"] button[data-name="settings"] {
     background-color: var(--color-secondary-blue);
     color: var(--color-primary);
   }
