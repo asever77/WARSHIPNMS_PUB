@@ -167,7 +167,6 @@ export default {
       const open = this.isOpen(item.id);
       const subActive = item.children && item.children.some(child => this.isSubActive(child));
 
-
       if (this.isInitialLoad) {
         return open || subActive;
       } else {
@@ -175,15 +174,14 @@ export default {
       }
     },
 
-
-
     toggleMenu(id, isDep1 = false) {
       // 첫 클릭에서 route 기반으로 열린 상태라면 바로 닫히도록 처리
       if (isDep1) {
         this.isInitialLoad = false;
         this.openMenus = [id];
       } else {
-        if (this.openMenus.includes(id)) {
+        const n = this.isInitialLoad ? true : this.openMenus.includes(id);
+        if (n) {
           // route 기반으로 열린 상태에서 첫 클릭이면 바로 닫기
           if (this.isInitialLoad) {
             this.isInitialLoad = false;
@@ -194,7 +192,6 @@ export default {
           this.openMenus = [...this.openMenus, id];
         }
       }
-      console.log('[toggleMenu] openMenus:', this.openMenus);
     },
     isOpen(id) {
       const result = this.openMenus.includes(id);
