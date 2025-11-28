@@ -8,7 +8,6 @@
           @click="toggleMenu(item.id)"
           :aria-expanded="isSubmenuVisible(item)"
           class="tree-toggle"
-          :class="{ 'active': isSubmenuVisible(item) }"
           :data-name="item.dep1"
           v-bind="item.icon ? { 'data-icon': item.icon } : {}"
         >
@@ -16,7 +15,6 @@
           <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 1L7 7L13 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-
         </button>
         <a
           v-else-if="item.popup"
@@ -104,10 +102,11 @@ export default {
     }
   },
   data() {
-    return {
-      openMenus: [],
-      dep1: ''
-    };
+      return {
+        openMenus: [],
+        dep1: '',
+        isInitialLoad: true // 초기 진입 플래그 추가
+      };
   },
   computed: {
     activeDep1() {
@@ -161,28 +160,37 @@ export default {
       if (!child.path) return false;
       const currentSecondDir = this.getSecondDir(this.$route.path);
       const childSecondDir = this.getSecondDir(child.path);
-      console.log('[isSubActive]', {
-        routePath: this.$route.path,
-        childPath: child.path,
-        currentSecondDir,
-        childSecondDir,
-        result: currentSecondDir === childSecondDir
-      });
+
       return currentSecondDir === childSecondDir;
     },
     isSubmenuVisible(item) {
-      // 클릭 토글(openMenus) 또는 경로 기반 활성화(isSubActive) 둘 중 하나라도 true면 열림
-      return this.isOpen(item.id) || (item.children && item.children.some(child => this.isSubActive(child)));
+      const open = this.isOpen(item.id);
+      const subActive = item.children && item.children.some(child => this.isSubActive(child));
+
+
+      if (this.isInitialLoad) {
+        return open || subActive;
+      } else {
+        return open;
+      }
     },
+
+
+
     toggleMenu(id, isDep1 = false) {
+      // 첫 클릭에서 route 기반으로 열린 상태라면 바로 닫히도록 처리
       if (isDep1) {
+        this.isInitialLoad = false;
         this.openMenus = [id];
       } else {
         if (this.openMenus.includes(id)) {
-          // 이미 열려있으면 닫기
+          // route 기반으로 열린 상태에서 첫 클릭이면 바로 닫기
+          if (this.isInitialLoad) {
+            this.isInitialLoad = false;
+          }
           this.openMenus = this.openMenus.filter(menuId => menuId !== id);
         } else {
-          // 닫혀있으면 열기
+          this.isInitialLoad = false;
           this.openMenus = [...this.openMenus, id];
         }
       }
@@ -190,7 +198,6 @@ export default {
     },
     isOpen(id) {
       const result = this.openMenus.includes(id);
-      console.log('[isOpen]', id, result, this.openMenus);
       return result;
     },
     goToPage(path, dep1) {
@@ -201,19 +208,20 @@ export default {
     },
     setDep1ByRoute() {
       // dep1: 첫번째 메뉴 path 기준
+      this.isInitialLoad = true; // 라우트 변경 시 초기 진입
       if (this.menu && this.menu.length > 0) {
         for (const item of this.menu) {
           if (item.path && this.$route.path.startsWith(item.path)) {
             this.dep1 = item.dep1;
-              this.openMenus = [item.id];
-              return;
+            this.openMenus = [item.id];
+            return;
           }
           if (item.children) {
             for (const child of item.children) {
-              if (child.path && this.$route.path.startsWith(child.path)) {
-                  this.dep1 = item.dep1;
-                  this.openMenus = [item.id, child.id];
-                  return;
+              if (child.path && this.$route.path === child.path) {
+                this.dep1 = item.dep1;
+                this.openMenus = [item.id, child.id];
+                return;
               }
             }
           }
@@ -289,20 +297,20 @@ export default {
       color: var(--color-primary);
     }
   }
-  [aria-expanded="true"]{
+  .tree-toggle[aria-expanded="true"]{
     svg {
       transform: rotate(180deg);
     }
+  }
+  &[data-dep1="settings"] .tree-toggle[aria-expanded="true"] {
+    background-color: var(--color-secondary-blue);
+    color: var(--color-primary);
     path {
       stroke: var(--color-primary);
     }
     &::before {
-      background: url('@/assets/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem !important;
+      background: url('@/assets/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem;
     }
-  }
-  &[data-dep1="settings"] button[data-name="settings"] {
-    background-color: var(--color-secondary-blue);
-    color: var(--color-primary);
   }
   .router-link-active {
     background-color: var(--color-secondary-blue);
@@ -310,6 +318,9 @@ export default {
 
     &[data-icon="nav1"]::before {
       background: url('@/assets/images/icon/icon-aspect-nav1-on.svg') no-repeat 50% 50% / 2.4rem;
+    }
+    &[data-icon="nav2"]::before {
+      background: url('@/assets/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem;
     }
     &[data-icon="nav3"]::before {
       background: url('@/assets/images/icon/icon-aspect-nav3-on.svg') no-repeat 50% 50% / 2.4rem;
@@ -363,8 +374,10 @@ export default {
       background-color:  transparent;
       color: var(--color-secondary-yellow);
       font-weight: 700;
-      pointer-events: none;
-
+      /* tree-toggle 버튼이 active일 때도 pointer-events를 막지 않음 */
+      &.tree-toggle {
+        pointer-events: auto !important;
+      }
       &::before {
         content:"";
         display: block;

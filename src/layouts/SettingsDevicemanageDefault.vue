@@ -41,6 +41,7 @@ onMounted(() => {
     { label: lang.value.userterminal, path: '/settings/devicemanage/userterminal' },
     { label: lang.value.receptacleunit, path: '/settings/devicemanage/receptacleunit' }
   ];
+  selectedTab.value = router.currentRoute.value.path;
 });
 
 const onClickView = (item) => {

@@ -50,6 +50,7 @@ onMounted(() => {
     { label: lang.value.rack, path: '/dashboard/rack' },
     { label: lang.value.activealarm, path: '/dashboard/activealarm' }
   ];
+  selectedTab.value = router.currentRoute.value.path;
 });
 
 const onClickView = (item) => {

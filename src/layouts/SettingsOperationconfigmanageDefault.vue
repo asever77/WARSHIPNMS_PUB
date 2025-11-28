@@ -41,6 +41,7 @@ onMounted(() => {
     { label: lang.value.operationconfigbackup, path: '/settings/operationconfigmanage/operationconfigbackup' },
     { label: lang.value.operationconfigrestore, path: '/settings/operationconfigmanage/operationconfigrestore' }
   ];
+  selectedTab.value = router.currentRoute.value.path;
 });
 
 const onClickView = (item) => {

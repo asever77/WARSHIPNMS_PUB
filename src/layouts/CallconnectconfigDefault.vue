@@ -64,6 +64,10 @@ watch(() => route.path, (newPath) => {
   selectedTab.value = newPath;
 });
 
+watch(() => route.path, (newPath) => {
+  selectedTab.value = newPath;
+});
+
 const onClickView = (item) => {
   selectedTab.value = item;
   router.push("/default").catch(() => {});

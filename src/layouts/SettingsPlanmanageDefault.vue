@@ -20,24 +20,28 @@ import TabBase from '@/components/TabBase.vue';
 
 const ko = {
   "title": "설정/계획관리",
-  "planmanage": "계획관리"
+  "planmanage": "계획관리",
+  "areamanage": "영역관리"
 };
 
 const en = {
   "title": "Settings/Planmanage",
-  "planmanage": "Planmanage"
+  "planmanage": "Planmanage",
+  "areamanage": "Areamanage"
 };
 
 const lang = ref({});
 const router = useRouter();
-const selectedTab = ref('/settings/planmanage/planmanage');
+const selectedTab = ref('/settings/planmanage/drawingmanage');
 const tabList = ref([]);
 
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
   tabList.value = [
-    { label: lang.value.planmanage, path: '/settings/planmanage/planmanage' }
+    { label: lang.value.planmanage, path: '/settings/planmanage/drawingmanage' },
+    { label: lang.value.areamanage, path: '/settings/planmanage/areamanage' }
   ];
+  selectedTab.value = router.currentRoute.value.path;
 });
 
 const onClickView = (item) => {

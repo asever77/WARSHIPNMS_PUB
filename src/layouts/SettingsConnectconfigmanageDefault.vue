@@ -53,6 +53,7 @@ onMounted(() => {
     { label: lang.value.etc, path: '/settings/connectconfigmanage/etc' },
     { label: lang.value.wirelesschannelbond, path: '/settings/connectconfigmanage/wirelesschannelbond' }
   ];
+  selectedTab.value = router.currentRoute.value.path;
 });
 
 const onClickView = (item) => {

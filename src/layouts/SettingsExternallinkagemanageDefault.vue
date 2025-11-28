@@ -41,6 +41,7 @@ onMounted(() => {
     { label: lang.value.broadcastequipmanage, path: '/settings/externallinkagemanage/broadcastequipmanage' },
     { label: lang.value.alarmdevicemanage, path: '/settings/externallinkagemanage/alarmdevicemanage' }
   ];
+  selectedTab.value = router.currentRoute.value.path;
 });
 
 const onClickView = (item) => {

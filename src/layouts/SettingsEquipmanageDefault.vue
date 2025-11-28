@@ -53,6 +53,7 @@ onMounted(() => {
     { label: lang.value.frequencymanage, path: '/settings/equipmanage/frequencymanage' },
     { label: lang.value.wirelesscommunicatebond, path: '/settings/equipmanage/wirelesscommunicatebond' }
   ];
+  selectedTab.value = router.currentRoute.value.path;
 });
 
 const onClickView = (item) => {

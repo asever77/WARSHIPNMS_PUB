@@ -47,6 +47,7 @@ onMounted(() => {
     { label: lang.value.permissionmanage, path: '/usermanage/permissionmanage' },
     { label: lang.value.shortcutconfig, path: '/usermanage/shortcutconfig' }
   ];
+  selectedTab.value = router.currentRoute.value.path;
 });
 
 const onClickView = (item) => {

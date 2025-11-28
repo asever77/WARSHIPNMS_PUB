@@ -38,6 +38,7 @@ onMounted(() => {
   tabList.value = [
     { label: lang.value.manual, path: '/documentmanage/manual' }
   ];
+  selectedTab.value = router.currentRoute.value.path;
 });
 
 const onClickView = (item) => {

@@ -47,6 +47,7 @@ onMounted(() => {
     { label: lang.value.devicecontrol, path: '/deviceoperation/devicecontrol' },
     { label: lang.value.resultinquiry, path: '/deviceoperation/resultinquiry' }
   ];
+  selectedTab.value = router.currentRoute.value.path;
 });
 
 const onClickView = (item) => {
