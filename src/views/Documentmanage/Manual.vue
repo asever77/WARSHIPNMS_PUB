@@ -1,37 +1,44 @@
 <template>
   <div class="base-wrap">
     <div class="search-base">
-      <!-- 장치유형 기준 선택 -->
-      <BFormSelect
-        v-model="filterField"
-        :options="filterFieldOptions"
-        size="sm"
-        class="me-2"
-      />
-      <!-- 장치유형 기준 선택 -->
-      <BFormSelect
-        v-model="filterField2"
-        :options="filterFieldOptions2"
-        size="sm"
-        class="me-2"
-      />
-      <!-- 검색어 입력 -->
-      <BFormInput
-        v-model="filterText"
-        size="sm"
-        placeholder="검색어 입력"
-        class="me-2"
-      />
-      <BButton size="sm" variant="primary" @click="onFilter">
-        조회
-      </BButton>
-      <BButton size="sm" variant="secondary" class="ms-2" @click="onReset">
-        초기화
-      </BButton>
+      <div class="search-base--form">
+        <!-- 장치유형 기준 선택 -->
+        <BFormGroup label="장치유형" label-for="search-deviceType">
+          <BFormSelect
+            id="search-deviceType"
+            v-model="filterField"
+            :options="filterFieldOptions"
+          />
+        </BFormGroup>
+
+        <!-- 장비명 기준 선택 -->
+        <BFormGroup label="장비명" label-for="search-deviceName">
+          <BFormSelect
+            id="search-deviceName"
+            v-model="filterField2"
+            :options="filterFieldOptions2"
+          />
+        </BFormGroup>
+
+        <!-- 검색어 입력 -->
+        <BFormGroup label="검색어" label-for="search-word">
+          <BFormInput
+            id="search-word"
+            v-model="filterText"
+            placeholder="검색어 입력"
+          />
+        </BFormGroup>
+      </div>
+      <div class="search-base--btns">
+        <BButton variant="primary" @click="onFilter">
+          조회
+        </BButton>
+      </div>
+
     </div>
     <div class="base-table">
       <BTable
-          :items="paginatedItems"
+        :items="paginatedItems"
         :fields="fields"
         bordered
         hover
@@ -52,7 +59,7 @@
         <div class="d-flex justify-content-center mt-4">
           <BPagination
             v-model="currentPage"
-            :total-rows="items.length"
+            :total-rows="filteredItems.length"
             :per-page="perPage"
             aria-controls="manual-table"
           />
@@ -64,7 +71,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import { BTable, BButton, BFormCheckbox, BFormInput, BFormSelect, BPagination } from 'bootstrap-vue-next'
+import { BTable, BButton, BFormCheckbox, BFormInput, BFormGroup, BFormSelect, BPagination } from 'bootstrap-vue-next'
 
 import G from "@/config/global.js";
 
@@ -108,22 +115,49 @@ const fields = computed(() => [
 ])
 
 const filterField = ref('')
+const filterField2 = ref('')
+const filterText = ref('')
+
+// 실제 검색에 사용되는 값
+const searchField = ref('')
+const searchField2 = ref('')
+const searchText = ref('')
+
 const filterFieldOptions = computed(() => {
   const types = items.value.map(item => item.deviceType)
-  return [...new Set(types)].map(type => ({ value: type, text: type }))
+  const uniqueTypes = [...new Set(types)]
+  return [
+    { value: '', text: '전체' },
+    ...uniqueTypes.map(type => ({ value: type, text: type }))
+  ]
 });
 
-const filterField2 = ref('')
 const filterFieldOptions2 = computed(() => {
   const types = items.value.map(item => item.deviceName)
-  return [...new Set(types)].map(type => ({ value: type, text: type }))
+  const uniqueNames = [...new Set(types)]
+  return [
+    { value: '', text: '전체' },
+    ...uniqueNames.map(type => ({ value: type, text: type }))
+  ]
 });
+
+const filteredItems = computed(() => {
+  return items.value.filter(item => {
+    const matchType = !searchField.value || item.deviceType === searchField.value
+    const matchName = !searchField2.value || item.deviceName === searchField2.value
+    const matchText = !searchText.value ||
+      item.deviceType.includes(searchText.value) ||
+      item.deviceName.includes(searchText.value) ||
+      item.fileName.includes(searchText.value)
+    return matchType && matchName && matchText
+  })
+})
 
 const currentPage = ref(1)
 const perPage = ref(10)
 const paginatedItems = computed(() => {
   const start = (currentPage.value - 1) * perPage.value
-  return items.value.slice(start, start + perPage.value)
+  return filteredItems.value.slice(start, start + perPage.value)
 })
 
 onMounted(() => {
@@ -132,4 +166,12 @@ onMounted(() => {
     filterField.value = filterFieldOptions.value[0].value;
   }
 });
+
+function onFilter() {
+  searchField.value = filterField.value
+  searchField2.value = filterField2.value
+  searchText.value = filterText.value
+  currentPage.value = 1
+}
+
 </script>
