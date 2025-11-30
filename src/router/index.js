@@ -57,11 +57,6 @@ const router = createRouter({
       component: () => import('../views/TreeView.vue')
     },
     {
-      path: '/tree',
-      name: 'TreeView',
-      component: () => import('../views/TreeView.vue')
-    },
-    {
       path: '/basicfunctions',
       name: 'BasicFunctionsView',
       component: () => import('../views/BasicFunctions.vue')
