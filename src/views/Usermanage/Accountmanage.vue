@@ -18,21 +18,21 @@
     </tr>
     <tr>
       <th scope="row">{{ lang.table3 }}</th>
-      <td><BFormInput id="input-1" class="ui-input" v-model="text" placeholder=""></BFormInput></td>
+      <td><BFormInput id="input-2" class="ui-input" v-model="text" placeholder=""></BFormInput></td>
       <th scope="row">{{ lang.table4 }}</th>
       <td><BFormSelect id="select-1" class="ui-select" v-model="selected" :options="options1"></BFormSelect></td>
     </tr>
     <tr>
       <th scope="row">{{ lang.table5 }}</th>
-      <td><BFormInput id="input-1" class="ui-input" v-model="text" placeholder=""></BFormInput></td>
+      <td><BFormInput id="input-3" class="ui-input" v-model="text" placeholder=""></BFormInput></td>
       <th scope="row">{{ lang.table6 }}</th>
       <td><BFormSelect id="select-2" class="ui-select" v-model="selected" :options="options2"></BFormSelect></td>
     </tr>
     <tr>
       <th scope="row">{{ lang.table7 }}</th>
-      <td><BFormInput id="input-1" class="ui-input" v-model="text" placeholder=""></BFormInput></td>
+      <td><BFormInput id="input-4" class="ui-input" v-model="text" placeholder=""></BFormInput></td>
       <th scope="row">{{ lang.table8 }}</th>
-      <td><BFormSelect id="select-2" class="ui-select" v-model="selected" :options="options3"></BFormSelect></td>
+      <td><BFormSelect id="select-3" class="ui-select" v-model="selected" :options="options3"></BFormSelect></td>
     </tr>
     </tbody>
   </table>

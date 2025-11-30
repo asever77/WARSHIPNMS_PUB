@@ -28,7 +28,7 @@ const ko = {
   "accountmanage": "계정관리",
   "changepassword": "비밀번호변경",
   "permissionmanage": "권한관리",
-  "shortcutconfig": "단축키설정"
+  "shortcutconfig": "바로가기 설정"
 };
 
 const en = {
@@ -48,8 +48,8 @@ onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
   tabList.value = [
     { label: lang.value.accountmanage, path: '/usermanage/accountmanage' },
-    { label: lang.value.changepassword, path: '/usermanage/changepassword' },
     { label: lang.value.permissionmanage, path: '/usermanage/permissionmanage' },
+    { label: lang.value.changepassword, path: '/usermanage/changepassword' },
     { label: lang.value.shortcutconfig, path: '/usermanage/shortcutconfig' }
   ];
   selectedTab.value = router.currentRoute.value.path;
