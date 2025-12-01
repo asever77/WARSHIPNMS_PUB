@@ -273,7 +273,7 @@ table .form-check-inline ~ .form-check-inline,
 .base-table td {border:0;box-shadow:none;border-bottom:1px solid #D4E1E8;vertical-align:middle}
 .base-table th + th {border-left:1px solid #2A598D;}
 .base-table td + td {border-left:1px solid #D4E1E8;}
-.base-table thead th {background-color:#001B30;min-height:3rem;padding:.4rem;color:#fff;font-size:1.2rem;font-weight:700;text-align:center;}
+.base-table thead th {background-color:#001B30;height:3rem;padding:.4rem;color:#fff;font-size:1.2rem;font-weight:700;text-align:center;}
 .base-table thead tr:first-child th:first-child {border-top-left-radius:.5rem;}
 .base-table thead tr:first-child th:last-child {border-top-right-radius:.5rem;}
 .base-table tbody td {font-size:1.2rem;color:#3E3E3E;text-align:center;min-height:3rem;padding:.4rem 1rem;}

@@ -189,9 +189,9 @@ const fields = computed(() => [
   { key: 'use', label: lang.value.table12 || '계정사용', thStyle: { width: '7.2rem' } }
 ])
 
-const radioOptions = ref([
-  { text: '사용', value: 'true' },
-  { text: '사용안함', value: 'false' },
+const radioOptions = computed(() => [
+  { text: lang.value.use1 || '사용', value: 'true' },
+  { text: lang.value.use2 || '사용안함', value: 'false' }
 ])
 
 // 실제 검색에 사용되는 값
