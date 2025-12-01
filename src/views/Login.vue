@@ -178,11 +178,4 @@ const login = () => {
     });
     */
 };
-
-// 기본 기능 페이지 이동
-const basicfunctions = () => {
-  router.push('/basicfunctions');
-};
-</script>
-<script setup lang="ts">
 </script>
