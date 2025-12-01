@@ -1,21 +1,18 @@
 <template>
   <ul class="favorites-links">
     <li v-for="link in sortedLinks" :key="link.order" class="favorites-links--item">
-      <BLink
-        :href="link.url"
-        target="_blank"
-        rel="noopener"
+      <router-link
+        :to="link.url"
         class="favorites-links--link"
       >
         <span>{{ link.name }}</span>
-      </BLink>
+      </router-link>
     </li>
   </ul>
 </template>
 
 <script setup>
 import { computed } from 'vue';
-import { BLink } from 'bootstrap-vue-next';
 
 const props = defineProps({
   links: {

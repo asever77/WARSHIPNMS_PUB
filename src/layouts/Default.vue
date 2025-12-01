@@ -83,10 +83,10 @@
 
   // 즐겨찾기 링크 FavoriteLinks '@/components/FavoriteLinks.vue'
   const favoriteLinks = ref([
-    { order: 1, name: 'Bootstrap Docs 1', url: 'https://getbootstrap.com/docs/5.3' },
-    { order: 3, name: 'GitHub 3', url: 'https://github.com' },
-    { order: 2, name: 'Vue.js 2', url: 'https://vuejs.org' },
-    { order: 4, name: 'GitHub 4', url: 'https://github.com' },
+    { order: 1, name: '문서관리/매뉴얼', url: '/documentmanage/manual' },
+    { order: 3, name: '사용자관리/계정관리', url: '/usermanage/accountmanage' },
+    { order: 2, name: '장치관리/단말관리', url: '/settings/devicemanage/userterminal' },
+    { order: 4, name: '연결설정관리/특수공정부', url: '/settings/connectconfigmanage/specialprocessunit' },
   ]);
 
   function makeMenuTree(lang) {
