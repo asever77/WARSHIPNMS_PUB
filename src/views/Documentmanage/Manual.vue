@@ -75,7 +75,7 @@
     <BButton class="gray28">{{ lang.text8 }}</BButton>
   </div>
 
-  <UiModal v-model="modals.modalName.show" :title="lang.text13" type="modal" size="sm" @close-btn-click="modals.modalName.show = false">
+  <UiModal v-model="modals.modalName.show" :title="lang.text13" type="modal" size="md" @close-btn-click="modals.modalName.show = false">
     <table class="table-type-a">
       <colgroup>
         <col style="width:10rem">
