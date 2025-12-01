@@ -15,6 +15,8 @@
             <BButton variant="primary" @click="onClickView('/')">{{ lang.logout }}</BButton>
           </div>
         </div>
+
+        <FavoriteLinks :links="favoriteLinks" />
       </header>
 
       <UiTree :menu="menuTree" data-style="base" />
@@ -32,6 +34,7 @@
   import { BButton } from 'bootstrap-vue-next';
 
   import UiTree from '@/components/UiTree.vue';
+  import FavoriteLinks from '@/components/FavoriteLinks.vue';
 
   const ko = {
     "adminName" : "관리자 : 김운영",
@@ -77,6 +80,14 @@
 
   const lang = ref({});
   const menuTree = ref([]);
+
+  // 즐겨찾기 링크 FavoriteLinks '@/components/FavoriteLinks.vue'
+  const favoriteLinks = ref([
+    { order: 1, name: 'Bootstrap Docs 1', url: 'https://getbootstrap.com/docs/5.3' },
+    { order: 3, name: 'GitHub 3', url: 'https://github.com' },
+    { order: 2, name: 'Vue.js 2', url: 'https://vuejs.org' },
+    { order: 4, name: 'GitHub 4', url: 'https://github.com' },
+  ]);
 
   function makeMenuTree(lang) {
     let id = 1;
