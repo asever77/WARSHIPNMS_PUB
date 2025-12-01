@@ -6,6 +6,7 @@
         <BFormGroup label="장치유형" label-for="search-deviceType">
           <BFormSelect
             id="search-deviceType"
+            class="ui-select-28"
             v-model="filterField"
             :options="filterFieldOptions"
           />
@@ -15,6 +16,7 @@
         <BFormGroup label="장비명" label-for="search-deviceName">
           <BFormSelect
             id="search-deviceName"
+            class="ui-select-28"
             v-model="filterField2"
             :options="filterFieldOptions2"
           />
@@ -26,11 +28,12 @@
             id="search-word"
             v-model="filterText"
             placeholder="검색어 입력"
+            class="ui-input-28"
           />
         </BFormGroup>
       </div>
       <div class="search-base--btns">
-        <BButton variant="primary" @click="onFilter">
+        <BButton class="blue28" @click="onFilter">
           조회
         </BButton>
       </div>
@@ -52,7 +55,7 @@
           />
         </template>
         <template #cell(download)="data">
-          <BButton size="sm" :href="data.item.download" target="_blank">다운로드</BButton>
+          <BButton class="gray24 min-w-0" :href="data.item.download" target="_blank">다운로드</BButton>
         </template>
       </BTable>
 
@@ -110,7 +113,7 @@ const fields = computed(() => [
   { key: 'deviceType', label: lang.value.title_deviceType || '장치유형', thStyle: { width: '20rem' }, tdClass: 'text-start' },
   { key: 'deviceName', label: lang.value.title_deviceName || '장비명', tdClass: 'text-start'},
   { key: 'fileName', label: lang.value.title_fileName || '파일명', tdClass: 'text-start' },
-  { key: 'download', label: lang.value.title_download || '다운로드', thStyle: { width: '8rem' } },
+  { key: 'download', label: lang.value.title_download || '다운로드', thStyle: { width: '10rem' } },
   { key: 'uploadDate', label: lang.value.title_uploadDate || '업로드일시', thStyle: { width: '18rem' } }
 ])
 
