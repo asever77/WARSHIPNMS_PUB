@@ -59,27 +59,73 @@
         </template>
       </BTable>
 
-        <div class="d-flex justify-content-center mt-4">
-          <BPagination
-            v-model="currentPage"
-            :total-rows="filteredItems.length"
-            :per-page="perPage"
-            aria-controls="manual-table"
-          />
-        </div>
+      <div class="d-flex justify-content-center mt-4">
+        <BPagination
+          v-model="currentPage"
+          :total-rows="filteredItems.length"
+          :per-page="perPage"
+          aria-controls="manual-table"
+        />
+      </div>
     </div>
   </div>
 
   <div class="ui-btn-group">
-    <BButton class="blue28">{{ lang.text7 }}</BButton>
+    <BButton class="blue28" @click="modals.modalName.show = true">{{ lang.text7 }}</BButton>
     <BButton class="gray28">{{ lang.text8 }}</BButton>
   </div>
+
+  <UiModal v-model="modals.modalName.show" :title="lang.text13" type="modal" size="sm" @close-btn-click="modals.modalName.show = false">
+    <table class="table-type-a">
+      <colgroup>
+        <col style="width:10rem">
+        <col style="width:auto">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th scope="row">{{ lang.text2 || '장치유형' }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.deviceType"
+              :options="deviceTypeOptions"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.text15 || '장치 모델명' }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.modelName"
+              placeholder=""
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.text16 || 'FILE' }}</th>
+          <td>
+            <BFormFile
+              class="ui-input"
+              v-model="formData.file"
+              :placeholder="lang.text14 || '파일 선택'"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalName.show = false">{{ lang.text17 || '취소' }}</BButton>
+      <BButton class="blue28">{{ lang.text18 || '저장' }}</BButton>
+    </template>
+  </UiModal>
 
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import { BTable, BButton, BFormCheckbox, BFormInput, BFormGroup, BFormSelect, BPagination } from 'bootstrap-vue-next'
+import { ref, onMounted, computed, reactive } from 'vue';
+import UiModal from '@/components/UiModal.vue'
+import { BTable, BButton, BFormCheckbox, BFormInput, BFormGroup, BFormSelect, BPagination, BFormFile } from 'bootstrap-vue-next';
 
 import G from "@/config/global.js";
 
@@ -96,6 +142,12 @@ const ko = {
   "text10": "검색어",
   "text11": "검색어 입력",
   "text12": "전체",
+  "text13": "메뉴얼 등록",
+  "text14": "파일 선택",
+  "text15": "장치 모델명",
+  "text16": "FILE",
+  "text17": "취소",
+  "text18": "저장",
 };
 
 const en = {
@@ -111,9 +163,35 @@ const en = {
   "text10": "Search Word",
   "text11": "Enter search word",
   "text12": "All",
+  "text13": "Register Manual",
+  "text14": "Choose File",
+  "text15": "Device Model Name",
+  "text16": "FILE",
+  "text17": "Cancel",
+  "text18": "Save",
 };
 
 const lang = ref({});
+
+const modals = reactive({
+  modalName: { show: false },
+})
+
+// 모달 폼 데이터
+const formData = reactive({
+  deviceType: null,
+  modelName: '',
+  file: null
+})
+
+// 장치유형 옵션
+const deviceTypeOptions = computed(() => [
+  { value: null, text: lang.value.text12 || '선택하세요' },
+  { value: '무전기', text: '무전기' },
+  { value: '서버', text: '서버' },
+  { value: '센서', text: '센서' },
+  { value: '컨트롤러', text: '컨트롤러' }
+])
 
 // --- 데이터 ---
 const items = ref([
