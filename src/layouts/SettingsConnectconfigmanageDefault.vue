@@ -7,7 +7,12 @@
       <TabBase :tabs="tabList" :selected="selectedTab" @select="onClickView" />
     </div>
     <div class="base-content--body">
-        <router-view />
+      <div class="ui-content-page">
+        <div class="ui-content-area">
+          <router-view />
+        </div>
+        <p class="copyright">Copyright(c)NAVY.MIL.KR. All Rights Reserved.</p>
+      </div>
     </div>
   </div>
 </template>
