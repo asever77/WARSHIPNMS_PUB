@@ -40,7 +40,7 @@ const props = defineProps({
   },
   type: {
     type: String,
-    default: 'modal', 
+    default: 'modal',
     // 'system', 'modal', 'bottom-sheet', 'side-left', 'side-right', 'full-page'
   },
 })
@@ -72,6 +72,7 @@ const modalConfig = computed(() => {
       break
 
     case 'modal':
+      config.modalClass.push('base-modal')
       config.centered = true
       break
 
@@ -115,7 +116,7 @@ const onHidden = () => {
 </script>
 
 <style>
-/* 
+/*
   사이드 및 바텀시트 모달의 애니메이션과 위치를 정의합니다.
   scoped가 아닌 일반 style 태그를 사용하여 BModal이 생성하는 최상위 클래스에 접근합니다.
 */
@@ -175,5 +176,52 @@ const onHidden = () => {
 .modal-bottom-sheet .modal-content {
   border-radius: 1rem 1rem 0 0;
   border: none;
+}
+
+.base-modal .modal-content {
+  border-radius: 0;
+}
+.base-modal .modal-content .modal-header{
+  background-color: #001B30;
+  border-bottom: .5rem solid #2B77A9;
+  border-radius: 0;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+.base-modal .modal-content .modal-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color:#fff;
+}
+.base-modal .modal-content .modal-header .btn-close{
+  position: absolute;
+  padding:0;
+  margin:0;
+  right: 1rem;
+  top: calc(50% - 1.5rem);
+  opacity: 1;
+  width: 3rem;
+  height: 3rem;
+  background-size: 1.9rem 1.9rem;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image: url("data:image/svg+xml,%3Csvg width='19' height='19' viewBox='0 0 19 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.5 6.5L12.5 12.5M12.5 6.5L6.5 12.5M0.5 2.5C0.5 1.96957 0.710714 1.46086 1.08579 1.08579C1.46086 0.710714 1.96957 0.5 2.5 0.5H16.5C17.0304 0.5 17.5391 0.710714 17.9142 1.08579C18.2893 1.46086 18.5 1.96957 18.5 2.5V16.5C18.5 17.0304 18.2893 17.5391 17.9142 17.9142C17.5391 18.2893 17.0304 18.5 16.5 18.5H2.5C1.96957 18.5 1.46086 18.2893 1.08579 17.9142C0.710714 17.5391 0.5 17.0304 0.5 16.5V2.5Z' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+}
+.base-modal .modal-footer > * {
+  margin: 0;
+  min-width: 8rem;
+}
+.base-modal .modal-footer {
+  justify-content: center;
+  border: 0;
+  padding: 1rem 0 1.9rem;
+  gap:1rem;
+}
+.base-modal .modal-body {
+  padding: 2rem 2.6rem 0;
+}
+.base-modal .modal-sm {
+  max-width: 32rem;
 }
 </style>
