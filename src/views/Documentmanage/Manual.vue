@@ -3,7 +3,7 @@
     <div class="search-base">
       <div class="search-base--form">
         <!-- 장치유형 기준 선택 -->
-        <BFormGroup label="장치유형" label-for="search-deviceType">
+        <BFormGroup :label="lang.text2" label-for="search-deviceType">
           <BFormSelect
             id="search-deviceType"
             class="ui-select-28"
@@ -13,7 +13,7 @@
         </BFormGroup>
 
         <!-- 장비명 기준 선택 -->
-        <BFormGroup label="장비명" label-for="search-deviceName">
+        <BFormGroup :label="lang.text3" label-for="search-deviceName">
           <BFormSelect
             id="search-deviceName"
             class="ui-select-28"
@@ -23,18 +23,18 @@
         </BFormGroup>
 
         <!-- 검색어 입력 -->
-        <BFormGroup label="검색어" label-for="search-word">
+        <BFormGroup :label="lang.text10" label-for="search-word">
           <BFormInput
             id="search-word"
             v-model="filterText"
-            placeholder="검색어 입력"
+            :placeholder="lang.text11"
             class="ui-input-28"
           />
         </BFormGroup>
       </div>
       <div class="search-base--btns">
         <BButton class="blue28" @click="onFilter">
-          조회
+          {{ lang.text9 }}
         </BButton>
       </div>
 
@@ -55,7 +55,7 @@
           />
         </template>
         <template #cell(download)="data">
-          <BButton class="gray24 min-w-0" :href="data.item.download" target="_blank">다운로드</BButton>
+          <BButton class="gray24 min-w-0" :href="data.item.download" target="_blank">{{ lang.text5 }}</BButton>
         </template>
       </BTable>
 
@@ -70,6 +70,11 @@
     </div>
   </div>
 
+  <div class="ui-btn-group">
+    <BButton class="blue28">{{ lang.text7 }}</BButton>
+    <BButton class="gray28">{{ lang.text8 }}</BButton>
+  </div>
+
 </template>
 
 <script setup>
@@ -79,21 +84,33 @@ import { BTable, BButton, BFormCheckbox, BFormInput, BFormGroup, BFormSelect, BP
 import G from "@/config/global.js";
 
 const ko = {
-  "title": "매뉴얼 내용",
-  "title_deviceType": "장치유형",
-  "title_deviceName": "장비명",
-  "title_fileName": "파일명",
-  "title_download": "다운로드",
-  "title_uploadDate": "업로드일시"
+  "text1": "매뉴얼 내용",
+  "text2": "장치유형",
+  "text3": "장비명",
+  "text4": "파일명",
+  "text5": "다운로드",
+  "text6": "업로드일시",
+  "text7": "등록",
+  "text8": "삭제",
+  "text9": "조회",
+  "text10": "검색어",
+  "text11": "검색어 입력",
+  "text12": "전체",
 };
 
 const en = {
-  "title": "Manual Content",
-  "title_deviceType": "Device Type",
-  "title_deviceName": "Device Name",
-  "title_fileName": "File Name",
-  "title_download": "Download",
-  "title_uploadDate": "Upload Date"
+  "text1": "Manual Content",
+  "text2": "Device Type",
+  "text3": "Device Name",
+  "text4": "File Name",
+  "text5": "Download",
+  "text6": "Upload Date",
+  "text7": "Register",
+  "text8": "Delete",
+  "text9": "Search",
+  "text10": "Search Word",
+  "text11": "Enter search word",
+  "text12": "All",
 };
 
 const lang = ref({});
@@ -110,11 +127,11 @@ const selectedIds = ref([])
 
 const fields = computed(() => [
   { key: 'select', label: '', thStyle: { width: '4rem' } },
-  { key: 'deviceType', label: lang.value.title_deviceType || '장치유형', thStyle: { width: '20rem' }, tdClass: 'text-start' },
-  { key: 'deviceName', label: lang.value.title_deviceName || '장비명', tdClass: 'text-start'},
-  { key: 'fileName', label: lang.value.title_fileName || '파일명', tdClass: 'text-start' },
-  { key: 'download', label: lang.value.title_download || '다운로드', thStyle: { width: '10rem' } },
-  { key: 'uploadDate', label: lang.value.title_uploadDate || '업로드일시', thStyle: { width: '18rem' } }
+  { key: 'deviceType', label: lang.value.text2 || '장치유형', thStyle: { width: '20rem' }, tdClass: 'text-start' },
+  { key: 'deviceName', label: lang.value.text3 || '장비명', tdClass: 'text-start'},
+  { key: 'fileName', label: lang.value.text4 || '파일명', tdClass: 'text-start' },
+  { key: 'download', label: lang.value.text5 || '다운로드', thStyle: { width: '10rem' } },
+  { key: 'uploadDate', label: lang.value.text6 || '업로드일시', thStyle: { width: '18rem' } }
 ])
 
 const filterField = ref('')
@@ -130,7 +147,7 @@ const filterFieldOptions = computed(() => {
   const types = items.value.map(item => item.deviceType)
   const uniqueTypes = [...new Set(types)]
   return [
-    { value: '', text: '전체' },
+    { value: '', text: lang.value.text12 || '전체' },
     ...uniqueTypes.map(type => ({ value: type, text: type }))
   ]
 });
@@ -139,7 +156,7 @@ const filterFieldOptions2 = computed(() => {
   const types = items.value.map(item => item.deviceName)
   const uniqueNames = [...new Set(types)]
   return [
-    { value: '', text: '전체' },
+    { value: '', text: lang.value.text12 || '전체' },
     ...uniqueNames.map(type => ({ value: type, text: type }))
   ]
 });
