@@ -182,12 +182,34 @@ img, fieldset, iframe, button {border:0 none;}
   flex:1;
   overflow-y:auto;
 }
+/* margin */
+.mt-auto {margin-top:auto}
+.mt-2 {margin-top:.2rem;}
+.mt-3 {margin-top:.3rem;}
+.mt-4 {margin-top:.4rem;}
+.mt-6 {margin-top:.6rem;}
+.mt-8 {margin-top:.8rem;}
+.mt-10 {margin-top:1rem;}
+.mt-12 {margin-top:1.2rem;}
+.mt-16 {margin-top:1.6rem;}
+.mt-18 {margin-top:1.8rem;}
+.mt-20 {margin-top:2rem;}
+.mt-24 {margin-top:2.4rem;}
 
 /* checkbox custom */
 .my-checkbox.form-check {display:inline-flex;gap:.5rem;align-items:center;margin:0;}
 .my-checkbox .form-check-input {width:2rem;height:2rem;margin:0;cursor:pointer;}
 .my-checkbox .form-check-input:checked {background-color:var(--color-primary);border-color:var(--color-primary);}
 .my-checkbox .form-check-label {font-size:1.4rem;color:#000;line-height:2rem;cursor:pointer;}
+
+.search-base .form-check-input,
+table .form-check-input {width:1.6rem;height:1.6rem;margin-top:0;border-color:#7591A5}
+.search-base .form-check-label {font-size:1.2rem;font-weight:400;color:#3e3e3e}
+.search-base .form-check-inline,
+table .form-check-inline {display:inline-flex;align-items:center;gap:.4rem;margin:0}
+table .form-check-inline ~ .form-check-inline,
+.search-base .form-check-inline ~ .form-check-inline {margin-left:2rem}
+
 
 /* input & select custom */
 .ui-input.form-control {font-size:1.2rem;font-weight:400;color:#627582;border-color:#D4E1E8;border-radius:0;padding:.4rem 1rem;height:2.4rem}
@@ -218,6 +240,21 @@ img, fieldset, iframe, button {border:0 none;}
 .blue24.btn-secondary.min-w-0,
 .gray24.btn-secondary.min-w-0 {min-width:0}
 
+/* flex */
+.ui-flex {display:flex}
+.ui-flex[data-inline="true"] {display:inline-flex}
+.ui-flex[data-direction="col"] {flex-direction:column}
+.ui-flex[data-item-align="center"] {align-items:center}
+.ui-flex[data-item-align="start"] {align-items:flex-start}
+.ui-flex[data-item-align="end"] {align-items:flex-end}
+.ui-flex[data-justify-align="between"] {justify-content:space-between}
+.ui-flex[data-justify-align="center"] {justify-content:center}
+.ui-flex[data-justify-align="end"] {justify-content:flex-end}
+[data-gap="2"] {gap:.2rem}
+[data-gap="4"] {gap:.4rem}
+[data-gap="8"] {gap:.8rem}
+[data-gap="10"] {gap:1rem}
+
 /* common content */
 .base-wrap {
   display:flex;
@@ -233,7 +270,7 @@ img, fieldset, iframe, button {border:0 none;}
 .base-table table {border:0;border-collapse:collapse;width:100%;border-spacing:0;}
 .base-table tr {border:0;}
 .base-table th {border:0;box-shadow:none;border-bottom:1px solid #2A598D;}
-.base-table td {border:0;box-shadow:none;border-bottom:1px solid #D4E1E8;}
+.base-table td {border:0;box-shadow:none;border-bottom:1px solid #D4E1E8;vertical-align:middle}
 .base-table th + th {border-left:1px solid #2A598D;}
 .base-table td + td {border-left:1px solid #D4E1E8;}
 .base-table thead th {background-color:#001B30;min-height:3rem;padding:.4rem;color:#fff;font-size:1.2rem;font-weight:700;text-align:center;}
