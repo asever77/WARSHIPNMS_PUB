@@ -180,7 +180,10 @@ export default {
         this.isInitialLoad = false;
         this.openMenus = [id];
       } else {
-        const n = this.isInitialLoad ? true : this.openMenus.includes(id);
+        // 초기 진입 시, 라우트로 인해 보이는 상태도 "열림"으로 간주
+        const n = this.isInitialLoad
+          ? (this.isOpen(id) || this.isRouteDrivenOpen(id))
+          : this.isOpen(id);
         if (n) {
           // route 기반으로 열린 상태에서 첫 클릭이면 바로 닫기
           if (this.isInitialLoad) {
@@ -192,6 +195,31 @@ export default {
           this.openMenus = [...this.openMenus, id];
         }
       }
+    },
+    // 주어진 id가 라우트 활성 상태로 인해 보이는지 판정
+    isRouteDrivenOpen(id) {
+      const found = this.findNodeById(id);
+      if (!found) return false;
+      if (found.type === 'parent') {
+        const node = found.node;
+        return node.children && node.children.some(child => this.isSubActive(child));
+      } else if (found.type === 'child') {
+        return this.isSubActive(found.node);
+      }
+      return false;
+    },
+    // 메뉴 트리에서 id로 노드 찾기 (부모/자식 구분 포함)
+    findNodeById(id) {
+      if (!this.menu) return null;
+      for (const item of this.menu) {
+        if (item.id === id) return { type: 'parent', node: item };
+        if (item.children) {
+          for (const child of item.children) {
+            if (child.id === id) return { type: 'child', node: child, parent: item };
+          }
+        }
+      }
+      return null;
     },
     isOpen(id) {
       const result = this.openMenus.includes(id);
