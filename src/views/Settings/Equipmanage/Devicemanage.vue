@@ -10,7 +10,10 @@
     </colgroup>
     <tbody>
       <tr>
-        <th scope="row">장치유형</th>
+        <th scope="row">
+          장치유형
+          <BButton class="btn-sort" aria-sort="none" aria-label="장치유형 전체 정렬"></BButton>
+        </th>
         <td>
           <BFormSelect
             id="device-type"
@@ -19,7 +22,9 @@
             :options="selectOptions"
           ></BFormSelect>
         </td>
-        <th scope="row">검색대상</th>
+        <th scope="row">검색대상
+          <BButton class="btn-sort" aria-sort="descending" aria-label="검색대상 전체 정렬"></BButton>
+        </th>
         <td>
           <BFormSelect
             id="search-target"
@@ -34,7 +39,9 @@
         </td>
       </tr>
       <tr>
-        <th scope="row">등록일</th>
+        <th scope="row">등록일
+          <BButton class="btn-sort" aria-sort="ascending" aria-label="등록일 전체 정렬"></BButton>
+        </th>
         <td colspan="5">
           <div class="ui-flex" data-item-align="center" data-gap="4" style="width: 20rem;">
             <BFormInput
