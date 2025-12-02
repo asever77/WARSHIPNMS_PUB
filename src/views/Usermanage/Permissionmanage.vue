@@ -44,7 +44,7 @@
         </template>
         <!-- 라디오 버튼은 검색 영역에만 사용, 테이블에서는 제거 -->
         <template #cell(setting)="{ item }">
-          <BButton v-if="item.setting !== false" class="blue28" @click="openModal(item)">설정</BButton>
+          <BButton v-if="item.setting !== false" class="gray24 min-w-0" @click="openModal(item)">설정</BButton>
         </template>
       </BTable>
 
@@ -122,12 +122,12 @@ const items = ref([
 ]);
 
 const fields = computed(() => [
-  { key: 'index', label: '순번', thStyle: { width: '3rem' }, tdClass: 'text-center' },
-  { key: 'userId', label: '사용자 ID', thStyle: { width: '12rem' }, tdClass: 'text-center' },
-  { key: 'userName', label: '사용자 명', thStyle: { width: '12rem' }, tdClass: 'text-center' },
-  { key: 'userLevel', label: '사용자 등급', thStyle: { width: '12rem' }, tdClass: 'text-center' },
-  { key: 'menuAuth', label: '메뉴권한', thStyle: { width: 'auto' }, tdClass: 'text-center' },
-  { key: 'setting', label: '설정', thStyle: { width: '10rem' }, tdClass: 'text-center' }
+  { key: 'index', label: '순번', thStyle: { width: '5rem' }, tdClass: 'text-center' },
+  { key: 'userId', label: '사용자 ID', thStyle: { width: '14rem' }, tdClass: 'text-center' },
+  { key: 'userName', label: '사용자 명', thStyle: { width: '14rem' }, tdClass: 'text-center' },
+  { key: 'userLevel', label: '사용자 등급', thStyle: { width: '14rem' }, tdClass: 'text-center' },
+  { key: 'menuAuth', label: '메뉴권한', thStyle: { width: 'auto' }, tdClass: 'text-start' },
+  { key: 'setting', label: '설정', thStyle: { width: '8rem' }, tdClass: 'text-center' }
 ]);
 
 const modalFields = computed(() => [
