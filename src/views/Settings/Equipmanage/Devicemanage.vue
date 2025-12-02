@@ -128,7 +128,7 @@
   </div>
 
   <!-- modal 장치 수정 -->
-  <UiModal v-model="modals.modalName.show" :title="lang.modalTitleEdit" type="modal" size="lg" @close-btn-click="modals.modalName.show = false">
+  <UiModal v-model="modals.modalDeviceModify.show" :title="lang.modalTitleEdit" type="modal" size="lg" @close-btn-click="modals.modalDeviceModify.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -161,6 +161,8 @@
         </tbody>
       </table>
 
+
+      <!-- 무선링크연동장치 & 음력전화연동장치 & 유무선통합중계기 -->
       <table class="table-type-a">
         <colgroup>
           <col style="width:10rem">
@@ -168,12 +170,6 @@
           <col style="width:10rem">
           <col style="width:auto">
         </colgroup>
-        <thead>
-        <tr>
-          <th scope="col" colspan="2">{{ lang.thead5 }}</th>
-          <th scope="col" colspan="2">{{ lang.thead6 }}</th>
-        </tr>
-        </thead>
         <tbody>
         <tr>
           <th scope="row">{{ lang.modalDeviceName }}</th>
@@ -182,7 +178,6 @@
               class="ui-input"
               v-model="formData.deviceName"
               placeholder=""
-              value="192.16.0.25"
             />
           </td>
           <th scope="row">{{ lang.modalDescription }}</th>
@@ -191,7 +186,6 @@
               class="ui-input"
               v-model="formData.serialNumber"
               placeholder=""
-              value="192.16.0.25"
             />
           </td>
         </tr>
@@ -202,7 +196,7 @@
               class="ui-input"
               v-model="formData.grade"
               placeholder=""
-              value="192.16.0.25"
+              value="설명/비고"
             />
           </td>
           <th scope="row">{{ lang.modalSerial }}</th>
@@ -211,7 +205,7 @@
               class="ui-input"
               v-model="formData.serialNumber"
               placeholder=""
-              value="192.16.0.25"
+              value="KAF10270ASUCT10"
             />
           </td>
         </tr>
@@ -266,7 +260,314 @@
         </tr>
         </tbody>
       </table>
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:7rem">
+          <col style="width:auto">
+          <col style="width:7rem">
+          <col style="width:auto">
+          <col style="width:6.3rem">
+        </colgroup>
+        <thead>
+        <tr>
+          <th scope="col">{{ lang.cardNumber }}</th>
+          <th scope="col">{{ lang.cardInterface }}</th>
+          <th scope="col">{{ lang.label }}</th>
+          <th scope="col" colspan="2">{{ lang.portManage }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">C01</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.cardInterface1"
+              :options="cardInterfaceTypeOptions"
+            />
+          </td>
+          <td class="ta-c">C01</td>
+          <td>P01 : 포트1번,  P02: 2번포트</td>
+          <td>
+            <BButton class="gray24 min-w-0" @click="modals.modalLabeling.show = true">{{ lang.btnLabeling }}</BButton>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">C02</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.cardInterface1"
+              :options="cardInterfaceTypeOptions"
+            />
+          </td>
+          <td class="ta-c"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
 
+      <!-- 보안장비연동장치 -->
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+        <tr>
+          <th scope="row">{{ lang.modalDeviceName }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.deviceName"
+              placeholder=""
+              value="장치명"
+            />
+          </td>
+          <th scope="row">{{ lang.modalDescription }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="장비설명"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalGrade }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.grade"
+              placeholder=""
+              value="설명/비고"
+            />
+          </td>
+          <th scope="row">{{ lang.modalSerial }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="KAF10270ASUCT10"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalLocation }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.modalLocationDetail }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.locationDetail"
+              :options="locationDetailOptions"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalL2Switch }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.l2Switch"
+              :options="l2SwitchOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.modalIpAddress }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.ipAddress"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.deviceWireless }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.cardCount"
+              :options="cardCountOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.modalCardCount }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.cardCount"
+              :options="cardCountOptions"
+            />
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:7rem">
+          <col style="width:auto">
+          <col style="width:7rem">
+          <col style="width:auto">
+          <col style="width:6.3rem">
+        </colgroup>
+        <thead>
+        <tr>
+          <th scope="col">{{ lang.cardNumber }}</th>
+          <th scope="col">{{ lang.cardInterface }}</th>
+          <th scope="col">{{ lang.label }}</th>
+          <th scope="col" colspan="2">{{ lang.portManage }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">C01</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.cardInterface1"
+              :options="cardInterfaceTypeOptions"
+            />
+          </td>
+          <td class="ta-c">C01</td>
+          <td>P01 : 포트1번,  P02: 2번포트</td>
+          <td>
+            <BButton class="gray24 min-w-0" @click="modals.modalLabeling.show = true">{{ lang.btnLabeling }}</BButton>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">C02</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.cardInterface1"
+              :options="cardInterfaceTypeOptions"
+            />
+          </td>
+          <td class="ta-c"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <!-- 보안장비 -->
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+        <tr>
+          <th scope="row">{{ lang.modalDeviceName }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.deviceName"
+              placeholder=""
+              value="장치명"
+            />
+          </td>
+          <th scope="row">{{ lang.modalDescription }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="장비설명"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalGrade }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.grade"
+              placeholder=""
+              value="설명/비고"
+            />
+          </td>
+          <th scope="row">{{ lang.modalSerial }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="KAF10270ASUCT10"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalLocation }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.modalLocationDetail }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.locationDetail"
+              :options="locationDetailOptions"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalL2Switch }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.l2Switch"
+              :options="l2SwitchOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.modalIpAddress }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.ipAddress"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.deviceSecurityType }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.cardCount"
+              :options="cardCountOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.portCount }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.channelCount"
+              :options="channelCountOptions"
+            />
+          </td>
+        </tr>
+        </tbody>
+      </table>
       <table class="table-type-a">
         <colgroup>
           <col style="width:10rem">
@@ -302,6 +603,137 @@
         </tbody>
       </table>
 
+      <!-- VoIP 교환기 -->
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
+        <tr>
+          <th scope="col" colspan="2">{{ lang.thead5 }}</th>
+          <th scope="col" colspan="2">{{ lang.thead6 }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">{{ lang.deviceName }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.deviceName"
+              placeholder=""
+              value="장치명"
+            />
+          </td>
+          <th scope="row">{{ lang.deviceName }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.deviceName"
+              placeholder=""
+              value="장치명"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.serialNumber }}</th>
+          <td>
+           <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="시리얼번호"
+            />
+          </td>
+          <th scope="row">{{ lang.serialNumber }}</th>
+          <td>
+           <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="시리얼번호"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.locationType }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.locationType }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.location }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.location }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.l2Switch }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.l2Switch"
+              :options="l2SwitchOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.l2Switch }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.l2Switch"
+              :options="l2SwitchOptions"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalDescription }}</th>
+          <td>
+           <BFormInput
+              class="ui-input"
+              v-model="formData.description"
+              placeholder=""
+              value=""
+            />
+          </td>
+          <th scope="row">{{ lang.modalDescription }}</th>
+          <td>
+           <BFormInput
+              class="ui-input"
+              v-model="formData.description"
+              placeholder=""
+              value=""
+            />
+          </td>
+        </tr>
+        </tbody>
+      </table>
       <table class="table-type-a">
         <colgroup>
           <col style="width:10rem">
@@ -316,7 +748,149 @@
         </thead>
         <tbody>
         <tr>
-          <th scope="row">{{ lang.modalServerTYpe }}</th>
+          <th scope="row">System IP(VIP)</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.portLabel"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+          <th scope="row">SIP Port</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.portLabel"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <!-- 무선통신기 -->
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+        <tr>
+          <th scope="row">{{ lang.modalDeviceName }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.deviceName"
+              placeholder=""
+              value="장치명"
+            />
+          </td>
+          <th scope="row">{{ lang.modalDescription }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="장비설명"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalGrade }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.grade"
+              placeholder=""
+              value="설명/비고"
+            />
+          </td>
+          <th scope="row">{{ lang.modalSerial }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="KAF10270ASUCT10"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalLocation }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.modalLocationDetail }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.locationDetail"
+              :options="locationDetailOptions"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.transceiverType }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.transceiverType"
+              :options="transceiverTypeOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.frequencyBand }}</th>
+          <td>
+           <BFormSelect
+              class="ui-select"
+              v-model="formData.frequencyBand"
+              :options="frequencyBandOptions"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.portCount }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.cardCount"
+              :options="cardCountOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.channelCount }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.channelCount"
+              :options="channelCountOptions"
+            />
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:30rem">
+        </colgroup>
+        <thead>
+        <tr>
+          <th scope="col">{{ lang.thead1 }}</th>
+          <th scope="col">{{ lang.thead2 }}</th>
+          <th scope="col">{{ lang.thead3 }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">P01</th>
           <td>
             <BFormSelect
               class="ui-select"
@@ -324,7 +898,240 @@
               :options="portTypeOptions1"
             />
           </td>
-          <th scope="row">System IP(VIP)</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.portLabel"
+              placeholder=""
+              value=""
+            />
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <!-- 스위치 -->
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+        <tr>
+          <th scope="row">{{ lang.modalDeviceName }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.deviceName"
+              placeholder=""
+              value="장치명"
+            />
+          </td>
+          <th scope="row">{{ lang.modalDescription }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.description"
+              placeholder=""
+              value="장비설명"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalDescription }}</th>
+          <td>
+           <BFormInput
+              class="ui-input"
+              v-model="formData.description"
+              placeholder=""
+              value="설명/비고"
+            />
+          </td>
+          <th scope="row">{{ lang.modalSerial }}</th>
+          <td>
+           <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="시리얼번호"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalLocation }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.modalLocationDetail }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.locationDetail"
+              placeholder=""
+              value="시리얼번호"
+            />
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
+        <tr>
+          <th scope="col" colspan="4">{{ lang.switchAttributes }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">{{ lang.poeSupport }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.managementIp }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.portLabel"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.dashboardLabel }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.portLabel"
+              placeholder=""
+              value=""
+            />
+          </td>
+          <th scope="row"></th>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <!-- 음력전화 & WT -->
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+        <tr>
+          <th scope="row">{{ lang.modalDeviceName }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.deviceName"
+              placeholder=""
+              value="장치명"
+            />
+          </td>
+          <th scope="row">{{ lang.modalDescription }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="장비설명"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalGrade }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.grade"
+              placeholder=""
+              value="설명/비고"
+            />
+          </td>
+          <th scope="row">{{ lang.modalSerial }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="KAF10270ASUCT10"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalLocation }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.modalLocationDetail }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.locationDetail"
+              :options="locationDetailOptions"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.portCount }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.portCount"
+              :options="portCountOptions"
+            />
+          </td>
+          <th scope="row"></th>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:30rem">
+        </colgroup>
+        <thead>
+        <tr>
+          <th scope="col">{{ lang.thead1 }}</th>
+          <th scope="col">{{ lang.thead2 }}</th>
+          <th scope="col">{{ lang.thead3 }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">P01</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.portType1"
+              :options="portTypeOptions1"
+            />
+          </td>
           <td>
             <BFormInput
               class="ui-input"
@@ -342,6 +1149,62 @@
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
+
+  <UiModal v-model="modals.modalLabeling.show" type="modal" size="md" @close-btn-click="modals.modalLabeling.show = false">
+    <table class="table-type-a">
+      <colgroup>
+        <col style="width:10rem">
+        <col style="width:auto">
+        <col style="width:10rem">
+        <col style="width:auto">
+      </colgroup>
+      <thead>
+      <tr>
+        <th scope="col">{{ lang.cardNumber }}</th>
+        <th scope="col">{{ lang.cardLabel }}</th>
+        <th scope="col">{{ lang.portNumber }}</th>
+        <th scope="col">{{ lang.portLabel }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row" rowspan="2">C01</th>
+        <td rowspan="2">
+          <BFormInput
+            class="ui-input"
+            v-model="formData.labelCardLabel1"
+            placeholder=""
+            value="C01"
+          />
+        </td>
+        <th scope="row">P01</th>
+        <td>
+          <BFormInput
+            class="ui-input"
+            v-model="formData.labelPortLabel1"
+            placeholder=""
+            value="포트1번"
+          />
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">P02</th>
+        <td>
+          <BFormInput
+            class="ui-input"
+            v-model="formData.labelPortLabel2"
+            placeholder=""
+            value="포트2번"
+          />
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalLabeling.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">적용</BButton>
+    </template>
+  </UiModal>
 </template>
 
 <script setup>
@@ -350,7 +1213,6 @@ import G from '@/config/global.js'
 import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
 import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
-
 
 const ko = {
   // 필터 영역
@@ -363,6 +1225,13 @@ const ko = {
   searchLabel: '검색어',
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
+
+  thead1: '포트 식별`자',
+  thead2: '포트 인터페이스 유형',
+  thead3: '레이블',
+  thead4: 'VoIP교환기 속성',
+  thead5: 'VoIP 교환기 1',
+  thead6: 'VoIP 교환기 2',
 
   // 버튼
   btnSearch: '조회',
@@ -399,18 +1268,48 @@ const ko = {
 
   // 옵션
   optionSelect: '선택하세요',
-  optionAdmin: 'Admin',
-  optionManager: 'Manager',
+  optionAdmin: '관리자',
+  optionManager: '매니저',
+  optionLocation1: '위치1',
+  optionLocation2: '위치2',
+  optionDetailA: 'A구역',
+  optionDetailB: 'B구역',
+  optionL2SW01: 'L2SW-01',
+  optionL2SW02: 'L2SW-02',
+  optionCardCount1: '1',
+  optionCardCount2: '2',
+  optionCardCount4: '4',
+  optionEthernet: '이더넷',
+  optionSerial: '시리얼',
+  optionFiber: '광',
 
-  // thead
-  thead1:'포트 식별자',
-  thead2:'포트 인터페이스 유형',
-  thead3:'레이블',
-  thead4:'VoIP교환기 속성',
-  thead5:'VoIP 교환기 1',
-  thead6:'VoIP 교환기 2',
+  // 추가 텍스트
+  cardNumber: '카드번호',
+  cardLabel: '카드레이블',
+  portNumber: '포트번호',
+  portLabel: '포트 레이블',
+  cardInterface: '카드 인터페이스',
+  label: '라벨',
+  portManage: '포트관리',
+  btnLabeling: '라벨링',
+  deviceSecurityType: '보안장비유형',
+  portCount: '포트갯수',
+  deviceName: '장치명',
+  serialNumber: '시리얼번호',
+  locationType: '위치유형',
+  location: '위치',
+  locationDetail: '위치상세',
+  l2Switch: 'L2 스위치',
+  description: '설명/비고',
+  transceiverType: '송수신유형',
+  frequencyBand: '주파수대역',
+  channelCount: '채널갯수',
+  switchAttributes: '스위치 속성',
+  poeSupport: 'POE 지원 여부',
+  managementIp: '관리 IP',
+  dashboardLabel: '대시보드 레이블',
+  btnApply: '적용',
 }
-
 const en = {
   // Filter area
   filterDeviceType: 'Device Type',
@@ -422,6 +1321,13 @@ const en = {
   searchLabel: 'Search',
   searchPlaceholder: 'Enter search term',
   totalLabel: 'Total',
+
+  thead1: 'Port Identifier',
+  thead2: 'Port Interface Type',
+  thead3: 'Label',
+  thead4: 'VoIP Switch Attributes',
+  thead5: 'VoIP Switch 1',
+  thead6: 'VoIP Switch 2',
 
   // Buttons
   btnSearch: 'Search',
@@ -460,24 +1366,54 @@ const en = {
   optionSelect: 'Please Select',
   optionAdmin: 'Admin',
   optionManager: 'Manager',
+  optionLocation1: 'Location 1',
+  optionLocation2: 'Location 2',
+  optionDetailA: 'Area A',
+  optionDetailB: 'Area B',
+  optionL2SW01: 'L2SW-01',
+  optionL2SW02: 'L2SW-02',
+  optionCardCount1: '1',
+  optionCardCount2: '2',
+  optionCardCount4: '4',
+  optionEthernet: 'Ethernet',
+  optionSerial: 'Serial',
+  optionFiber: 'Fiber',
 
-  // thead
-  thead1:'Port Identifier',
-  thead2:'Port Interface Type',
-  thead3:'Labels',
-  thead4:'VoIP Exchange Properties',
-  thead5:'VoIP Switchboard 1',
-  thead6:'VoIP Switchboard 2',
+  // 추가 텍스트
+  cardNumber: 'Card Number',
+  cardInterface: 'Card Interface',
+  label: 'Label',
+  portManage: 'Port Management',
+  btnLabeling: 'Labeling',
+  deviceSecurityType: 'Security Device Type',
+  portCount: 'Port Count',
+  deviceName: 'Device Name',
+  serialNumber: 'Serial Number',
+  locationType: 'Location Type',
+  location: 'Location',
+  locationDetail: 'Location Detail',
+  l2Switch: 'L2 Switch',
+  description: 'Description/Remarks',
+  transceiverType: 'Transceiver Type',
+  frequencyBand: 'Frequency Band',
+  channelCount: 'Channel Count',
+  switchAttributes: 'Switch Attributes',
+  poeSupport: 'POE Support',
+  managementIp: 'Management IP',
+  dashboardLabel: 'Dashboard Label',
+  btnApply: 'Apply',
 }
 
 const lang = ref({})
 
 // 수정 모달 상태
-const modals = reactive({ modalName: { show: false } })
+const modals = reactive({
+  modalDeviceModify: { show: false },
+  modalLabeling: { show: false },
+ })
 const formData = reactive({ deviceType: '', model: '' })
 const deviceTypeOptions = computed(() => [{ value: formData.deviceType, text: formData.deviceType }])
 const modelOptions = computed(() => [{ value: formData.model, text: formData.model }])
-
 
 // 폼 상태
 const searchWord = ref('')
@@ -495,6 +1431,77 @@ const selectOptions = computed(() => [
   { value: 'b', text: lang.value.option2 ?? '' },
 ])
 
+const locationOptions = computed(() => [
+  { value: '', text: lang.value.optionSelect },
+  { value: '위치1', text: lang.value.optionLocation1 },
+  { value: '위치2', text: lang.value.optionLocation2 }
+]);
+
+const locationDetailOptions = computed(() => [
+  { value: '', text: lang.value.optionSelect },
+  { value: 'A구역', text: lang.value.optionDetailA },
+  { value: 'B구역', text: lang.value.optionDetailB }
+]);
+
+const l2SwitchOptions = computed(() => [
+  { value: '', text: lang.value.optionSelect },
+  { value: 'L2SW-01', text: lang.value.optionL2SW01 },
+  { value: 'L2SW-02', text: lang.value.optionL2SW02 }
+]);
+
+const cardCountOptions = computed(() => [
+  { value: '', text: lang.value.optionSelect },
+  { value: 1, text: lang.value.optionCardCount1 },
+  { value: 2, text: lang.value.optionCardCount2 },
+  { value: 4, text: lang.value.optionCardCount4 }
+]);
+
+const portTypeOptions1 = computed(() => [
+  { value: '', text: lang.value.optionSelect },
+  { value: 'Ethernet', text: lang.value.optionEthernet },
+  { value: 'Serial', text: lang.value.optionSerial }
+]);
+
+const cardInterfaceTypeOptions = computed(() => [
+  { value: '', text: lang.value.optionSelect },
+  { value: 'Ethernet', text: lang.value.optionEthernet },
+  { value: 'Serial', text: lang.value.optionSerial },
+  { value: 'Fiber', text: lang.value.optionFiber }
+]);
+
+const frequencyBandOptions = computed(() => [
+  { value: '', text: lang.value.optionSelect },
+  { value: 'VHF', text: 'VHF' },
+  { value: 'UHF', text: 'UHF' },
+  { value: 'HF', text: 'HF' }
+]);
+
+const channelCountOptions = computed(() => [
+  { value: '', text: lang.value.optionSelect },
+  { value: 1, text: '1' },
+  { value: 2, text: '2' },
+  { value: 4, text: '4' },
+  { value: 8, text: '8' },
+  { value: 16, text: '16' }
+]);
+
+const transceiverTypeOptions = computed(() => [
+  { value: '', text: lang.value.optionSelect },
+  { value: 1, text: '1' },
+  { value: 2, text: '2' },
+  { value: 4, text: '4' },
+  { value: 8, text: '8' },
+  { value: 16, text: '16' }
+]);
+
+const portCountOptions  = computed(() => [
+  { value: '', text: lang.value.optionSelect },
+  { value: 1, text: '1' },
+  { value: 2, text: '2' },
+  { value: 4, text: '4' },
+  { value: 8, text: '8' },
+  { value: 16, text: '16' }
+]);
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(40))
 
@@ -524,10 +1531,11 @@ function generateItems(n) {
   return arr
 }
 
-const selectedIds = ref([])
+const selectedIds = ref([]);
 
 // 테이블 필드: 선택,순번,장치유형,모델,장치명,등급,시리얼번호,위치,등록일
 // 정렬 추가: 장치유형,모델,장치명,등급,위치,등록일
+
 const fields = computed(() => [
   { key: 'select', label: lang.value.colSelect, thStyle: { width: '5rem' } },
   { key: 'number', label: lang.value.colNumber, thStyle: { width: '8rem' } },
@@ -538,9 +1546,7 @@ const fields = computed(() => [
   { key: 'serial', label: lang.value.colSerial, thStyle: { width: '15rem' } },
   { key: 'location', label: lang.value.colLocation, sortable: true, thStyle: { width: 'auto' } },
   { key: 'regDate', label: lang.value.colRegDate, sortable: true, thStyle: { width: '14rem' } },
-])
-
-// 사용여부 라디오 삭제 (스키마 변경으로 미사용)
+]);
 
 // 실제 검색에 사용되는 값
 const filterField = ref('')
@@ -554,7 +1560,6 @@ const filterFieldOptions = computed(() => {
     ...uniqueTypes.map(type => ({ value: type, text: type }))
   ]
 });
-
 
 const filteredItems = computed(() => {
   return items.value.filter(item => {
@@ -607,11 +1612,22 @@ function toggleSelectAll(checked) {
 }
 
 // 테이블 행 클릭 시 모달 열고 데이터 채우기
-function onRowClicked(item, index, event) {
+function onRowClicked(item) {
   if (!item) return;
-  formData.deviceType = item.deviceType || ''
-  formData.model = item.model || ''
-  modals.modalName.show = true
+  formData.deviceType = item.deviceType || '';
+  formData.model = item.model || '';
+  formData.deviceName = item.deviceName || '';
+  formData.grade = item.grade || '';
+  formData.serialNumber = item.serial || '';
+  formData.location = item.location || '';
+  formData.locationDetail = '';
+  formData.l2Switch = '';
+  formData.ipAddress = '';
+  formData.cardCount = '';
+  formData.portType1 = '';
+  formData.portLabel = '';
+  formData.cardInterface1 = '';
+  modals.modalDeviceModify.show = true;
 }
 
 function onFilter() {
@@ -619,7 +1635,6 @@ function onFilter() {
   searchText.value = filterText.value
   currentPage.value = 1
 }
-
 
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;

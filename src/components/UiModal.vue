@@ -1,13 +1,14 @@
 <template>
   <BModal
     :modal-class="modalConfig.modalClass"
-    :content-class="modalConfig.contentClass"
+    :content-class="[modalConfig.contentClass, !title ? 'modal-content--no-title' : '']"
     :centered="modalConfig.centered"
     :fullscreen="modalConfig.fullscreen"
     :size="modalConfig.size"
     :no-fade="modalConfig.noFade"
     v-model="show"
     :title="title"
+    :header-class="!title ? 'modal-header--no-title' : ''"
     v-bind="$attrs"
     @hidden="onHidden"
   >
@@ -36,7 +37,6 @@ const props = defineProps({
   },
   title: {
     type: String,
-    default: 'Modal Title',
   },
   type: {
     type: String,
@@ -223,5 +223,40 @@ const onHidden = () => {
 }
 .base-modal .modal-sm {
   max-width: 32rem;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f8f8f8;
+}
+.base-modal .modal-content .modal-header--no-title .modal-title{display: none;}
+.base-modal .modal-content .modal-header--no-title {
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background: #fff;
+  border-bottom: none;
+  border:0;
+  height: 3.5rem;
+  padding:0;
+}
+.base-modal .modal-content .modal-header--no-title .btn-close{
+  right: 1rem;
+  top:1rem;
+  width:1.5rem;
+  height:1.5rem;
+  background-size: 1.5rem 1.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.16667 5.16667L9.83333 9.83333M9.83333 5.16667L5.16667 9.83333M0.5 2.05556C0.5 1.643 0.663888 1.24733 0.955612 0.955612C1.24733 0.663888 1.643 0.5 2.05556 0.5H12.9444C13.357 0.5 13.7527 0.663888 14.0444 0.955612C14.3361 1.24733 14.5 1.643 14.5 2.05556V12.9444C14.5 13.357 14.3361 13.7527 14.0444 14.0444C13.7527 14.3361 13.357 14.5 12.9444 14.5H2.05556C1.643 14.5 1.24733 14.3361 0.955612 14.0444C0.663888 13.7527 0.5 13.357 0.5 12.9444V2.05556Z' stroke='%232B77A9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+}
+.modal-content--no-title{
+  border:.2rem solid #D4E1E8;
+  box-shadow: none;
+}
+.modal-content--no-title .modal-body {
+  padding-top:0;
 }
 </style>
