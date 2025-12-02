@@ -59,28 +59,31 @@
   </table>
 
   <div class="ui-btn-group">
-    <BButton class="blue28">{{ lang.btn1 }}</BButton>
+    <BButton class="blue28">{{ lang.btn5 }}</BButton>
   </div>
 
   <div class="base-wrap mt-20">
     <div class="search-base">
       <div class="search-base--form">
-        <b>전체:15</b>
+        <span class="search-total">전체:15</span>
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
         <BFormGroup label="검색어" label-for="search-word-2">
-          <BFormInput
-            id="search-word-2"
-            v-model="filterText"
-            :placeholder="lang.placeholder1"
-            class="ui-input-28"
-          />
+          <div class="ui-search-with-btn">
+            <BFormInput
+              id="search-word-2"
+              v-model="filterText"
+              :placeholder="lang.placeholder1"
+              class="ui-input-28"
+            />
+            <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
+          </div>
         </BFormGroup>
-        <BButton class="blue28" @click="onFilter">{{ lang.btn5 }}</BButton>
+
         <BFormSelect
             id="per-page"
-            class="ui-select"
+            class="ui-select-28 w-60"
             v-model="perPage"
             :options="perPageOptions"
           ></BFormSelect>
