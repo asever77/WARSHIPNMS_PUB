@@ -71,12 +71,12 @@
       >
       </BTable>
       <div class="base-wrap">
-        <MenuTree :nodes="menuTreeData" />
+        <MenuTree :nodes="selectedRow ? perUserMenuTrees[selectedRow.userId] : menuTreeData" />
       </div>
     </div>
     <template #footer>
       <BButton class="gray28" @click="modals.modalName.show = false">{{ lang.text17 || '취소' }}</BButton>
-      <BButton class="blue28">{{ lang.text18 || '저장' }}</BButton>
+      <BButton class="blue28" @click="saveUserMenu">{{ lang.text18 || '저장' }}</BButton>
     </template>
   </UiModal>
 
@@ -122,7 +122,7 @@ const items = ref([
 ]);
 
 const fields = computed(() => [
-  { key: 'index', label: '순번', thStyle: { width: '3rem' }, tdClass: 'text-center' },
+  { key: 'index', label: '순번', thStyle: { width: '6rem' }, tdClass: 'text-center' },
   { key: 'userId', label: '사용자 ID', thStyle: { width: '12rem' }, tdClass: 'text-center' },
   { key: 'userName', label: '사용자 명', thStyle: { width: '12rem' }, tdClass: 'text-center' },
   { key: 'userLevel', label: '사용자 등급', thStyle: { width: '12rem' }, tdClass: 'text-center' },
@@ -229,6 +229,46 @@ const selectedRow = ref(null);
 
 function openModal(item) {
   selectedRow.value = item;
+  // 사용자별 트리 초기화: 없으면 기본 트리로 생성
+  if (!perUserMenuTrees[item.userId]) {
+    perUserMenuTrees[item.userId] = createDefaultMenuTree();
+  }
   modals.modalName.show = true;
+}
+
+// 사용자별 메뉴 트리 저장소
+const perUserMenuTrees = reactive({});
+
+// 기본 트리 생성 함수 (딥 클론)
+function createDefaultMenuTree() {
+  const src = menuTreeData.value;
+  const clone = (arr) => arr.map(node => ({
+    label: node.label,
+    checked: !!node.checked,
+    children: node.children ? clone(node.children) : undefined
+  }));
+  return clone(src);
+}
+
+// 저장 버튼 핸들러 (예시: 현재 트리를 문자열 요약으로 items.menuAuth에 저장)
+function saveUserMenu() {
+  if (!selectedRow.value) return;
+  const uid = selectedRow.value.userId;
+  const tree = perUserMenuTrees[uid] || [];
+  // 선택된 메뉴 라벨만 모아 간단히 저장 (필요 시 API 연동)
+  const selectedLabels = [];
+  const walk = (nodes) => {
+    nodes.forEach(n => {
+      if (n.checked) selectedLabels.push(n.label);
+      if (n.children && n.children.length) walk(n.children);
+    });
+  };
+  walk(tree);
+  // items 테이블의 해당 사용자 menuAuth 필드 업데이트 (예시)
+  const idx = items.value.findIndex(i => i.userId === uid);
+  if (idx !== -1) {
+    items.value[idx].menuAuth = selectedLabels.length ? selectedLabels.join(', ') : '조회';
+  }
+  modals.modalName.show = false;
 }
 </script>
