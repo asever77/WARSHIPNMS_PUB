@@ -22,14 +22,35 @@
 </template>
 
 <script setup>
+import { BFormCheckbox } from 'bootstrap-vue-next';
+import { onMounted } from 'vue';
+
 // id 자동 생성 함수
 function getCheckboxId(node, index) {
   if (node.id) return node.id;
   // label과 index로 고유값 생성
   return `checkbox-${node.label}-${index}`;
 }
+
 const props = defineProps({ nodes: Array, parentChecked: Boolean, parentNode: Object });
-import { BFormCheckbox } from 'bootstrap-vue-next';
+
+// 트리 초기화: 부모 참조 설정
+onMounted(() => {
+  if (props.nodes) {
+    props.nodes.forEach(node => {
+      initializeNode(node, props.parentNode);
+    });
+  }
+});
+
+function initializeNode(node, parent) {
+  node.__parent = parent;
+  if (node.children && node.children.length) {
+    node.children.forEach(child => {
+      initializeNode(child, node);
+    });
+  }
+}
 
 function isDisabled(node) {
   // 1뎁스는 항상 enabled
@@ -47,18 +68,16 @@ function updateChecked(node, val) {
       currentParent.checked = true;
       currentParent = currentParent.__parent;
     }
-    // 1뎁스 체크 시 하위 disabled 해제
-    if (!node.__parent) {
-      function enableChildren(n) {
-        if (n.children && n.children.length) {
-          n.children.forEach(child => {
-            // 하위 disabled 해제
-            enableChildren(child);
-          });
-        }
+    // 체크 시 모든 하위 자식 체크
+    function checkChildren(n) {
+      if (n.children && n.children.length) {
+        n.children.forEach(child => {
+          child.checked = true;
+          checkChildren(child);
+        });
       }
-      enableChildren(node);
     }
+    checkChildren(node);
   } else {
     // 체크 해제 시 모든 하위 자식 체크 해제
     function uncheckChildren(n) {

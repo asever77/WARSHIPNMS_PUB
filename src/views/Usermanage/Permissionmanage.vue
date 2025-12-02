@@ -84,6 +84,9 @@
 
 <script setup>
 import MenuTree from '@/components/MenuTree.vue';
+import UiModal from '@/components/UiModal.vue'
+import { BTable, BButton, BFormInput, BFormRadioGroup, BFormGroup, BFormSelect, BPagination } from 'bootstrap-vue-next';
+import G from "@/config/global.js";
 
 // 메뉴 트리 데이터(JSON)
 const menuTreeData = ref([
@@ -164,10 +167,8 @@ const filteredItems = computed(() => {
 const modals = reactive({
   modalName: { show: false },
 });
-import UiModal from '@/components/UiModal.vue'
-import { BTable, BButton, BFormInput, BFormRadioGroup, BFormGroup, BFormSelect, BPagination } from 'bootstrap-vue-next';
 
-import G from "@/config/global.js";
+
 
 const ko = {
   "text1": "메뉴 권한관리",
