@@ -53,10 +53,10 @@ function initializeNode(node, parent) {
 }
 
 function isDisabled(node) {
-  // 1뎁스는 항상 enabled
-  if (!node.__parent) return false;
+  // 1뎁스는 항상 enabled (부모 없음)
+  if (!props.parentNode) return false;
   // 2뎁스부터는 부모가 체크되어야 enabled
-  return !(node.__parent && node.__parent.checked);
+  return !props.parentChecked;
 }
 
 function updateChecked(node, val) {
