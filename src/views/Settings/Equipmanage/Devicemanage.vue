@@ -129,34 +129,52 @@
 
   <!-- modal 장치 수정 -->
   <UiModal v-model="modals.modalName.show" :title="lang.modalTitleEdit" type="modal" size="lg" @close-btn-click="modals.modalName.show = false">
-    <table class="table-type-a">
-      <colgroup>
-        <col style="width:10rem">
-        <col style="width:auto">
-        <col style="width:10rem">
-        <col style="width:auto">
-      </colgroup>
-      <tbody>
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">{{ lang.modalDeviceType }}</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.deviceType"
+                :options="deviceTypeOptions"
+                disabled
+              />
+            </td>
+            <th scope="row">{{ lang.modalModel }}</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.model"
+                :options="modelOptions"
+                disabled
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
         <tr>
-          <th scope="row">{{ lang.modalDeviceType }}</th>
-          <td>
-            <BFormSelect
-              class="ui-select"
-              v-model="formData.deviceType"
-              :options="deviceTypeOptions"
-              disabled
-            />
-          </td>
-          <th scope="row">{{ lang.modalModel }}</th>
-          <td>
-            <BFormSelect
-              class="ui-select"
-              v-model="formData.model"
-              :options="modelOptions"
-              disabled
-            />
-          </td>
+          <th scope="col" colspan="2">{{ lang.thead5 }}</th>
+          <th scope="col" colspan="2">{{ lang.thead6 }}</th>
         </tr>
+        </thead>
+        <tbody>
         <tr>
           <th scope="row">{{ lang.modalDeviceName }}</th>
           <td>
@@ -169,7 +187,7 @@
           </td>
           <th scope="row">{{ lang.modalDescription }}</th>
           <td>
-             <BFormInput
+            <BFormInput
               class="ui-input"
               v-model="formData.serialNumber"
               placeholder=""
@@ -189,7 +207,7 @@
           </td>
           <th scope="row">{{ lang.modalSerial }}</th>
           <td>
-             <BFormInput
+            <BFormInput
               class="ui-input"
               v-model="formData.serialNumber"
               placeholder=""
@@ -226,7 +244,7 @@
           </td>
           <th scope="row">{{ lang.modalIpAddress }}</th>
           <td>
-             <BFormInput
+            <BFormInput
               class="ui-input"
               v-model="formData.ipAddress"
               placeholder=""
@@ -236,16 +254,91 @@
         </tr>
         <tr>
           <th scope="row">{{ lang.modalCardCount }}</th>
-          <td colspan="3">
+          <td>
             <BFormSelect
               class="ui-select"
               v-model="formData.cardCount"
               :options="cardCountOptions"
             />
           </td>
+          <th scope="row"></th>
+          <td></td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:30rem">
+        </colgroup>
+        <thead>
+        <tr>
+          <th scope="col">{{ lang.thead1 }}</th>
+          <th scope="col">{{ lang.thead2 }}</th>
+          <th scope="col">{{ lang.thead3 }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">P01</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.portType1"
+              :options="portTypeOptions1"
+            />
+          </td>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.portLabel"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div>
+        <table class="table-type-a">
+          <colgroup>
+            <col style="width:10rem">
+            <col style="width:auto">
+            <col style="width:10rem">
+            <col style="width:auto">
+          </colgroup>
+          <thead>
+          <tr>
+            <th scope="col" colspan="4">{{ lang.thead4 }}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">{{ lang.modalServerTYpe }}</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.portType1"
+                :options="portTypeOptions1"
+              />
+            </td>
+            <th scope="row">System IP(VIP)</th>
+            <td>
+              <BFormInput
+                class="ui-input"
+                v-model="formData.portLabel"
+                placeholder=""
+                value="192.16.0.25"
+              />
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <template #footer>
       <BButton class="gray28" @click="modals.modalName.show = false">{{ lang.btnCancel }}</BButton>
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
@@ -304,11 +397,20 @@ const ko = {
   modalL2Switch: 'L2 스위치',
   modalIpAddress: 'IP Address',
   modalCardCount: '카드갯수',
+  modalServerTYpe: '서버타입',
 
   // 옵션
   optionSelect: '선택하세요',
   optionAdmin: 'Admin',
   optionManager: 'Manager',
+
+  // thead
+  thead1:'포트 식별자',
+  thead2:'포트 인터페이스 유형',
+  thead3:'레이블',
+  thead4:'VoIP교환기 속성',
+  thead5:'VoIP 교환기 1',
+  thead6:'VoIP 교환기 2',
 }
 
 const en = {
@@ -354,11 +456,20 @@ const en = {
   modalL2Switch: 'L2 Switch',
   modalIpAddress: 'IP Address',
   modalCardCount: 'Card Count',
+  modalServerTYpe: 'Server TYpe',
 
   // Options
   optionSelect: 'Please Select',
   optionAdmin: 'Admin',
   optionManager: 'Manager',
+
+  // thead
+  thead1:'Port Identifier',
+  thead2:'Port Interface Type',
+  thead3:'Labels',
+  thead4:'VoIP Exchange Properties',
+  thead5:'VoIP Switchboard 1',
+  thead6:'VoIP Switchboard 2',
 }
 
 const lang = ref({})
