@@ -302,42 +302,40 @@
         </tbody>
       </table>
 
-      <div>
-        <table class="table-type-a">
-          <colgroup>
-            <col style="width:10rem">
-            <col style="width:auto">
-            <col style="width:10rem">
-            <col style="width:auto">
-          </colgroup>
-          <thead>
-          <tr>
-            <th scope="col" colspan="4">{{ lang.thead4 }}</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <th scope="row">{{ lang.modalServerTYpe }}</th>
-            <td>
-              <BFormSelect
-                class="ui-select"
-                v-model="formData.portType1"
-                :options="portTypeOptions1"
-              />
-            </td>
-            <th scope="row">System IP(VIP)</th>
-            <td>
-              <BFormInput
-                class="ui-input"
-                v-model="formData.portLabel"
-                placeholder=""
-                value="192.16.0.25"
-              />
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
+        <tr>
+          <th scope="col" colspan="4">{{ lang.thead4 }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">{{ lang.modalServerTYpe }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.portType1"
+              :options="portTypeOptions1"
+            />
+          </td>
+          <th scope="row">System IP(VIP)</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.portLabel"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
     <template #footer>
       <BButton class="gray28" @click="modals.modalName.show = false">{{ lang.btnCancel }}</BButton>
