@@ -87,7 +87,7 @@
       </div>
     </div>
     <div class="base-table">
-      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive>
+      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive @row-clicked="onRowClicked" data-type="clickable">
         <template #head(select)>
           <BFormCheckbox
             :indeterminate="isIndeterminate"
@@ -111,13 +111,145 @@
       </div>
     </div>
   </div>
+
+  <!-- modal 장치 수정 -->
+  <UiModal v-model="modals.modalName.show" :title="'장치 수정'" type="modal" size="lg" @close-btn-click="modals.modalName.show = false">
+    <table class="table-type-a">
+      <colgroup>
+        <col style="width:10rem">
+        <col style="width:auto">
+        <col style="width:10rem">
+        <col style="width:auto">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th scope="row">장치유형</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.deviceType"
+              :options="deviceTypeOptions"
+              disabled
+            />
+          </td>
+          <th scope="row">모델명</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.model"
+              :options="modelOptions"
+              disabled
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">장치명</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.deviceName"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+          <th scope="row">장비설명</th>
+          <td>
+             <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">등급</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.grade"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+          <th scope="row">시리얼번호</th>
+          <td>
+             <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">위치</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+          <th scope="row">위치상세</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.locationDetail"
+              :options="locationDetailOptions"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">L2 스위치</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.l2Switch"
+              :options="l2SwitchOptions"
+            />
+          </td>
+          <th scope="row">IP Address</th>
+          <td>
+             <BFormInput
+              class="ui-input"
+              v-model="formData.ipAddress"
+              placeholder=""
+              value="192.16.0.25"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">카드갯수</th>
+          <td colspan="3">
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.cardCount"
+              :options="cardCountOptions"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalName.show = false">취소</BButton>
+      <BButton class="blue28">저장</BButton>
+    </template>
+  </UiModal>
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed, watch, reactive } from 'vue'
 import G from '@/config/global.js'
 import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
 import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
+import UiModal from '@/components/UiModal.vue'
+// 수정 모달 상태
+const modals = reactive({ modalName: { show: false } })
+const formData = reactive({ deviceType: '', model: '' })
+const deviceTypeOptions = computed(() => [{ value: formData.deviceType, text: formData.deviceType }])
+const modelOptions = computed(() => [{ value: formData.model, text: formData.model }])
+
 
 // 폼 상태
 const searchWord = ref('')
@@ -246,6 +378,14 @@ function toggleSelectAll(checked) {
   }
 }
 
+// 테이블 행 클릭 시 모달 열고 데이터 채우기
+function onRowClicked(item, index, event) {
+  if (!item) return;
+  formData.deviceType = item.deviceType || ''
+  formData.model = item.model || ''
+  modals.modalName.show = true
+}
+
 function onFilter() {
   searchField.value = filterField.value
   searchText.value = filterText.value
@@ -323,3 +463,4 @@ onMounted(() => {
   }
 })
 </script>
+

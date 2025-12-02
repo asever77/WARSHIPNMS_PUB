@@ -284,6 +284,11 @@ table .form-check-inline ~ .form-check-inline,
 .base-table thead tr:first-child th:first-child {border-top-left-radius:.5rem;}
 .base-table thead tr:first-child th:last-child {border-top-right-radius:.5rem;}
 .base-table tbody td {font-size:1.2rem;color:#3E3E3E;text-align:center;min-height:3rem;padding:.4rem 1rem;}
+.base-table tbody tr {transition: background-color .15s ease-in-out;}
+.base-table [data-type="clickable"] tbody tr:hover td{
+  background-color: #F1F6F9; /* 밝은 하이라이트 */
+  cursor: pointer;
+}
 .base-table .page-link {background-color:transparent;color:#3E3E3E;font-size:1.2rem;min-height:2rem;min-width:2rem;padding:0;border:0;line-height:1.6;}
 .base-table .pagination .page-item:nth-child(1) .page-link,
 .base-table .pagination .page-item:nth-child(2) .page-link,
@@ -298,7 +303,10 @@ table .form-check-inline ~ .form-check-inline,
 .search-base .form-select,
 .search-base .form-control{min-width:15rem;}
 
-
+.base-table thead th .form-check-input,
+.base-table thead th .form-check-input[type=checkbox]:indeterminate{
+  background-color: transparent;
+}
 /* BTable sort icon override */
 .base-table thead th .b-table-sort-icon {
   display: inline-block;
