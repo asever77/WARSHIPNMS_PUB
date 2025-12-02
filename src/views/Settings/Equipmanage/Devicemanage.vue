@@ -11,8 +11,8 @@
     <tbody>
       <tr>
         <th scope="row">
-          장치유형
-          <BButton class="btn-sort" aria-sort="none" aria-label="장치유형 전체 정렬"></BButton>
+          {{ lang.filterDeviceType }}
+          <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceType} 전체 정렬`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -22,8 +22,8 @@
             :options="selectOptions"
           ></BFormSelect>
         </td>
-        <th scope="row">검색대상
-          <BButton class="btn-sort" aria-sort="descending" aria-label="검색대상 전체 정렬"></BButton>
+        <th scope="row">{{ lang.filterSearchTarget }}
+          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} 전체 정렬`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -33,14 +33,14 @@
             :options="selectOptions"
           ></BFormSelect>
         </td>
-        <th scope="row">검색어</th>
+        <th scope="row">{{ lang.filterSearchWord }}</th>
         <td>
           <BFormInput id="search-word" class="ui-input" v-model="searchWord" placeholder=""></BFormInput>
         </td>
       </tr>
       <tr>
-        <th scope="row">등록일
-          <BButton class="btn-sort" aria-sort="ascending" aria-label="등록일 전체 정렬"></BButton>
+        <th scope="row">{{ lang.filterRegDate }}
+          <BButton class="btn-sort" aria-sort="ascending" :aria-label="`${lang.filterRegDate} 전체 정렬`"></BButton>
         </th>
         <td colspan="5">
           <div class="ui-flex" data-item-align="center" data-gap="4" style="width: 20rem;">
@@ -66,22 +66,22 @@
   </table>
 
   <div class="ui-btn-group">
-    <BButton class="blue28">{{ lang.btn5 }}</BButton>
+    <BButton class="blue28">{{ lang.btnSearch }}</BButton>
   </div>
 
   <div class="base-wrap mt-20">
     <div class="search-base">
       <div class="search-base--form">
-        <span class="search-total">전체:15</span>
+        <span class="search-total">{{ lang.totalLabel }}:15</span>
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormGroup label="검색어" label-for="search-word-2">
+        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
           <div class="ui-search-with-btn">
             <BFormInput
               id="search-word-2"
               v-model="filterText"
-              :placeholder="lang.placeholder1"
+              :placeholder="lang.searchPlaceholder"
               class="ui-input-28"
             />
             <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
@@ -122,8 +122,13 @@
     </div>
   </div>
 
+  <div class="ui-btn-group">
+    <BButton class="blue28">{{ lang.btnRegister }}</BButton>
+    <BButton class="gray28">{{ lang.btnDelete }}</BButton>
+  </div>
+
   <!-- modal 장치 수정 -->
-  <UiModal v-model="modals.modalName.show" :title="'장치 수정'" type="modal" size="lg" @close-btn-click="modals.modalName.show = false">
+  <UiModal v-model="modals.modalName.show" :title="lang.modalTitleEdit" type="modal" size="lg" @close-btn-click="modals.modalName.show = false">
     <table class="table-type-a">
       <colgroup>
         <col style="width:10rem">
@@ -133,7 +138,7 @@
       </colgroup>
       <tbody>
         <tr>
-          <th scope="row">장치유형</th>
+          <th scope="row">{{ lang.modalDeviceType }}</th>
           <td>
             <BFormSelect
               class="ui-select"
@@ -142,7 +147,7 @@
               disabled
             />
           </td>
-          <th scope="row">모델명</th>
+          <th scope="row">{{ lang.modalModel }}</th>
           <td>
             <BFormSelect
               class="ui-select"
@@ -153,7 +158,7 @@
           </td>
         </tr>
         <tr>
-          <th scope="row">장치명</th>
+          <th scope="row">{{ lang.modalDeviceName }}</th>
           <td>
             <BFormInput
               class="ui-input"
@@ -162,7 +167,7 @@
               value="192.16.0.25"
             />
           </td>
-          <th scope="row">장비설명</th>
+          <th scope="row">{{ lang.modalDescription }}</th>
           <td>
              <BFormInput
               class="ui-input"
@@ -173,7 +178,7 @@
           </td>
         </tr>
         <tr>
-          <th scope="row">등급</th>
+          <th scope="row">{{ lang.modalGrade }}</th>
           <td>
             <BFormInput
               class="ui-input"
@@ -182,7 +187,7 @@
               value="192.16.0.25"
             />
           </td>
-          <th scope="row">시리얼번호</th>
+          <th scope="row">{{ lang.modalSerial }}</th>
           <td>
              <BFormInput
               class="ui-input"
@@ -193,7 +198,7 @@
           </td>
         </tr>
         <tr>
-          <th scope="row">위치</th>
+          <th scope="row">{{ lang.modalLocation }}</th>
           <td>
             <BFormSelect
               class="ui-select"
@@ -201,7 +206,7 @@
               :options="locationOptions"
             />
           </td>
-          <th scope="row">위치상세</th>
+          <th scope="row">{{ lang.modalLocationDetail }}</th>
           <td>
             <BFormSelect
               class="ui-select"
@@ -211,7 +216,7 @@
           </td>
         </tr>
         <tr>
-          <th scope="row">L2 스위치</th>
+          <th scope="row">{{ lang.modalL2Switch }}</th>
           <td>
             <BFormSelect
               class="ui-select"
@@ -219,7 +224,7 @@
               :options="l2SwitchOptions"
             />
           </td>
-          <th scope="row">IP Address</th>
+          <th scope="row">{{ lang.modalIpAddress }}</th>
           <td>
              <BFormInput
               class="ui-input"
@@ -230,7 +235,7 @@
           </td>
         </tr>
         <tr>
-          <th scope="row">카드갯수</th>
+          <th scope="row">{{ lang.modalCardCount }}</th>
           <td colspan="3">
             <BFormSelect
               class="ui-select"
@@ -242,8 +247,8 @@
       </tbody>
     </table>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalName.show = false">취소</BButton>
-      <BButton class="blue28">저장</BButton>
+      <BButton class="gray28" @click="modals.modalName.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 </template>
@@ -254,6 +259,110 @@ import G from '@/config/global.js'
 import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
 import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
+
+
+const ko = {
+  // 필터 영역
+  filterDeviceType: '장치유형',
+  filterSearchTarget: '검색대상',
+  filterSearchWord: '검색어',
+  filterRegDate: '등록일',
+
+  // 검색 영역
+  searchLabel: '검색어',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+
+  // 버튼
+  btnSearch: '조회',
+  btnRegister: '등록',
+  btnDelete: '삭제',
+  btnSave: '저장',
+  btnCancel: '취소',
+
+  // 테이블 헤더
+  colSelect: '선택',
+  colNumber: '순번',
+  colDeviceType: '장치유형',
+  colModel: '모델',
+  colDeviceName: '장치명',
+  colGrade: '등급',
+  colSerial: '시리얼번호',
+  colLocation: '위치',
+  colRegDate: '등록일',
+
+  // 모달
+  modalTitleEdit: '장치 수정',
+  modalDeviceType: '장치유형',
+  modalModel: '모델명',
+  modalDeviceName: '장치명',
+  modalDescription: '장비설명',
+  modalGrade: '설명/비고',
+  modalSerial: '시리얼번호',
+  modalLocation: '위치',
+  modalLocationDetail: '위치상세',
+  modalL2Switch: 'L2 스위치',
+  modalIpAddress: 'IP Address',
+  modalCardCount: '카드갯수',
+
+  // 옵션
+  optionSelect: '선택하세요',
+  optionAdmin: 'Admin',
+  optionManager: 'Manager',
+}
+
+const en = {
+  // Filter area
+  filterDeviceType: 'Device Type',
+  filterSearchTarget: 'Search Target',
+  filterSearchWord: 'Search Word',
+  filterRegDate: 'Registration Date',
+
+  // Search area
+  searchLabel: 'Search',
+  searchPlaceholder: 'Enter search term',
+  totalLabel: 'Total',
+
+  // Buttons
+  btnSearch: 'Search',
+  btnRegister: 'Register',
+  btnDelete: 'Delete',
+  btnSave: 'Save',
+  btnCancel: 'Cancel',
+
+  // Table headers
+  colSelect: 'Select',
+  colNumber: 'No.',
+  colDeviceType: 'Device Type',
+  colModel: 'Model',
+  colDeviceName: 'Device Name',
+  colGrade: 'Grade',
+  colSerial: 'Serial Number',
+  colLocation: 'Location',
+  colRegDate: 'Reg. Date',
+
+  // Modal
+  modalTitleEdit: 'Edit Device',
+  modalDeviceType: 'Device Type',
+  modalModel: 'Model Name',
+  modalDeviceName: 'Device Name',
+  modalDescription: 'Device Description',
+  modalGrade: 'Description/Remarks',
+  modalSerial: 'Serial Number',
+  modalLocation: 'Location',
+  modalLocationDetail: 'Location Detail',
+  modalL2Switch: 'L2 Switch',
+  modalIpAddress: 'IP Address',
+  modalCardCount: 'Card Count',
+
+  // Options
+  optionSelect: 'Please Select',
+  optionAdmin: 'Admin',
+  optionManager: 'Manager',
+}
+
+const lang = ref({})
+
 // 수정 모달 상태
 const modals = reactive({ modalName: { show: false } })
 const formData = reactive({ deviceType: '', model: '' })
@@ -311,15 +420,15 @@ const selectedIds = ref([])
 // 테이블 필드: 선택,순번,장치유형,모델,장치명,등급,시리얼번호,위치,등록일
 // 정렬 추가: 장치유형,모델,장치명,등급,위치,등록일
 const fields = computed(() => [
-  { key: 'select', label: '선택', thStyle: { width: '5rem' } },
-  { key: 'number', label: '순번', thStyle: { width: '8rem' } },
-  { key: 'deviceType', label: '장치유형', sortable: true, thStyle: { width: '12rem' } },
-  { key: 'model', label: '모델', sortable: true, thStyle: { width: '12rem' } },
-  { key: 'deviceName', label: '장치명', sortable: true, thStyle: { width: '14rem' } },
-  { key: 'grade', label: '등급', sortable: true, thStyle: { width: '10rem' } },
-  { key: 'serial', label: '시리얼번호', thStyle: { width: '15rem' } },
-  { key: 'location', label: '위치', sortable: true, thStyle: { width: 'auto' } },
-  { key: 'regDate', label: '등록일', sortable: true, thStyle: { width: '14rem' } },
+  { key: 'select', label: lang.value.colSelect, thStyle: { width: '5rem' } },
+  { key: 'number', label: lang.value.colNumber, thStyle: { width: '8rem' } },
+  { key: 'deviceType', label: lang.value.colDeviceType, sortable: true, thStyle: { width: '12rem' } },
+  { key: 'model', label: lang.value.colModel, sortable: true, thStyle: { width: '12rem' } },
+  { key: 'deviceName', label: lang.value.colDeviceName, sortable: true, thStyle: { width: '14rem' } },
+  { key: 'grade', label: lang.value.colGrade, sortable: true, thStyle: { width: '10rem' } },
+  { key: 'serial', label: lang.value.colSerial, thStyle: { width: '15rem' } },
+  { key: 'location', label: lang.value.colLocation, sortable: true, thStyle: { width: 'auto' } },
+  { key: 'regDate', label: lang.value.colRegDate, sortable: true, thStyle: { width: '14rem' } },
 ])
 
 // 사용여부 라디오 삭제 (스키마 변경으로 미사용)
@@ -402,69 +511,6 @@ function onFilter() {
   currentPage.value = 1
 }
 
-const ko = {
-  title: '사용자 계정 정보',
-  table1: '사용자 ID',
-  table2: '비밀번호',
-  table3: '사용자 명',
-  table4: '사용자 등급',
-  table5: '핸드폰 번호',
-  table6: '근무지',
-  table7: '재 로그인 가능시간',
-  table8: '계정 사용여부',
-  btn1: '초기화',
-  btn2: '즉시사용',
-  btn3: '저장',
-  btn4: '삭제',
-  btn5: '조회',
-  optionSelect: '선택하세요',
-  option1: 'Admin',
-  option2: 'Manager',
-  option3: '후부장교실1',
-  option4: '후부장교실2',
-  option5: '사용',
-  option6: '사용안함',
-  table9: "선택",
-  table10: "순번",
-  table11: "로그인 실패",
-  table12: "계정사용",
-  placeholder1: "검색어 입력",
-  use1: "사용",
-  use2: "사용안함",
-}
-
-const en = {
-  title: '사용자 계정 정보',
-  table1: '사용자 ID',
-  table2: '비밀번호',
-  table3: '사용자 명',
-  table4: '사용자 등급',
-  table5: '핸드폰 번호',
-  table6: '근무지',
-  table7: '재 로그인 가능시간',
-  table8: '계정 사용여부',
-  btn1: '초기화',
-  btn2: '즉시사용',
-  btn3: '저장',
-  btn4: '삭제',
-  btn5: '조회',
-  optionSelect: '선택하세요',
-  option1: 'Admin',
-  option2: 'Manager',
-  option3: '후부장교실1',
-  option4: '후부장교실2',
-  option5: '사용',
-  option6: '사용안함',
-  table9: "선택",
-  table10: "순번",
-  table11: "로그인 실패",
-  table12: "계정사용",
-  placeholder1: "검색어 입력",
-  use1: "사용",
-  use2: "사용안함",
-}
-
-const lang = ref({})
 
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
