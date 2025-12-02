@@ -206,9 +206,12 @@ img, fieldset, iframe, button {border:0 none;}
 .my-checkbox .form-check-input:checked {background-color:var(--color-primary);border-color:var(--color-primary);}
 .my-checkbox .form-check-label {font-size:1.4rem;color:#000;line-height:2rem;cursor:pointer;}
 
+.tree-check .form-check-input,
 .search-base .form-check-input,
 table .form-check-input {width:1.6rem;height:1.6rem;margin-top:0;border-color:#7591A5}
+.tree-check .form-check-label,
 .search-base .form-check-label {font-size:1.2rem;font-weight:400;color:#3e3e3e}
+.tree-check .form-check-inline,
 .search-base .form-check-inline,
 table .form-check-inline {display:inline-flex;align-items:center;gap:.4rem;margin:0}
 table .form-check-inline ~ .form-check-inline,
