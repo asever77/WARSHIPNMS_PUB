@@ -123,7 +123,7 @@
   </div>
 
   <div class="ui-btn-group">
-    <BButton class="blue28">{{ lang.btnRegister }}</BButton>
+    <BButton class="blue28" @click="modals.modalDeviceRegister.show = true">{{ lang.btnRegister }}</BButton>
     <BButton class="gray28">{{ lang.btnDelete }}</BButton>
   </div>
 
@@ -1145,11 +1145,12 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalName.show = false">{{ lang.btnCancel }}</BButton>
-      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+      <BButton class="gray28" @click="modals.modalDeviceModify.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28" @click="modals.modalDeviceRegister.show = false">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 
+  <!-- 라벨링 -->
   <UiModal v-model="modals.modalLabeling.show" type="modal" size="md" @close-btn-click="modals.modalLabeling.show = false">
     <table class="table-type-a">
       <colgroup>
@@ -1205,13 +1206,127 @@
       <BButton class="blue28">적용</BButton>
     </template>
   </UiModal>
+
+  <!-- modal 장치 등록 -->
+  <UiModal v-model="modals.modalDeviceRegister.show" :title="lang.modalTitleRegister" type="modal" size="lg" @close-btn-click="modals.modalDeviceRegister.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">{{ lang.modalDeviceType }}</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.deviceType"
+                :options="deviceTypeOptions"
+              />
+            </td>
+            <th scope="row">{{ lang.modalModel }}</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.model"
+                :options="modelOptions"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 무선링크연동장치 & 음력전화연동장치 & 유무선통합중계기 -->
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+        <tr>
+          <th scope="row">{{ lang.modalDeviceName }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.deviceName"
+              placeholder=""
+            />
+          </td>
+          <th scope="row">{{ lang.modalDescription }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalGrade }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.grade"
+              placeholder=""
+              value="설명/비고"
+            />
+          </td>
+          <th scope="row">{{ lang.modalSerial }}</th>
+          <td>
+            <BFormInput
+              class="ui-input"
+              v-model="formData.serialNumber"
+              placeholder=""
+              value="KAF10270ASUCT10"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalLocation }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.location"
+              :options="locationOptions"
+            />
+          </td>
+          <th scope="row">{{ lang.modalLocationDetail }}</th>
+          <td>
+            <BFormSelect
+              class="ui-select"
+              v-model="formData.locationDetail"
+              :options="locationDetailOptions"
+            />
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <BFormTextarea
+        v-model="textEx"
+        placeholder=""
+        rows="6"
+        class="ui-textarea"
+      />
+
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalDeviceRegister.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+    </template>
+  </UiModal>
 </template>
 
 <script setup>
 import { ref, onMounted, computed, watch, reactive } from 'vue'
 import G from '@/config/global.js'
 import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
-import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
+import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox, BFormTextarea } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
 
 const ko = {
@@ -1253,6 +1368,7 @@ const ko = {
 
   // 모달
   modalTitleEdit: '장치 수정',
+  modalTitleRegister: '장치 등록',
   modalDeviceType: '장치유형',
   modalModel: '모델명',
   modalDeviceName: '장치명',
@@ -1349,6 +1465,7 @@ const en = {
 
   // Modal
   modalTitleEdit: 'Edit Device',
+  modalTitleRegister: 'Register Device',
   modalDeviceType: 'Device Type',
   modalModel: 'Model Name',
   modalDeviceName: 'Device Name',
@@ -1410,6 +1527,7 @@ const lang = ref({})
 const modals = reactive({
   modalDeviceModify: { show: false },
   modalLabeling: { show: false },
+  modalDeviceRegister: { show: false },
  })
 const formData = reactive({ deviceType: '', model: '' })
 const deviceTypeOptions = computed(() => [{ value: formData.deviceType, text: formData.deviceType }])
@@ -1643,4 +1761,3 @@ onMounted(() => {
   }
 })
 </script>
-
