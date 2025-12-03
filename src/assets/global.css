@@ -403,3 +403,83 @@ table .form-check-inline ~ .form-check-inline,
   color: #9aa6b2;
 }
 
+.network-info {
+  flex:1;
+  width: 100%;
+  display: flex;
+}
+.network-info--item {
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.network-info--item h3 {
+  height: 3.6rem;
+  background-color: var(--color-primary);
+  color:#fff;
+  font-size:1.2rem;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  width: 100%;
+  border-radius: 0.5rem 0 0 0;
+  align-items: center;
+  justify-content: center;
+}
+.network-info--item:last-child h3 {
+  background-color: #2B77A9;
+  border-radius: 0 0.5rem 0 0;
+}
+.network-info--icon {
+  width: 5rem;
+  height: 3.8rem;
+  border-radius: .5rem;
+  background-color: #D3EEFF;
+  display: block;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 2.8rem;
+}
+.network-info--item ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap:0;
+  border: 1px solid #C5C5C5;
+}
+.network-info--item:last-child ul {
+  border-left: 0;
+}
+.network-info--item li {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid #C5C5C5;
+}
+.network-info--icon.w1-1 { background-image: url('/src/assets/images/icon/icon-aspect-weather1-1.svg'); }
+.network-info--icon.w1-2 { background-image: url('/src/assets/images/icon/icon-aspect-weather1-2.svg'); }
+.network-info--icon.w2 { background-image: url('/src/assets/images/icon/icon-aspect-weather2.svg'); }
+.network-info--icon.w3 { background-image: url('/src/assets/images/icon/icon-aspect-weather3.svg'); }
+.network-info--icon.w4 { background-image: url('/src/assets/images/icon/icon-aspect-weather4.svg'); }
+
+.network-info--icon.s1 { background-image: url('/src/assets/images/icon/icon-aspect-sailing1.svg'); }
+.network-info--icon.s2 { background-image: url('/src/assets/images/icon/icon-aspect-sailing2.svg'); }
+.network-info--icon.s3 { background-image: url('/src/assets/images/icon/icon-aspect-sailing3.svg'); }
+.network-info--icon.s4 { background-image: url('/src/assets/images/icon/icon-aspect-sailing4.svg'); }
+
+.network-info--table table,
+.network-info--table{width: 100%;}
+.network-info--table thead th{
+  height: 3.6rem;
+  background-color: var(--color-primary);
+  color:#fff;
+  font-size:1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.network-info--table thead th:first-child{border-radius: 0.5rem 0 0 0;}
+.network-info--table thead th:last-child{border-radius: 0 0.5rem 0 0; background-color: #2B77A9;}
+.network-info--table td {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #C5C5C5;
+}
