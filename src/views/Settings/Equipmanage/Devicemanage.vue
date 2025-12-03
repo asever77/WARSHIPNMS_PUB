@@ -1310,7 +1310,7 @@
       <BFormTextarea
         v-model="textEx"
         placeholder=""
-        rows="6"
+        rows="7"
         class="ui-textarea"
       />
 
