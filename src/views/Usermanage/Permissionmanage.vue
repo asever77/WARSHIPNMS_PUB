@@ -25,7 +25,7 @@
       </div>
       <div class="search-base--btns">
         <BButton class="blue28" @click="onFilter">
-          {{ lang.text9 }}
+          {{ lang.text5 }}
         </BButton>
       </div>
 
@@ -44,7 +44,7 @@
         </template>
         <!-- 라디오 버튼은 검색 영역에만 사용, 테이블에서는 제거 -->
         <template #cell(setting)="{ item }">
-          <BButton v-if="item.setting !== false" class="gray24 min-w-0" @click="openModal(item)">설정</BButton>
+          <BButton v-if="item.setting !== false" class="gray24 min-w-0" @click="openModal(item)">{{ lang.table6 }}</BButton>
         </template>
       </BTable>
 
@@ -122,18 +122,18 @@ const items = ref([
 ]);
 
 const fields = computed(() => [
-  { key: 'index', label: '순번', thStyle: { width: '5rem' }, tdClass: 'text-center' },
-  { key: 'userId', label: '사용자 ID', thStyle: { width: '14rem' }, tdClass: 'text-center' },
-  { key: 'userName', label: '사용자 명', thStyle: { width: '14rem' }, tdClass: 'text-center' },
-  { key: 'userLevel', label: '사용자 등급', thStyle: { width: '14rem' }, tdClass: 'text-center' },
-  { key: 'menuAuth', label: '메뉴권한', thStyle: { width: 'auto' }, tdClass: 'text-start' },
-  { key: 'setting', label: '설정', thStyle: { width: '8rem' }, tdClass: 'text-center' }
+  { key: 'index', label: lang.value.table1 || '순번', thStyle: { width: '5rem' }, tdClass: 'text-center' },
+  { key: 'userId', label: lang.value.table2 || '사용자 ID', thStyle: { width: '14rem' }, tdClass: 'text-center' },
+  { key: 'userName', label: lang.value.table3 || '사용자 명', thStyle: { width: '14rem' }, tdClass: 'text-center' },
+  { key: 'userLevel', label: lang.value.table4 || '사용자 등급', thStyle: { width: '14rem' }, tdClass: 'text-center' },
+  { key: 'menuAuth', label: lang.value.table5 || '메뉴권한', thStyle: { width: 'auto' }, tdClass: 'text-start' },
+  { key: 'setting', label: lang.value.table6 || '설정', thStyle: { width: '8rem' }, tdClass: 'text-center' }
 ]);
 
 const modalFields = computed(() => [
-  { key: 'userId', label: '사용자 ID', thStyle: { width: '12rem' }, tdClass: 'text-center' },
-  { key: 'userName', label: '사용자 명', thStyle: { width: '12rem' }, tdClass: 'text-center' },
-  { key: 'userLevel', label: '사용자 등급', thStyle: { width: '12rem' }, tdClass: 'text-center' }
+  { key: 'userId', label: lang.value.table2 || '사용자 ID', thStyle: { width: '12rem' }, tdClass: 'text-center' },
+  { key: 'userName', label: lang.value.table3 || '사용자 명', thStyle: { width: '12rem' }, tdClass: 'text-center' },
+  { key: 'userLevel', label: lang.value.table4 || '사용자 등급', thStyle: { width: '12rem' }, tdClass: 'text-center' }
 ]);
 
 const filterField = ref('');
@@ -171,27 +171,39 @@ const modals = reactive({
 
 
 const ko = {
-  "text1": "메뉴 권한관리",
-  "text2": "검색구분",
-  "text3": "검색어",
-  "text4": "전체",
-  "text5": "조회",
-  "text6": "등록",
-  "text7": "삭제",
-  "text8": "취소",
-  "text9": "저장"
+  text1: "메뉴 권한관리",
+  text2: "검색구분",
+  text3: "검색어",
+  text4: "전체",
+  text5: "조회",
+  text6: "등록",
+  text7: "삭제",
+  text8: "취소",
+  text9: "저장",
+  table1: "순번",
+  table2: "사용자 ID",
+  table3: "사용자 명",
+  table4: "사용자 등급",
+  table5: "메뉴권한",
+  table6: "설정",
 };
 
 const en = {
-  "text1": "Manual Content",
-  "text2": "Device Type",
-  "text3": "Device Name",
-  "text4": "File Name",
-  "text5": "Download",
-  "text6": "Upload Date",
-  "text7": "Register",
-  "text8": "Delete",
-  "text9": "Search",
+  text1: "Manual Content",
+  text2: "Device Type",
+  text3: "Device Name",
+  text4: "File Name",
+  text5: "Download",
+  text6: "Upload Date",
+  text7: "Register",
+  text8: "Delete",
+  text9: "Search",
+  table1: "순번",
+  table2: "사용자 ID",
+  table3: "사용자 명",
+  table4: "사용자 등급",
+  table5: "메뉴권한",
+  table6: "설정",
 };
 
 const lang = ref({});
