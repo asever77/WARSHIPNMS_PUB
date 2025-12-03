@@ -62,9 +62,9 @@ img, fieldset, iframe, button {border:0 none;}
   left:0;
   z-index:10;
 }
-.base-side::-webkit-scrollbar {height:1rem;width:1rem;}
-.base-side::-webkit-scrollbar-track {border-radius:999em;background-color:transparent}
-.base-side::-webkit-scrollbar-thumb {width:.6rem;border-radius:999em;background-color:rgba(255,255,255,.2);background-clip:content-box;border:.2rem solid transparent}
+.is-desktop .base-side::-webkit-scrollbar {height:1rem;width:1rem;}
+.is-desktop .base-side::-webkit-scrollbar-track {border-radius:999em;background-color:transparent}
+.is-desktop .base-side::-webkit-scrollbar-thumb {width:.6rem;border-radius:999em;background-color:rgba(255,255,255,.2);background-clip:content-box;border:.2rem solid transparent}
 .base-side[data-state="close"] {
   width:5rem;
   overflow:visible;
@@ -231,6 +231,9 @@ table .form-check-inline ~ .form-check-inline,
 /* layout */
 .ui-content-page {min-height:calc(100vh - 4.5rem);display:flex;flex-direction:column;gap:1.6rem;}
 .ui-content-area {flex:1;padding:2.8rem 2.4rem 0}
+.network .ui-content-page{gap:0}
+.network .ui-content-area {flex:1;padding:1.2rem 1rem 0}
+
 .copyright {margin-top:auto;padding-bottom:1rem;text-align:center;font-size:1rem;font-weight:400;color:var(--color-font-primary)}
 
 /* table */

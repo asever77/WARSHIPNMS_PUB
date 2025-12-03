@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import G from './config/global.js'
 
 // Bootstrap 및 BootstrapVueNext import
 import 'bootstrap/dist/css/bootstrap.css'
@@ -15,6 +16,18 @@ import BsTooltip from './directives/v-bs-tooltip'
 
 // bootstrap-vue-next 플러그인 (컴포넌트만 사용)
 import { createBootstrap } from 'bootstrap-vue-next'
+
+// html과 body에 디바이스 클래스 추가
+const htmlEl = document.documentElement
+const bodyEl = document.body
+
+if (G.isMobile) {
+  htmlEl.classList.add('is-mobile')
+} else if (G.isTablet) {
+  htmlEl.classList.add('is-tablet')
+} else if (G.isDesktop) {
+  htmlEl.classList.add('is-desktop')
+}
 
 const app = createApp(App)
 
