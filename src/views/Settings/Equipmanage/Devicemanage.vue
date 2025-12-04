@@ -286,7 +286,7 @@
               :options="cardInterfaceTypeOptions"
             />
           </td>
-          <td class="ta-c">C01</td>
+          <th scope="row">C01</th>
           <td>P01 : 포트1번,  P02: 2번포트</td>
           <td>
             <BButton class="gray24 min-w-0" @click="modals.modalLabeling.show = true">{{ lang.btnLabeling }}</BButton>
@@ -301,7 +301,7 @@
               :options="cardInterfaceTypeOptions"
             />
           </td>
-          <td class="ta-c"></td>
+          <th scope="row"></th>
           <td></td>
           <td></td>
         </tr>
@@ -440,7 +440,7 @@
               :options="cardInterfaceTypeOptions"
             />
           </td>
-          <td class="ta-c">C01</td>
+          <th scope="row">C01</th>
           <td>P01 : 포트1번,  P02: 2번포트</td>
           <td>
             <BButton class="gray24 min-w-0" @click="modals.modalLabeling.show = true">{{ lang.btnLabeling }}</BButton>
@@ -455,7 +455,7 @@
               :options="cardInterfaceTypeOptions"
             />
           </td>
-          <td class="ta-c"></td>
+          <th scope="row"></th>
           <td></td>
           <td></td>
         </tr>
