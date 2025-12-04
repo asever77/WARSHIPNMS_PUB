@@ -418,4 +418,4 @@ table .form-check-inline ~ .form-check-inline,
 .network-info--table td {padding:0.5rem 0.7rem;border:1px solid #C5C5C5;}
 
 /* 랙 구성품 */
-.rack-setting-area {width:64rem;border:1px solid #ddd;}
+.rack-setting-area {width:70rem;border:1px solid #ddd;}
