@@ -97,7 +97,7 @@
       </div>
     </div>
     <div class="base-table">
-      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive @row-clicked="onRowClicked" data-type="clickable">
+      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive>
         <template #head(select)>
           <BFormCheckbox
             :indeterminate="isIndeterminate"
