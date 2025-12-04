@@ -126,7 +126,7 @@
   </div>
 
   <div class="ui-btn-group" data-justify-align="between">
-    <BButton class="blue28" @click="modals.modalDeviceRegister.show = true">전체 일괄등록</BButton>
+    <BButton class="blue28" @click="modals.modalConnectorRegister.show = true">전체 일괄등록</BButton>
 
     <div class="ui-btn-group">
       <BButton class="blue28" @click="modals.modalDeviceRegister.show = true">{{ lang.btnRegister }}</BButton>
@@ -189,7 +189,7 @@
               </tr>
               <tr>
                 <th scope="row">연결장치</th>
-                <td>OP43DATA(보안장비 TX #1)</td>
+                <td @click="onConnectorDetail" style="cursor:pointer">OP43DATA(보안장비 TX #1)</td>
               </tr>
               <tr>
                 <th scope="row">비고</th>
@@ -224,7 +224,7 @@
               </tr>
               <tr>
                 <th scope="row">연결장치</th>
-                <td>OP43DATA(보안장비 TX #1)</td>
+                <td @click="onConnectorDetail" style="cursor:pointer">OP43DATA(보안장비 TX #1)</td>
               </tr>
               <tr>
                 <th scope="row">비고</th>
@@ -280,7 +280,7 @@
               </tr>
               <tr>
                 <th scope="row">연결장치</th>
-                <td>OP43DATA(보안장비 TX #1)</td>
+                <td @click="onConnectorDetail" style="cursor:pointer">OP43DATA(보안장비 TX #1)</td>
               </tr>
               <tr>
                 <th scope="row">비고</th>
@@ -319,7 +319,7 @@
               </tr>
               <tr>
                 <th scope="row">연결장치</th>
-                <td>OP43DATA(보안장비 TX #1)</td>
+                <td @click="onConnectorDetail" style="cursor:pointer">OP43DATA(보안장비 TX #1)</td>
               </tr>
               <tr>
                 <th scope="row">비고</th>
@@ -336,7 +336,107 @@
     </template>
   </UiModal>
 
+  <!-- modal 연결장치 -->
+  <UiModal v-model="modals.modalConnectorDetail.show" type="modal" size="md" @close-btn-click="modals.modalConnectorDetail.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row" colspan="2">작업유형</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.deviceType"
+                :options="deviceTypeOptions"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="2">장치유형</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.deviceType"
+                :options="deviceTypeOptions"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" rowspan="3">연결장치</th>
+            <th scope="row">장치명</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.model"
+                :options="modelOptions"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">카드</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.deviceName"
+                :options="deviceNameOptions"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">포트</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.deviceName"
+                :options="deviceNameOptions"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalConnectorDetail.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+    </template>
+  </UiModal>
 
+  <!-- modal 전체일관등록 -->
+  <UiModal v-model="modals.modalConnectorRegister.show" :title="'연결단자함 포트관리 일괄등록'" type="modal" size="md" @close-btn-click="modals.modalConnectorRegister.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:10rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">파일등록</th>
+            <td>
+              <BFormFile
+              class="ui-input"
+              v-model="formData.file"
+              :placeholder="lang.text14 || '파일 선택'"
+            />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="ta-c my-10">
+        다음 문서 양식을 다운받아 작성 후 일괄등록에 사용할 수 있습니다.<br>
+        <a href="/download/connector-bulk-template.cfg" download style="color:#007bff;text-decoration:underline">연결단자함일괄등록양식.cfg</a>
+      </p>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalConnectorRegister.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+    </template>
+  </UiModal>
 
   <!-- modal 단자함/ICU 등록 -->
   <UiModal v-model="modals.modalDeviceRegister.show" :title="'단자함/ICU 등록'" type="modal" size="md" @close-btn-click="modals.modalDeviceRegister.show = false">
@@ -422,7 +522,7 @@
 import { ref, onMounted, computed, watch, reactive } from 'vue'
 import G from '@/config/global.js'
 import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
-import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox, BDropdown } from 'bootstrap-vue-next'
+import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox, BDropdown, BFormFile } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
 
 const ko = {
@@ -627,7 +727,9 @@ const modals = reactive({
   modalLabeling: { show: false },
   modalDeviceRegister: { show: false },
   modalICUPortAdmin: { show: false },
- })
+  modalConnectorDetail: { show: false },
+  modalConnectorRegister: { show: false },
+})
 const formData = reactive({
   deviceType: '',
   model: '',
@@ -827,6 +929,11 @@ function onCancelPortMapping() {
   if (portDropdown.value) {
     portDropdown.value.hide()
   }
+}
+
+
+function onConnectorDetail() {
+  modals.modalConnectorDetail.show = true;
 }
 
 function onConfirmPortMapping() {
