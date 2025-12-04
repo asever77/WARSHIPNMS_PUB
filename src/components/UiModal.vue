@@ -43,6 +43,11 @@ const props = defineProps({
     default: 'modal',
     // 'system', 'modal', 'bottom-sheet', 'side-left', 'side-right', 'full-page'
   },
+  size: {
+    type: String,
+    default: 'md',
+    // 'sm', 'md', 'lg', 'xlg', 'xxlg'
+  },
 })
 
 // emits 정의
@@ -61,7 +66,7 @@ const modalConfig = computed(() => {
     contentClass: [],
     centered: false,
     fullscreen: false,
-    size: 'md',
+    size: props.size || 'md',
     noFade: false,
   }
 
@@ -221,8 +226,12 @@ const onHidden = () => {
 .base-modal .modal-body {
   padding: 2rem 2.6rem 0;
 }
-.base-modal .modal-sm {
-  max-width: 32rem;
+
+.base-modal .modal-xlg {
+  max-width: 120rem;
+}
+.base-modal .modal-xxlg {
+  max-width: 160rem;
 }
 
 .modal-header {

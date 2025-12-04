@@ -200,9 +200,14 @@ img, fieldset, iframe, button {border:0 none;}
 .mt-20 {margin-top:2rem;}
 .mt-24 {margin-top:2.4rem;}
 
+.flex {display: flex;}
+
 .ta-c{text-align:center !important;}
 .ta-l{text-align:left !important;}
 .ta-r{text-align:right !important;}
+
+[data-justify-align="between"]{justify-content:space-between !important;}
+
 
 /* checkbox custom */
 .my-checkbox.form-check {display:inline-flex;gap:.5rem;align-items:center;margin:0;}
@@ -419,3 +424,71 @@ table .form-check-inline ~ .form-check-inline,
 
 /* 랙 구성품 */
 .rack-setting-area {width:70rem;border:1px solid #ddd;}
+.mapping-td{padding: 0 !important;}
+.mapping-td--wrap {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  min-height: 8.6rem;
+}
+.mapping-td--item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.mapping-td--item + .mapping-td--item {
+  border-top: 1px solid #D4E1E8;
+}
+
+.port-link-LR {
+  display: flex;
+  width: 100%;
+  gap:8rem;
+  overflow: hidden;
+}
+.btn-portlink.checked .dropdown-toggle{
+  background-color: var(--color-primary);
+}
+.btn-portlink .dropdown-toggle{
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background-color: #fff;
+  color:1px solid var(--color-primary);
+
+}
+.btn-portlink .ui-btn-group > button {
+  flex: 1;
+  padding: 0;
+  min-width: 6rem;
+}
+.btn-portlink .ui-btn-group{
+  gap:.4rem;
+  display: flex;
+  align-items: center;
+}
+.btn-portlink .form-check{
+  gap:.4rem;
+  display: flex;
+  align-items: center;
+}
+.btn-portlink .ui-btn-group {
+  position: sticky;
+  bottom:0;
+  background-color: #fff;
+  z-index: 1;
+  margin-top: 0;
+}
+.btn-portlink .d-flex {
+  width: 100%;
+  flex:1;
+  padding-top: .4rem;
+  overflow-y: auto;
+}
+.btn-portlink .dropdown-menu {
+  display: flex !important;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
