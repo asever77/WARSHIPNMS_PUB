@@ -211,7 +211,9 @@
     @close-btn-click="modals.modalRackOption.show = false"
   >
     <div class="ui-flex modal-h-full" data-gap="16">
-      <div class="ui-shrink-0 rack-setting-area">1</div>
+      <div class="ui-shrink-0 rack-setting-area">
+        개발영역이죠?
+      </div>
       <div>
         <table class="table-type-a">
           <colgroup>
