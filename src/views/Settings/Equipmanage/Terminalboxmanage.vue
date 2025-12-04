@@ -110,7 +110,7 @@
           <BFormCheckbox v-model="selectedIds" :value="data.item.id" />
         </template>
         <template #cell(portManage)="data">
-          <BButton class="blue24 min-w-0" @click.stop="onPortManage(data.item.id)">{{ lang.btnPortManage }}</BButton>
+          <BButton class="gray24 min-w-0" @click.stop="onPortManage(data.item.id)">{{ lang.btnPortManage }}</BButton>
         </template>
       </BTable>
 
@@ -137,31 +137,15 @@
   <!-- modal 연결단자함/ICU 포트관리 -->
   <UiModal v-model="modals.modalICUPortAdmin.show" :title="'연결단자함/ICU 포트관리'" type="modal" size="xlg" scrollable @close-btn-click="modals.modalICUPortAdmin.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
-      <table class="table-type-a">
-        <colgroup>
-          <col style="width:10rem">
-          <col style="width:auto">
-          <col style="width:11rem">
-        </colgroup>
-        <tbody>
-          <tr>
-            <th scope="row">장치명</th>
-            <td class="ta-l">
-              {{ selectedPortDevice.deviceName }}
-            </td>
-            <td>
-              <div class="d-flex justify-content-center gap-2">
-                <BButton class="btn btn-md btn-secondary blue24 min-w-0">취소</BButton>
-                <BButton class="btn btn-md btn-secondary blue24 min-w-0">저장</BButton>
-              </div>
-             </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="ui-dashed-line-box">
+        장치명 : {{ selectedPortDevice.deviceName }}
+      </div>
 
       <div class="port-link-LR">
         <div class="flex-1">
-          <h3 class="ta-c w-full p-2">LEFT</h3>
+          <h3 class="port-link-title">
+            LEFT
+          </h3>
           <table class="table-type-a" >
             <colgroup>
               <col style="width:8rem">
@@ -192,8 +176,8 @@
                           <BFormCheckbox v-model="portMapping.l01" value="4">옵션 4</BFormCheckbox>
                         </div>
                         <div class="ui-btn-group">
-                          <BButton class="btn btn-md btn-secondary gray24" @click="onCancelPortMapping">취소</BButton>
-                          <BButton class="btn btn-md btn-primary blue24" @click="onConfirmPortMapping">적용</BButton>
+                          <BButton class="gray24 min-w-0" @click="onCancelPortMapping">취소</BButton>
+                          <BButton class="blue24 min-w-0" @click="onConfirmPortMapping">적용</BButton>
                         </div>
                       </BDropdown>
                     </div>
@@ -211,8 +195,7 @@
                 <th scope="row">비고</th>
                 <td></td>
               </tr>
-            </tbody>
-            <tbody>
+
               <tr>
                 <th scope="row" rowspan="3">P02</th>
                 <th scope="row">포트레이블</th>
@@ -228,8 +211,8 @@
                           <BFormCheckbox v-model="portMapping.l02" value="4">옵션 4</BFormCheckbox>
                         </div>
                         <div class="ui-btn-group">
-                          <BButton class="btn btn-md btn-secondary gray24" @click="onCancelPortMapping">취소</BButton>
-                          <BButton class="btn btn-md btn-primary blue24" @click="onConfirmPortMapping">적용</BButton>
+                          <BButton class="gray24 min-w-0" @click="onCancelPortMapping">취소</BButton>
+                          <BButton class="blue24 min-w-0" @click="onConfirmPortMapping">적용</BButton>
                         </div>
                       </BDropdown>
                     </div>
@@ -251,7 +234,9 @@
           </table>
         </div>
         <div class="flex-1">
-          <h3 class="ta-c w-full p-2">Right</h3>
+          <h3 class="port-link-title">
+            RIGHT
+          </h3>
           <table class="table-type-a" >
             <colgroup>
               <col style="width:10rem">
@@ -279,8 +264,8 @@
                           <BFormCheckbox v-model="portMapping.r01" value="4">옵션 4</BFormCheckbox>
                         </div>
                         <div class="ui-btn-group">
-                          <BButton class="gray28" @click="onCancelPortMapping">취소</BButton>
-                          <BButton class="blue28" @click="onConfirmPortMapping">적용</BButton>
+                          <BButton class="gray24 min-w-0" @click="onCancelPortMapping">취소</BButton>
+                          <BButton class="blue24 min-w-0" @click="onConfirmPortMapping">적용</BButton>
                         </div>
                       </BDropdown>
                     </div>
@@ -301,8 +286,7 @@
                 <th scope="row">비고</th>
                 <td></td>
               </tr>
-            </tbody>
-            <tbody>
+
               <tr>
                 <td class="mapping-td" rowspan="3">
                   <div class="mapping-td--wrap">
@@ -319,8 +303,8 @@
                           <BFormCheckbox v-model="portMapping.r02" value="8">옵션 8</BFormCheckbox>
                         </div>
                         <div class="ui-btn-group">
-                          <BButton class="gray28" @click="onCancelPortMapping">취소</BButton>
-                          <BButton class="blue28" @click="onConfirmPortMapping">적용</BButton>
+                          <BButton class="gray24 min-w-0" @click="onCancelPortMapping">취소</BButton>
+                          <BButton class="blue24 min-w-0" @click="onConfirmPortMapping">적용</BButton>
                         </div>
                       </BDropdown>
                     </div>
@@ -347,16 +331,15 @@
       </div>
     </div>
     <template #footer>
-      <div></div>
-      <!-- <BButton class="gray28" @click="modals.modalICUPortAdmin.show = false">{{ lang.btnCancel }}</BButton>
-      <BButton class="blue28">{{ lang.btnSave }}</BButton> -->
+      <BButton class="gray28" @click="modals.modalICUPortAdmin.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 
 
 
   <!-- modal 단자함/ICU 등록 -->
-  <UiModal v-model="modals.modalDeviceRegister.show" :title="'단자함/ICU 등록'" type="modal" size="sm" @close-btn-click="modals.modalDeviceRegister.show = false">
+  <UiModal v-model="modals.modalDeviceRegister.show" :title="'단자함/ICU 등록'" type="modal" size="md" @close-btn-click="modals.modalDeviceRegister.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -733,12 +716,12 @@ const selectedIds = ref([]);
 const fields = computed(() => [
   { key: 'select', label: lang.value.colSelect, thStyle: { width: '5rem' } },
   { key: 'number', label: lang.value.colNumber, thStyle: { width: '8rem' } },
-  { key: 'deviceType', label: lang.value.colDeviceType, sortable: true, thStyle: { width: '12rem' } },
-  { key: 'model', label: lang.value.colModel, sortable: true, thStyle: { width: '12rem' } },
-  { key: 'deviceName', label: lang.value.colDeviceName, sortable: true, thStyle: { width: '14rem' } },
+  { key: 'deviceType', label: lang.value.colDeviceType, sortable: true, thStyle: { width: '14rem' } },
+  { key: 'model', label: lang.value.colModel, sortable: true, thStyle: { width: '14rem' } },
+  { key: 'deviceName', label: lang.value.colDeviceName, sortable: true, thStyle: { width: '16rem' } },
   { key: 'location', label: lang.value.colLocation, sortable: true, thStyle: { width: 'auto' } },
-  { key: 'regDate', label: lang.value.colRegDate, sortable: true, thStyle: { width: '14rem' } },
-  { key: 'portManage', label: lang.value.btnPortManage, thStyle: { width: '10rem' } },
+  { key: 'regDate', label: lang.value.colRegDate, sortable: true, thStyle: { width: '16rem' } },
+  { key: 'portManage', label: lang.value.btnPortManage, thStyle: { width: '14rem' } },
 ]);
 
 // 실제 검색에 사용되는 값

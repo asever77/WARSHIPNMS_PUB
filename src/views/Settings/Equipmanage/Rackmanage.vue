@@ -206,7 +206,7 @@
     v-model="modals.modalRackOption.show"
     :title="lang.modalTitle2"
     type="modal"
-    size="xl"
+    size="xxlg"
     no-footer
     @close-btn-click="modals.modalRackOption.show = false"
   >

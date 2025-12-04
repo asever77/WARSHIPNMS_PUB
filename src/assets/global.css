@@ -424,7 +424,7 @@ table .form-check-inline ~ .form-check-inline,
 .network-info--table td {padding:0.5rem 0.7rem;border:1px solid #C5C5C5;}
 
 /* 랙 구성품 */
-.rack-setting-area {width:70rem;border:1px solid #ddd;}
+.rack-setting-area {width:70%;border:1px solid #ddd;}
 .mapping-td{padding: 0 !important;}
 .mapping-td--wrap {
   display: flex;
@@ -493,3 +493,6 @@ table .form-check-inline ~ .form-check-inline,
   flex-shrink: 0;
   margin-bottom: 0;
 }
+
+.port-link-title {border:1px solid #D4E1E8;background-color:#F1F6F9;padding:.8rem;text-align:center;font-weight:700;font-size:1.4rem;border-radius:.4rem;margin-bottom:.4rem}
+.ui-dashed-line-box {border:1px dashed var(--color-border-blue);padding:.8rem;border-radius:.4rem;text-align:center;font-size:1.4rem;font-weight:700;background-color:#E3EDF4;color:var(--color-secondary-blue)}
