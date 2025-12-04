@@ -1,44 +1,57 @@
 <template>
-  <div class="base-wrap">
-    <div class="search-base">
-      <div class="search-base--form">
-        <!-- 장치유형 기준 선택 -->
-        <BFormGroup :label="lang.text2" label-for="search-deviceType">
-          <BFormSelect
-            id="search-deviceType"
-            class="ui-select-28"
-            v-model="filterField"
-            :options="filterFieldOptions"
-          />
-        </BFormGroup>
-
-        <!-- 장비명 기준 선택 -->
-        <BFormGroup :label="lang.text3" label-for="search-deviceName">
-          <BFormSelect
-            id="search-deviceName"
-            class="ui-select-28"
-            v-model="filterField2"
-            :options="filterFieldOptions2"
-          />
-        </BFormGroup>
-
-        <!-- 검색어 입력 -->
-        <BFormGroup :label="lang.text10" label-for="search-word">
-          <BFormInput
-            id="search-word"
-            v-model="filterText"
-            :placeholder="lang.text11"
-            class="ui-input-28"
-          />
-        </BFormGroup>
-      </div>
-      <div class="search-base--btns">
-        <BButton class="blue28" @click="onFilter">
-          {{ lang.text9 }}
-        </BButton>
-      </div>
-
-    </div>
+  <table class="table-type-a">
+    <colgroup>
+      <col style="width: 13rem" />
+      <col style="width: 16.5rem" />
+      <col style="width: 13rem" />
+      <col style="width: 16.5rem" />
+      <col style="width: 13rem" />
+      <col style="width: auto" />
+    </colgroup>
+    <tbody>
+    <tr>
+      <th scope="row">
+        {{ lang.text2 }}
+        <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceType} 전체 정렬`"></BButton>
+      </th>
+      <td>
+        <BFormSelect
+          id="search-deviceType"
+          class="ui-select-28"
+          v-model="filterField"
+          :options="filterFieldOptions"
+        />
+      </td>
+      <th scope="row">
+        {{ lang.text3 }}
+        <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceType} 전체 정렬`"></BButton>
+      </th>
+      <td>
+        <BFormSelect
+          id="search-deviceName"
+          class="ui-select-28"
+          v-model="filterField2"
+          :options="filterFieldOptions2"
+        />
+      </td>
+      <th scope="row">
+        {{ lang.text10 }}
+      </th>
+      <td>
+        <BFormInput
+          id="search-word"
+          v-model="filterText"
+          :placeholder="lang.text11"
+          class="ui-input-28"
+        />
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="ui-btn-group">
+    <BButton class="blue28" @click="onFilter">{{ lang.text9 }}</BButton>
+  </div>
+  <div class="base-wrap mt-20">
     <div class="base-table">
       <BTable
         :items="paginatedItems"
@@ -151,24 +164,24 @@ const ko = {
 };
 
 const en = {
-  "text1": "Manual Content",
-  "text2": "Device Type",
-  "text3": "Device Name",
-  "text4": "File Name",
-  "text5": "Download",
-  "text6": "Upload Date",
-  "text7": "Register",
-  "text8": "Delete",
-  "text9": "Search",
-  "text10": "Search Word",
-  "text11": "Enter search word",
-  "text12": "All",
-  "text13": "Register Manual",
-  "text14": "Choose File",
-  "text15": "Device Model Name",
+  "text1": "매뉴얼 내용",
+  "text2": "장치유형",
+  "text3": "장비명",
+  "text4": "파일명",
+  "text5": "다운로드",
+  "text6": "업로드일시",
+  "text7": "등록",
+  "text8": "삭제",
+  "text9": "조회",
+  "text10": "검색어",
+  "text11": "검색어 입력",
+  "text12": "전체",
+  "text13": "메뉴얼 등록",
+  "text14": "파일 선택",
+  "text15": "장치 모델명",
   "text16": "FILE",
-  "text17": "Cancel",
-  "text18": "Save",
+  "text17": "취소",
+  "text18": "저장",
 };
 
 const lang = ref({});
