@@ -9,6 +9,7 @@
         hover
         small
         responsive
+        data-type="clickable"
         @row-clicked="modals.modalName.show = true"
       >
         <!-- 전체 선택 체크박스 -->
