@@ -128,7 +128,7 @@
   </div>
 
   <!-- modal 장치 수정 -->
-  <UiModal v-model="modals.modalDeviceModify.show" :title="lang.modalTitleEdit" type="modal" size="lg" @close-btn-click="modals.modalDeviceModify.show = false">
+  <UiModal v-model="modals.modalDeviceModify.show" :title="lang.modalTitleEdit" type="modal" size="lg" scrollable @close-btn-click="modals.modalDeviceModify.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
