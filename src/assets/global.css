@@ -64,6 +64,8 @@ img, fieldset, iframe, button {border:0 none;}
 .mt-20 {margin-top:2rem;}
 .mt-24 {margin-top:2.4rem;}
 
+.ml-auto {margin-left:auto}
+
 .ta-c{text-align:center !important;}
 .ta-l{text-align:left !important;}
 .ta-r{text-align:right !important;}
