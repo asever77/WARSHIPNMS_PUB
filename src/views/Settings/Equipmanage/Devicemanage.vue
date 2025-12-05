@@ -12,7 +12,7 @@
       <tr>
         <th scope="row">
           {{ lang.filterDeviceType }}
-          <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceType} 전체 정렬`"></BButton>
+          <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceType} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -23,7 +23,7 @@
           ></BFormSelect>
         </td>
         <th scope="row">{{ lang.filterSearchTarget }}
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} 전체 정렬`"></BButton>
+          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -40,7 +40,7 @@
       </tr>
       <tr>
         <th scope="row">{{ lang.filterRegDate }}
-          <BButton class="btn-sort" aria-sort="ascending" :aria-label="`${lang.filterRegDate} 전체 정렬`"></BButton>
+          <BButton class="btn-sort" aria-sort="ascending" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
         </th>
         <td colspan="5">
           <div class="ui-flex" data-item-align="center" data-gap="4" style="width: 20rem;">
@@ -1335,6 +1335,7 @@ const ko = {
   filterSearchTarget: '검색대상',
   filterSearchWord: '검색어',
   filterRegDate: '등록일',
+  sortAll: '전체 정렬',
 
   // 검색 영역
   searchLabel: '검색어',
@@ -1432,6 +1433,7 @@ const en = {
   filterSearchTarget: 'Search Target',
   filterSearchWord: 'Search Word',
   filterRegDate: 'Registration Date',
+  sortAll: 'Sort All',
 
   // Search area
   searchLabel: 'Search',
