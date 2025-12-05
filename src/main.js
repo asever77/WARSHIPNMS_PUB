@@ -19,7 +19,6 @@ import { createBootstrap } from 'bootstrap-vue-next'
 
 // html과 body에 디바이스 클래스 추가
 const htmlEl = document.documentElement
-const bodyEl = document.body
 
 if (G.isMobile) {
   htmlEl.classList.add('is-mobile')
