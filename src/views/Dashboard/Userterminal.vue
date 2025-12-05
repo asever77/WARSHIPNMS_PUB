@@ -13,8 +13,8 @@
     <tbody>
       <tr>
         <th scope="row">
-          장치명
-          <BButton class="btn-sort" aria-sort="none" :aria-label="`장치명 ${lang.sortAll}`"></BButton>
+          {{ lang.filterDeviceName }}
+          <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -26,8 +26,8 @@
         </td>
 
         <th scope="row">
-          무선침묵권한
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`무선침묵권한 ${lang.sortAll}`"></BButton>
+          {{ lang.filterRadioSilence }}
+          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -39,16 +39,16 @@
         </td>
 
         <th scope="row">
-          위치(구역)
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`위치(구역) ${lang.sortAll}`"></BButton>
+          {{ lang.filterLocation }}
+          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormInput id="search-word" class="ui-input" v-model="searchWord" placeholder=""></BFormInput>
         </td>
 
         <th scope="row">
-          상태
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`상태 ${lang.sortAll}`"></BButton>
+          {{ lang.filterStatus }}
+          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -86,7 +86,12 @@
             <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
           </div>
         </BFormGroup>
-
+        <BFormSelect
+          id="search-category"
+          class="ui-select-28"
+          v-model="searchCategory"
+          :options="detailOptions"
+        ></BFormSelect>
         <BFormSelect
             id="per-page"
             class="ui-select-28 w-60"
@@ -123,6 +128,7 @@
 
   <div class="ui-btn-group">
     <BButton class="blue28">{{ lang.btnRegister }}</BButton>
+    <BButton class="blue28">{{ lang.btnBulkRegister }}</BButton>
     <BButton class="gray28">{{ lang.btnDelete }}</BButton>
   </div>
 </template>
@@ -139,12 +145,17 @@ const ko = {
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
   btnSearch: '조회',
+  filterDeviceName: '장치명',
+  filterRadioSilence: '무선침묵권한',
+  filterLocation: '위치(구역)',
+  filterStatus: '상태',
   btnRegister: '등록',
+  btnBulkRegister: '일괄등록',
   btnDelete: '삭제',
   colSelect: '선택',
   colNumber: 'No',
-  colDeviceName: '장치명',
   colLocation: '위치(구역)',
+  colDeviceName: '장치명',
   colRadioSilence: '무선침묵',
   colAlarmAuth: '경보권한',
   colBroadcastAuth: '방송권한',
@@ -154,7 +165,6 @@ const ko = {
   colIpAddress: 'IP Address',
   colL2Switch: 'L2 스위치',
   colSerial: 'Serial No',
-  optionSelect: '선택하세요',
 }
 const en = {
   sortAll: 'Sort All',
@@ -162,12 +172,17 @@ const en = {
   searchPlaceholder: 'Enter search term',
   totalLabel: 'Total',
   btnSearch: 'Search',
+  filterDeviceName: 'Device Name',
+  filterRadioSilence: 'Radio Silence Auth',
+  filterLocation: 'Location(Area)',
+  filterStatus: 'Status',
   btnRegister: 'Register',
+  btnBulkRegister: 'Bulk Register',
   btnDelete: 'Delete',
   colSelect: 'Select',
   colNumber: 'No',
-  colDeviceName: 'Device Name',
   colLocation: 'Location(Area)',
+  colDeviceName: 'Device Name',
   colRadioSilence: 'Radio Silence',
   colAlarmAuth: 'Alarm Auth',
   colBroadcastAuth: 'Broadcast Auth',
@@ -177,7 +192,6 @@ const en = {
   colIpAddress: 'IP Address',
   colL2Switch: 'L2 Switch',
   colSerial: 'Serial No',
-  optionSelect: 'Please Select',
 }
 
 const lang = ref({})
@@ -186,15 +200,12 @@ const lang = ref({})
 const searchWord = ref('')
 const filterText = ref('')
 const searchField = ref('')
+const searchText = ref('')
 
-// 셀렉트 상태
 const deviceType = ref(null)
 const searchTarget = ref(null)
-const selectOptions = computed(() => [
-  { value: null, text: lang.value.optionSelect ?? '' },
-  { value: 'a', text: 'Option A' },
-  { value: 'b', text: 'Option B' },
-])
+const selectOptions = []
+
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(40))
 
@@ -268,19 +279,6 @@ const fields = computed(() => [
   { key: 'serial', label: lang.value.colSerial, thStyle: { width: '10rem' } },
 ]);
 
-// 실제 검색에 사용되는 값
-const filterField = ref('')
-const searchText = ref('')
-
-const filterFieldOptions = computed(() => {
-  const types = items.value.map(item => item.location)
-  const uniqueTypes = [...new Set(types)]
-  return [
-    { value: '', text: '근무지' },
-    ...uniqueTypes.map(type => ({ value: type, text: type }))
-  ]
-});
-
 const filteredItems = computed(() => {
   return items.value.filter(item => {
     const matchType = !searchField.value || item.location === searchField.value
@@ -296,6 +294,9 @@ const perPageOptions = [
   { value: 15, text: '15' },
   { value: 20, text: '20' },
 ]
+const detailOptions = [
+  { value: 1, text: '상세정보' },
+]
 const paginatedItems = computed(() => {
   const start = (currentPage.value - 1) * perPage.value
   return filteredItems.value.slice(start, start + perPage.value)
@@ -307,15 +308,12 @@ watch(perPage, () => {
 })
 
 function onFilter() {
-  searchField.value = filterField.value
+  searchField.value = searchWord.value
   searchText.value = filterText.value
   currentPage.value = 1
 }
 
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
-  if (filterFieldOptions.value.length > 0) {
-    filterField.value = filterFieldOptions.value[0].value;
-  }
 })
 </script>
