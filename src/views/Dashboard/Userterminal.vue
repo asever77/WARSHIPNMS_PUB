@@ -201,7 +201,7 @@ const items = ref(generateItems(40))
 function generateItems(n) {
   const locations = ['후부장교실', '전방장교실', '기관실', '함교', '작전실']
   const statuses = ['정상', '정상(통화중)', '비정상']
-  const authTypes = ['O', 'X']
+  const authTypes = ['O', '']
   const l2Switches = ['L2SW-01', 'L2SW-02', 'L2SW-03']
   const arr = []
   for (let i = 1; i <= n; i++) {
