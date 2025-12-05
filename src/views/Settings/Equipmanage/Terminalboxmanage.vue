@@ -48,7 +48,7 @@
             id="search-word"
             class="ui-input"
             v-model="searchWord"
-            placeholder=""
+            :placeholder="lang.searchPlaceholder"
           ></BFormInput>
         </td>
       </tr>
@@ -67,7 +67,7 @@
               id="reg-date-start"
               class="ui-input"
               v-model="regDateStart"
-              placeholder=""
+              :placeholder="lang.filterRegDate"
               type="datetime-local"
             ></BFormInput>
             ~
@@ -75,7 +75,7 @@
               id="reg-date-end"
               class="ui-input"
               v-model="regDateEnd"
-              placeholder=""
+              :placeholder="lang.filterRegDate"
               type="datetime-local"
             ></BFormInput>
           </div>
@@ -91,7 +91,7 @@
   <div class="base-wrap mt-20">
     <div class="search-base">
       <div class="search-base--form">
-        <span class="search-total">{{ lang.totalLabel }}:15</span>
+        <span class="search-total">{{ `${lang.totalLabel}:15` }}</span>
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
@@ -103,7 +103,12 @@
               :placeholder="lang.searchPlaceholder"
               class="ui-input-28"
             />
-            <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
+            <button
+              type="button"
+              class="btn-search-icon"
+              :aria-label="lang.btnSearch"
+              @click="onFilter"
+            />
           </div>
         </BFormGroup>
 
@@ -122,16 +127,16 @@
             :indeterminate="isIndeterminate"
             :model-value="isAllSelected"
             @update:modelValue="toggleSelectAll"
-            aria-label="전체 선택/해제"
+            :aria-label="`${lang.totalLabel} ${lang.colSelect}`"
           />
         </template>
         <template #cell(select)="data">
           <BFormCheckbox v-model="selectedIds" :value="data.item.id" />
         </template>
         <template #cell(portManage)="data">
-          <BButton class="gray24 min-w-0" @click.stop="onPortManage(data.item.id)">{{
-            lang.btnPortManage
-          }}</BButton>
+          <BButton class="gray24 min-w-0" @click.stop="onPortManage(data.item.id)">
+            {{ lang.btnPortManage }}
+          </BButton>
         </template>
       </BTable>
 
@@ -146,15 +151,15 @@
     </div>
   </div>
 
-  <div class="ui-btn-group" data-justify-align="between">
+  <div class="ui-btn-group ui-flex" data-justify-align="between">
     <BButton class="blue28" @click="modals.modalConnectorRegister.show = true"
-      >전체 일괄등록</BButton
+      >{{ lang.bulkRegisterAll }}</BButton
     >
 
     <div class="ui-btn-group">
-      <BButton class="blue28" @click="modals.modalDeviceRegister.show = true">{{
-        lang.btnRegister
-      }}</BButton>
+      <BButton class="blue28" @click="modals.modalDeviceRegister.show = true"
+        >{{ lang.btnRegister }}</BButton
+      >
       <BButton class="gray28">{{ lang.btnDelete }}</BButton>
     </div>
   </div>
@@ -162,18 +167,20 @@
   <!-- modal 연결단자함/ICU 포트관리 -->
   <UiModal
     v-model="modals.modalICUPortAdmin.show"
-    :title="'연결단자함/ICU 포트관리'"
+    :title="lang.modalPortAdminTitle"
     type="modal"
     size="xlg"
     scrollable
     @close-btn-click="modals.modalICUPortAdmin.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
-      <div class="ui-dashed-line-box">장치명 : {{ selectedPortDevice.deviceName }}</div>
+      <div class="ui-dashed-line-box">
+        {{ `${lang.deviceName} : ${selectedPortDevice.deviceName}` }}
+      </div>
 
       <div class="port-link-LR">
         <div class="flex-1">
-          <h3 class="port-link-title">LEFT</h3>
+          <h3 class="port-link-title">{{ lang.left }}</h3>
           <table class="table-type-a">
             <colgroup>
               <col style="width: 8rem" />
@@ -183,15 +190,15 @@
             </colgroup>
             <thead>
               <tr>
-                <th scope="col">포트번호</th>
-                <th scope="col" colspan="2">포트설정</th>
-                <th scope="col">매핑</th>
+                <th scope="col">{{ lang.portNumber }}</th>
+                <th scope="col" colspan="2">{{ lang.portSettings }}</th>
+                <th scope="col">{{ lang.mapping }}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row" rowspan="3">P01</th>
-                <th scope="row">포트레이블</th>
+                <th scope="row">{{ lang.portLabel }}</th>
                 <td>OP43DATA(보안장비 TX #1)</td>
                 <td class="mapping-td" rowspan="3">
                   <div class="mapping-td--wrap">
@@ -205,17 +212,25 @@
                         ref="portDropdown"
                       >
                         <div class="d-flex flex-column gap-2 mb-3" @click.stop>
-                          <BFormCheckbox v-model="portMapping.l01" value="1">옵션 1</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.l01" value="2">옵션 2</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.l01" value="3">옵션 3</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.l01" value="4">옵션 4</BFormCheckbox>
+                          <BFormCheckbox v-model="portMapping.l01" value="1"
+                            >{{ lang.option1 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.l01" value="2"
+                            >{{ lang.option2 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.l01" value="3"
+                            >{{ lang.option3 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.l01" value="4"
+                            >{{ lang.option4 }}</BFormCheckbox
+                          >
                         </div>
                         <div class="ui-btn-group">
                           <BButton class="gray24 min-w-0" @click="onCancelPortMapping"
-                            >취소</BButton
+                            >{{ lang.btnCancel }}</BButton
                           >
                           <BButton class="blue24 min-w-0" @click="onConfirmPortMapping"
-                            >적용</BButton
+                            >{{ lang.apply }}</BButton
                           >
                         </div>
                       </BDropdown>
@@ -225,11 +240,11 @@
                 </td>
               </tr>
               <tr>
-                <th scope="row">연결장치</th>
+                <th scope="row">{{ lang.connectedDevice }}</th>
                 <td @click="onConnectorDetail" style="cursor: pointer">OP43DATA(보안장비 TX #1)</td>
               </tr>
               <tr>
-                <th scope="row">비고</th>
+                <th scope="row">{{ lang.remark }}</th>
                 <td></td>
               </tr>
 
@@ -249,17 +264,25 @@
                         ref="portDropdown"
                       >
                         <div class="d-flex flex-column gap-2 mb-3" @click.stop>
-                          <BFormCheckbox v-model="portMapping.l02" value="1">옵션 1</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.l02" value="2">옵션 2</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.l02" value="3">옵션 3</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.l02" value="4">옵션 4</BFormCheckbox>
+                          <BFormCheckbox v-model="portMapping.l02" value="1"
+                            >{{ lang.option1 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.l02" value="2"
+                            >{{ lang.option2 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.l02" value="3"
+                            >{{ lang.option3 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.l02" value="4"
+                            >{{ lang.option4 }}</BFormCheckbox
+                          >
                         </div>
                         <div class="ui-btn-group">
                           <BButton class="gray24 min-w-0" @click="onCancelPortMapping"
-                            >취소</BButton
+                            >{{ lang.btnCancel }}</BButton
                           >
                           <BButton class="blue24 min-w-0" @click="onConfirmPortMapping"
-                            >적용</BButton
+                            >{{ lang.apply }}</BButton
                           >
                         </div>
                       </BDropdown>
@@ -269,18 +292,18 @@
                 </td>
               </tr>
               <tr>
-                <th scope="row">연결장치</th>
+                <th scope="row">{{ lang.connectedDevice }}</th>
                 <td @click="onConnectorDetail" style="cursor: pointer">OP43DATA(보안장비 TX #1)</td>
               </tr>
               <tr>
-                <th scope="row">비고</th>
+                <th scope="row">{{ lang.remark }}</th>
                 <td></td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="flex-1">
-          <h3 class="port-link-title">RIGHT</h3>
+          <h3 class="port-link-title">{{ lang.right }}</h3>
           <table class="table-type-a">
             <colgroup>
               <col style="width: 10rem" />
@@ -290,9 +313,9 @@
             </colgroup>
             <thead>
               <tr>
-                <th scope="col">매핑</th>
-                <th scope="col">포트번호</th>
-                <th scope="col" colspan="2">포트설정</th>
+                <th scope="col">{{ lang.mapping }}</th>
+                <th scope="col">{{ lang.portNumber }}</th>
+                <th scope="col" colspan="2">{{ lang.portSettings }}</th>
               </tr>
             </thead>
             <tbody>
@@ -309,17 +332,25 @@
                         ref="portDropdown"
                       >
                         <div class="d-flex flex-column gap-2 mb-3" @click.stop>
-                          <BFormCheckbox v-model="portMapping.r01" value="1">옵션 1</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.r01" value="2">옵션 2</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.r01" value="3">옵션 3</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.r01" value="4">옵션 4</BFormCheckbox>
+                          <BFormCheckbox v-model="portMapping.r01" value="1"
+                            >{{ lang.option1 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r01" value="2"
+                            >{{ lang.option2 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r01" value="3"
+                            >{{ lang.option3 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r01" value="4"
+                            >{{ lang.option4 }}</BFormCheckbox
+                          >
                         </div>
                         <div class="ui-btn-group">
                           <BButton class="gray24 min-w-0" @click="onCancelPortMapping"
-                            >취소</BButton
+                            >{{ lang.btnCancel }}</BButton
                           >
                           <BButton class="blue24 min-w-0" @click="onConfirmPortMapping"
-                            >적용</BButton
+                            >{{ lang.apply }}</BButton
                           >
                         </div>
                       </BDropdown>
@@ -328,15 +359,15 @@
                   </div>
                 </td>
                 <th scope="row" rowspan="3">P01</th>
-                <th scope="row">포트레이블</th>
+                <th scope="row">{{ lang.portLabel }}</th>
                 <td>OP43DATA(보안장비 TX #1)</td>
               </tr>
               <tr>
-                <th scope="row">연결장치</th>
+                <th scope="row">{{ lang.connectedDevice }}</th>
                 <td @click="onConnectorDetail" style="cursor: pointer">OP43DATA(보안장비 TX #1)</td>
               </tr>
               <tr>
-                <th scope="row">비고</th>
+                <th scope="row">{{ lang.remark }}</th>
                 <td></td>
               </tr>
 
@@ -353,21 +384,37 @@
                         ref="portDropdown"
                       >
                         <div class="d-flex flex-column gap-2 mb-3" @click.stop>
-                          <BFormCheckbox v-model="portMapping.r02" value="1">옵션 1</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.r02" value="2">옵션 2</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.r02" value="3">옵션 3</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.r02" value="4">옵션 4</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.r02" value="5">옵션 5</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.r02" value="6">옵션 6</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.r02" value="7">옵션 7</BFormCheckbox>
-                          <BFormCheckbox v-model="portMapping.r02" value="8">옵션 8</BFormCheckbox>
+                          <BFormCheckbox v-model="portMapping.r02" value="1"
+                            >{{ lang.option1 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="2"
+                            >{{ lang.option2 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="3"
+                            >{{ lang.option3 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="4"
+                            >{{ lang.option4 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="5"
+                            >{{ lang.option5 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="6"
+                            >{{ lang.option6 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="7"
+                            >{{ lang.option7 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="8"
+                            >{{ lang.option8 }}</BFormCheckbox
+                          >
                         </div>
                         <div class="ui-btn-group">
                           <BButton class="gray24 min-w-0" @click="onCancelPortMapping"
-                            >취소</BButton
+                            >{{ lang.btnCancel }}</BButton
                           >
                           <BButton class="blue24 min-w-0" @click="onConfirmPortMapping"
-                            >적용</BButton
+                            >{{ lang.apply }}</BButton
                           >
                         </div>
                       </BDropdown>
@@ -376,15 +423,15 @@
                   </div>
                 </td>
                 <th scope="row" rowspan="3">P01</th>
-                <th scope="row">포트레이블</th>
+                <th scope="row">{{ lang.portLabel }}</th>
                 <td>OP43DATA(보안장비 TX #1)</td>
               </tr>
               <tr>
-                <th scope="row">연결장치</th>
+                <th scope="row">{{ lang.connectedDevice }}</th>
                 <td @click="onConnectorDetail" style="cursor: pointer">OP43DATA(보안장비 TX #1)</td>
               </tr>
               <tr>
-                <th scope="row">비고</th>
+                <th scope="row">{{ lang.remark }}</th>
                 <td></td>
               </tr>
             </tbody>
@@ -393,9 +440,9 @@
       </div>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalICUPortAdmin.show = false">{{
-        lang.btnCancel
-      }}</BButton>
+      <BButton class="gray28" @click="modals.modalICUPortAdmin.show = false"
+        >{{ lang.btnCancel }}</BButton
+      >
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
@@ -416,7 +463,7 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row" colspan="2">작업유형</th>
+            <th scope="row" colspan="2">{{ lang.taskType }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -426,7 +473,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" colspan="2">장치유형</th>
+            <th scope="row" colspan="2">{{ lang.deviceType }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -436,14 +483,24 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" rowspan="3">연결장치</th>
-            <th scope="row">장치명</th>
+            <th scope="row" colspan="2">{{ lang.deviceName }}</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.deviceName"
+                :options="deviceNameOptions"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" rowspan="3">{{ lang.connectedDevice }}</th>
+            <th scope="row">{{ lang.deviceName }}</th>
             <td>
               <BFormSelect class="ui-select" v-model="formData.model" :options="modelOptions" />
             </td>
           </tr>
           <tr>
-            <th scope="row">카드</th>
+            <th scope="row">{{ lang.card }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -453,22 +510,35 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">포트</th>
+            <th scope="row">{{ lang.port }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                v-model="formData.deviceName"
-                :options="deviceNameOptions"
-              />
+              <div class="ui-flex" data-gap="4">
+                <BFormSelect
+                  class="ui-select"
+                  v-model="formData.deviceName"
+                  :options="deviceNameOptions"
+                />
+                <BFormSelect
+                  class="ui-select"
+                  v-model="formData.deviceName"
+                  :options="deviceNameOptions"
+                />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="2">{{ lang.model }}</th>
+            <td>
+              <BFormSelect class="ui-select" v-model="formData.model" :options="modelOptions" />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalConnectorDetail.show = false">{{
-        lang.btnCancel
-      }}</BButton>
+      <BButton class="gray28" @click="modals.modalConnectorDetail.show = false"
+        >{{ lang.btnCancel }}</BButton
+      >
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
@@ -476,7 +546,7 @@
   <!-- modal 전체일관등록 -->
   <UiModal
     v-model="modals.modalConnectorRegister.show"
-    :title="'연결단자함 포트관리 일괄등록'"
+    :title="lang.modalConnectorRegisterTitle"
     type="modal"
     size="md"
     @close-btn-click="modals.modalConnectorRegister.show = false"
@@ -489,12 +559,12 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">파일등록</th>
+            <th scope="row">{{ lang.fileRegister }}</th>
             <td>
               <BFormFile
                 class="ui-input"
                 v-model="formData.file"
-                :placeholder="lang.text14 || '파일 선택'"
+                :placeholder="lang.fileSelect"
               />
             </td>
           </tr>
@@ -502,15 +572,17 @@
       </table>
       <div class="ui-flex py-4" data-direction="col" data-gap="20" data-item-align="center">
         <p class="text-12-400">
-          {{ lang.text1 }}
+          {{ lang.bulkGuide }}
         </p>
-        <a href="/download/connector-bulk-template.cfg" download class="ui-link-underline">{{ lang.text2 }}.cfg</a>
+        <a href="/download/connector-bulk-template.cfg" download class="ui-link-underline"
+          >{{ `${lang.bulkTemplate}.cfg` }}</a
+        >
       </div>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalConnectorRegister.show = false">{{
-        lang.btnCancel
-      }}</BButton>
+      <BButton class="gray28" @click="modals.modalConnectorRegister.show = false"
+        >{{ lang.btnCancel }}</BButton
+      >
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
@@ -518,7 +590,7 @@
   <!-- modal 단자함/ICU 등록 -->
   <UiModal
     v-model="modals.modalDeviceRegister.show"
-    :title="'단자함/ICU 등록'"
+    :title="lang.modalDeviceRegisterTitle"
     type="modal"
     size="md"
     @close-btn-click="modals.modalDeviceRegister.show = false"
@@ -531,7 +603,7 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">장치유형</th>
+            <th scope="row">{{ lang.deviceType }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -541,13 +613,13 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">모델명</th>
+            <th scope="row">{{ lang.model }}</th>
             <td>
               <BFormSelect class="ui-select" v-model="formData.model" :options="modelOptions" />
             </td>
           </tr>
           <tr>
-            <th scope="row">장치명</th>
+            <th scope="row">{{ lang.deviceName }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -557,7 +629,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row" rowspan="2">위치</th>
+            <th scope="row" rowspan="2">{{ lang.location }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -569,19 +641,19 @@
           <tr>
             <td>
               <BFormSelect
-                v-if="formData.location === '렉'"
+                v-if="formData.location === lang.locationRack"
                 class="ui-select"
                 v-model="formData.locationDetail2"
                 :options="locationDetailOptions"
               />
               <BFormSelect
-                v-if="formData.location === '구역'"
+                v-else-if="formData.location === lang.locationZone"
                 class="ui-select"
                 v-model="formData.locationDetail3"
                 :options="locationDetailOptions"
               />
               <BFormInput
-                v-if="formData.location === '사용자정의'"
+                v-else-if="formData.location === lang.locationCustom"
                 class="ui-input-28"
                 v-model="formData.locationDetail4"
               />
@@ -591,17 +663,16 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalDeviceRegister.show = false">{{
-        lang.btnCancel
-      }}</BButton>
+      <BButton class="gray28" @click="modals.modalDeviceRegister.show = false"
+        >{{ lang.btnCancel }}</BButton
+      >
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch, reactive } from 'vue'
-import G from '@/config/global.js'
+import { ref, computed, watch, reactive } from 'vue'
 import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
 import {
   BButton,
@@ -613,209 +684,133 @@ import {
   BFormFile,
 } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
+import G from '@/config/global.js'
 
 const ko = {
-  // 필터 영역
   filterDeviceType: '장치유형',
   filterSearchTarget: '검색대상',
   filterSearchWord: '검색어',
   filterRegDate: '등록일',
-
-  // 검색 영역
   searchLabel: '검색어',
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
-
-  thead1: '포트 식별`자',
-  thead2: '포트 인터페이스 유형',
-  thead3: '레이블',
-  thead4: 'VoIP교환기 속성',
-  thead5: 'VoIP 교환기 1',
-  thead6: 'VoIP 교환기 2',
-
-  // 버튼
   btnSearch: '조회',
   btnRegister: '등록',
   btnDelete: '삭제',
   btnSave: '저장',
   btnCancel: '취소',
   btnPortManage: '포트관리',
-
-  // 테이블 헤더
+  bulkRegisterAll: '전체 일괄등록',
   colSelect: '선택',
   colNumber: '순번',
   colDeviceType: '장치유형',
   colModel: '모델',
   colDeviceName: '장치명',
-  colGrade: '등급',
-  colSerial: '시리얼번호',
   colLocation: '위치',
   colRegDate: '등록일',
-
-  // 모달
-  modalTitleEdit: '장치 수정',
-  modalTitleRegister: '장치 등록',
-  modalDeviceType: '장치유형',
-  modalModel: '모델명',
-  modalDeviceName: '장치명',
-  modalDescription: '장비설명',
-  modalGrade: '설명/비고',
-  modalSerial: '시리얼번호',
-  modalLocation: '위치',
-  modalLocationDetail: '위치상세',
-  modalL2Switch: 'L2 스위치',
-  modalIpAddress: 'IP Address',
-  modalCardCount: '카드갯수',
-  modalServerTYpe: '서버타입',
-
-  // 옵션
-  optionSelect: '선택하세요',
-  optionAdmin: '관리자',
-  optionManager: '매니저',
-  optionLocation1: '위치1',
-  optionLocation2: '위치2',
-  optionDetailA: 'A구역',
-  optionDetailB: 'B구역',
-  optionL2SW01: 'L2SW-01',
-  optionL2SW02: 'L2SW-02',
-  optionCardCount1: '1',
-  optionCardCount2: '2',
-  optionCardCount4: '4',
-  optionEthernet: '이더넷',
-  optionSerial: '시리얼',
-  optionFiber: '광',
-
-  // 추가 텍스트
-  cardNumber: '카드번호',
-  cardLabel: '카드레이블',
-  portNumber: '포트번호',
-  portLabel: '포트 레이블',
-  cardInterface: '카드 인터페이스',
-  label: '라벨',
-  portManage: '포트관리',
-  btnLabeling: '라벨링',
-  deviceSecurityType: '보안장비유형',
-  portCount: '포트갯수',
+  modalPortAdminTitle: '연결단자함/ICU 포트관리',
+  modalConnectorRegisterTitle: '연결단자함 포트관리 일괄등록',
+  modalDeviceRegisterTitle: '단자함/ICU 등록',
+  fileRegister: '파일등록',
+  fileSelect: '파일 선택',
+  bulkGuide: '다음 문서 양식을 다운받아 작성 후 일괄등록에 사용할 수 있습니다.',
+  bulkTemplate: '연결단자함일괄등록양식',
   deviceName: '장치명',
-  serialNumber: '시리얼번호',
-  locationType: '위치유형',
+  portNumber: '포트번호',
+  portSettings: '포트설정',
+  mapping: '매핑',
+  portLabel: '포트레이블',
+  connectedDevice: '연결장치',
+  remark: '비고',
+  left: 'LEFT',
+  right: 'RIGHT',
+  option1: '옵션 1',
+  option2: '옵션 2',
+  option3: '옵션 3',
+  option4: '옵션 4',
+  option5: '옵션 5',
+  option6: '옵션 6',
+  option7: '옵션 7',
+  option8: '옵션 8',
+  apply: '적용',
+  selectPlaceholder: '선택하세요',
+  selectOption1: '옵션1',
+  selectOption2: '옵션2',
+  locationRack: '렉',
+  locationZone: '구역',
+  locationCustom: '사용자정의',
+  locationDetailA: 'A구역',
+  locationDetailB: 'B구역',
+  taskType: '작업유형',
+  card: '카드',
+  port: '포트',
+  model: '모델명',
   location: '위치',
-  locationDetail: '위치상세',
-  l2Switch: 'L2 스위치',
-  description: '설명/비고',
-  transceiverType: '송수신유형',
-  frequencyBand: '주파수대역',
-  channelCount: '채널갯수',
-  switchAttributes: '스위치 속성',
-  poeSupport: 'POE 지원 여부',
-  managementIp: '관리 IP',
-  dashboardLabel: '대시보드 레이블',
-  btnApply: '적용',
-  text1: '다음 문서 양식을 다운받아 작성 후 일괄등록에 사용할 수 있습니다.',
-  text2: '연결단자함일괄등록양식',
+  deviceType: '장치유형',
 }
 const en = {
-  // 필터 영역
-  filterDeviceType: '장치유형',
-  filterSearchTarget: '검색대상',
-  filterSearchWord: '검색어',
-  filterRegDate: '등록일',
-
-  // 검색 영역
-  searchLabel: '검색어',
-  searchPlaceholder: '검색어 입력',
-  totalLabel: '전체',
-
-  thead1: '포트 식별`자',
-  thead2: '포트 인터페이스 유형',
-  thead3: '레이블',
-  thead4: 'VoIP교환기 속성',
-  thead5: 'VoIP 교환기 1',
-  thead6: 'VoIP 교환기 2',
-
-  // 버튼
-  btnSearch: '조회',
-  btnRegister: '등록',
-  btnDelete: '삭제',
-  btnSave: '저장',
-  btnCancel: '취소',
-  btnPortManage: '포트관리',
-
-  // 테이블 헤더
-  colSelect: '선택',
-  colNumber: '순번',
-  colDeviceType: '장치유형',
-  colModel: '모델',
-  colDeviceName: '장치명',
-  colGrade: '등급',
-  colSerial: '시리얼번호',
-  colLocation: '위치',
-  colRegDate: '등록일',
-
-  // 모달
-  modalTitleEdit: '장치 수정',
-  modalTitleRegister: '장치 등록',
-  modalDeviceType: '장치유형',
-  modalModel: '모델명',
-  modalDeviceName: '장치명',
-  modalDescription: '장비설명',
-  modalGrade: '설명/비고',
-  modalSerial: '시리얼번호',
-  modalLocation: '위치',
-  modalLocationDetail: '위치상세',
-  modalL2Switch: 'L2 스위치',
-  modalIpAddress: 'IP Address',
-  modalCardCount: '카드갯수',
-  modalServerTYpe: '서버타입',
-
-  // 옵션
-  optionSelect: '선택하세요',
-  optionAdmin: '관리자',
-  optionManager: '매니저',
-  optionLocation1: '위치1',
-  optionLocation2: '위치2',
-  optionDetailA: 'A구역',
-  optionDetailB: 'B구역',
-  optionL2SW01: 'L2SW-01',
-  optionL2SW02: 'L2SW-02',
-  optionCardCount1: '1',
-  optionCardCount2: '2',
-  optionCardCount4: '4',
-  optionEthernet: '이더넷',
-  optionSerial: '시리얼',
-  optionFiber: '광',
-
-  // 추가 텍스트
-  cardNumber: '카드번호',
-  cardLabel: '카드레이블',
-  portNumber: '포트번호',
-  portLabel: '포트 레이블',
-  cardInterface: '카드 인터페이스',
-  label: '라벨',
-  portManage: '포트관리',
-  btnLabeling: '라벨링',
-  deviceSecurityType: '보안장비유형',
-  portCount: '포트갯수',
-  deviceName: '장치명',
-  serialNumber: '시리얼번호',
-  locationType: '위치유형',
-  location: '위치',
-  locationDetail: '위치상세',
-  l2Switch: 'L2 스위치',
-  description: '설명/비고',
-  transceiverType: '송수신유형',
-  frequencyBand: '주파수대역',
-  channelCount: '채널갯수',
-  switchAttributes: '스위치 속성',
-  poeSupport: 'POE 지원 여부',
-  managementIp: '관리 IP',
-  dashboardLabel: '대시보드 레이블',
-  btnApply: '적용',
-  text1: '다음 문서 양식을 다운받아 작성 후 일괄등록에 사용할 수 있습니다.',
-  text2: '연결단자함일괄등록양식',
+  filterDeviceType: 'Device Type',
+  filterSearchTarget: 'Search Target',
+  filterSearchWord: 'Search Word',
+  filterRegDate: 'Registration Date',
+  searchLabel: 'Search',
+  searchPlaceholder: 'Enter search term',
+  totalLabel: 'Total',
+  btnSearch: 'Search',
+  btnRegister: 'Register',
+  btnDelete: 'Delete',
+  btnSave: 'Save',
+  btnCancel: 'Cancel',
+  btnPortManage: 'Port Management',
+  bulkRegisterAll: 'Bulk Register All',
+  colSelect: 'Select',
+  colNumber: 'No.',
+  colDeviceType: 'Device Type',
+  colModel: 'Model',
+  colDeviceName: 'Device Name',
+  colLocation: 'Location',
+  colRegDate: 'Reg. Date',
+  modalPortAdminTitle: 'Connector/ICU Port Management',
+  modalConnectorRegisterTitle: 'Connector Port Bulk Registration',
+  modalDeviceRegisterTitle: 'Terminal Box / ICU Registration',
+  fileRegister: 'File Upload',
+  fileSelect: 'Select File',
+  bulkGuide: 'Download and fill out the form to use for bulk registration.',
+  bulkTemplate: 'ConnectorBulkTemplate',
+  deviceName: 'Device Name',
+  portNumber: 'Port Number',
+  portSettings: 'Port Settings',
+  mapping: 'Mapping',
+  portLabel: 'Port Label',
+  connectedDevice: 'Connected Device',
+  remark: 'Note',
+  left: 'LEFT',
+  right: 'RIGHT',
+  option1: 'Option 1',
+  option2: 'Option 2',
+  option3: 'Option 3',
+  option4: 'Option 4',
+  option5: 'Option 5',
+  option6: 'Option 6',
+  option7: 'Option 7',
+  option8: 'Option 8',
+  apply: 'Apply',
+  selectPlaceholder: 'Select',
+  selectOption1: 'Option 1',
+  selectOption2: 'Option 2',
+  locationRack: 'Rack',
+  locationZone: 'Zone',
+  locationCustom: 'Custom',
+  locationDetailA: 'Area A',
+  locationDetailB: 'Area B',
+  taskType: 'Task Type',
+  card: 'Card',
+  port: 'Port',
+  model: 'Model Name',
+  location: 'Location',
+  deviceType: 'Device Type',
 }
-
-const lang = ref({})
+const lang = ref(G.lang === 'en' ? en : ko)
 
 // 수정 모달 상태
 const modals = reactive({
@@ -829,7 +824,7 @@ const modals = reactive({
 const formData = reactive({
   deviceType: '',
   model: '',
-  location: '렉', // 기본값으로 '렉' 설정
+  location: lang.value.locationRack,
 })
 const selectedPortDevice = reactive({
   deviceName: '',
@@ -846,7 +841,7 @@ const deviceTypeOptions = computed(() => [
 ])
 const modelOptions = computed(() => [{ value: formData.model, text: formData.model }])
 const deviceNameOptions = computed(() => [
-  { value: '', text: lang.value.optionSelect },
+  { value: '', text: lang.value.selectPlaceholder },
   { value: '장치1', text: '장치1' },
   { value: '장치2', text: '장치2' },
 ])
@@ -856,27 +851,26 @@ const searchWord = ref('')
 const regDateStart = ref('')
 const regDateEnd = ref('')
 const filterText = ref('')
-const searchField = ref('')
 
 // 셀렉트 상태
 const deviceType = ref(null)
 const searchTarget = ref(null)
 const selectOptions = computed(() => [
-  { value: null, text: lang.value.optionSelect ?? '' },
-  { value: 'a', text: lang.value.option1 ?? '' },
-  { value: 'b', text: lang.value.option2 ?? '' },
+  { value: null, text: lang.value.selectPlaceholder },
+  { value: 'a', text: lang.value.selectOption1 },
+  { value: 'b', text: lang.value.selectOption2 },
 ])
 
 const locationOptions = computed(() => [
-  { value: '렉', text: '렉' },
-  { value: '구역', text: '구역' },
-  { value: '사용자정의', text: '사용자정의' },
+  { value: lang.value.locationRack, text: lang.value.locationRack },
+  { value: lang.value.locationZone, text: lang.value.locationZone },
+  { value: lang.value.locationCustom, text: lang.value.locationCustom },
 ])
 
 const locationDetailOptions = computed(() => [
-  { value: '', text: lang.value.optionSelect },
-  { value: 'A구역', text: lang.value.optionDetailA },
-  { value: 'B구역', text: lang.value.optionDetailB },
+  { value: '', text: lang.value.selectPlaceholder },
+  { value: lang.value.locationDetailA, text: lang.value.locationDetailA },
+  { value: lang.value.locationDetailB, text: lang.value.locationDetailB },
 ])
 
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
@@ -935,24 +929,13 @@ const fields = computed(() => [
 ])
 
 // 실제 검색에 사용되는 값
-const filterField = ref('')
 const searchText = ref('')
-
-const filterFieldOptions = computed(() => {
-  const types = items.value.map((item) => item.location)
-  const uniqueTypes = [...new Set(types)]
-  return [
-    { value: '', text: '근무지' },
-    ...uniqueTypes.map((type) => ({ value: type, text: type })),
-  ]
-})
 
 const filteredItems = computed(() => {
   return items.value.filter((item) => {
-    const matchType = !searchField.value || item.location === searchField.value
     const matchText =
       !searchText.value || (item.location && item.location.includes(searchText.value))
-    return matchType && matchText
+    return matchText
   })
 })
 
@@ -998,27 +981,7 @@ function toggleSelectAll(checked) {
   }
 }
 
-// 테이블 행 클릭 시 모달 열고 데이터 채우기
-function onRowClicked(item) {
-  if (!item) return
-  formData.deviceType = item.deviceType || ''
-  formData.model = item.model || ''
-  formData.deviceName = item.deviceName || ''
-  formData.grade = item.grade || ''
-  formData.serialNumber = item.serial || ''
-  formData.location = item.location || ''
-  formData.locationDetail = ''
-  formData.l2Switch = ''
-  formData.ipAddress = ''
-  formData.cardCount = ''
-  formData.portType1 = ''
-  formData.portLabel = ''
-  formData.cardInterface1 = ''
-  modals.modalDeviceModify.show = true
-}
-
 function onFilter() {
-  searchField.value = filterField.value
   searchText.value = filterText.value
   currentPage.value = 1
 }
@@ -1034,7 +997,10 @@ function onPortManage(deviceId) {
 
 // 포트 매핑 드롭다운 핸들러
 function onCancelPortMapping() {
-  portMapping.selected = []
+  portMapping.l01 = []
+  portMapping.l02 = []
+  portMapping.r01 = []
+  portMapping.r02 = []
   if (portDropdown.value) {
     portDropdown.value.hide()
   }
@@ -1045,17 +1011,16 @@ function onConnectorDetail() {
 }
 
 function onConfirmPortMapping() {
-  console.log('선택된 포트:', portMapping.selected)
+  console.log('선택된 포트:', {
+    l01: portMapping.l01,
+    l02: portMapping.l02,
+    r01: portMapping.r01,
+    r02: portMapping.r02,
+  })
   // 포트 매핑 로직 추가
   if (portDropdown.value) {
     portDropdown.value.hide()
   }
 }
 
-onMounted(() => {
-  lang.value = G.lang === 'ko' ? ko : en
-  if (filterFieldOptions.value.length > 0) {
-    filterField.value = filterFieldOptions.value[0].value
-  }
-})
 </script>
