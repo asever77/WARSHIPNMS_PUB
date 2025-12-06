@@ -45,7 +45,7 @@ img, fieldset, iframe, button {border:0 none;}
 .base-side[data-state="close"] .admin-area--info {display:none;}
 .base-side[data-state="close"] .admin-area--avata {width:3.4rem;height:3.4rem;}
 .base-side[data-state="close"] .admin-area--avata img{width:2.2rem;height:2.2rem;}
-.base-main {width:100%;flex:1;}
+.base-main {width:100%;flex:1;overflow:hidden}
 .base-content {display:flex;width:100%;flex:1;flex-direction:column;height:100%;}
 .base-content--header {display:flex;justify-content:space-between;padding:0 5rem 0 1rem;background-color:#000;min-height:4.5rem;align-items:flex-end;position:sticky;top:0;}
 .base-content--header-title {font-size:1.4rem;font-weight:700;color:var(--color-secondary-yellow);display:flex;align-items:center;align-self:center;}
@@ -107,7 +107,7 @@ table .form-check-inline ~ .form-check-inline,
 .table-type-a {border:1px solid #D4E1E8;width:100%;table-layout:fixed}
 .table-type-a thead th {background-color:var(--color-primary);color:#fff;text-align:center;font-size:1.2rem;font-weight:700;height:3rem}
 .table-type-a thead th ~ th {border-left:1px solid rgba(255,255,255,.3)}
-.table-type-a tbody th {background-color:#E3EDF4;border-right:1px solid #D4E1E8;;text-align:center;height:3rem;font-size:1.2rem;font-weight:700;color:#627582}
+.table-type-a tbody th {background-color:#E3EDF4;border-right:1px solid #D4E1E8;text-align:center;height:3rem;font-size:1.2rem;font-weight:700;color:#627582}
 .table-type-a tbody th ~ th {border-left:1px solid #D4E1E8}
 .table-type-a tbody td {padding:.4rem;font-size:1.2rem;color:#3E3E3E}
 .table-type-a tbody td + th,
@@ -118,6 +118,22 @@ table .form-check-inline ~ .form-check-inline,
   color: #E31F1F;
   background-color: #ffe0e0;
 }
+
+.ui-excel-table {width:100%;max-height:calc(100vh - 11.5rem);overflow:auto;border:1px solid #D4E1E8;}
+.is-desktop .ui-excel-table::-webkit-scrollbar {height:1rem;width:1rem;}
+.is-desktop .ui-excel-table::-webkit-scrollbar-track {border-radius:999em;background-color:transparent}
+.is-desktop .ui-excel-table::-webkit-scrollbar-thumb {width:.6rem;border-radius:999em;background-color:rgba(0,0,0,.1);background-clip:content-box;border:.2rem solid transparent}
+.table-type-b {min-width:100%;border-spacing:0}
+.table-type-b thead th:first-child {z-index:10;left:0}
+.table-type-b thead th {font-size:1.2rem;font-weight:700;background-color:#E3EDF4;padding:.4rem;position:sticky;top:0;border-bottom:1px solid #D4E1E8;height:18rem;color:#627582;}
+.table-type-b thead th span {writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:flex-end;height:100%;white-space:nowrap}
+.table-type-b tbody th {background-color:#E3EDF4;border-right:1px solid #D4E1E8;white-space:nowrap;padding:.4rem;font-size:1.2rem;position:sticky;left:0;color:#627582;font-weight:700;text-align:right}
+.table-type-b tbody td {padding:.4rem;}
+.table-type-b thead th:not(:last-child),
+.table-type-b tbody td:not(:last-child) {border-right:1px solid #D4E1E8}
+.table-type-b tbody tr:not(:last-child) th,
+.table-type-b tbody tr:not(:last-child) td {border-bottom:1px solid #D4E1E8}
+
 /* btn */
 .ui-btn-group {display:flex;justify-content:flex-end;gap:.8rem;margin-top:1rem}
 .blue28.btn-secondary {background-color:#1E5379;border-color:#1E5379;min-width:10rem;height:2.8rem;display:inline-flex;align-items:center;padding:0 1.2rem;justify-content:center;font-size:1.2rem;font-weight:700}
