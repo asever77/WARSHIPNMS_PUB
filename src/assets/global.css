@@ -123,7 +123,7 @@ table .form-check-inline ~ .form-check-inline,
 .table-type-b thead th:first-child {z-index:10;left:0}
 .table-type-b thead th {font-size:1.2rem;font-weight:700;background-color:#E3EDF4;padding:.4rem;position:sticky;top:0;border-bottom:1px solid #D4E1E8;height:18rem;color:#627582;}
 .table-type-b thead th span {writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:flex-end;height:100%;white-space:nowrap}
-.table-type-b tbody th {background-color:#E3EDF4;border-right:1px solid #D4E1E8;white-space:nowrap;padding:.4rem;font-size:1.2rem;position:sticky;left:0;color:#627582;font-weight:700}
+.table-type-b tbody th {background-color:#E3EDF4;border-right:1px solid #D4E1E8;white-space:nowrap;padding:.4rem;font-size:1.2rem;position:sticky;left:0;color:#627582;font-weight:700;text-align:right}
 .table-type-b tbody td {padding:.4rem;}
 .table-type-b thead th:not(:last-child),
 .table-type-b tbody td:not(:last-child) {border-right:1px solid #D4E1E8}
