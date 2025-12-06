@@ -238,13 +238,13 @@
 
         <!-- 네트워크 라인 -->
         <NetworkLine line="sfp" ps="tl-br" width="6rem" height="4rem" top="calc(50% - 5.8rem)" left="calc(50% - 8rem)"/>
-        <NetworkLine line="sfp" ps="tb" height="3rem" top="calc(50% - 13.9rem)" left="calc(50% - 8.2rem)" />
+        <NetworkLine line="sfp" data-state="warning" ps="tb" height="3rem" top="calc(50% - 13.9rem)" left="calc(50% - 8.2rem)" />
         <NetworkLine line="sfp" ps="lr" width="12.8rem" top="calc(50% + 1.6rem)" left="calc(50% - 18rem)" />
         <NetworkLine line="sfp" ps="lr" width="12.8rem" top="calc(50% + 1.6rem)" left="calc(50% + 5.2rem)" />
-        <NetworkLine line="sfp" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% - 18rem)" />
+        <NetworkLine line="sfp" data-state="warning" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% - 18rem)" />
         <NetworkLine line="sfp" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% - 2rem)" />
-        <NetworkLine line="sfp" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% + 14rem)" />
-        <NetworkLine line="sfp" ps="tr-br" width="3rem" height="16rem" top="calc(50% + 1.8rem)" left="calc(50% - 32.9rem)" />
+        <NetworkLine line="sfp" data-state="warning" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% + 14rem)" />
+        <NetworkLine line="sfp" data-state="abnormal" ps="tr-br" width="3rem" height="16rem" top="calc(50% + 1.8rem)" left="calc(50% - 32.9rem)" />
         <NetworkLine line="sfp" ps="tl-bl" width="3rem" height="16rem" top="calc(50% + 1.8rem)" left="calc(50% + 30rem)" />
       </div>
     </div>
@@ -520,11 +520,11 @@
     size="md"
     @close-btn-click="modals.modalUserTerminal.show = false"
   >
-    <div class="ui-flex" data-direction="col" data-gap="16">
+    <div class="ui-flex network-detail" data-direction="col" data-gap="16">
       <table class="table-type-a line">
         <colgroup>
-          <col style="width:12rem">
-          <col style="width:auto">
+          <col style="width:5rem">
+          <col style="width:6rem">
           <col style="width:auto">
           <col style="width:auto">
         </colgroup>
@@ -537,21 +537,115 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row" colspan="2">장치명</th>
-            <td class="ta-c">NMS #1 (주)</td>
-            <td class="ta-c">NMS #3 (부)</td>
+            <th scope="row" rowspan="2">IP</th>
+            <th scope="row">VIP</th>
+            <td class="ta-c">192.168.0.40</td>
+            <td class="ta-c">192.168.0.40</td>
           </tr>
           <tr>
-            <th scope="row">사용자단말 #1</th>
-            <td class="ta-c">함교실</td>
-            <td class="ta-c">9923</td>
-            <td class="ta-c">정상</td>
+            <th scope="row">DB상태</th>
+            <td class="ta-c" data-state="normal">정상</td>
+            <td class="ta-c" data-state="normal">정상</td>
           </tr>
           <tr>
-            <th scope="row">사용자단말 #1</th>
-            <td class="ta-c">함교실</td>
-            <td class="ta-c">9923</td>
-            <td class="ta-c error" >비정상</td>
+            <th scope="row" colspan="2">L2 스위치</th>
+            <td class="ta-c">무선통신운용콘솔</td>
+            <td class="ta-c">무선통신운용콘솔</td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="2">부팅시간</th>
+            <td class="ta-c">2025-09-10 13:10:22</td>
+            <td class="ta-c">2025-09-10 13:10:22</td>
+          </tr>
+
+          <tr>
+            <th scope="row" colspan="2" rowspan="2">CPU 사용률</th>
+            <td class="ta-c">
+              <div class="box-round">
+                <img src="@/assets/images/network/sample.png" alt="">
+              </div>
+            </td>
+            <td class="ta-c">
+              <div class="box-round">
+                <img src="@/assets/images/network/sample.png" alt="">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="ta-c">
+              <div class="progress-flex">
+                <progress
+                  max="100"
+                  value="80"
+                ></progress>
+                <b>80%</b>
+              </div>
+            </td>
+            <td class="ta-c">
+              <div class="progress-flex">
+                <progress
+                  max="100"
+                  value="80"
+                ></progress>
+                <b>80%</b>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row" colspan="2" rowspan="2">메모리</th>
+            <td class="ta-c">
+              <div class="box-round">
+                <img src="@/assets/images/network/sample.png" alt="">
+              </div>
+            </td>
+            <td class="ta-c">
+              <div class="box-round">
+                <img src="@/assets/images/network/sample.png" alt="">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="ta-c">
+              <div class="progress-flex">
+                <progress
+                  max="100"
+                  value="77"
+                ></progress>
+                <b>77% / 3.6Gi</b>
+              </div>
+            </td>
+            <td class="ta-c">
+              <div class="progress-flex">
+                <progress
+                  max="100"
+                  value="77"
+                ></progress>
+                <b>77% / 3.6Gi</b>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row" colspan="2">Disk 사용량</th>
+            <td class="ta-c">
+              <div class="progress-flex">
+                <progress
+                  max="100"
+                  value="50"
+                ></progress>
+                <b>62% / 1014M</b>
+              </div>
+            </td>
+            <td class="ta-c">
+              <div class="progress-flex">
+                <progress
+                  max="100"
+                  value="50"
+                ></progress>
+                <b>62% / 1014M</b>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -591,8 +685,6 @@ const portStatusList = Array.from({ length: 28 }, (_, i) => ({
 }));
 
 import G from "@/config/global.js";
-import axios from "axios";
-import config from "@/config/config";
 
 import imgNetwork1 from '@/assets/images/network/img1.png';
 import imgNetwork2 from '@/assets/images/network/img2.png';

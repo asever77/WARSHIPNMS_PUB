@@ -306,6 +306,10 @@ table .form-check-inline ~ .form-check-inline,
 .ui-link-underline {color:#1E5379;text-decoration:underline;cursor:pointer;font-size:1.4rem;font-weight:800}
 
 
-.box-round{border-radius:.5rem;border:1px solid #C5C5C5;background-color:#fff;position: relative;}
-.box-round[data-bg="gray"]{background-color:#F4F4F4;}
-.ports-status--title {font-size: 1.2rem;color:#3E3E3E;position: absolute; top:-.7rem; background-color:#fff;}
+.network-detail .box-round{border-radius:.5rem;border:1px solid #C5C5C5;background-color:#fff;position: relative;}
+.network-detail .box-round[data-bg="gray"]{background-color:#F4F4F4;}
+.network-detail .ports-status--title {font-size: 1.2rem;color:#3E3E3E;position: absolute; top:-.7rem; background-color:#fff;}
+.network-detail .box-round img{width: 100%; display: block;}
+.network-detail .progress-flex b{text-align: right; width: 100%;}
+.network-detail .progress-flex progress {width: 100%;}
+.network-detail .progress-flex {display: flex;gap:.2rem;align-items: center;flex-direction: column;}

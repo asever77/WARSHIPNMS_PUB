@@ -86,7 +86,6 @@ const styleObject = computed(() => {
 .network-line[data-ps="tl-bl"]::after{bottom:0;left:0;z-index: 1;transform: translate(-.4rem,.2rem);}
 .network-line[data-ps="tl-bl"] .network-line--line::after {bottom:0;right:0}
 .network-line[data-ps="tl-bl"] .network-line--line::before {right:0}
-
 .network-line[data-ps="tr-br"] .network-line--line{width: .4rem;height: 100%;}
 .network-line[data-ps="tr-br"]{flex-direction: column;align-items: flex-start;}
 .network-line[data-ps="tr-br"]::before{top:0;right:0;z-index: 1;transform: translate(.4rem,-.2rem);}
@@ -105,16 +104,13 @@ const styleObject = computed(() => {
 .network-line[data-ps="tb"]::after{position: absolute;bottom:0;z-index:1;transform: translateY(.4rem);}
 .network-line[data-ps="lr"]::before{position: absolute; z-index: 1; left:-.4rem;}
 .network-line[data-ps="lr"]::after{position: absolute; z-index: 1; right:-.4rem;}
+
 .network-line[data-ps="tl-br"]::before{top:0;left:0;z-index: 1;transform: translate(-.2rem,-.4rem);}
 .network-line[data-ps="tl-br"]::after{bottom:0;right:0;z-index: 1;transform: translate(.2rem,.4rem);}
 .network-line[data-ps="tl-br"] .network-line--line::after,
 .network-line[data-ps="tl-br"] .network-line--line::before {content:"";display: block;border-left:.4rem solid #ccc;height: 50%;width: 1px;position: absolute;}
 .network-line[data-ps="tl-br"] .network-line--line::after {bottom:0;right: 0;}
 .network-line[data-ps="tl-br"] .network-line--line::before {top:0;left: 0;}
-.network-line[data-ps="tl-br"][data-line="poe"] .network-line--line::after,
-.network-line[data-ps="tl-br"][data-line="poe"] .network-line--line::before{border-color:#65BBF3;}
-.network-line[data-ps="tl-br"][data-line="sfp"] .network-line--line::after,
-.network-line[data-ps="tl-br"][data-line="sfp"] .network-line--line::before{border-color:#4BC43D;}
 
 .network-line[data-ps="tr-bl"]::before{top:0;right:0;z-index: 1;transform: translate(.2rem,-.4rem);}
 .network-line[data-ps="tr-bl"]::after{bottom:0;left:0;z-index: 1;transform: translate(-.2rem,.4rem);}
@@ -123,14 +119,38 @@ const styleObject = computed(() => {
 .network-line[data-ps="tr-bl"] .network-line--line::after {bottom:0;left: 0;}
 .network-line[data-ps="tr-bl"] .network-line--line::before {top:0;right: 0;}
 
+.network-line[data-ps="tl-br"][data-line="poe"] .network-line--line::after,
+.network-line[data-ps="tl-br"][data-line="poe"] .network-line--line::before{border-color:#65BBF3;}
 .network-line[data-line="poe"] .network-line--line::after,
 .network-line[data-line="poe"] .network-line--line::before{border-color:#65BBF3;}
+.network-line[data-line="poe"] .network-line--line{background-color: #65BBF3;}
+
+.network-line[data-ps="tl-br"][data-line="sfp"] .network-line--line::after,
+.network-line[data-ps="tl-br"][data-line="sfp"] .network-line--line::before{border-color:#4BC43D;}
 .network-line[data-line="sfp"] .network-line--line::after,
 .network-line[data-line="sfp"] .network-line--line::before{border-color:#4BC43D;}
-
-
-.network-line[data-line="poe"] .network-line--line{background-color: #65BBF3;}
 .network-line[data-line="sfp"] .network-line--line{background-color: #4BC43D;}
+
+.network-line[data-ps="tl-br"][data-line="sfp"][data-state="warning"] .network-line--line::after,
+.network-line[data-ps="tl-br"][data-line="sfp"][data-state="warning"] .network-line--line::before{border-color:#efb43c;}
+.network-line[data-line="sfp"][data-state="warning"] .network-line--line::after,
+.network-line[data-line="sfp"][data-state="warning"] .network-line--line::before{border-color:#efb43c;}
+.network-line[data-line="sfp"][data-state="warning"] .network-line--line{background-color: #efb43c;}
+.network-line[data-line="sfp"][data-state="warning"]::before,
+.network-line[data-line="sfp"][data-state="warning"]::after{
+  background-color: #efb43c;
+  border: 1px solid #e29700;
+}
+.network-line[data-ps="tl-br"][data-line="sfp"][data-state="abnormal"] .network-line--line::after,
+.network-line[data-ps="tl-br"][data-line="sfp"][data-state="abnormal"] .network-line--line::before{border-color:#f22d2d;}
+.network-line[data-line="sfp"][data-state="abnormal"] .network-line--line::after,
+.network-line[data-line="sfp"][data-state="abnormal"] .network-line--line::before{border-color:#f22d2d;}
+.network-line[data-line="sfp"][data-state="abnormal"] .network-line--line{background-color: #f22d2d;}
+.network-line[data-line="sfp"][data-state="abnormal"]::before,
+.network-line[data-line="sfp"][data-state="abnormal"]::after{
+  background-color: #f22d2d;
+  border: 1px solid #d30202;
+}
 
 .network-line[data-line="poe"]::before,
 .network-line[data-line="poe"]::after{
