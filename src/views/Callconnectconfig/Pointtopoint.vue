@@ -31,6 +31,7 @@ const ko = {
 
 const en = {
   thead1: "BRIDGE 1/CAPTAIN(S)",
+  thead2: "BRDG 2 /CONNING",
   tbody1: "BRIDGE 1/CAPTAIN(S)"
 };
 
