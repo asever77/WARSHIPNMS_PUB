@@ -12,11 +12,11 @@
         </div>
         <div class="network-legend-lines">
           <div class="network-legend-item">
-            <div class="network-line" data-line="poe"><div></div></div>
+            <div class="network-line" data-line="poe"><div class="network-line--line"></div></div>
             이더넷(PoE)
           </div>
           <div class="network-legend-item">
-            <div class="network-line" data-line="sfp"><div></div></div>
+            <div class="network-line" data-line="sfp"><div class="network-line--line"></div></div>
             광(SFP)
           </div>
         </div>
@@ -48,7 +48,7 @@
               top="100%"
               left="calc(0rem - 50%)"
               text="NMS"
-              :callback="openUserTerminalModal"
+              :callback="openDetailsModal"
             />
           </NetworkLine>
           <NetworkLine line="poe" ps="tl-br" width="9rem" height="4rem" top="100%" left="70%" >
@@ -57,7 +57,7 @@
               top="100%"
               left="calc(50% - .4rem)"
               text="VoIP 교환기"
-              :callback="openUserTerminalModal"
+              :callback="openDetailsModal"
             />
           </NetworkLine>
         </NetworkBox>
@@ -77,7 +77,7 @@
               bottom="100%"
               left="-4rem"
               text="군위성-II"
-              :callback="openUserTerminalModal"
+              :callback="openDetailsModal"
             />
           </NetworkLine>
           <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="calc(50% - 0.4rem)">
@@ -86,7 +86,7 @@
               bottom="100%"
               left="calc(100% - 4.6rem)"
               text="CCTV"
-              :callback="openUserTerminalModal"
+              :callback="openDetailsModal"
             />
           </NetworkLine>
           <NetworkLine line="poe" ps="tr-bl" width="21rem" height="4rem" bottom="100%" left="70%">
@@ -95,7 +95,7 @@
               bottom="100%"
               left="calc(100% - 4.6rem)"
               text="방송 및 경보"
-              :callback="openUserTerminalModal"
+              :callback="openDetailsModal"
             />
           </NetworkLine>
         </NetworkBox>
@@ -384,23 +384,187 @@
   <!-- modal 무선통신기시스템 -->
   <UiModal
     v-model="modals.modalSwitchDetail.show"
-    :title="'무선통신기시스템 L2 스위치'"
+    :title="modals.modalSwitchDetail.title"
     type="modal"
     size="md"
     @close-btn-click="modals.modalSwitchDetail.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
-      ddddd
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:7rem">
+          <col style="width:auto">
+          <col style="width:7rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">장치명</th>
+            <td>무선통신기시스템 L2 스위치</td>
+            <th scope="row">펌웨어버전</th>
+            <td>1.0.1</td>
+          </tr>
+          <tr>
+            <th scope="row">모델명</th>
+            <td>C9200-24T-4G-E</td>
+            <th scope="row">시리얼번호</th>
+            <td>ZYXELaRTxu10</td>
+          </tr>
+          <tr>
+            <th scope="row">IP</th>
+            <td>192.168.1.1</td>
+            <th scope="row">위치</th>
+            <td>무선통신기시스템</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="ui-flex" data-gap="10">
+        <div class="box-round ui-flex-1"></div>
+        <table class="table-type-a ui-flex-1">
+          <colgroup>
+            <col style="width:8rem">
+            <col style="width:auto">
+          </colgroup>
+          <tbody>
+            <tr>
+              <th scope="row">FAN</th>
+              <td>정상</td>
+            </tr>
+            <tr>
+              <th scope="row">온도</th>
+              <td>24.5 ℃</td>
+            </tr>
+            <tr>
+              <th scope="row">부팅시간</th>
+              <td>20250820 09:00:00</td>
+            </tr>
+            <tr>
+              <th scope="row">소모전력(전체)</th>
+              <td>123.45 watt</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ui-flex box-round p-3" data-bg="gray" data-direction="col">
+        <h4 class="ports-status--title">Port Status</h4>
+        <PortStatusList :ports="portStatusList" />
+      </div>
+
+      <table class="table-type-a line">
+        <colgroup>
+          <col style="width:6rem">
+          <col style="width:auto">
+          <col style="width:auto">
+        </colgroup>
+        <colgroup>
+          <col style="width:6rem">
+          <col style="width:auto">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Port #<br>(이름)</th>
+            <th scope="col">Link Speed</th>
+            <th scope="col">소모전력<br>(watt)</th>
+            <th scope="col">Port #<br>(이름)</th>
+            <th scope="col">Link Speed</th>
+            <th scope="col">소모전력<br>(watt)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td class="ta-c">1 G/F</td>
+            <td class="ta-c">12.34</td>
+            <th scope="row">2</th>
+            <td class="ta-c">1 G/F</td>
+            <td class="ta-c">12.34</td>
+          </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td class="ta-c">1 G/F</td>
+            <td class="ta-c">12.34</td>
+            <th scope="row">2</th>
+            <td class="ta-c">1 G/F</td>
+            <td class="ta-c">12.34</td>
+          </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td class="ta-c">1 G/F</td>
+            <td class="ta-c">12.34</td>
+            <th scope="row">2</th>
+            <td class="ta-c">1 G/F</td>
+            <td class="ta-c">12.34</td>
+          </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td class="ta-c">1 G/F</td>
+            <td class="ta-c">12.34</td>
+            <th scope="row">2</th>
+            <td class="ta-c">1 G/F</td>
+            <td class="ta-c">12.34</td>
+          </tr>
+
+        </tbody>
+      </table>
     </div>
   </UiModal>
 
   <!-- modal 사용자단말 -->
   <UiModal
     v-model="modals.modalUserTerminal.show"
-    :title="'사용자단말 (무선통신기시스템)'"
+    :title="modals.modalUserTerminal.title"
     type="modal"
     size="md"
     @close-btn-click="modals.modalUserTerminal.show = false"
+  >
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a line">
+        <colgroup>
+          <col style="width:12rem">
+          <col style="width:auto">
+          <col style="width:auto">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
+          <tr>
+            <th colspan="2" scope="col">장치명</th>
+            <th class="ta-c" scope="col">NMS #1 (주)</th>
+            <th class="ta-c" scope="col">NMS #3 (부)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" colspan="2">장치명</th>
+            <td class="ta-c">NMS #1 (주)</td>
+            <td class="ta-c">NMS #3 (부)</td>
+          </tr>
+          <tr>
+            <th scope="row">사용자단말 #1</th>
+            <td class="ta-c">함교실</td>
+            <td class="ta-c">9923</td>
+            <td class="ta-c">정상</td>
+          </tr>
+          <tr>
+            <th scope="row">사용자단말 #1</th>
+            <td class="ta-c">함교실</td>
+            <td class="ta-c">9923</td>
+            <td class="ta-c error" >비정상</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </UiModal>
+
+  <!-- modal 장치상세 -->
+  <UiModal
+    v-model="modals.modalDetails.show"
+    :title="modals.modalDetails.title"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalDetails.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
       ddddd
@@ -418,6 +582,13 @@ import { ref, onMounted, reactive } from "vue";
 import NetworkLine from "@/components/NetworkLine.vue";
 import NetworkBox from "@/components/NetworkBox.vue";
 import UiModal from '@/components/UiModal.vue'
+import PortStatusList from '@/components/PortStatusList.vue';
+
+// 예시: 1~28번 포트, 상태는 normal/abnormal/null 중 하나
+const portStatusList = Array.from({ length: 28 }, (_, i) => ({
+  number: i + 1,
+  status: (i % 3 === 0) ? 'normal' : (i % 3 === 1) ? 'abnormal' : null
+}));
 
 import G from "@/config/global.js";
 import axios from "axios";
@@ -431,96 +602,58 @@ import imgNetwork4 from '@/assets/images/network/img4.png';
 const ko = {
   "title": "네트워크 내용"
 };
-
 const en = {
   "title": "네트워크 내용"
 };
-
 const lang = ref({});
 
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
 });
 
-const adminTest = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
-  console.log(user.loginId);
-
-  const url = config.getHost() + "/test/adminmenu";
-  const data = {
-    loginId: user.loginId,
-    menuId: "MNU1100"
-  };
-
-  axios.post(url, data)
-    .then(response => {
-      if (response.data === "AUTH") {
-        alert("권한이 없습니다.");
-        return;
-      }
-      alert("권한이 있습니다. " + response.data);
-    })
-    .catch(error => {
-      httpUtils.errorHandler(error);
-    });
-};
-
-const managerTest = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const url = config.getHost() + "/test/managermenu";
-  const data = {
-    loginId: user.loginId,
-    menuId: "MNU1200"
-  };
-
-  axios.post(url, data)
-    .then(response => {
-      if (response.data === "AUTH") {
-        alert("권한이 없습니다.");
-        return;
-      }
-      alert("권한이 있습니다. " + response.data);
-    })
-    .catch(error => {
-      httpUtils.errorHandler(error);
-    });
-};
-
-const userTest = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const url = config.getHost() + "/test/usermenu";
-  const data = {
-    loginId: user.loginId,
-    menuId: "MNU1300"
-  };
-
-  axios.post(url, data)
-    .then(response => {
-      if (response.data === "AUTH") {
-        alert("권한이 없습니다.");
-        return;
-      }
-      alert("권한이 있습니다. " + response.data);
-    })
-    .catch(error => {
-      httpUtils.errorHandler(error);
-    });
-};
-
 const modals = reactive({
   modalSwitchDetail: {
-    show: false
+    show: false,
+    title: ''
   },
   modalUserTerminal: {
-    show: false
+    show: false,
+    title: ''
   },
+  modalDetails: {
+    show: false,
+    title: ''
+  }
 });
 
-function openSwitchModal() {
+function openSwitchModal(e) {
   modals.modalSwitchDetail.show = true;
+  modals.modalSwitchDetail.title = getTextFromEvent(e);
 }
-function openUserTerminalModal() {
+function openUserTerminalModal(e) {
   modals.modalUserTerminal.show = true;
+  modals.modalUserTerminal.title = getTextFromEvent(e);
+}
+function openDetailsModal(e) {
+  modals.modalDetails.show = true;
+  modals.modalDetails.title = getTextFromEvent(e);
+}
+function getTextFromEvent(e) {
+  let el = e?.target?.closest('.network-item');
+  console.log('el', el);
+
+  if (el) {
+    if (el.dataset.type === 'blue') {
+      const elParent = el.parentElement?.closest('.network-item');
+
+      const name =  `${el.dataset.name} (${elParent?.dataset.name || ''})`;
+      return name.trim();
+    } else if (el.dataset.type === 'gray') {
+      return el.dataset.name;
+    } else {
+      return `${el.dataset.name} L2 스위치`;
+    }
+  }
+  return '';
 }
 </script>

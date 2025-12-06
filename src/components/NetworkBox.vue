@@ -3,11 +3,12 @@
     :class="['network-item', (terminal && terminal[1] > 0) ? 'error' : '']"
     :data-type="type"
     :style="boxStyle"
+    :data-name="text"
   >
     <button type="button" class="network-item--btn" @click="onClick"></button>
     <img v-if="img" :src="img" alt="" />
     <slot></slot>
-    <div v-if="text">{{ text }}</div>
+    <div v-if="text" class="network-item--tit">{{ text }}</div>
     <div v-if="terminal" class="network-item--terminal">
       <b>{{ terminal[0] }}</b>/
       <b>{{ terminal[1] }}</b>
@@ -17,6 +18,7 @@
 </template>
 
 <script setup>
+
 import { computed } from 'vue';
 
 const props = defineProps({

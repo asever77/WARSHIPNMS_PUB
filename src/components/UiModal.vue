@@ -10,6 +10,7 @@
     :title="title"
     :header-class="!title ? 'modal-header--no-title' : ''"
     v-bind="$attrs"
+    :no-footer="computedNoFooter"
     @hidden="onHidden"
   >
     <!-- 모달의 본문 내용이 들어갈 기본 슬롯 -->
@@ -26,7 +27,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, useSlots } from 'vue'
 import { BModal, BButton } from 'bootstrap-vue-next'
 
 // props 정의
@@ -47,8 +48,11 @@ const props = defineProps({
     type: String,
     default: 'md',
     // 'sm', 'md', 'lg', 'xlg', 'xxlg'
-  },
+  }
 })
+
+const slots = useSlots();
+const computedNoFooter = computed(() => !slots.footer);
 
 // emits 정의
 const emit = defineEmits(['update:modelValue'])
@@ -220,11 +224,11 @@ const onHidden = () => {
 .base-modal .modal-footer {
   justify-content: center;
   border: 0;
-  padding: 1rem 0 1.9rem;
+  padding: 0 0 1.9rem;
   gap:1rem;
 }
 .base-modal .modal-body {
-  padding: 2rem 2.6rem 0;
+  padding: 2rem 2.6rem 2rem;
 }
 
 .base-modal .modal-xlg {
