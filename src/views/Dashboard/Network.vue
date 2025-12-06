@@ -22,62 +22,228 @@
         </div>
       </div>
 
+      <!-- 무선통신운용콘솔 -->
       <NetworkBox
         type="major"
         top="32rem"
         left="30.6rem"
         :img="imgNetwork1"
         text="무선통신운용콘솔"
+        :callback="openSwitchModal"
       >
-        <NetworkBox
-          type="gray"
-          top="13.6rem"
-          left="-10.3rem"
-          text="NMS"
-        />
-        <NetworkBox
-          type="gray"
-          top="13.6rem"
-          left="11.3rem"
-          text="VoIP 교환기"
-        />
-        <NetworkBox
-          type="blue"
-          top="-9.9rem"
-          left="10.8rem"
-          text="사용자단말"
-          :terminal="[4,3,2]"
-        />
-
-        <NetworkLine line="poe" ps="tr-bl" width="8rem" height="5rem" bottom="100%" left="70%" />
-        <NetworkLine line="sfp" ps="tl-br" width="6rem" height="5rem" bottom="100%" right="70%" />
-
-        <NetworkLine line="poe" ps="tr-bl" width="9rem" height="6rem" top="100%" right="70%" />
-        <NetworkLine line="poe" ps="tl-br" width="9rem" height="6rem" top="100%" left="70%" />
-
-
+        <NetworkLine line="poe" ps="tr-bl" width="8rem" height="4rem" bottom="100%" left="70%">
+          <NetworkBox
+            type="blue"
+            bottom="100%"
+            left="calc(50% - .6rem)"
+            text="사용자단말"
+            :terminal="[4,0,2]"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+        <NetworkLine line="poe" ps="tr-bl" width="9rem" height="4rem" top="100%" right="70%" >
+           <NetworkBox
+            type="gray"
+            top="100%"
+            left="calc(0rem - 50%)"
+            text="NMS"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+        <NetworkLine line="poe" ps="tl-br" width="9rem" height="4rem" top="100%" left="70%" >
+          <NetworkBox
+            type="gray"
+            top="100%"
+            left="calc(50% - .4rem)"
+            text="VoIP 교환기"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
       </NetworkBox>
 
-      <NetworkLine line="sfp" ps="lr" width="12rem" top="35.5rem" left="40.7rem" />
-      <NetworkLine line="sfp" ps="lr" width="12rem" top="35.5rem" right="40.7rem" />
+      <!-- L3 스위치 -->
+      <NetworkBox
+        type="sub"
+        top="calc(50% - 19rem)"
+        left="calc(50% - 13.8rem)"
+        :img="imgNetwork1"
+        text="L3 스위치"
+        :callback="openSwitchModal"
+      >
+        <NetworkLine line="poe" ps="tl-br" width="10rem" height="4rem" bottom="100%" right="70%">
+          <NetworkBox
+            type="gray"
+            bottom="100%"
+            left="-4rem"
+            text="군위성-II"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+        <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="calc(50% - 0.4rem)">
+          <NetworkBox
+            type="gray"
+            bottom="100%"
+            left="calc(100% - 4.6rem)"
+            text="CCTV"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+        <NetworkLine line="poe" ps="tr-bl" width="21rem" height="4rem" bottom="100%" left="70%">
+          <NetworkBox
+            type="gray"
+            bottom="100%"
+            left="calc(100% - 4.6rem)"
+            text="방송 및 경보"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+      </NetworkBox>
 
-      <NetworkLine line="poe" ps="lr" width="10rem" top="10rem" left="23rem" />
+      <!-- UTM -->
+      <NetworkBox
+        type="sub"
+        top="calc(50% - 11rem)"
+        left="calc(50% - 13.8rem)"
+        :img="imgNetwork3"
+        text="UTM"
+        :callback="openSwitchModal"
+      />
 
+      <!-- 무선통신기시스템 -->
+      <NetworkBox
+        type="sub"
+        top="calc(50% - 0.6rem)"
+        left="calc(50% - 30rem)"
+        :img="imgNetwork2"
+        text="무선통신기시스템"
+        :callback="openSwitchModal"
+      >
+        <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="50%">
+          <NetworkBox
+            type="blue"
+            bottom="100%"
+            left="-4rem"
+            text="사용자단말"
+            :terminal="[4,3,2]"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+      </NetworkBox>
+      <!-- 비상통신시스템 -->
+      <NetworkBox
+        type="sub"
+        top="calc(50% - 0.6rem)"
+        left="calc(50% + 18rem)"
+        :img="imgNetwork4"
+        text="비상통신시스템"
+        :callback="openSwitchModal"
+      >
+        <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="50%">
+          <NetworkBox
+            type="blue"
+            bottom="100%"
+            left="-4rem"
+            text="사용자단말"
+            :terminal="[4,0,2]"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+      </NetworkBox>
 
-      <NetworkLine line="poe" ps="tb" height="10rem" top="13rem" left="23rem" />
-      <NetworkLine line="sfp" ps="tb" height="10rem" top="13rem" left="34rem" />
+      <!-- 소형통신랙 #1 -->
+      <NetworkBox
+        type="sub"
+        top="calc(50% + 15rem)"
+        left="calc(50% - 30rem)"
+        :img="imgNetwork1"
+        text="소형통신랙 #1"
+        :callback="openSwitchModal"
+      >
+        <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
+          <NetworkBox
+            type="blue"
+            top="100%"
+            left="-4rem"
+            text="사용자단말"
+            :terminal="[4,0,2]"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+      </NetworkBox>
 
+      <!-- 소형통신랙 #2 -->
+      <NetworkBox
+        type="sub"
+        top="calc(50% + 15rem)"
+        left="calc(50% - 14rem)"
+        :img="imgNetwork1"
+        text="소형통신랙 #2"
+        :callback="openSwitchModal"
+      >
+        <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
+          <NetworkBox
+            type="blue"
+            top="100%"
+            left="-4rem"
+            text="사용자단말"
+            :terminal="[4,0,2]"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+      </NetworkBox>
 
+      <!-- 소형통신랙 #3 -->
+      <NetworkBox
+        type="sub"
+        top="calc(50% + 15rem)"
+        left="calc(50% + 2rem)"
+        :img="imgNetwork1"
+        text="소형통신랙 #3"
+        :callback="openSwitchModal"
+      >
+        <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
+          <NetworkBox
+            type="blue"
+            top="100%"
+            left="-4rem"
+            text="사용자단말"
+            :terminal="[4,0,2]"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+      </NetworkBox>
 
+      <!-- 소형통신랙 #4 -->
+      <NetworkBox
+        type="sub"
+        top="calc(50% + 15rem)"
+        left="calc(50% + 18rem)"
+        :img="imgNetwork1"
+        text="소형통신랙 #4"
+        :callback="openSwitchModal"
+      >
+        <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
+          <NetworkBox
+            type="blue"
+            top="100%"
+            left="-4rem"
+            text="사용자단말"
+            :terminal="[4,0,2]"
+            :callback="openUserTerminalModal"
+          />
+        </NetworkLine>
+      </NetworkBox>
 
-
-      <NetworkLine line="sfp" ps="tr-bl" width="10rem" height="10rem" top="21rem" left="12rem" />
-
-      <NetworkLine line="poe" ps="tr-br" width="2rem" height="6rem" top="32rem" />
-      <NetworkLine line="sfp" ps="tl-bl" width="3rem" height="10rem" top="32rem" left="15rem" />
-
-
-
+      <!-- 네트워크 라인 -->
+      <NetworkLine line="sfp" ps="tl-br" width="6rem" height="4rem" top="calc(50% - 5.8rem)" left="calc(50% - 8rem)"/>
+      <NetworkLine line="sfp" ps="tb" height="3rem" top="calc(50% - 13.9rem)" left="calc(50% - 8.2rem)" />
+      <NetworkLine line="sfp" ps="lr" width="12.8rem" top="calc(50% + 1.6rem)" left="calc(50% - 18rem)" />
+      <NetworkLine line="sfp" ps="lr" width="12.8rem" top="calc(50% + 1.6rem)" left="calc(50% + 5.2rem)" />
+      <NetworkLine line="sfp" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% - 18rem)" />
+      <NetworkLine line="sfp" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% - 2rem)" />
+      <NetworkLine line="sfp" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% + 14rem)" />
+      <NetworkLine line="sfp" ps="tr-br" width="3rem" height="16rem" top="calc(50% + 1.8rem)" left="calc(50% - 32.9rem)" />
+      <NetworkLine line="sfp" ps="tl-bl" width="3rem" height="16rem" top="calc(50% + 1.8rem)" left="calc(50% + 30rem)" />
 
     </div>
     <div class="network-side" >
@@ -211,6 +377,33 @@
     </div>
 
   </div>
+
+
+  <!-- modal 무선통신기시스템 -->
+  <UiModal
+    v-model="modals.modalSwitchDetail.show"
+    :title="'무선통신기시스템 L2 스위치'"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalSwitchDetail.show = false"
+  >
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      ddddd
+    </div>
+  </UiModal>
+
+  <!-- modal 사용자단말 -->
+  <UiModal
+    v-model="modals.modalUserTerminal.show"
+    :title="'사용자단말 (무선통신기시스템)'"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalUserTerminal.show = false"
+  >
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      ddddd
+    </div>
+  </UiModal>
 </template>
 
 <style scoped lang="scss">
@@ -219,14 +412,19 @@
 </style>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, reactive } from "vue";
 import NetworkLine from "@/components/NetworkLine.vue";
 import NetworkBox from "@/components/NetworkBox.vue";
+import UiModal from '@/components/UiModal.vue'
+
 import G from "@/config/global.js";
 import axios from "axios";
 import config from "@/config/config";
 
 import imgNetwork1 from '@/assets/images/network/img1.png';
+import imgNetwork2 from '@/assets/images/network/img2.png';
+import imgNetwork3 from '@/assets/images/network/img3.png';
+import imgNetwork4 from '@/assets/images/network/img4.png';
 
 const ko = {
   "title": "네트워크 내용"
@@ -307,4 +505,20 @@ const userTest = () => {
       httpUtils.errorHandler(error);
     });
 };
+
+const modals = reactive({
+  modalSwitchDetail: {
+    show: false
+  },
+  modalUserTerminal: {
+    show: false
+  },
+});
+
+function openSwitchModal() {
+  modals.modalSwitchDetail.show = true;
+}
+function openUserTerminalModal() {
+  modals.modalUserTerminal.show = true;
+}
 </script>

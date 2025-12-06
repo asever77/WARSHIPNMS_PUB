@@ -5,7 +5,8 @@
     :data-ps="ps"
     :style="styleObject"
   >
-    <div></div>
+    <div class="network-line--line"></div>
+    <slot></slot>
   </div>
 </template>
 
@@ -75,61 +76,61 @@ const styleObject = computed(() => {
   justify-content: space-between;
   align-items: center;
 }
-.network-line > div {
+.network-line .network-line--line {
   width: 100%;
   height: .4rem;
 }
-.network-line[data-ps="tl-bl"] > div{width: .4rem;height: 100%;}
+.network-line[data-ps="tl-bl"] .network-line--line{width: .4rem;height: 100%;}
 .network-line[data-ps="tl-bl"]{flex-direction: column;align-items: flex-end;}
 .network-line[data-ps="tl-bl"]::before{top:0;left:0;z-index: 1;transform: translate(-.4rem,-.2rem);}
 .network-line[data-ps="tl-bl"]::after{bottom:0;left:0;z-index: 1;transform: translate(-.4rem,.2rem);}
-.network-line[data-ps="tl-bl"] > div::after {bottom:0;right:0}
-.network-line[data-ps="tl-bl"] > div::before {right:0}
+.network-line[data-ps="tl-bl"] .network-line--line::after {bottom:0;right:0}
+.network-line[data-ps="tl-bl"] .network-line--line::before {right:0}
 
-.network-line[data-ps="tr-br"] > div{width: .4rem;height: 100%;}
+.network-line[data-ps="tr-br"] .network-line--line{width: .4rem;height: 100%;}
 .network-line[data-ps="tr-br"]{flex-direction: column;align-items: flex-start;}
 .network-line[data-ps="tr-br"]::before{top:0;right:0;z-index: 1;transform: translate(.4rem,-.2rem);}
 .network-line[data-ps="tr-br"]::after{bottom:0;right:0;z-index: 1;transform: translate(.4rem,.2rem);}
-.network-line[data-ps="tr-br"] > div::after {bottom:0;}
+.network-line[data-ps="tr-br"] .network-line--line::after {bottom:0;}
 
-.network-line[data-ps="tl-bl"] > div::after,
-.network-line[data-ps="tl-bl"] > div::before,
-.network-line[data-ps="tr-br"] > div::after,
-.network-line[data-ps="tr-br"] > div::before {content:"";display: block;border-top:.4rem solid #ccc;width: 100%; height:0; position: absolute;}
+.network-line[data-ps="tl-bl"] .network-line--line::after,
+.network-line[data-ps="tl-bl"] .network-line--line::before,
+.network-line[data-ps="tr-br"] .network-line--line::after,
+.network-line[data-ps="tr-br"] .network-line--line::before {content:"";display: block;border-top:.4rem solid #ccc;width: 100%; height:0; position: absolute;}
 
 
-.network-line[data-ps="tb"] > div{width: .4rem;height: 100%;}
+.network-line[data-ps="tb"] .network-line--line{width: .4rem;height: 100%;}
 .network-line[data-ps="tb"]{flex-direction: column;}
-.network-line[data-ps="tb"]::before,
-.network-line[data-ps="tb"]::after{position: relative;}
-.network-line[data-ps="lr"]::before,
-.network-line[data-ps="lr"]::after{position: relative;}
+.network-line[data-ps="tb"]::before{position: absolute;top:0;z-index:1;transform: translateY(-.4rem);}
+.network-line[data-ps="tb"]::after{position: absolute;bottom:0;z-index:1;transform: translateY(.4rem);}
+.network-line[data-ps="lr"]::before{position: absolute; z-index: 1; left:-.4rem;}
+.network-line[data-ps="lr"]::after{position: absolute; z-index: 1; right:-.4rem;}
 .network-line[data-ps="tl-br"]::before{top:0;left:0;z-index: 1;transform: translate(-.2rem,-.4rem);}
 .network-line[data-ps="tl-br"]::after{bottom:0;right:0;z-index: 1;transform: translate(.2rem,.4rem);}
-.network-line[data-ps="tl-br"] > div::after,
-.network-line[data-ps="tl-br"] > div::before {content:"";display: block;border-left:.4rem solid #ccc;height: 50%;width: 1px;position: absolute;}
-.network-line[data-ps="tl-br"] > div::after {bottom:0;right: 0;}
-.network-line[data-ps="tl-br"] > div::before {top:0;left: 0;}
-.network-line[data-ps="tl-br"][data-line="poe"] > div::after,
-.network-line[data-ps="tl-br"][data-line="poe"] > div::before{border-color:#65BBF3;}
-.network-line[data-ps="tl-br"][data-line="sfp"] > div::after,
-.network-line[data-ps="tl-br"][data-line="sfp"] > div::before{border-color:#4BC43D;}
+.network-line[data-ps="tl-br"] .network-line--line::after,
+.network-line[data-ps="tl-br"] .network-line--line::before {content:"";display: block;border-left:.4rem solid #ccc;height: 50%;width: 1px;position: absolute;}
+.network-line[data-ps="tl-br"] .network-line--line::after {bottom:0;right: 0;}
+.network-line[data-ps="tl-br"] .network-line--line::before {top:0;left: 0;}
+.network-line[data-ps="tl-br"][data-line="poe"] .network-line--line::after,
+.network-line[data-ps="tl-br"][data-line="poe"] .network-line--line::before{border-color:#65BBF3;}
+.network-line[data-ps="tl-br"][data-line="sfp"] .network-line--line::after,
+.network-line[data-ps="tl-br"][data-line="sfp"] .network-line--line::before{border-color:#4BC43D;}
 
 .network-line[data-ps="tr-bl"]::before{top:0;right:0;z-index: 1;transform: translate(.2rem,-.4rem);}
 .network-line[data-ps="tr-bl"]::after{bottom:0;left:0;z-index: 1;transform: translate(-.2rem,.4rem);}
-.network-line[data-ps="tr-bl"] > div::after,
-.network-line[data-ps="tr-bl"] > div::before {content:"";display: block;border-left:.4rem solid #ccc;height: 50%;width: 1px;position: absolute;}
-.network-line[data-ps="tr-bl"] > div::after {bottom:0;left: 0;}
-.network-line[data-ps="tr-bl"] > div::before {top:0;right: 0;}
+.network-line[data-ps="tr-bl"] .network-line--line::after,
+.network-line[data-ps="tr-bl"] .network-line--line::before {content:"";display: block;border-left:.4rem solid #ccc;height: 50%;width: 1px;position: absolute;}
+.network-line[data-ps="tr-bl"] .network-line--line::after {bottom:0;left: 0;}
+.network-line[data-ps="tr-bl"] .network-line--line::before {top:0;right: 0;}
 
-.network-line[data-line="poe"] > div::after,
-.network-line[data-line="poe"] > div::before{border-color:#65BBF3;}
-.network-line[data-line="sfp"] > div::after,
-.network-line[data-line="sfp"] > div::before{border-color:#4BC43D;}
+.network-line[data-line="poe"] .network-line--line::after,
+.network-line[data-line="poe"] .network-line--line::before{border-color:#65BBF3;}
+.network-line[data-line="sfp"] .network-line--line::after,
+.network-line[data-line="sfp"] .network-line--line::before{border-color:#4BC43D;}
 
 
-.network-line[data-line="poe"] > div{background-color: #65BBF3;}
-.network-line[data-line="sfp"] > div{background-color: #4BC43D;}
+.network-line[data-line="poe"] .network-line--line{background-color: #65BBF3;}
+.network-line[data-line="sfp"] .network-line--line{background-color: #4BC43D;}
 
 .network-line[data-line="poe"]::before,
 .network-line[data-line="poe"]::after{
