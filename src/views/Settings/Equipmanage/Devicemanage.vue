@@ -1524,6 +1524,7 @@ const en = {
 }
 
 const lang = ref({})
+const textEx = ref('');
 
 // 수정 모달 상태
 const modals = reactive({

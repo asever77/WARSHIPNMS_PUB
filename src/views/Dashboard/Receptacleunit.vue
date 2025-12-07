@@ -16,48 +16,24 @@
           {{ lang.filterDeviceName }}
           <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
         </th>
-        <td>
-          <BFormSelect
-            id="device-type"
-            class="ui-select"
-            v-model="deviceType"
-            :options="selectOptions"
-          ></BFormSelect>
-        </td>
-
+        <td></td>
         <th scope="row">
           {{ lang.filterModel }}
           <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterModel} ${lang.sortAll}`"></BButton>
         </th>
-        <td>
-          <BFormSelect
-            id="search-target"
-            class="ui-select"
-            v-model="searchTarget"
-            :options="selectOptions"
-          ></BFormSelect>
-        </td>
-
+        <td></td>
         <th scope="row">
           {{ lang.filterLocation }}
           <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
         </th>
         <td>
-          <BFormInput id="search-word" class="ui-input" v-model="searchWord" placeholder=""></BFormInput>
+          <BFormInput id="search-word" class="ui-input" v-model="filterText" placeholder=""></BFormInput>
         </td>
-
         <th scope="row">
           {{ lang.filterStatus }}
           <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
         </th>
-        <td>
-          <BFormSelect
-            id="search-target"
-            class="ui-select"
-            v-model="searchTarget"
-            :options="selectOptions"
-          ></BFormSelect>
-        </td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -86,12 +62,6 @@
             <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
           </div>
         </BFormGroup>
-        <BFormSelect
-          id="search-category"
-          class="ui-select-28"
-          v-model="searchCategory"
-          :options="detailOptions"
-        ></BFormSelect>
         <BFormSelect
             id="per-page"
             class="ui-select-28 w-60"
@@ -157,54 +127,35 @@ const ko = {
   colLocation: '위치(구역)',
   colDeviceName: '장치명',
   colModel: '모델명',
-  colAlarmAuth: '경보권한',
-  colBroadcastAuth: '방송권한',
-  colMuteAuth: 'Mute권한',
   colExtensionNo: '내선번호',
   colStatus: '상태',
   colIpAddress: 'IP Address',
-  colL2Switch: 'L2 스위치',
-  colSerial: 'Serial No',
 }
 const en = {
-  sortAll: 'Sort All',
-  searchLabel: 'Search',
-  searchPlaceholder: 'Enter search term',
-  totalLabel: 'Total',
-  btnSearch: 'Search',
-  filterDeviceName: 'Device ID',
-  filterModel: 'Model Name',
-  filterLocation: 'Location(Area)',
-  filterStatus: 'Status',
-  btnRegister: 'Register',
-  btnBulkRegister: 'Bulk Register',
-  btnDelete: 'Delete',
-  colSelect: 'Select',
+  sortAll: '전체 정렬',
+  searchLabel: '검색어',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+  btnSearch: '조회',
+  filterDeviceName: '장치아이디',
+  filterModel: '모델명',
+  filterLocation: '위치(구역)',
+  filterStatus: '상태',
+  btnRegister: '등록',
+  btnBulkRegister: '일괄등록',
+  btnDelete: '삭제',
+  colSelect: '선택',
   colNumber: 'No',
-  colLocation: 'Location(Area)',
-  colDeviceName: 'Device Name',
-  colModel: 'Model Name',
-  colAlarmAuth: 'Alarm Auth',
-  colBroadcastAuth: 'Broadcast Auth',
-  colMuteAuth: 'Mute Auth',
-  colExtensionNo: 'Extension No',
-  colStatus: 'Status',
+  colLocation: '위치(구역)',
+  colDeviceName: '장치명',
+  colModel: '모델명',
+  colExtensionNo: '내선번호',
+  colStatus: '상태',
   colIpAddress: 'IP Address',
-  colL2Switch: 'L2 Switch',
-  colSerial: 'Serial No',
 }
 
 const lang = ref({})
-
-// 폼 상태
-const searchWord = ref('')
 const filterText = ref('')
-const searchField = ref('')
-const searchText = ref('')
-
-const deviceType = ref(null)
-const searchTarget = ref(null)
-const selectOptions = []
 
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(40))
@@ -264,15 +215,13 @@ const fields = computed(() => [
   { key: 'deviceName', label: lang.value.colDeviceName, sortable: true, thStyle: { width: 'auto' } },
   { key: 'radioSilence', label: lang.value.colModel, thStyle: { width: 'auto' } },
   { key: 'extensionNo', label: lang.value.colExtensionNo, thStyle: { width: '8rem' } },
-  { key: 'status', label: lang.value.colStatus, thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'error' : '' },
+  { key: 'status', label: lang.value.colStatus, thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'red' : '' },
   { key: 'ipAddress', label: lang.value.colIpAddress, thStyle: { width: '10rem' } },
 ]);
 
 const filteredItems = computed(() => {
   return items.value.filter(item => {
-    const matchType = !searchField.value || item.location === searchField.value
-    const matchText = !searchText.value || (item.location && item.location.includes(searchText.value))
-    return matchType && matchText
+    return !filterText.value || (item.location && item.location.includes(filterText.value))
   })
 })
 
@@ -282,9 +231,6 @@ const perPageOptions = [
   { value: 10, text: '10' },
   { value: 15, text: '15' },
   { value: 20, text: '20' },
-]
-const detailOptions = [
-  { value: 1, text: '기본정보' },
 ]
 const paginatedItems = computed(() => {
   const start = (currentPage.value - 1) * perPage.value
@@ -297,8 +243,6 @@ watch(perPage, () => {
 })
 
 function onFilter() {
-  searchField.value = searchWord.value
-  searchText.value = filterText.value
   currentPage.value = 1
 }
 

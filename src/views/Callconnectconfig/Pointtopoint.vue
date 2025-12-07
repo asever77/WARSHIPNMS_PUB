@@ -27,7 +27,7 @@
     </table>
   </div>
 
-  <UiModal v-model="modals.modalModify.show" :title="'점대점 연결 수정'" type="modal" size="sm" @close-btn-click="modals.modalModify.show = false">
+  <UiModal v-model="modals.modalModify.show" :title="lang.modalTitle" type="modal" size="sm" @close-btn-click="modals.modalModify.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -36,7 +36,7 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">피호출 사용자단말</th>
+            <th scope="row">{{ lang.deviceName }}</th>
             <td>
               <BFormInput
                 class="ui-input"
@@ -46,7 +46,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">통화기능키 레이블</th>
+            <th scope="row">{{ lang.deviceLabel }}</th>
             <td>
               <BFormInput
                 class="ui-input"
@@ -56,7 +56,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">통화모드</th>
+            <th scope="row">{{ lang.callMode }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -66,7 +66,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">응답모드</th>
+            <th scope="row">{{ lang.answerMode }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -76,13 +76,13 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">스피커 출력방향</th>
+            <th scope="row">{{ lang.speakerDirection }}</th>
             <td>
               <BFormRadioGroup v-model="radioSelected" :options="radioOptions" name="radio-group-1" />
             </td>
           </tr>
           <tr>
-            <th scope="row">호출알림</th>
+            <th scope="row">{{ lang.callAlert }}</th>
             <td>
               <BFormRadioGroup v-model="radioSelected" :options="radioOptions2" name="radio-group-2" />
             </td>
@@ -91,32 +91,46 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify.show = false">취소</BButton>
-      <BButton class="blue28">저장</BButton>
-      <BButton class="blue28">삭제</BButton>
+      <BButton class="gray28" @click="modals.modalModify.show = false">{{ lang.cancel }}</BButton>
+      <BButton class="blue28">{{ lang.save }}</BButton>
+      <BButton class="blue28">{{ lang.delete }}</BButton>
     </template>
   </UiModal>
 </template>
 
 <script setup>
-import { ref, onMounted, reactive, computed } from "vue";
+import { ref, reactive, computed } from "vue";
 import G from "@/config/global.js";
 import UiModal from "@/components/UiModal.vue";
-import { BFormSelect, BButton, BFormRadioGroup } from "bootstrap-vue-next";
+import { BFormSelect, BButton, BFormRadioGroup, BFormInput } from "bootstrap-vue-next";
 
 const ko = {
-  thead1: "BRIDGE 1/CAPTAIN(S)",
-  thead2: "BRDG 2 /CONNING",
-  tbody1: "BRIDGE 1/CAPTAIN(S)"
+  modalTitle: '점대점 연결 수정',
+  deviceName: '피호출 사용자단말',
+  deviceLabel: '통화기능키 레이블',
+  callMode: '통화모드',
+  answerMode: '응답모드',
+  speakerDirection: '스피커 출력방향',
+  callAlert: '호출알림',
+  cancel: '취소',
+  save: '저장',
+  delete: '삭제',
 };
 
 const en = {
-  thead1: "BRIDGE 1/CAPTAIN(S)",
-  thead2: "BRDG 2 /CONNING",
-  tbody1: "BRIDGE 1/CAPTAIN(S)"
+  modalTitle: 'Edit Point-to-Point Connection',
+  deviceName: 'Called User Terminal',
+  deviceLabel: 'Call Key Label',
+  callMode: 'Call Mode',
+  answerMode: 'Answer Mode',
+  speakerDirection: 'Speaker Direction',
+  callAlert: 'Call Alert',
+  cancel: 'Cancel',
+  save: 'Save',
+  delete: 'Delete',
 };
 
-const lang = ref({});
+const lang = computed(() => (G.lang === "ko" ? ko : en));
 
 const modals = reactive({
   modalModify: { show: false },
@@ -143,9 +157,7 @@ const formOptions = reactive({
   ],
 });
 
-onMounted(() => {
-  lang.value = (G.lang === "ko") ? ko : en;
-});
+// onMounted 제거: lang은 이미 초기화됨
 
 // JSON 기반 테이블 데이터
 const tableData = ref({
@@ -162,6 +174,7 @@ const tableData = ref({
 
 const hoveredCol = ref(null);
 const hoveredRow = ref(null);
+const radioSelected = ref(null);
 function handleTdMouseOver(rowIdx, colIdx) {
   hoveredCol.value = colIdx;
   hoveredRow.value = rowIdx;

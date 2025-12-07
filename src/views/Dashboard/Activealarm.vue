@@ -226,9 +226,9 @@ const fields = computed(() => [
   { key: 'alarmName', label: '알람명', thStyle: { width: '12rem' } },
   { key: 'location', label: '발생위치', thStyle: { width: '12rem' } },
   { key: 'severity', label: '심각도', thStyle: { width: '10rem' }, tdClass: (value) => {
-    if (value === 'CRITICAL') return 'critical';
-    if (value === 'MINOR') return 'minor';
-    if (value === 'MAJOR') return 'major';
+    if (value === 'CRITICAL') return 'red';
+    if (value === 'MINOR') return 'yellow';
+    if (value === 'MAJOR') return 'green';
     return '';
   }},
   { key: 'category', label: '구분', thStyle: { width: '10rem' } },
@@ -415,18 +415,5 @@ function toggleSelectAll(checked) {
 
 .btn-delete:hover {
   background-color: #c82333;
-}
-
-.base-table:deep(td.critical) {
-  background-color: #f22d2d !important;
-  color: #fff !important;
-}
-.base-table:deep(td.minor) {
-  background-color: #efb43c !important;
-  color: #222 !important;
-}
-.base-table:deep(td.major) {
-  background-color: #4BC43D !important;
-  color: #fff !important;
 }
 </style>

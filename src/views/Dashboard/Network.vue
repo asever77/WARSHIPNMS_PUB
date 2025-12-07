@@ -324,12 +324,12 @@
               <th scope="row" rowspan="3">HF</th>
               <th scope="row">HF송수신기 #1</th>
               <td>사용자단말 #1</td>
-              <td><b class="network-busy">Busy</b></td>
+              <td class="green-txt">Busy</td>
             </tr>
             <tr>
               <th scope="row">HF송수신기 #2</th>
               <td>사용자단말 #2</td>
-              <td><b class="network-ready">Ready</b></td>
+              <td class="blue-txt">Ready</td>
             </tr>
             <tr>
               <th scope="row">HF송수신기 #2</th>
@@ -343,7 +343,7 @@
               <th scope="row" rowspan="3">VHF</th>
               <th scope="row">VHF송수신기 #1</th>
               <td>사용자단말 #1</td>
-              <td><b class="network-busy">Busy</b></td>
+              <td class="green-txt">Busy</td>
             </tr>
             <tr>
               <th scope="row">VHF송수신기 #2</th>
@@ -353,7 +353,7 @@
             <tr>
               <th scope="row">VHF송수신기 #2</th>
               <td>사용자단말 #2</td>
-              <td><b class="network-ready">Ready</b></td>
+              <td class="blue-txt">Ready</td>
             </tr>
           </tbody>
 
@@ -362,7 +362,7 @@
               <th scope="row" rowspan="3">UHF</th>
               <th scope="row">UHF송수신기 #1</th>
               <td>사용자단말 #1</td>
-              <td><b class="network-busy">Busy</b></td>
+              <td class="green-txt">Busy</td>
             </tr>
             <tr>
               <th scope="row">UHF송수신기 #2</th>
@@ -372,7 +372,7 @@
             <tr>
               <th scope="row">UHF송수신기 #2</th>
               <td>사용자단말 #2</td>
-              <td><b class="network-ready">Ready</b></td>
+              <td class="blue-txt">Ready</td>
             </tr>
           </tbody>
         </table>
@@ -521,6 +521,55 @@
     size="md"
     @close-btn-click="modals.modalUserTerminal.show = false"
   >
+    <div class="ui-flex" data-direction="col" data-gap="16">
+       <table class="table-type-a line">
+        <colgroup>
+          <col style="width:15rem">
+          <col style="width:auto">
+          <col style="width:auto">
+          <col style="width:auto">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">장치명</th>
+            <th scope="col">위치</th>
+            <th scope="col">내선 번호</th>
+            <th scope="col">상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">사용자단말 #1</th>
+            <td class="ta-c">함교실</td>
+            <td class="ta-c">1889</td>
+            <td class="ta-c">정상(통화중)</td>
+          </tr>
+          <tr>
+            <th scope="row">사용자단말 #1</th>
+            <td class="ta-c">함교실</td>
+            <td class="ta-c">1889</td>
+            <td class="ta-c red">비정상</td>
+          </tr>
+          <tr>
+            <th scope="row">사용자단말 #1</th>
+            <td class="ta-c">함교실</td>
+            <td class="ta-c">1889</td>
+            <td class="ta-c">정상</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </UiModal>
+
+  <!-- modal 장치상세 -->
+  <UiModal
+    v-model="modals.modalDetails.show"
+    :title="modals.modalDetails.title"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalDetails.show = false"
+  >
     <div class="ui-flex network-detail" data-direction="col" data-gap="16">
       <table class="table-type-a line">
         <colgroup>
@@ -650,19 +699,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
-  </UiModal>
-
-  <!-- modal 장치상세 -->
-  <UiModal
-    v-model="modals.modalDetails.show"
-    :title="modals.modalDetails.title"
-    type="modal"
-    size="md"
-    @close-btn-click="modals.modalDetails.show = false"
-  >
-    <div class="ui-flex" data-direction="col" data-gap="16">
-      ddddd
     </div>
   </UiModal>
 </template>

@@ -87,12 +87,6 @@
           </div>
         </BFormGroup>
         <BFormSelect
-          id="search-category"
-          class="ui-select-28"
-          v-model="searchCategory"
-          :options="detailOptions"
-        ></BFormSelect>
-        <BFormSelect
             id="per-page"
             class="ui-select-28 w-60"
             v-model="perPage"
@@ -167,30 +161,30 @@ const ko = {
   colSerial: 'Serial No',
 }
 const en = {
-  sortAll: 'Sort All',
-  searchLabel: 'Search',
-  searchPlaceholder: 'Enter search term',
-  totalLabel: 'Total',
-  btnSearch: 'Search',
-  filterDeviceName: 'Device Name',
-  filterRadioSilence: 'Radio Silence Auth',
-  filterLocation: 'Location(Area)',
-  filterStatus: 'Status',
-  btnRegister: 'Register',
-  btnBulkRegister: 'Bulk Register',
-  btnDelete: 'Delete',
-  colSelect: 'Select',
+  sortAll: '전체 정렬',
+  searchLabel: '검색어',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+  btnSearch: '조회',
+  filterDeviceName: '장치명',
+  filterRadioSilence: '무선침묵권한',
+  filterLocation: '위치(구역)',
+  filterStatus: '상태',
+  btnRegister: '등록',
+  btnBulkRegister: '일괄등록',
+  btnDelete: '삭제',
+  colSelect: '선택',
   colNumber: 'No',
-  colLocation: 'Location(Area)',
-  colDeviceName: 'Device Name',
-  colRadioSilence: 'Radio Silence',
-  colAlarmAuth: 'Alarm Auth',
-  colBroadcastAuth: 'Broadcast Auth',
-  colMuteAuth: 'Mute Auth',
-  colExtensionNo: 'Extension No',
-  colStatus: 'Status',
+  colLocation: '위치(구역)',
+  colDeviceName: '장치명',
+  colRadioSilence: '무선침묵',
+  colAlarmAuth: '경보권한',
+  colBroadcastAuth: '방송권한',
+  colMuteAuth: 'Mute권한',
+  colExtensionNo: '내선번호',
+  colStatus: '상태',
   colIpAddress: 'IP Address',
-  colL2Switch: 'L2 Switch',
+  colL2Switch: 'L2 스위치',
   colSerial: 'Serial No',
 }
 
@@ -273,7 +267,7 @@ const fields = computed(() => [
   { key: 'broadcastAuth', label: lang.value.colBroadcastAuth, thStyle: { width: '6rem' } },
   { key: 'muteAuth', label: lang.value.colMuteAuth, thStyle: { width: '6rem' } },
   { key: 'extensionNo', label: lang.value.colExtensionNo, thStyle: { width: '6rem' } },
-  { key: 'status', label: lang.value.colStatus, thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'error' : '' },
+  { key: 'status', label: lang.value.colStatus, thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'red' : '' },
   { key: 'ipAddress', label: lang.value.colIpAddress, thStyle: { width: '10rem' } },
   { key: 'l2Switch', label: lang.value.colL2Switch, thStyle: { width: '10rem' } },
   { key: 'serial', label: lang.value.colSerial, thStyle: { width: '10rem' } },
@@ -293,9 +287,6 @@ const perPageOptions = [
   { value: 10, text: '10' },
   { value: 15, text: '15' },
   { value: 20, text: '20' },
-]
-const detailOptions = [
-  { value: 1, text: '상세정보' },
 ]
 const paginatedItems = computed(() => {
   const start = (currentPage.value - 1) * perPage.value

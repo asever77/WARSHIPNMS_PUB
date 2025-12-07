@@ -2,26 +2,32 @@
   <h2 class="table-title-box">
     {{ lang.title }}
   </h2>
-  <table class="table-type-a">
-    <colgroup>
-      <col style="width:16rem">
-      <col style="width:auto">
-    </colgroup>
-    <tbody>
-    <tr>
-      <th scope="row">{{ lang.table1 }}</th>
-      <td><BFormInput id="input-1" class="ui-input" v-model="password" type="password" placeholder=""></BFormInput></td>
-    </tr>
-    <tr>
-      <th scope="row">{{ lang.table2 }}</th>
-      <td><BFormInput id="input-2" class="ui-input" v-model="password" type="password" placeholder=""></BFormInput></td>
-    </tr>
-    <tr>
-      <th scope="row">{{ lang.table3 }}</th>
-      <td><BFormInput id="input-3" class="ui-input" v-model="password" type="password" placeholder=""></BFormInput></td>
-    </tr>
-    </tbody>
-  </table>
+  <form>
+    <input type="text" name="username" autocomplete="username" style="display:none" tabindex="-1" aria-hidden="true" />
+    <table class="table-type-a">
+      <colgroup>
+        <col style="width:16rem">
+        <col style="width:auto">
+      </colgroup>
+      <tbody>
+      <tr>
+        <th scope="row">{{ lang.table1 }}</th>
+        <td><BFormInput id="input-1" class="ui-input" v-model="password" type="password" autocomplete="current-password" placeholder=""></BFormInput></td>
+      </tr>
+      <tr>
+        <th scope="row">{{ lang.table2 }}</th>
+        <td><BFormInput id="input-2" class="ui-input" v-model="password" type="password" autocomplete="new-password" placeholder=""></BFormInput></td>
+      </tr>
+      <tr>
+        <th scope="row">{{ lang.table3 }}</th>
+        <td><BFormInput id="input-3" class="ui-input" v-model="password" type="password" autocomplete="new-password" placeholder=""></BFormInput></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="ui-btn-group">
+      <BButton class="blue28">{{ lang.btn1 }}</BButton>
+    </div>
+  </form>
   <div class="ui-btn-group">
     <BButton class="blue28">{{ lang.btn1 }}</BButton>
   </div>
@@ -31,7 +37,7 @@
 import { ref, onMounted } from "vue";
 import G from "@/config/global.js";
 import {BButton} from "bootstrap-vue-next";
-import {BFormInput, BFormSelect} from "bootstrap-vue-next/components";
+import {BFormInput} from "bootstrap-vue-next/components";
 
 // BFormInput
 const password = ref('')

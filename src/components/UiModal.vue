@@ -235,7 +235,8 @@ const onHidden = () => {
   max-width: 120rem;
 }
 .base-modal .modal-xxlg {
-  max-width: 160rem;
+  max-width: 100%;
+  width: calc(100vw - 4rem);
 }
 
 .modal-header {

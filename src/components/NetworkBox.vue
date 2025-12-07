@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['network-item', (terminal && terminal[1] > 0) ? 'error' : '']"
+    :class="['network-item', (terminal && terminal[1] > 0) ? 'red' : '']"
     :data-type="type"
     :style="boxStyle"
     :data-name="text"
@@ -146,7 +146,7 @@ const boxStyle = computed(() => {
 .network-item--terminal b:nth-of-type(2){color:#E31F1F}
 .network-item--terminal b:nth-of-type(3){color:#002745}
 
-.network-item.error {
+.network-item.red {
   border-color: #E31F1F;
   background-color: #ffe0e0;
 }
