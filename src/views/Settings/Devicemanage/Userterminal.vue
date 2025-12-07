@@ -100,7 +100,7 @@
       </div>
     </div>
     <div class="base-table">
-      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive>
+      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive @row-clicked="onRowClicked" data-type="clickable">
          <template #head(select)>
           <BFormCheckbox
             :indeterminate="isIndeterminate"
@@ -208,6 +208,9 @@ const selectOptions = []
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(40))
 
+function onRowClicked(item) {
+  console.log('Row clicked:', item)
+}
 function generateItems(n) {
   const locations = ['후부장교실', '전방장교실', '기관실', '함교', '작전실']
   const statuses = ['정상', '정상(통화중)', '비정상']
