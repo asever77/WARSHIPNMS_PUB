@@ -174,7 +174,7 @@ table .form-check-inline ~ .form-check-inline,
 .base-table {width:100%;}
 .base-table table {border:0;border-collapse:collapse;width:100%;border-spacing:0;}
 .base-table tr {border:0;}
-.base-table thead th {border-bottom:1px solid #2A598D;}
+.base-table thead th {border-bottom:1px solid #2A598D;word-break: keep-all;}
 .base-table th {border:0;box-shadow:none;border-bottom:1px solid #D4E1E8; line-height: 1.1;}
 .base-table td {border:0;box-shadow:none;border-bottom:1px solid #D4E1E8;vertical-align:middle}
 .base-table th + th {border-left:1px solid #2A598D;}
@@ -193,11 +193,16 @@ td.yellow{color: #353535 !important; background-color:#fbef4c !important;}
 .base-table tbody td {font-size:1.2rem;color:#3E3E3E;text-align:center;min-height:3rem;padding:.4rem 1rem;}
 .base-table tbody tr {transition:background-color .15s ease-in-out;}
 .base-table [data-type="clickable"] tbody tr:hover td{background-color:#F1F6F9;cursor:pointer;}
-.base-table .page-link {background-color:transparent;color:#3E3E3E;font-size:1.2rem;min-height:2rem;min-width:2rem;padding:0;border:0;line-height:1.6;}
-.base-table .pagination .page-item:nth-child(1) .page-link,
-.base-table .pagination .page-item:nth-child(2) .page-link,
-.base-table .pagination .page-item:nth-last-child(1) .page-link,
-.base-table .pagination .page-item:nth-last-child(2) .page-link{font-size:1.6rem;line-height:1;}
+.page-link {background-color:transparent;color:#3E3E3E;font-size:1.2rem;min-height:2rem;min-width:2rem;padding:0;border:0;line-height:1.6;}
+.pagination .page-item.active .page-link {font-weight: 900;background-color: transparent;color:#000}
+.pagination .page-item:nth-child(1) .page-link,
+.pagination .page-item:nth-child(2) .page-link,
+.pagination .page-item:nth-last-child(1) .page-link,
+.pagination .page-item:nth-last-child(2) .page-link{font-size:0;line-height:1; }
+.pagination .page-item:nth-child(1) .page-link{background:url("@/assets/images/common/page-first.svg") no-repeat 50% 50%;background-size:auto 1rem;}
+.pagination .page-item:nth-child(2) .page-link{background:url("@/assets/images/common/page-prev.svg") no-repeat 50% 50%;background-size:auto 1rem;}
+.pagination .page-item:nth-last-child(1) .page-link{background:url("@/assets/images/common/page-next.svg") no-repeat 50% 50%;background-size:auto 1rem;}
+.pagination .page-item:nth-last-child(2) .page-link{background:url("@/assets/images/common/page-last.svg") no-repeat 50% 50%;background-size:auto 1rem;}
 .base-table.line tbody th,
 .base-table.line tbody td{border:1px solid #D4E1E8;text-align: center;color:#3E3E3E;}
 .base-table.line .network-busy{font-size: 1.3rem;font-weight:900;color:#3EA832;}
