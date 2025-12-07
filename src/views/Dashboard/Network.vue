@@ -238,13 +238,14 @@
 
         <!-- 네트워크 라인 -->
         <NetworkLine line="sfp" ps="tl-br" width="6rem" height="4rem" top="calc(50% - 5.8rem)" left="calc(50% - 8rem)"/>
-        <NetworkLine line="sfp" data-state="warning" ps="tb" height="3rem" top="calc(50% - 13.9rem)" left="calc(50% - 8.2rem)" />
+        <NetworkLine line="sfp" state="warning" ps="tb" height="3rem" top="calc(50% - 13.9rem)" left="calc(50% - 8.2rem)" />
         <NetworkLine line="sfp" ps="lr" width="12.8rem" top="calc(50% + 1.6rem)" left="calc(50% - 18rem)" />
         <NetworkLine line="sfp" ps="lr" width="12.8rem" top="calc(50% + 1.6rem)" left="calc(50% + 5.2rem)" />
-        <NetworkLine line="sfp" data-state="warning" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% - 18rem)" />
+        <NetworkLine line="sfp" state="warning" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% - 18rem)" />
         <NetworkLine line="sfp" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% - 2rem)" />
-        <NetworkLine line="sfp" data-state="warning" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% + 14rem)" />
-        <NetworkLine line="sfp" data-state="abnormal" ps="tr-br" width="3rem" height="16rem" top="calc(50% + 1.8rem)" left="calc(50% - 32.9rem)" />
+        <NetworkLine line="sfp" state="warning" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% + 14rem)" />
+
+        <NetworkLine line="sfp" state="abnormal" ps="tr-br" width="3rem" height="16rem" top="calc(50% + 1.8rem)" left="calc(50% - 32.9rem)" />
         <NetworkLine line="sfp" ps="tl-bl" width="3rem" height="16rem" top="calc(50% + 1.8rem)" left="calc(50% + 30rem)" />
       </div>
     </div>

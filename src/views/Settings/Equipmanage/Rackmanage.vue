@@ -496,15 +496,15 @@ const selectedIds = ref([])
 // 정렬 추가: 장치유형,모델,장치명,등급,위치,등록일
 
 const fields = computed(() => [
-  { key: 'select', label: lang.value.thead1, thStyle: { width: '5rem' } },
+  { key: 'select', label: lang.value.thead1, thStyle: { width: '4rem' } },
   { key: 'number', label: lang.value.thead2, thStyle: { width: '6rem' } },
   { key: 'deviceType', label: lang.value.thead3, thStyle: { width: 'auto' } },
-  { key: 'model', label: lang.value.thead4, thStyle: { width: '14rem' } },
-  { key: 'location', label: lang.value.thead5, thStyle: { width: '14rem' } },
-  { key: 'rack', label: lang.value.thead6, thStyle: { width: '12rem' } },
-  { key: 'size', label: lang.value.thead7, thStyle: { width: '12rem' } },
-  { key: 'regDate', label: lang.value.thead8, thStyle: { width: '16rem' } },
-  { key: 'count', label: lang.value.thead9, thStyle: { width: '16rem' } },
+  { key: 'model', label: lang.value.thead4, thStyle: { width: '10rem' } },
+  { key: 'location', label: lang.value.thead5, thStyle: { width: '10rem' } },
+  { key: 'rack', label: lang.value.thead6, thStyle: { width: '7rem' } },
+  { key: 'size', label: lang.value.thead7, thStyle: { width: '7rem' } },
+  { key: 'regDate', label: lang.value.thead8, thStyle: { width: '13rem' } },
+  { key: 'count', label: lang.value.thead9, thStyle: { width: '12rem' } },
 ])
 
 // 실제 검색에 사용되는 값
