@@ -367,14 +367,14 @@ export default {
     }
   }
   &[data-dep1="settings"] .tree-toggle[aria-expanded="true"] {
-    background-color: var(--color-secondary-blue);
-    color: var(--color-primary);
-    path {
-      stroke: var(--color-primary);
-    }
-    &::before {
-      background: url('@/assets/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem;
-    }
+    // background-color: var(--color-secondary-blue);
+    // color: var(--color-primary);
+    // path {
+    //   stroke: var(--color-primary);
+    // }
+    // &::before {
+    //   background: url('@/assets/images/icon/icon-aspect-nav2-on.svg') no-repeat 50% 50% / 2.4rem;
+    // }
   }
   .router-link-active {
     background-color: var(--color-secondary-blue);
