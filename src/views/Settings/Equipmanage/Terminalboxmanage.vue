@@ -2,9 +2,7 @@
   <table class="table-type-a">
     <colgroup>
       <col style="width: 16rem" />
-      <col style="width: 19rem" />
-      <col style="width: 16rem" />
-      <col style="width: 19rem" />
+      <col style="width: auto" />
       <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
@@ -42,6 +40,8 @@
             :options="selectOptions"
           ></BFormSelect>
         </td>
+      </tr>
+      <tr>
         <th scope="row">{{ lang.filterSearchWord }}</th>
         <td>
           <BFormInput
@@ -51,8 +51,7 @@
             :placeholder="lang.searchPlaceholder"
           ></BFormInput>
         </td>
-      </tr>
-      <tr>
+
         <th scope="row">
           {{ lang.filterRegDate }}
           <BButton
@@ -61,7 +60,7 @@
             :aria-label="`${lang.filterRegDate} 전체 정렬`"
           ></BButton>
         </th>
-        <td colspan="5">
+        <td>
           <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4" style="width: 20rem">
             <BFormInput
               id="reg-date-start"

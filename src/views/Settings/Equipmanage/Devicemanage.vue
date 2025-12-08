@@ -2,9 +2,7 @@
   <table class="table-type-a">
     <colgroup>
       <col style="width: 16rem" />
-      <col style="width: 19rem" />
-      <col style="width: 16rem" />
-      <col style="width: 19rem" />
+      <col style="width: auto" />
       <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
@@ -22,6 +20,7 @@
             :options="selectOptions"
           ></BFormSelect>
         </td>
+
         <th scope="row">{{ lang.filterSearchTarget }}
           <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
         </th>
@@ -33,16 +32,17 @@
             :options="selectOptions"
           ></BFormSelect>
         </td>
+      </tr>
+      <tr>
         <th scope="row">{{ lang.filterSearchWord }}</th>
         <td>
           <BFormInput id="search-word" class="ui-input" v-model="searchWord" placeholder=""></BFormInput>
         </td>
-      </tr>
-      <tr>
+
         <th scope="row">{{ lang.filterRegDate }}
           <BButton class="btn-sort" aria-sort="ascending" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
         </th>
-        <td colspan="5">
+        <td>
           <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4" style="width: 20rem;">
             <BFormInput
               id="reg-date-start"
