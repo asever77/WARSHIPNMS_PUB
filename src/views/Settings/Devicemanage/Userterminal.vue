@@ -9,8 +9,10 @@
     <tbody>
       <tr>
         <th scope="row">
-          검색대상
-          <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.thead1 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormSelect
@@ -22,8 +24,10 @@
         </td>
 
         <th scope="row">
-          검색어
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.thead2 }}</span>
+            <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormInput id="search-word" class="ui-input" v-model="searchWord" placeholder=""></BFormInput>
@@ -31,8 +35,10 @@
       </tr>
       <tr>
         <th scope="row">
-          무선침묵권한
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.thead3 }}</span>
+            <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormSelect
@@ -44,8 +50,10 @@
         </td>
 
         <th scope="row">
-          상태
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.thead4 }}</span>
+            <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormSelect
@@ -161,6 +169,10 @@ const ko = {
   colIpAddress: 'IP Address',
   colL2Switch: 'L2 스위치',
   colSerial: 'Serial No',
+  thead1: '검색대상',
+  thead2: '검색어',
+  thead3: '무선침묵권한',
+  thead4: '상태',
 }
 const en = {
   sortAll: '전체 정렬',
@@ -188,6 +200,10 @@ const en = {
   colIpAddress: 'IP Address',
   colL2Switch: 'L2 스위치',
   colSerial: 'Serial No',
+  thead1: '검색대상',
+  thead2: '검색어',
+  thead3: '무선침묵권한',
+  thead4: '상태',
 }
 
 const lang = ref({})
