@@ -16,12 +16,24 @@
           {{ lang.filterDeviceName }}
           <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
         </th>
-        <td></td>
+        <td>
+          <BFormSelect
+            id="device-type"
+            class="ui-select"
+            :options="selectOptions"
+          ></BFormSelect>
+        </td>
         <th scope="row">
           {{ lang.filterModel }}
           <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterModel} ${lang.sortAll}`"></BButton>
         </th>
-        <td></td>
+        <td>
+          <BFormSelect
+            id="device-type"
+            class="ui-select"
+            :options="selectOptions"
+          ></BFormSelect>
+        </td>
         <th scope="row">
           {{ lang.filterLocation }}
           <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
