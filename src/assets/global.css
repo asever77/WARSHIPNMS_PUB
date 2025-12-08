@@ -148,12 +148,12 @@ table .form-check-inline ~ .form-check-inline,
 /* btn */
 .ui-btn-group {display:flex;justify-content:flex-end;gap:.8rem;margin-top:1rem}
 .ui-btn-group[data-btn-min="80"] .btn-secondary {min-width:8rem}
-.blue28.btn-secondary {background-color:#1E5379;border-color:#1E5379;min-width:10rem;height:2.8rem;display:inline-flex;align-items:center;padding:0 1.2rem;justify-content:center;font-size:1.2rem;font-weight:700}
-.gray28.btn-secondary {background-color:#7591A5;border-color:#7591A5;min-width:10rem;height:2.8rem;display:inline-flex;align-items:center;padding:0 1.2rem;justify-content:center;font-size:1.2rem;font-weight:700}
-.navy28.btn-secondary {background-color:#001B30;border-color:#001B30;min-width:10rem;height:2.8rem;display:inline-flex;align-items:center;padding:0 1.2rem;justify-content:center;font-size:1.2rem;font-weight:700}
-.black28.btn-secondary {background-color:#111;border-color:#111;min-width:10rem;height:2.8rem;display:inline-flex;align-items:center;padding:0 1.2rem;justify-content:center;font-size:1.2rem;font-weight:700}
-.blue24.btn-secondary {background-color:#1E5379;border-color:#1E5379;min-width:10rem;height:2.4rem;display:inline-flex;align-items:center;padding:0 1rem;justify-content:center;font-size:1.2rem;font-weight:700}
-.gray24.btn-secondary {background-color:#7591A5;border-color:#7591A5;min-width:10rem;height:2.4rem;display:inline-flex;align-items:center;padding:0 1rem;justify-content:center;font-size:1.2rem;font-weight:700}
+.blue28.btn-secondary {background-color:#1E5379;border-color:#1E5379;min-width:10rem;min-height:2.8rem;height:auto;display:inline-flex;align-items:center;padding:0 1.2rem;justify-content:center;font-size:1.2rem;font-weight:700}
+.gray28.btn-secondary {background-color:#7591A5;border-color:#7591A5;min-width:10rem;min-height:2.8rem;height:auto;display:inline-flex;align-items:center;padding:0 1.2rem;justify-content:center;font-size:1.2rem;font-weight:700}
+.navy28.btn-secondary {background-color:#001B30;border-color:#001B30;min-width:10rem;min-height:2.8rem;height:auto;display:inline-flex;align-items:center;padding:0 1.2rem;justify-content:center;font-size:1.2rem;font-weight:700}
+.black28.btn-secondary {background-color:#111;border-color:#111;min-width:10rem;min-height:2.8rem;height:auto;display:inline-flex;align-items:center;padding:0 1.2rem;justify-content:center;font-size:1.2rem;font-weight:700}
+.blue24.btn-secondary {background-color:#1E5379;border-color:#1E5379;min-width:10rem;min-height:2.4rem;height:auto;display:inline-flex;align-items:center;padding:0 1rem;justify-content:center;font-size:1.2rem;font-weight:700}
+.gray24.btn-secondary {background-color:#7591A5;border-color:#7591A5;min-width:10rem;min-height:2.4rem;height:auto;display:inline-flex;align-items:center;padding:0 1rem;justify-content:center;font-size:1.2rem;font-weight:700}
 .blue24.btn-secondary.min-w-0,
 .gray24.btn-secondary.min-w-0 {min-width:0}
 
