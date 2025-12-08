@@ -8,7 +8,7 @@
       <div>
         <BFormSelect
           id="search-target"
-          class="ui-select"
+          class="ui-select-28"
           v-model="searchTarget"
           :options="searchTargetOptions"
         ></BFormSelect>
