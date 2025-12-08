@@ -1,11 +1,11 @@
 <template>
   <table class="table-type-a">
     <colgroup>
-      <col style="width: 13rem" />
-      <col style="width: 16.5rem" />
-      <col style="width: 13rem" />
-      <col style="width: 16.5rem" />
-      <col style="width: 13rem" />
+      <col style="width: 16rem" />
+      <col style="width: 18rem" />
+      <col style="width: 16rem" />
+      <col style="width: 18rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
