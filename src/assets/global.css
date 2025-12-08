@@ -182,6 +182,7 @@ table .form-check-inline ~ .form-check-inline,
 /* modal */
 .modal-h-full {height:calc(100vh - 12rem);padding-bottom:2rem}
 .modal-footer .btn-secondary {min-width:8rem}
+.bg-type .modal-body {background-color:#f3f3f3}
 
 /* common content */
 .base-wrap {display:flex;flex-direction:column;width:100%;padding:2rem;background-color:#F1F6F9;border-radius:.5rem;gap:.8rem;}
@@ -344,6 +345,6 @@ td.yellow{color:#353535 !important; background-color:#fbef4c !important;}
 .layer-title-box {display:flex;align-items:center;width:100%;border-radius:0 0 .4rem .4rem;border:1px solid #ACD1EB;border-top:0;background-color:#E3EDF4;min-height:4rem;gap:.8rem;font-size:1.4rem;font-weight:700;line-height:1;padding:0 1.2rem 0;margin:-2rem 0 .8rem;box-shadow:0 .2rem .4rem 0 rgba(0,0,0,.05);}
 .box-pp {gap:.4rem;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;}
 .box-pp--item {background-color:#fff;border:1px solid #D4E1E8;box-sizing:border-box;color:#627582;padding:0.5rem;text-align:left;line-height:1.2;font-size:1.1rem;min-height:6rem;word-break:break-all;display:flex;align-items:flex-start;justify-content:flex-start}
-.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border:1px solid #D4E1E8;}
+.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#D4E1E8;outline:2px solid var(--color-border-blue);outline-offset:-2px}
 .form-check {gap:.4rem;display:flex;align-items:center;margin-bottom:0}
 .w100-2 .form-check{flex:1}

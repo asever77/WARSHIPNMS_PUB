@@ -27,11 +27,11 @@
     </table>
   </div>
 
-  <UiModal v-model="modals.modalPointSetting.show" :title="tableData.tbody[modals.modalPointSetting.rowIdx]" type="modal" size="md" @close-btn-click="modals.modalPointSetting.show = false">
+  <UiModal v-model="modals.modalPointSetting.show" :title="tableData.tbody[modals.modalPointSetting.rowIdx]" type="modal" size="md" class="bg-type" @close-btn-click="modals.modalPointSetting.show = false">
     <div class="ui-flex" data-direction="col" data-gap="8" style="padding-top: 0;">
       <h2 class="layer-title-box">
         <img src="@/assets/images/icon/icon-aspect-title-1.svg" alt="icon" />
-        점대점 통화
+        {{ lang.modalTitle2 }}
       </h2>
       <div class="box-pp">
         <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify(btn, idx)">{{ btn }}</BButton>
@@ -149,6 +149,7 @@ const ppButtons = [
 
 const ko = {
   modalTitle: '점대점 연결 수정',
+  modalTitle2: '점대점 통화',
   deviceName: '피호출 사용자단말',
   deviceLabel: '통화기능키 레이블',
   callMode: '통화모드',
@@ -158,10 +159,15 @@ const ko = {
   cancel: '취소',
   save: '저장',
   delete: '삭제',
+  check1: '왼쪽',
+  check2: '오른쪽',
+  check3: '벨소리',
+  check4: '알림등',
 };
 
 const en = {
   modalTitle: '점대점 연결 수정',
+  modalTitle2: '점대점 통화',
   deviceName: '피호출 사용자단말',
   deviceLabel: '통화기능키 레이블',
   callMode: '통화모드',
@@ -171,6 +177,10 @@ const en = {
   cancel: '취소',
   save: '저장',
   delete: '삭제',
+  check1: '왼쪽',
+  check2: '오른쪽',
+  check3: '벨소리',
+  check4: '알림등',
 };
 
 const lang = computed(() => (G.lang === "ko" ? ko : en));
