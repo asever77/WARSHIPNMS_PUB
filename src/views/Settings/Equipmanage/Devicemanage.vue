@@ -9,8 +9,10 @@
     <tbody>
       <tr>
         <th scope="row">
-          {{ lang.filterDeviceType }}
-          <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceType} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterDeviceType }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormSelect
@@ -21,8 +23,11 @@
           ></BFormSelect>
         </td>
 
-        <th scope="row">{{ lang.filterSearchTarget }}
-          <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
+        <th scope="row">
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterSearchTarget }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormSelect
@@ -39,8 +44,11 @@
           <BFormInput id="search-word" class="ui-input" v-model="searchWord" placeholder=""></BFormInput>
         </td>
 
-        <th scope="row">{{ lang.filterRegDate }}
-          <BButton class="btn-sort ui-shrink-0" aria-sort="ascending" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
+        <th scope="row">
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterRegDate }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4" style="width: 20rem;">
