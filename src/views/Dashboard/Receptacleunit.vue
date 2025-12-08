@@ -22,8 +22,10 @@
           ></BFormSelect>
         </td>
         <th scope="row">
-          {{ lang.filterModel }}
-          <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterModel} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterModel }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterModel} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormSelect
@@ -35,8 +37,10 @@
       </tr>
       <tr>
         <th scope="row">
-          {{ lang.filterLocation }}
-          <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterLocation }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormInput id="search-word" class="ui-input" v-model="filterText" placeholder=""></BFormInput>
