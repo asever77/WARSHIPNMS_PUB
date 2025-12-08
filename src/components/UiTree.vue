@@ -221,18 +221,36 @@ export default {
           this.openMenus.push(id);
         }
       } else {
-        // dep1 메뉴인 경우: 기존 로직 유지
+        // dep1 메뉴인 경우
+        const clickedItem = this.menu.find(item => item.id === id);
+        const hasChildren = clickedItem && clickedItem.children && clickedItem.children.length > 0;
+
         const n = this.isInitialLoad
           ? (this.isOpen(id) || this.isRouteDrivenOpen(id))
           : this.isOpen(id);
+
         if (n) {
+          // 이미 열려있으면 닫기
           if (this.isInitialLoad) {
             this.isInitialLoad = false;
           }
           this.openMenus = this.openMenus.filter(menuId => menuId !== id);
         } else {
+          // 닫혀있으면 열기
           this.isInitialLoad = false;
-          this.openMenus = [...this.openMenus, id];
+
+          if (hasChildren) {
+            // 자식이 있는 dep1을 열 때: 다른 자식을 가진 dep1들과 그 dep2들을 모두 닫기
+            this.openMenus = this.openMenus.filter(menuId => {
+              const menuItem = this.menu.find(item => item.id === menuId);
+              // 자식이 없는 dep1만 유지
+              return menuItem && (!menuItem.children || menuItem.children.length === 0);
+            });
+            this.openMenus.push(id);
+          } else {
+            // 자식이 없는 dep1을 열 때: 기존 방식대로 추가
+            this.openMenus = [...this.openMenus, id];
+          }
         }
       }
     },
