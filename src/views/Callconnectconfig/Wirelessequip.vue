@@ -68,7 +68,7 @@
             <td>
                 <BFormSelect
                   v-model="selectCallMode"
-                  class="ui-select mb-1"
+                  class="ui-select"
                   :disabled="true"
                   :options="[
                     { value: '1', text: 'PTT' },
