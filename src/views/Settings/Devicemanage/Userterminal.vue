@@ -135,13 +135,343 @@
     <BButton class="blue28">{{ lang.btnBulkRegister }}</BButton>
     <BButton class="gray28">{{ lang.btnDelete }}</BButton>
   </div>
+
+  <UiModal
+    v-model="modals.modalTerminalModify.show"
+    :title="'사용자단말 정보 수정'"
+    type="modal"
+    size="lg"
+    @close-btn-click="modals.modalTerminalModify.show = false"
+  >
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width: 14rem" />
+          <col style="width: auto" />
+          <col style="width: 7rem" />
+          <col style="width: 7rem" />
+          <col style="width: auto" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">모델명</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: 'MC700',}
+                ]"
+              />
+            </td>
+            <th scope="row" colspan="2">스피커볼륨</th>
+            <td>
+              <BFormInput type="number" value="50" />
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">장치명</th>
+            <td>
+              <BFormInput type="text" />
+            </td>
+            <th scope="row" colspan="2">헤드셋볼륨</th>
+            <td>
+              <BFormInput type="number" value="50" />
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">설명/비고</th>
+            <td>
+              <BFormInput type="text" />
+            </td>
+            <th scope="row" colspan="2">화면밝기</th>
+            <td>
+              <BFormInput type="number" value="50" />
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">시리얼 번호</th>
+            <td>
+              <BFormInput type="text" />
+            </td>
+            <th scope="row" rowspan="3">벨소리</th>
+            <th scope="row">점대점</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: '모닝글로리',}
+                ]"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">가입자정보 (내선번호)</th>
+            <td>
+              <BFormInput type="text" />
+            </td>
+            <th scope="row">회의통화</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: '기상나팔',}
+                ]"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">무선침묵 설정</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: 'ON',}
+                ]"
+              />
+            </td>
+            <th scope="row">그룹통화</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: '기상나팔',}
+                ]"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row" rowspan="2">위치</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: '구역',}
+                ]"
+              />
+            </td>
+            <th scope="row" colspan="2">자동연결 대기시간(초)</th>
+            <td>
+              <BFormInput type="tel" />
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: '전탐실',}
+                ]"
+              />
+            </td>
+            <th scope="row" colspan="2"></th>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th scope="row">L2 스위치</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: '무선통신기시스템',}
+                ]"
+              />
+            </td>
+            <th scope="row" colspan="2"></th>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th scope="row">무선채널 최대할당 개수</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: '6',}
+                ]"
+              />
+            </td>
+            <th scope="row" colspan="2"></th>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th scope="row">경보권한</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: 'ON',}
+                ]"
+              />
+            </td>
+            <th scope="row" colspan="2"></th>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th scope="row">방송권한</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :options="[
+                  {value: '1', text: 'OFF',}
+                ]"
+              />
+            </td>
+            <th scope="row" colspan="2"></th>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th scope="row">Muting-Relay 기능</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :disabled="true"
+                :options="[
+                  {value: '1', text: 'OFF',}
+                ]"
+              />
+            </td>
+            <th scope="row" colspan="2"></th>
+            <td></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalTerminalModify.show = false">취소</BButton>
+      <BButton class="blue28">저장</BButton>
+      <BButton class="blue28 footer-right-btn"  @click="modals.modalPointSetting.show = true">통화기능키 설정</BButton>
+    </template>
+  </UiModal>
+
+  <UiModal v-model="modals.modalPointSetting.show" :title="'BRDG1 CAPTS'" type="modal" size="md" class="bg-type" @close-btn-click="modals.modalPointSetting.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="8" style="padding-top: 0;">
+      <h2 class="layer-title-box">
+        <img src="@/assets/images/icon/icon-aspect-title-1.svg" alt="icon" />
+        점대점 통화
+      </h2>
+      <div class="box-pp">
+        <div v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item">{{ btn }}</div>
+        <BButton class="box-pp--item" @click="openModify1">추가</BButton>
+      </div>
+    </div>
+  </UiModal>
+
+  <UiModal v-model="modals.modalModify1.show" :title="'점대점 연결 등록'" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:18rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">피호출 사용자단말</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :disabled="true"
+                :options="[
+                  { value: '1', text: '선택' },
+                ]"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">통화기능키 레이블</th>
+            <td>
+              <BFormInput
+                class="ui-input"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">통화모드</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                :disabled="true"
+                :options="[
+                  { value: '1', text: 'PTT' },
+                ]"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">응답모드</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.answerMode"
+                :options="[
+                  { value: '1', text: '수동연결' },
+                ]"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">녹음제어</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.recordControl"
+                :options="[
+                  { value: '1', text: '자동녹음' },
+                ]"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">스피커 출력방향</th>
+            <td>
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">왼쪽</BFormCheckbox>
+                <BFormCheckbox value="2">오른쪽</BFormCheckbox>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">호출알림</th>
+            <td>
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">벨소리</BFormCheckbox>
+                <BFormCheckbox value="2">알림등</BFormCheckbox>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalModify1.show = false">취소</BButton>
+      <BButton class="blue28">저장</BButton>
+    </template>
+  </UiModal>
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue'
+// 모달 폼 데이터 및 옵션 선언 (에러 방지)
+const formData = reactive({
+  deviceType: null,
+  model: null,
+});
+
+import { ref, onMounted, computed, watch, reactive } from 'vue'
 import G from '@/config/global.js'
 import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
 import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
+import UiModal from '@/components/UiModal.vue'
 
 const ko = {
   sortAll: '전체 정렬',
@@ -205,15 +535,31 @@ const en = {
   thead3: '무선침묵권한',
   thead4: '상태',
 }
-
 const lang = ref({})
+
+// 모달 상태
+const modals = reactive({
+  modalTerminalModify: { show: false },
+  modalPointSetting: { show: false },
+  modalModify1: { show: false },
+})
+function openModify1() {
+  modals.modalModify1.show = true;
+}
+const ppButtons = [
+  'HLCPTR CONTRC', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+];
 
 // 폼 상태
 const searchWord = ref('')
 const filterText = ref('')
 const searchField = ref('')
 const searchText = ref('')
-
 const deviceType = ref(null)
 const searchTarget = ref(null)
 const selectOptions = []
@@ -222,7 +568,7 @@ const selectOptions = []
 const items = ref(generateItems(40))
 
 function onRowClicked(item) {
-  console.log('Row clicked:', item)
+  modals.modalTerminalModify.show = true;
 }
 function generateItems(n) {
   const locations = ['후부장교실', '전방장교실', '기관실', '함교', '작전실']

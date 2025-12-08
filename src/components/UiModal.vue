@@ -224,7 +224,7 @@ const onHidden = () => {
 .base-modal .modal-footer {
   justify-content: center;
   border: 0;
-  padding: 0 0 1.9rem;
+  padding: 0 2.6rem 1.9rem;
   gap:1rem;
 }
 .base-modal .modal-body {
