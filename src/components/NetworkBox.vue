@@ -93,6 +93,8 @@ const boxStyle = computed(() => {
   border-radius: .5rem;
   font-size: 1rem;
   position: absolute;
+  text-align: center;
+  line-height: 1.1;
 }
 .network-item--btn {
   position: absolute;
@@ -115,12 +117,14 @@ const boxStyle = computed(() => {
   padding:0.4rem .8rem;
   min-width: 12rem;
   min-height: 5.2rem;
+  max-width: 12rem;
 }
 .network-item[data-type="major"] {
   border:1px solid #CDCBCB;
   color:#3E3E3E;
   background-color: #fff;
   padding:1.8rem .8rem;
+  max-width: 10.5rem;
 }
 .network-item[data-type="gray"] {
   color:#fff;

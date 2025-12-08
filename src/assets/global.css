@@ -294,7 +294,7 @@ td.yellow{color:#353535 !important; background-color:#fbef4c !important;}
 .network-info--item:last-child ul {border-left:0;}
 .network-info--text {width:100%;padding:0.5rem 0.7rem;border-bottom:1px solid #C5C5C5;}
 .network-info--text:last-child {border-bottom:0;}
-.network-info--key{display:block;font-size:1.2rem;color:#3E3E3E;font-style:normal;}
+.network-info--key{display:block;font-size:1.2rem;color:#3E3E3E;font-style:normal;line-height: 1;}
 .network-info--value{display:block;font-size:1.4rem;color:#3E3E3E;font-weight:900;}
 .network-info--icon.w1-1 {background-image:url('/src/assets/images/icon/icon-aspect-weather1-1.svg');}
 .network-info--icon.w1-2 {background-image:url('/src/assets/images/icon/icon-aspect-weather1-2.svg');}

@@ -42,7 +42,7 @@
               :callback="openUserTerminalModal"
             />
           </NetworkLine>
-          <NetworkLine line="poe" ps="tr-bl" width="9rem" height="4rem" top="100%" right="70%" >
+          <NetworkLine line="poe" ps="tr-bl" width="9rem" height="3rem" top="100%" right="70%" >
             <NetworkBox
               type="gray"
               top="100%"
@@ -51,7 +51,7 @@
               :callback="openDetailsModal"
             />
           </NetworkLine>
-          <NetworkLine line="poe" ps="tl-br" width="9rem" height="4rem" top="100%" left="70%" >
+          <NetworkLine line="poe" ps="tl-br" width="9rem" height="3rem" top="100%" left="70%" >
             <NetworkBox
               type="gray"
               top="100%"
@@ -702,11 +702,6 @@
     </div>
   </UiModal>
 </template>
-
-<style scoped lang="scss">
-
-
-</style>
 
 <script setup>
 import { ref, onMounted, reactive } from "vue";
