@@ -28,9 +28,6 @@
       <BButton class="blue28">{{ lang.btn1 }}</BButton>
     </div>
   </form>
-  <div class="ui-btn-group">
-    <BButton class="blue28">{{ lang.btn1 }}</BButton>
-  </div>
 </template>
 
 <script setup>
