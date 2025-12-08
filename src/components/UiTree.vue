@@ -182,6 +182,7 @@ export default {
 
       if (isDep1) {
         this.isInitialLoad = false;
+        // dep1을 열 때 모든 dep2 메뉴를 닫고 해당 dep1만 열기
         this.openMenus = [id];
       } else if (isDep2) {
         // dep2 메뉴인 경우: 다른 dep2 메뉴들을 닫고 현재 메뉴만 토글
