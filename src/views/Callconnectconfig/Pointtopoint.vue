@@ -191,43 +191,5 @@ function handleTdClick(rowIdx, colIdx) {
 <style scoped>
 .ui-excel-table .table-type-b {
   min-width: auto;
-  border-right: 1px solid #D4E1E8;;
-}
-.ui-excel-table tbody th {text-align: right;}
-.thhover {
-  background: #1E5379 !important;
-  color: #fff !important;
-  transition: background 0.2s;
-}
-.tdhover {
-  background: #1E5379 !important;
-  color: #fff !important;
-  transition: background 0.2s;
-}
-.tdhover.selected::after {
-  color:#fff !important;
-}
-.selected::after {
-  content:"●";
-  font-size: 1.6rem;
-  line-height: 1;
-  color:#1E5379 !important;
-}
-.ui-excel-table td{
-  cursor: pointer;
-  text-align: center;
-}
-.ui-excel-table td.not{
-  cursor: initial !important;
-  pointer-events: none;
-}
-.tdhover.not::after {
-  background:#fff !important;
-}
-.not::after {
-  content:"×";
-  font-size: 1.6rem;
-  line-height: 1;
-  color:#1E5379 !important;
 }
 </style>
