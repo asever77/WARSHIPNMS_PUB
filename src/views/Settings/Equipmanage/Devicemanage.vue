@@ -1,11 +1,11 @@
 <template>
   <table class="table-type-a">
     <colgroup>
-      <col style="width: 13rem" />
-      <col style="width: 16.5rem" />
-      <col style="width: 13rem" />
-      <col style="width: 16.5rem" />
-      <col style="width: 13rem" />
+      <col style="width: 16rem" />
+      <col style="width: 19rem" />
+      <col style="width: 16rem" />
+      <col style="width: 19rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
@@ -43,7 +43,7 @@
           <BButton class="btn-sort" aria-sort="ascending" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
         </th>
         <td colspan="5">
-          <div class="ui-flex" data-item-align="center" data-gap="4" style="width: 20rem;">
+          <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4" style="width: 20rem;">
             <BFormInput
               id="reg-date-start"
               class="ui-input"

@@ -1,9 +1,9 @@
 <template>
   <table class="table-type-a">
     <colgroup>
-      <col style="width: 13rem" />
-      <col style="width: 39.2rem" />
-      <col style="width: 13rem" />
+      <col style="width: 16rem" />
+      <col style="width: 38.6rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
@@ -44,7 +44,7 @@
           ></BButton>
         </th>
         <td colspan="3">
-          <div class="ui-flex" data-item-align="center" data-gap="4" style="width: 20rem">
+          <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4" >
             <BFormInput
               id="reg-date-start"
               class="ui-input"

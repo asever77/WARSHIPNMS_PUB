@@ -1,13 +1,9 @@
 <template>
   <table class="table-type-a">
     <colgroup>
-      <col style="width: 11rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
-      <col style="width: 11rem" />
-      <col style="width: auto" />
-      <col style="width: 11rem" />
-      <col style="width: auto" />
-      <col style="width: 11rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
@@ -17,12 +13,7 @@
           <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
         </th>
         <td>
-          <BFormSelect
-            id="device-type"
-            class="ui-select"
-            v-model="deviceType"
-            :options="selectOptions"
-          ></BFormSelect>
+          <BFormInput id="device-type" class="ui-input" v-model="deviceType" placeholder=""></BFormInput>
         </td>
 
         <th scope="row">
@@ -37,6 +28,8 @@
             :options="selectOptions"
           ></BFormSelect>
         </td>
+      </tr>
+      <tr>
 
         <th scope="row">
           {{ lang.filterLocation }}

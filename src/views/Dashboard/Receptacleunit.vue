@@ -1,13 +1,9 @@
 <template>
   <table class="table-type-a">
     <colgroup>
-      <col style="width: 11rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
-      <col style="width: 11rem" />
-      <col style="width: auto" />
-      <col style="width: 11rem" />
-      <col style="width: auto" />
-      <col style="width: 11rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
@@ -34,6 +30,8 @@
             :options="selectOptions"
           ></BFormSelect>
         </td>
+      </tr>
+      <tr>
         <th scope="row">
           {{ lang.filterLocation }}
           <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>

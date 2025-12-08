@@ -1,13 +1,9 @@
 <template>
   <table class="table-type-a">
     <colgroup>
-      <col style="width: 10rem" />
-      <col style="width: 16.5rem" />
-      <col style="width: 10rem" />
-      <col style="width: 16.5rem" />
-      <col style="width: 10rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
-      <col style="width: 10rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
@@ -37,7 +33,8 @@
             :options="searchTargetOptions"
           ></BFormSelect>
         </td>
-
+      </tr>
+      <tr>
         <th scope="row">
           발생위치
           <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
@@ -69,8 +66,8 @@
           발생일시
           <BButton class="btn-sort" aria-sort="ascending" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
         </th>
-        <td colspan="7">
-          <div class="ui-flex" data-item-align="center" data-gap="4" style="width: 40rem;">
+        <td colspan="3">
+          <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4" style="width: 40rem;">
             <BFormInput
               id="reg-date-start"
               class="ui-input"

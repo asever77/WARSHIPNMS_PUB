@@ -1,13 +1,9 @@
 <template>
   <table class="table-type-a">
     <colgroup>
-      <col style="width: 11rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
-      <col style="width: 11rem" />
-      <col style="width: auto" />
-      <col style="width: 11rem" />
-      <col style="width: auto" />
-      <col style="width: 11rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
@@ -32,7 +28,8 @@
         <td>
           <BFormInput id="search-word" class="ui-input" v-model="searchWord" placeholder=""></BFormInput>
         </td>
-
+      </tr>
+      <tr>
         <th scope="row">
           무선침묵권한
           <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>

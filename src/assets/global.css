@@ -179,6 +179,9 @@ table .form-check-inline ~ .form-check-inline,
 .ui-shrink-0 {flex-shrink:0}
 .ui-w-full {width:100%}
 
+.ui-data-box {display:inline-flex}
+.ui-data-box .form-control[type="datetime-local"] {width:18rem}
+
 /* modal */
 .modal-h-full {height:calc(100vh - 12rem);padding-bottom:2rem}
 .modal-footer .btn-secondary {min-width:8rem}
