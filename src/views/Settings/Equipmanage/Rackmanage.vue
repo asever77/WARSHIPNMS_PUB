@@ -2,7 +2,7 @@
   <table class="table-type-a">
     <colgroup>
       <col style="width: 16rem" />
-      <col style="width: auto" />
+      <col style="width: 38.6rem" />
       <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
