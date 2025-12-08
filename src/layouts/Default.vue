@@ -49,11 +49,15 @@
     "operationconfigmanage": "운영정보관리",
     "equipmanage": "장치관리",
     "planmanage": "도면관리",
+
     "callconnectconfig": "통화연결설정",
+    "exchangemanagement": "교환기관리",
     "recordingmanagement": "녹음관리",
+
     "deviceoperation": "장치운영",
     "documentmanage": "문서관리",
     "usermanage": "사용자관리",
+    "statistics": "통계",
     "record": "이력"
   };
 
@@ -61,21 +65,25 @@
     "adminName" : "관리자 : 김운영",
     "image": "이미지",
     "logout": "Logout",
-    "dashboard": "Dashboard",
-    "settings": "Settings",
-    "devicemanage": "Devicemanage",
-    "connectconfigmanage": "Connectconfigmanage",
-    "callmanage": "Callmanage",
-    "externallinkagemanage": "Externallinkagemanage",
-    "operationconfigmanage": "Operationconfigmanage",
-    "equipmanage": "Equipmanage",
-    "planmanage": "Planmanage",
-    "callconnectconfig": "Callconnectconfig",
-    "recordingmanagement": "Recordingmanagement",
-    "deviceoperation": "Deviceoperation",
-    "documentmanage": "Documentmanage",
-    "usermanage": "Usermanage",
-    "record": "Record"
+    "dashboard": "대시보드",
+    "settings": "설정",
+    "devicemanage": "단말관리",
+    "connectconfigmanage": "연결설정관리",
+    "callmanage": "통화관리",
+    "externallinkagemanage": "외부연계관리",
+    "operationconfigmanage": "운영정보관리",
+    "equipmanage": "장치관리",
+    "planmanage": "도면관리",
+
+    "callconnectconfig": "통화연결설정",
+    "exchangemanagement": "교환기관리",
+    "recordingmanagement": "녹음관리",
+
+    "deviceoperation": "장치운영",
+    "documentmanage": "문서관리",
+    "usermanage": "사용자관리",
+    "statistics": "통계",
+    "record": "이력"
   };
 
   const lang = ref({});
@@ -116,10 +124,25 @@
         ]
       },
       { id: nextId(), label: lang.callconnectconfig, path: '/callconnectconfig/pointtopoint', icon: 'nav3', dep1:'callconnectconfig' },
-      { id: nextId(), label: lang.recordingmanagement, popup: 'https://www.naver.com', icon: 'nav5'},
+      // 교환기관리
+      { id: nextId(), label: lang.exchangemanagement, popup: 'https://www.naver.com', icon: 'nav4'},
+
+      {
+        id: nextId(),
+        label: lang.recordingmanagement,
+        icon: 'nav5',
+        dep1:'recording',
+        children: [
+          { id: nextId(), label: '타체계녹음', path: '/recording/othersystemrecording/setting', dep1:'recording' },
+          { id: nextId(), label: '음성녹음장치', popup: 'https://www.naver.com', dep1:'recording' },
+        ]
+      },
+
+
       { id: nextId(), label: lang.deviceoperation, path: '/deviceoperation/firmwaremanage', icon: 'nav6', dep1:'deviceoperation' },
       { id: nextId(), label: lang.documentmanage, path: '/documentmanage/manual', icon: 'nav7', dep1:'documentmanage' },
       { id: nextId(), label: lang.usermanage, path: '/usermanage/accountmanage', icon: 'nav8', dep1:'usermanage' },
+      { id: nextId(), label: lang.statistics, path: '/statistics/manual', icon: 'nav9', dep1:'statistics' },
       { id: nextId(), label: lang.record, path: '/record/callrecord', icon: 'nav10', dep1:'record' },
     ];
   }
