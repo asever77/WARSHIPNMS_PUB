@@ -27,11 +27,11 @@
     </table>
   </div>
 
-  <UiModal v-model="modals.modalModify.show" :title="lang.modalTitle" type="modal" size="sm" @close-btn-click="modals.modalModify.show = false">
+  <UiModal v-model="modals.modalModify.show" :title="lang.modalTitle" type="modal" size="md" @close-btn-click="modals.modalModify.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width:10rem">
+          <col style="width:18rem">
           <col style="width:auto">
         </colgroup>
         <tbody>
@@ -78,22 +78,26 @@
           <tr>
             <th scope="row">{{ lang.speakerDirection }}</th>
             <td>
-              <BFormRadioGroup v-model="radioSelected" :options="radioOptions" name="radio-group-1" />
+              <BFormRadioGroup v-model="radioSelected" :options="radioOptions" class="has-min-s" name="radio-group-1" />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.callAlert }}</th>
             <td>
-              <BFormRadioGroup v-model="radioSelected" :options="radioOptions2" name="radio-group-2" />
+              <BFormRadioGroup v-model="radioSelected" :options="radioOptions2" class="has-min-s" name="radio-group-2" />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify.show = false">{{ lang.cancel }}</BButton>
-      <BButton class="blue28">{{ lang.save }}</BButton>
-      <BButton class="blue28">{{ lang.delete }}</BButton>
+      <div class="ui-flex ui-w-full px-26" data-justify-align="between">
+        <BButton class="gray28" @click="modals.modalModify.show = false">{{ lang.cancel }}</BButton>
+        <div class="ui-flex" data-gap="10">
+          <BButton class="blue28">{{ lang.save }}</BButton>
+          <BButton class="gray28">{{ lang.delete }}</BButton>
+        </div>
+      </div>
     </template>
   </UiModal>
 </template>

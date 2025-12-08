@@ -70,6 +70,8 @@ img, fieldset, iframe, button {border:0 none;}
 .ta-l{text-align:left !important;}
 .ta-r{text-align:right !important;}
 
+.px-26 {padding-left:26px;padding-right:26px;}
+
 /* checkbox custom */
 .my-checkbox.form-check {display:inline-flex;gap:.5rem;align-items:center;margin:0;}
 .my-checkbox .form-check-input {width:2rem;height:2rem;margin:0;cursor:pointer;}
@@ -87,6 +89,8 @@ table .form-check-label,
 table .form-check-inline {display:inline-flex;align-items:center;gap:.4rem;margin:0}
 table .form-check-inline ~ .form-check-inline,
 .search-base .form-check-inline ~ .form-check-inline {margin-left:2rem}
+
+.has-min-s .form-check-inline {min-width:8rem}
 
 /* input & select custom */
 .ui-input.form-control {font-size:1.2rem;font-weight:400;color:#627582;border-color:#D4E1E8;border-radius:0;padding:.4rem 1rem;height:2.4rem}
@@ -176,6 +180,7 @@ table .form-check-inline ~ .form-check-inline,
 
 /* modal */
 .modal-h-full {height:calc(100vh - 12rem);padding-bottom:2rem}
+.modal-footer .btn-secondary {min-width:8rem}
 
 /* common content */
 .base-wrap {display:flex;flex-direction:column;width:100%;padding:2rem;background-color:#F1F6F9;border-radius:.5rem;gap:.8rem;}
