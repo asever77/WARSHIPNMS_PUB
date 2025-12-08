@@ -88,9 +88,9 @@ table .form-check-label,
 .search-base .form-check-inline,
 table .form-check-inline {display:inline-flex;align-items:center;gap:.4rem;margin:0}
 table .form-check-inline ~ .form-check-inline,
-.search-base .form-check-inline ~ .form-check-inline {margin-left:2rem}
+.search-base .form-check-inline ~ .form-check-inline {margin-left:1.6rem}
 
-.has-min-s .form-check-inline {min-width:8rem}
+.has-min-s .form-check-inline {min-width:7rem}
 
 /* input & select custom */
 .ui-input.form-control {font-size:1.2rem;font-weight:400;color:#627582;border-color:#D4E1E8;border-radius:0;padding:.4rem 1rem;height:2.4rem}
@@ -340,3 +340,46 @@ td.yellow{color:#353535 !important; background-color:#fbef4c !important;}
 .network-detail .progress-flex b{text-align:right; width:100%;}
 .network-detail .progress-flex progress {width:100%;}
 .network-detail .progress-flex {display:flex;gap:.2rem;align-items:center;flex-direction:column;}
+
+.title-box{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 0 0 0.4rem 0.4rem;
+  border:1px solid #ACD1EB;
+  border-top:0;
+  background-color: #E3EDF4;
+  min-height: 4rem;
+  gap:.8rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0.4rem 1.2rem 0;
+  margin-top: -2rem;
+}
+.box-pp {
+  gap:.4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.box-pp--item {
+  background-color: #fff;
+  border: 1px solid #D4E1E8;
+  box-sizing: border-box;
+  color: #627582;
+  font-size:0.9rem;
+  padding:0.5rem;
+  text-align: left;
+  line-height: 1.2;
+  min-height: 4rem;
+  word-break: break-all;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start
+}
+.box-pp--item:hover {
+  background-color: #E3EDF4;
+  color: #002745;
+  border: 1px solid #D4E1E8;
+}
+.form-check {gap:.4rem;display:flex;align-items:center;margin-bottom:0}
+.w100-2 .form-check{flex:1}

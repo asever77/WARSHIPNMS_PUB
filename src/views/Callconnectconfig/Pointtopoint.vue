@@ -27,11 +27,41 @@
     </table>
   </div>
 
-  <UiModal v-model="modals.modalModify.show" :title="lang.modalTitle" type="modal" size="md" @close-btn-click="modals.modalModify.show = false">
+  <UiModal v-model="modals.modalPointSetting.show" :title="tableData.tbody[modals.modalPointSetting.rowIdx]" type="modal" size="sm" @close-btn-click="modals.modalPointSetting.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="8" style="padding-top: 0;">
+      <h2 class="title-box">
+        <img src="@/assets/images/icon/icon-aspect-title-1.svg" alt="icon" />
+        점대점 통화
+      </h2>
+      <div class="box-pp">
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRC</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+      </div>
+    </div>
+  </UiModal>
+
+  <UiModal v-model="modals.modalModify.show" :title="lang.modalTitle" type="modal" size="sm" @close-btn-click="modals.modalModify.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width:18rem">
+          <col style="width:12rem">
           <col style="width:auto">
         </colgroup>
         <tbody>
@@ -78,13 +108,19 @@
           <tr>
             <th scope="row">{{ lang.speakerDirection }}</th>
             <td>
-              <BFormRadioGroup v-model="radioSelected" :options="radioOptions" class="has-min-s" name="radio-group-1" />
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">왼쪽</BFormCheckbox>
+                <BFormCheckbox value="2">오른쪽</BFormCheckbox>
+              </div>
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.callAlert }}</th>
             <td>
-              <BFormRadioGroup v-model="radioSelected" :options="radioOptions2" class="has-min-s" name="radio-group-2" />
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">벨소리</BFormCheckbox>
+                <BFormCheckbox value="2">알림등</BFormCheckbox>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -106,7 +142,7 @@
 import { ref, reactive, computed } from "vue";
 import G from "@/config/global.js";
 import UiModal from "@/components/UiModal.vue";
-import { BFormSelect, BButton, BFormRadioGroup, BFormInput } from "bootstrap-vue-next";
+import { BFormSelect, BButton, BFormCheckbox, BFormInput } from "bootstrap-vue-next";
 
 const ko = {
   modalTitle: '점대점 연결 수정',
@@ -138,15 +174,9 @@ const lang = computed(() => (G.lang === "ko" ? ko : en));
 
 const modals = reactive({
   modalModify: { show: false },
+  modalPointSetting: { show: false, rowIdx: null },
 });
-const radioOptions = computed(() => [
-  { text:'왼쪽', value: 'true' },
-  { text:'오른쪽', value: 'false' }
-])
-const radioOptions2 = computed(() => [
-  { text:'벨소리', value: 'true' },
-  { text: '알림등', value: 'false' }
-])
+
 const formData = reactive({
   deviceName: '',
   deviceLabel: '',
@@ -178,7 +208,7 @@ const tableData = ref({
 
 const hoveredCol = ref(null);
 const hoveredRow = ref(null);
-const radioSelected = ref(null);
+
 function handleTdMouseOver(rowIdx, colIdx) {
   hoveredCol.value = colIdx;
   hoveredRow.value = rowIdx;
@@ -188,6 +218,10 @@ function handleTdMouseLeave() {
   hoveredRow.value = null;
 }
 function handleTdClick(rowIdx, colIdx) {
+  modals.modalPointSetting.rowIdx = rowIdx;
+  modals.modalPointSetting.show = true;
+}
+function openModify() {
   modals.modalModify.show = true;
 }
 </script>
