@@ -31,7 +31,7 @@
     <div class="ui-flex" data-direction="col" data-gap="8" style="padding-top: 0;">
       <h2 class="layer-title-box">
         <img src="@/assets/images/icon/icon-aspect-title-1.svg" alt="icon" />
-        점대점 통화
+        {{ lang.modalTitle2 }}
       </h2>
       <div class="box-pp">
         <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRC</BButton>
@@ -109,8 +109,8 @@
             <th scope="row">{{ lang.speakerDirection }}</th>
             <td>
               <div class="d-flex w100-2">
-                <BFormCheckbox value="1">왼쪽</BFormCheckbox>
-                <BFormCheckbox value="2">오른쪽</BFormCheckbox>
+                <BFormCheckbox value="1">{{ lang.check1 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.check2 }}</BFormCheckbox>
               </div>
             </td>
           </tr>
@@ -118,8 +118,8 @@
             <th scope="row">{{ lang.callAlert }}</th>
             <td>
               <div class="d-flex w100-2">
-                <BFormCheckbox value="1">벨소리</BFormCheckbox>
-                <BFormCheckbox value="2">알림등</BFormCheckbox>
+                <BFormCheckbox value="1">{{ lang.check3 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.check4 }}</BFormCheckbox>
               </div>
             </td>
           </tr>
@@ -146,6 +146,7 @@ import { BFormSelect, BButton, BFormCheckbox, BFormInput } from "bootstrap-vue-n
 
 const ko = {
   modalTitle: '점대점 연결 수정',
+  modalTitle2: '점대점 통화',
   deviceName: '피호출 사용자단말',
   deviceLabel: '통화기능키 레이블',
   callMode: '통화모드',
@@ -155,19 +156,28 @@ const ko = {
   cancel: '취소',
   save: '저장',
   delete: '삭제',
+  check1: '왼쪽',
+  check2: '오른쪽',
+  check3: '벨소리',
+  check4: '알림등',
 };
 
 const en = {
-  modalTitle: 'Edit Point-to-Point Connection',
-  deviceName: 'Called User Terminal',
-  deviceLabel: 'Call Key Label',
-  callMode: 'Call Mode',
-  answerMode: 'Answer Mode',
-  speakerDirection: 'Speaker Direction',
-  callAlert: 'Call Alert',
-  cancel: 'Cancel',
-  save: 'Save',
-  delete: 'Delete',
+  modalTitle: '점대점 연결 수정',
+  modalTitle2: '점대점 통화',
+  deviceName: '피호출 사용자단말',
+  deviceLabel: '통화기능키 레이블',
+  callMode: '통화모드',
+  answerMode: '응답모드',
+  speakerDirection: '스피커 출력방향',
+  callAlert: '호출알림',
+  cancel: '취소',
+  save: '저장',
+  delete: '삭제',
+  check1: '왼쪽',
+  check2: '오른쪽',
+  check3: '벨소리',
+  check4: '알림등',
 };
 
 const lang = computed(() => (G.lang === "ko" ? ko : en));
