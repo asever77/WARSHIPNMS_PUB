@@ -93,7 +93,7 @@
     <template #footer>
       <div class="ui-flex ui-w-full px-26" data-justify-align="between">
         <BButton class="gray28" @click="modals.modalModify.show = false">{{ lang.cancel }}</BButton>
-        <div class="ui-flex" data-gap="10">
+        <div class="ui-flex" data-gap="8">
           <BButton class="blue28">{{ lang.save }}</BButton>
           <BButton class="gray28">{{ lang.delete }}</BButton>
         </div>

@@ -275,12 +275,14 @@
             </tr>
           </tbody>
         </table>
-        <div class="ui-btn-group">
-          <BButton class="gray28" @click="modals.modalRackOption.show = false">{{
-            lang.btnCancel
-          }}</BButton>
-          <BButton class="blue28">{{ lang.btnModify }}</BButton>
-          <BButton class="blue28">{{ lang.btnDelete }}</BButton>
+        <div class="ui-btn-group" data-btn-min="80">
+          <BButton class="gray28" @click="modals.modalRackOption.show = false">
+            {{ lang.btnCancel }}
+          </BButton>
+          <div class="ui-flex ml-auto" data-gap="8">
+            <BButton class="blue28">{{ lang.btnModify }}</BButton>
+            <BButton class="gray28">{{ lang.btnDelete }}</BButton>
+          </div>
         </div>
       </div>
     </div>
