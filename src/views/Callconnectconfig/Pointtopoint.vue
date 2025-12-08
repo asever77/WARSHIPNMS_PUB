@@ -29,7 +29,7 @@
 
   <UiModal v-model="modals.modalPointSetting.show" :title="tableData.tbody[modals.modalPointSetting.rowIdx]" type="modal" size="md" @close-btn-click="modals.modalPointSetting.show = false">
     <div class="ui-flex" data-direction="col" data-gap="8" style="padding-top: 0;">
-      <h2 class="title-box">
+      <h2 class="layer-title-box">
         <img src="@/assets/images/icon/icon-aspect-title-1.svg" alt="icon" />
         점대점 통화
       </h2>
