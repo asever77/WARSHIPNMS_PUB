@@ -27,7 +27,7 @@
     </table>
   </div>
 
-  <UiModal v-model="modals.modalPointSetting.show" :title="tableData.tbody[modals.modalPointSetting.rowIdx]" type="modal" size="sm" @close-btn-click="modals.modalPointSetting.show = false">
+  <UiModal v-model="modals.modalPointSetting.show" :title="tableData.tbody[modals.modalPointSetting.rowIdx]" type="modal" size="md" @close-btn-click="modals.modalPointSetting.show = false">
     <div class="ui-flex" data-direction="col" data-gap="8" style="padding-top: 0;">
       <h2 class="title-box">
         <img src="@/assets/images/icon/icon-aspect-title-1.svg" alt="icon" />
@@ -57,11 +57,11 @@
     </div>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify.show" :title="lang.modalTitle" type="modal" size="sm" @close-btn-click="modals.modalModify.show = false">
+  <UiModal v-model="modals.modalModify.show" :title="lang.modalTitle" type="modal" size="md" @close-btn-click="modals.modalModify.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width:12rem">
+          <col style="width:18rem">
           <col style="width:auto">
         </colgroup>
         <tbody>
