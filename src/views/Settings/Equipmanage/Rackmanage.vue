@@ -2,19 +2,17 @@
   <table class="table-type-a">
     <colgroup>
       <col style="width: 16rem" />
-      <col style="width: 38.6rem" />
+      <col style="width: auto" />
       <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
       <tr>
         <th scope="row">
-          {{ lang.filterDeviceType }}
-          <BButton
-            class="btn-sort"
-            aria-sort="none"
-            :aria-label="`${lang.filterDeviceType} 전체 정렬`"
-          ></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterDeviceType }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceType} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormSelect
@@ -36,12 +34,10 @@
       </tr>
       <tr>
         <th scope="row">
-          {{ lang.filterRegDate }}
-          <BButton
-            class="btn-sort"
-            aria-sort="ascending"
-            :aria-label="`${lang.filterRegDate} 전체 정렬`"
-          ></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterRegDate }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td colspan="3">
           <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4" >
