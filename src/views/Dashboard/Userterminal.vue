@@ -9,16 +9,20 @@
     <tbody>
       <tr>
         <th scope="row">
-          {{ lang.filterDeviceName }}
-          <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterDeviceName }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormInput id="device-type" class="ui-input" v-model="deviceType" placeholder=""></BFormInput>
         </td>
 
         <th scope="row">
-          {{ lang.filterRadioSilence }}
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterRadioSilence }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormSelect
@@ -32,16 +36,20 @@
       <tr>
 
         <th scope="row">
-          {{ lang.filterLocation }}
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterLocation }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormInput id="search-word" class="ui-input" v-model="searchWord" placeholder=""></BFormInput>
         </td>
 
         <th scope="row">
-          {{ lang.filterStatus }}
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.filterStatus }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
+          </div>
         </th>
         <td>
           <BFormSelect

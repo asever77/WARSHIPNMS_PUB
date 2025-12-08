@@ -26,7 +26,7 @@
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.thead2 }}</span>
-            <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
           </div>
         </th>
         <td>
@@ -37,7 +37,7 @@
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.thead3 }}</span>
-            <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
           </div>
         </th>
         <td>
@@ -52,7 +52,7 @@
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.thead4 }}</span>
-            <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
           </div>
         </th>
         <td>

@@ -295,7 +295,6 @@ import {
   BPagination,
   BTable,
   BFormCheckbox,
-  BFormTextarea,
   BFormFile,
 } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
