@@ -11,8 +11,10 @@
     <tbody>
     <tr>
       <th scope="row">
-        {{ lang.text2 }}
-        <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceType} 전체 정렬`"></BButton>
+        <div class="ui-flex" data-item-align="center" data-gap="4">
+          <span class="ui-flex-1">{{ lang.text2 }}</span>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceType} 전체 정렬`"></BButton>
+        </div>
       </th>
       <td>
         <BFormSelect
@@ -23,8 +25,10 @@
         />
       </td>
       <th scope="row">
-        {{ lang.text3 }}
-        <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceType} 전체 정렬`"></BButton>
+        <div class="ui-flex" data-item-align="center" data-gap="4">
+          <span class="ui-flex-1">{{ lang.text3 }}</span>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceType} 전체 정렬`"></BButton>
+        </div>
       </th>
       <td>
         <BFormSelect

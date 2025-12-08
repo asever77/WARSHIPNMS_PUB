@@ -10,7 +10,7 @@
       <tr>
         <th scope="row">
           알림코드
-          <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceType} ${lang.sortAll}`"></BButton>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceType} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -23,7 +23,7 @@
 
         <th scope="row">
           알림명
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -37,7 +37,7 @@
       <tr>
         <th scope="row">
           발생위치
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -50,7 +50,7 @@
 
         <th scope="row">
           심각도
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -64,7 +64,7 @@
       <tr>
         <th scope="row">
           발생일시
-          <BButton class="btn-sort" aria-sort="ascending" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="ascending" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
         </th>
         <td colspan="3">
           <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4" style="width: 40rem;">

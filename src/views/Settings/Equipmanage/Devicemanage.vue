@@ -10,7 +10,7 @@
       <tr>
         <th scope="row">
           {{ lang.filterDeviceType }}
-          <BButton class="btn-sort" aria-sort="none" :aria-label="`${lang.filterDeviceType} ${lang.sortAll}`"></BButton>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceType} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -22,7 +22,7 @@
         </td>
 
         <th scope="row">{{ lang.filterSearchTarget }}
-          <BButton class="btn-sort" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterSearchTarget} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <BFormSelect
@@ -40,7 +40,7 @@
         </td>
 
         <th scope="row">{{ lang.filterRegDate }}
-          <BButton class="btn-sort" aria-sort="ascending" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="ascending" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
         </th>
         <td>
           <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4" style="width: 20rem;">

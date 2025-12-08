@@ -11,7 +11,7 @@
         <th scope="row">
           {{ lang.filterDeviceType }}
           <BButton
-            class="btn-sort"
+            class="btn-sort ui-shrink-0"
             aria-sort="none"
             :aria-label="`${lang.filterDeviceType} 전체 정렬`"
           ></BButton>
@@ -27,7 +27,7 @@
         <th scope="row">
           {{ lang.filterSearchTarget }}
           <BButton
-            class="btn-sort"
+            class="btn-sort ui-shrink-0"
             aria-sort="descending"
             :aria-label="`${lang.filterSearchTarget} 전체 정렬`"
           ></BButton>
@@ -55,7 +55,7 @@
         <th scope="row">
           {{ lang.filterRegDate }}
           <BButton
-            class="btn-sort"
+            class="btn-sort ui-shrink-0"
             aria-sort="ascending"
             :aria-label="`${lang.filterRegDate} 전체 정렬`"
           ></BButton>
