@@ -70,6 +70,8 @@ const router = createRouter({
       path: '/default',
       name: 'DefaultLayout',
       component: () => import('../layouts/Default.vue'),
+
+      // 대시보드
       children: [{
         path: '/dashboarddefault',
         name: 'DashboardDefaultLayout',
@@ -106,6 +108,8 @@ const router = createRouter({
            meta: { group: 'dashboard' },
         }],
       },
+
+      // 설정/단말관리
       {
         path: '/settingsdevicemanagedefault',
         name: 'SettingsDevicemanageDefaultLayout',
@@ -292,6 +296,8 @@ const router = createRouter({
           meta: { group: 'settings' },
         }],
       },
+
+      // 통화연결설정
       {
         path: '/callconnectconfigdefault',
         name: 'CallconnectconfigDefaultLayout',
@@ -334,12 +340,40 @@ const router = createRouter({
           meta: { group: 'callconnectconfig' },
         },
         {
+          path: '/callconnectconfig/cctv',
+          name: 'CallconnectconfigCctvView',
+          component: () => import('../views/Callconnectconfig/Cctv.vue'),
+          meta: { group: 'callconnectconfig' },
+        },
+        {
           path: '/callconnectconfig/wireless',
           name: 'CallconnectconfigWirelessView',
           component: () => import('../views/Callconnectconfig/Wireless.vue'),
           meta: { group: 'callconnectconfig' },
         }],
       },
+
+      // 녹음관리
+      {
+        path: '/recordingmanagementdefault',
+        name: 'RecordingmanagementDefaultLayout',
+        component: () => import('../layouts/RecordingmanagementDefault.vue'),
+        meta: { group: 'recording' },
+        children: [{
+          path: '/recording/othersystemrecording/setting',
+            name: 'RecordingmanagementSettingView',
+            component: () => import('../views/Recording/Recordingmanagement/Setting.vue'),
+            meta: { group: 'recording' },
+        },
+        {
+          path: '/recording/othersystemrecording/targetmanagement',
+          name: 'RecordingmanagementTargetmanagementView',
+          component: () => import('../views/Recording/Recordingmanagement/Targetmanagement.vue'),
+          meta: { group: 'recording' },
+        }],
+      },
+
+      // 장치운영
       {
         path: '/deviceoperationdefault',
         name: 'DeviceoperationDefaultLayout',
@@ -370,6 +404,8 @@ const router = createRouter({
           meta: { group: 'deviceoperation' },
         }],
       },
+
+      // 문서관리
       {
         path: '/documentmanagdefault',
         name: 'DocumentmanageDefaultLayout',
@@ -382,6 +418,8 @@ const router = createRouter({
             meta: { group: 'documentmanage' },
         }],
       },
+
+      // 사용자관리
       {
         path: '/usermanagdefault',
         name: 'UsermanageDefaultLayout',
@@ -412,6 +450,22 @@ const router = createRouter({
           meta: { group: 'usermanage' },
         }],
       },
+
+      // 통계
+      {
+        path: '/statisticsdefault',
+        name: 'StatisticsDefaultLayout',
+        component: () => import('../layouts/StatisticsDefault.vue'),
+        meta: { group: 'statistics' },
+        children: [{
+          path: '/statistics/manual',
+            name: 'StatisticsManualView',
+            component: () => import('../views/Statistics/Manual.vue'),
+            meta: { group: 'statistics' },
+        }],
+      },
+
+      //이력
       {
         path: '/recorddefault',
         name: 'RecordDefaultLayout',

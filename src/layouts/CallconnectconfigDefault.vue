@@ -31,6 +31,7 @@ const ko = {
   "wirelessequip": "무선장비",
   "broadcastequip": "방송장비",
   "alarm": "경보",
+  "cctv": "CCTV",
   "wireless": "무선"
 };
 
@@ -42,6 +43,7 @@ const en = {
   "wirelessequip": "무선장비",
   "broadcastequip": "방송장비",
   "alarm": "경보",
+  "cctv": "CCTV",
   "wireless": "무선"
 };
 
@@ -60,6 +62,7 @@ onMounted(() => {
     { label: lang.value.wirelessequip, path: '/callconnectconfig/wirelessequip' },
     { label: lang.value.broadcastequip, path: '/callconnectconfig/broadcastequip' },
     { label: lang.value.alarm, path: '/callconnectconfig/alarm' },
+    { label: lang.value.cctv, path: '/callconnectconfig/cctv' },
     { label: lang.value.wireless, path: '/callconnectconfig/wireless' }
   ];
   selectedTab.value = route.path;

@@ -34,25 +34,7 @@
         {{ lang.modalTitle2 }}
       </h2>
       <div class="box-pp">
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRC</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
-        <BButton class="box-pp--item" @click="openModify">HLCPTR CONTRM</BButton>
+        <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify(btn, idx)">{{ btn }}</BButton>
       </div>
     </div>
   </UiModal>
@@ -68,11 +50,7 @@
           <tr>
             <th scope="row">{{ lang.deviceName }}</th>
             <td>
-              <BFormInput
-                class="ui-input"
-                v-model="formData.deviceName"
-                placeholder=""
-              />
+              {{ tableData.thead[selectedButton.colIdx] }}
             </td>
           </tr>
           <tr>
@@ -81,7 +59,7 @@
               <BFormInput
                 class="ui-input"
                 v-model="formData.deviceLabel"
-                placeholder=""
+                :placeholder="tableData.thead[selectedButton.colIdx]"
               />
             </td>
           </tr>
@@ -90,8 +68,11 @@
             <td>
               <BFormSelect
                 class="ui-select"
-                v-model="formData.deviceType"
-                :options="formOptions.deviceType"
+                v-model="formData.callMode"
+                :disabled="true"
+                :options="[
+                  { value: '1', text: 'PTT' },
+                ]"
               />
             </td>
           </tr>
@@ -100,8 +81,22 @@
             <td>
               <BFormSelect
                 class="ui-select"
-                v-model="formData.deviceType"
-                :options="formOptions.deviceType"
+                v-model="formData.answerMode"
+                :options="[
+                  { value: '1', text: '수동연결' },
+                ]"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">녹음제어</th>
+            <td>
+              <BFormSelect
+                class="ui-select"
+                v-model="formData.recordControl"
+                :options="[
+                  { value: '1', text: '자동녹음' },
+                ]"
               />
             </td>
           </tr>
@@ -109,8 +104,8 @@
             <th scope="row">{{ lang.speakerDirection }}</th>
             <td>
               <div class="d-flex w100-2">
-                <BFormCheckbox value="1">{{ lang.check1 }}</BFormCheckbox>
-                <BFormCheckbox value="2">{{ lang.check2 }}</BFormCheckbox>
+                <BFormCheckbox v-model="formData.speakerDirection" value="1">왼쪽</BFormCheckbox>
+                <BFormCheckbox v-model="formData.speakerDirection" value="2">오른쪽</BFormCheckbox>
               </div>
             </td>
           </tr>
@@ -118,8 +113,8 @@
             <th scope="row">{{ lang.callAlert }}</th>
             <td>
               <div class="d-flex w100-2">
-                <BFormCheckbox value="1">{{ lang.check3 }}</BFormCheckbox>
-                <BFormCheckbox value="2">{{ lang.check4 }}</BFormCheckbox>
+                <BFormCheckbox v-model="formData.callAlert" value="1">벨소리</BFormCheckbox>
+                <BFormCheckbox v-model="formData.callAlert" value="2">알림등</BFormCheckbox>
               </div>
             </td>
           </tr>
@@ -143,6 +138,14 @@ import { ref, reactive, computed } from "vue";
 import G from "@/config/global.js";
 import UiModal from "@/components/UiModal.vue";
 import { BFormSelect, BButton, BFormCheckbox, BFormInput } from "bootstrap-vue-next";
+
+// 점대점 통화 버튼 데이터
+const ppButtons = [
+  'HLCPTR CONTRC', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+];
 
 const ko = {
   modalTitle: '점대점 연결 수정',
@@ -187,21 +190,20 @@ const modals = reactive({
   modalPointSetting: { show: false, rowIdx: null },
 });
 
+const selectedButton = reactive({
+  label: '',
+  rowIdx: null,
+  colIdx: null,
+});
+
 const formData = reactive({
-  deviceName: '',
   deviceLabel: '',
-  deviceType: null,
+  callMode: '1',
+  answerMode: '1',
+  recordControl: '1',
+  speakerDirection: [],
+  callAlert: [],
 });
-
-const formOptions = reactive({
-  deviceType: [
-    { value: null, text: '선택' },
-    { value: 'type1', text: '타입1' },
-    { value: 'type2', text: '타입2' },
-  ],
-});
-
-// onMounted 제거: lang은 이미 초기화됨
 
 // JSON 기반 테이블 데이터
 const tableData = ref({
@@ -229,9 +231,12 @@ function handleTdMouseLeave() {
 }
 function handleTdClick(rowIdx, colIdx) {
   modals.modalPointSetting.rowIdx = rowIdx;
+  selectedButton.rowIdx = rowIdx;
+  selectedButton.colIdx = colIdx;
   modals.modalPointSetting.show = true;
 }
-function openModify() {
+function openModify(buttonLabel, colIdx) {
+  selectedButton.label = buttonLabel;
   modals.modalModify.show = true;
 }
 </script>

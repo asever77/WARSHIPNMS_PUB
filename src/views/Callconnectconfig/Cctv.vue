@@ -30,8 +30,8 @@
   <UiModal v-model="modals.modalPointSetting.show" :title="tableData.tbody[modals.modalPointSetting.rowIdx]" type="modal" size="md" @close-btn-click="modals.modalPointSetting.show = false">
     <div class="ui-flex" data-direction="col" data-gap="8" style="padding-top: 0;">
       <h2 class="layer-title-box">
-        <img src="@/assets/images/icon/icon-aspect-title-6.svg" alt="icon" />
-        경보
+        <img src="@/assets/images/icon/icon-aspect-title-7.svg" alt="icon" />
+        CCTV
       </h2>
       <div class="box-pp">
         <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify(btn, idx)">{{ btn }}</BButton>
@@ -90,16 +90,16 @@ const ppButtons = [
 ];
 
 const ko = {
-  modalTitle: '경보 연결 수정',
-  deviceName: '경보명',
+  modalTitle: 'CCTV 연결 수정',
+  deviceName: 'CCTV명',
   deviceLabel: '통화기능키 레이블',
   cancel: '취소',
   save: '저장',
 };
 
 const en = {
-  modalTitle: '경보 연결 수정',
-  deviceName: '경보명',
+  modalTitle: 'CCTV 연결 수정',
+  deviceName: 'CCTV명',
   deviceLabel: '통화기능키 레이블',
   cancel: '취소',
   save: '저장',
