@@ -1,7 +1,7 @@
 <template>
   <nav aria-label="Main menu" class="base-nav" :data-style="dataStyle" :data-dep1="activeDep1">
 		<ul class="tree-menu">
-      <li v-for="item in menu" :key="item.id" :class="{ 'has-children': item.children }">
+      <li v-for="item in menu" :key="item.id" :class="{ 'has-children': item.children }" :data-li="item.dep1">
         <button
           v-if="item.children"
           type="button"
@@ -175,17 +175,56 @@ export default {
     },
 
     toggleMenu(id, isDep1 = false) {
-      // 첫 클릭에서 route 기반으로 열린 상태라면 바로 닫히도록 처리
+      // dep2 메뉴인지 확인 (자식 메뉴인지)
+      const isDep2 = this.menu.some(item =>
+        item.children && item.children.some(child => child.id === id)
+      );
+
       if (isDep1) {
         this.isInitialLoad = false;
         this.openMenus = [id];
+      } else if (isDep2) {
+        // dep2 메뉴인 경우: 다른 dep2 메뉴들을 닫고 현재 메뉴만 토글
+        const isCurrentlyOpen = this.isInitialLoad
+          ? (this.isOpen(id) || this.isRouteDrivenOpen(id))
+          : this.isOpen(id);
+
+        if (isCurrentlyOpen) {
+          // 현재 열려있으면 닫기
+          if (this.isInitialLoad) {
+            this.isInitialLoad = false;
+          }
+          this.openMenus = this.openMenus.filter(menuId => menuId !== id);
+        } else {
+          // 현재 닫혀있으면 열기 (다른 dep2는 모두 닫기)
+          this.isInitialLoad = false;
+
+          // 현재 dep2가 속한 dep1의 ID 찾기
+          let parentId = null;
+          for (const item of this.menu) {
+            if (item.children && item.children.some(child => child.id === id)) {
+              parentId = item.id;
+              break;
+            }
+          }
+
+          // dep1은 유지하고, 다른 dep2는 모두 제거한 후 현재 dep2만 추가
+          this.openMenus = this.openMenus.filter(menuId => {
+            // dep1 ID는 유지
+            return this.menu.some(item => item.id === menuId);
+          });
+
+          if (parentId && !this.openMenus.includes(parentId)) {
+            this.openMenus.push(parentId);
+          }
+          this.openMenus.push(id);
+        }
       } else {
-        // 초기 진입 시, 라우트로 인해 보이는 상태도 "열림"으로 간주
+        // dep1 메뉴인 경우: 기존 로직 유지
         const n = this.isInitialLoad
           ? (this.isOpen(id) || this.isRouteDrivenOpen(id))
           : this.isOpen(id);
         if (n) {
-          // route 기반으로 열린 상태에서 첫 클릭이면 바로 닫기
           if (this.isInitialLoad) {
             this.isInitialLoad = false;
           }
