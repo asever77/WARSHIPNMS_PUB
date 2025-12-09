@@ -92,11 +92,6 @@
           </div>
         </BFormGroup>
         <BFormSelect
-          class="ui-select-28"
-          v-model="perPage"
-          :options="perPageOptions"
-        ></BFormSelect>
-        <BFormSelect
           id="per-page"
           class="ui-select-28 w-60"
           v-model="perPage"
