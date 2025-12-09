@@ -347,3 +347,26 @@ td.yellow{color:#353535 !important; background-color:#fbef4c !important;}
 button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#D4E1E8;outline:2px solid var(--color-border-blue);outline-offset:-2px}
 .form-check {gap:.4rem;display:flex;align-items:center;margin-bottom:0}
 .w100-2 .form-check {flex:1}
+
+.tab-inner {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: relative;
+}
+.tab-inner::before {
+  content:"";
+  position: absolute;
+  bottom:0;
+  display: block;
+  width: 100%;
+  border-bottom:1px solid #ccc;
+}
+.tab-inner .tab-base{
+  z-index: 1;
+  gap:.4rem !important;
+}
+.tab-inner .tab-base [role="tab"] {
+  border:1px solid #ccc;
+  border-bottom:none;
+}

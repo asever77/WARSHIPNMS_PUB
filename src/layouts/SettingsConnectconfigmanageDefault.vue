@@ -52,13 +52,38 @@ onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
   tabList.value = [
     // { label: lang.value.specialprocessunit, path: '/settings/connectconfigmanage/specialprocessunit' },
-    { label: lang.value.interlockdevice, path: '/settings/connectconfigmanage/interlockdevice' },
-    { label: lang.value.wirelesslink, path: '/settings/connectconfigmanage/wirelesslink' },
-    { label: lang.value.repeater, path: '/settings/connectconfigmanage/repeater' },
-    { label: lang.value.etc, path: '/settings/connectconfigmanage/etc' },
+    { label: lang.value.interlockdevice, path: '/settings/connectconfigmanage/interlockdevice/service' },
+    { label: lang.value.wirelesslink, path: '/settings/connectconfigmanage/wirelesslink/service' },
+    { label: lang.value.repeater, path: '/settings/connectconfigmanage/repeater/service' },
+    { label: lang.value.etc, path: '/settings/connectconfigmanage/etc/port' },
     // { label: lang.value.wirelesschannelbond, path: '/settings/connectconfigmanage/wirelesschannelbond' }
   ];
-  selectedTab.value = router.currentRoute.value.path;
+  // 현재 경로에서 마지막 segment를 제외한 path만 할당
+  // const pathArr = router.currentRoute.value.path.split('/');
+  // if (pathArr.length > 1) {
+  //   selectedTab.value = '/' + pathArr.slice(1, -1).join('/');
+  // } else {
+  //   selectedTab.value = router.currentRoute.value.path;
+  // }
+  switch (router.currentRoute.value.path) {
+    case '/settings/connectconfigmanage/interlockdevice/service':
+    case '/settings/connectconfigmanage/interlockdevice/port':
+      selectedTab.value = '/settings/connectconfigmanage/interlockdevice/service';
+      break;
+    case '/settings/connectconfigmanage/wirelesslink/service':
+    case '/settings/connectconfigmanage/wirelesslink/port':
+      selectedTab.value = '/settings/connectconfigmanage/wirelesslink/service';
+      break;
+    case '/settings/connectconfigmanage/repeater/service':
+       selectedTab.value = '/settings/connectconfigmanage/repeater/service';
+      break;
+    case '/settings/connectconfigmanage/etc/port':
+      selectedTab.value = '/settings/connectconfigmanage/etc/port';
+      break;
+    default:
+      selectedTab.value = router.currentRoute.value.path;
+  }
+  console.log('', selectedTab.value);
 });
 
 const onClickView = (item) => {

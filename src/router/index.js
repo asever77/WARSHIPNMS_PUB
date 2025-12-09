@@ -134,36 +134,73 @@ const router = createRouter({
         component: () => import('../layouts/SettingsConnectconfigmanageDefault.vue'),
         meta: { group: 'settings' },
         children: [
-        // 전문처리장치 관련 화면은 일단 보류
-        // {
-        //   path: '/settings/connectconfigmanage/specialprocessunit',
-        //     name: 'SettingsConnectconfigmanageSpecialprocessunitView',
-        //     component: () => import('../views/Settings/Connectconfigmanage/Specialprocessunit.vue'),
-        //     meta: { group: 'settings' },
-        // },
         {
-          path: '/settings/connectconfigmanage/interlockdevice',
+          path: '/settings/connectconfigmanage/interlockdevice/service',
           name: 'SettingsConnectconfigmanageInterlockdeviceView',
-          component: () => import('../views/Settings/Connectconfigmanage/Interlockdevice.vue'),
+          component: () => import('../views/Settings/Connectconfigmanage/Interlockdevice/ServicePage.vue'),
           meta: { group: 'settings' },
+          children: [
+            {
+              path: '/settings/connectconfigmanage/interlockdevice/service',
+              name: 'SettingsConnectconfigmanageInterlockdeviceServiceView',
+              component: () => import('../views/Settings/Connectconfigmanage/Interlockdevice/ServicePage.vue'),
+              meta: { group: 'settings' },
+            },
+            {
+              path: '/settings/connectconfigmanage/interlockdevice/port',
+              name: 'SettingsConnectconfigmanageInterlockdevicePortView',
+              component: () => import('../views/Settings/Connectconfigmanage/Interlockdevice/PortPage.vue'),
+              meta: { group: 'settings' },
+            },
+          ]
         },
         {
-          path: '/settings/connectconfigmanage/wirelesslink',
+          path: '/settings/connectconfigmanage/wirelesslink/service',
           name: 'SettingsConnectconfigmanageWirelesslinkView',
-          component: () => import('../views/Settings/Connectconfigmanage/Wirelesslink.vue'),
+          component: () => import('../views/Settings/Connectconfigmanage/Wirelesslink/ServicePage.vue'),
           meta: { group: 'settings' },
+           children: [
+            {
+              path: '/settings/connectconfigmanage/wirelesslink/service',
+              name: 'SettingsConnectconfigmanageWirelesslinkServiceView',
+              component: () => import('../views/Settings/Connectconfigmanage/Wirelesslink/ServicePage.vue'),
+              meta: { group: 'settings' },
+            },
+            {
+              path: '/settings/connectconfigmanage/wirelesslink/port',
+              name: 'SettingsConnectconfigmanageWirelesslinkPortView',
+              component: () => import('../views/Settings/Connectconfigmanage/Wirelesslink/PortPage.vue'),
+              meta: { group: 'settings' },
+            },
+          ]
         },
         {
-          path: '/settings/connectconfigmanage/repeater',
+          path: '/settings/connectconfigmanage/repeater/service',
           name: 'SettingsConnectconfigmanageRepeaterView',
-          component: () => import('../views/Settings/Connectconfigmanage/Repeater.vue'),
+          component: () => import('../views/Settings/Connectconfigmanage/Repeater/ServicePage.vue'),
           meta: { group: 'settings' },
+           children: [
+            {
+              path: '/settings/connectconfigmanage/repeater/service',
+              name: 'SettingsConnectconfigmanageRepeaterServiceView',
+              component: () => import('../views/Settings/Connectconfigmanage/Repeater/ServicePage.vue'),
+              meta: { group: 'settings' },
+            },
+          ]
         },
         {
-          path: '/settings/connectconfigmanage/etc',
+          path: '/settings/connectconfigmanage/etc/port',
           name: 'SettingsConnectconfigmanageEtcView',
-          component: () => import('../views/Settings/Connectconfigmanage/Etc.vue'),
+          component: () => import('../views/Settings/Connectconfigmanage/Etc/PortPage.vue'),
           meta: { group: 'settings' },
+           children: [
+            {
+              path: '/settings/connectconfigmanage/etc/port',
+              name: 'SettingsConnectconfigmanageEtcPortView',
+              component: () => import('../views/Settings/Connectconfigmanage/Etc/PortPage.vue'),
+              meta: { group: 'settings' },
+            },
+          ]
         },
         // 전문처리장치 관련 화면은 일단 보류
         // {
