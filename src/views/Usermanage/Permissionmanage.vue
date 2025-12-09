@@ -59,7 +59,7 @@
     </div>
   </div>
 
-  <UiModal v-model="modals.modalName.show" :title="lang.text1" type="modal" size="md" @close-btn-click="modals.modalName.show = false">
+  <UiModal v-model="modals.modalName.show" :title="lang.text1" type="modal" size="md" scrollable @close-btn-click="modals.modalName.show = false">
     <div class="base-table">
       <BTable
         :items="selectedRow ? [selectedRow] : []"
