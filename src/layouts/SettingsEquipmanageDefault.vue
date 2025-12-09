@@ -28,9 +28,6 @@ const ko = {
   "devicemanage": "장치관리",
   "terminalboxmanage": "연결단자함관리",
   "rackmanage": "랙관리",
-  "modelmanage": "모델관리",
-  "frequencymanage": "주파수관리",
-  "wirelesscommunicatebond": "무선통신기조합"
 };
 
 const en = {
@@ -38,9 +35,6 @@ const en = {
   "devicemanage": "Devicemanage",
   "terminalboxmanage": "Terminalboxmanage",
   "rackmanage": "Rackmanage",
-  "modelmanage": "Modelmanage",
-  "frequencymanage": "Frequencymanage",
-  "wirelesscommunicatebond": "Wirelesscommunicatebond"
 };
 
 const lang = ref({});
@@ -54,9 +48,6 @@ onMounted(() => {
     { label: lang.value.devicemanage, path: '/settings/equipmanage/devicemanage' },
     { label: lang.value.terminalboxmanage, path: '/settings/equipmanage/terminalboxmanage' },
     { label: lang.value.rackmanage, path: '/settings/equipmanage/rackmanage' },
-    { label: lang.value.modelmanage, path: '/settings/equipmanage/modelmanage' },
-    { label: lang.value.frequencymanage, path: '/settings/equipmanage/frequencymanage' },
-    { label: lang.value.wirelesscommunicatebond, path: '/settings/equipmanage/wirelesscommunicatebond' }
   ];
   selectedTab.value = router.currentRoute.value.path;
 });
