@@ -10,7 +10,7 @@
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">장치명</span>
+            <span class="ui-flex-1">{{ lang.filterDeviceName }}</span>
             <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
           </div>
         </th>
@@ -27,7 +27,7 @@
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">모델명</span>
+            <span class="ui-flex-1">{{ lang.filterLocation }}</span>
             <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
           </div>
         </th>
@@ -45,7 +45,7 @@
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">위치(구역)</span>
+            <span class="ui-flex-1">{{ lang.filterRadioSilence }}</span>
             <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
           </div>
         </th>
@@ -56,7 +56,7 @@
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">상태</span>
+            <span class="ui-flex-1">{{ lang.filterStatus }}</span>
             <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
           </div>
         </th>
@@ -82,8 +82,8 @@
     <div class="search-base">
       <div class="search-base--form">
         <span class="search-total">{{ lang.totalLabel }}:15</span>
-        <span class="search-total">Online:36</span>
-        <span class="search-total">Offline:177</span>
+        <span class="search-total">{{ lang.onlineLabel || 'Online' }}:36</span>
+        <span class="search-total">{{ lang.offlineLabel || 'Offline' }}:177</span>
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
@@ -140,7 +140,7 @@
 
   <UiModal
     v-model="modals.modalRegister.show"
-    :title="'리셉터클유닛 등록'"
+    :title="lang.modalRegisterTitle || '리셉터클유닛 등록'"
     type="modal"
     size="lg"
     @close-btn-click="modals.modalRegister.show = false"
@@ -155,7 +155,7 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">모델명</th>
+            <th scope="row">{{ lang.filterLocation }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -164,58 +164,58 @@
                 ]"
               />
             </td>
-            <th scope="row">IP Address</th>
+            <th scope="row">{{ lang.colIpAddress }}</th>
             <td>
               <BFormInput type="number" value="192.239.12.2" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">장치명</th>
+            <th scope="row">{{ lang.filterDeviceName }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">Subnet Mask</th>
+            <th scope="row">{{ lang.colSubnetMask || 'Subnet Mask' }}</th>
             <td>
               <BFormInput type="number" value="255.255.255.0" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">설명/비고</th>
+            <th scope="row">{{ lang.colDescription || '설명/비고' }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">Default Gateway</th>
+            <th scope="row">{{ lang.colDefaultGateway || 'Default Gateway' }}</th>
             <td>
               <BFormInput type="number" value="192.239.12.1" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">시리얼 번호</th>
+            <th scope="row">{{ lang.colSerial }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">헤드셋볼륨</th>
+            <th scope="row">{{ lang.colHeadsetVolume || '헤드셋볼륨' }}</th>
             <td>
               <BFormInput type="number" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">가입자정보 (내선번호)</th>
+            <th scope="row">{{ lang.colExtensionNo }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">자동연결 대기시간(초)</th>
+            <th scope="row">{{ lang.colAutoConnectWait || '자동연결 대기시간(초)' }}</th>
             <td>
               <BFormInput type="number" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row" rowspan="2">위치</th>
+            <th scope="row" rowspan="2">{{ lang.filterRadioSilence }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -237,7 +237,7 @@
           </tr>
 
           <tr>
-            <th scope="row">L2 스위치</th>
+            <th scope="row">{{ lang.colL2Switch }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -253,8 +253,8 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalRegister.show = false">취소</BButton>
-      <BButton class="blue28">저장</BButton>
+      <BButton class="gray28" @click="modals.modalRegister.show = false">{{ lang.btnCancel || '취소' }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave || '저장' }}</BButton>
     </template>
   </UiModal>
 </template>
