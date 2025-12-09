@@ -25,38 +25,38 @@ import TabBase from '@/components/TabBase.vue';
 
 const ko = {
   "title": "설정/연결설정관리",
-  "specialprocessunit": "전문처리장치",
+  // "specialprocessunit": "전문처리장치",
   "interlockdevice": "보안장비연동장치",
-  "wirelesslink": "무선링크",
+  "wirelesslink": "무선링크연동장치",
   "repeater": "유무선통합중계기",
   "etc": "기타",
-  "wirelesschannelbond": "무선채널조합"
+  // "wirelesschannelbond": "무선채널조합"
 };
 
 const en = {
   "title": "Settings/Connectconfigmanage",
-  "specialprocessunit": "Specialprocessunit",
+  // "specialprocessunit": "Specialprocessunit",
   "interlockdevice": "Interlockdevice",
   "wirelesslink": "Wirelesslink",
   "repeater": "Repeater",
   "etc": "Etc",
-  "wirelesschannelbond": "Wirelesschannelbond"
+  // "wirelesschannelbond": "Wirelesschannelbond"
 };
 
 const lang = ref({});
 const router = useRouter();
-const selectedTab = ref('/settings/connectconfigmanage/specialprocessunit');
+const selectedTab = ref('/settings/connectconfigmanage/interlockdevice');
 const tabList = ref([]);
 
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
   tabList.value = [
-    { label: lang.value.specialprocessunit, path: '/settings/connectconfigmanage/specialprocessunit' },
+    // { label: lang.value.specialprocessunit, path: '/settings/connectconfigmanage/specialprocessunit' },
     { label: lang.value.interlockdevice, path: '/settings/connectconfigmanage/interlockdevice' },
     { label: lang.value.wirelesslink, path: '/settings/connectconfigmanage/wirelesslink' },
     { label: lang.value.repeater, path: '/settings/connectconfigmanage/repeater' },
     { label: lang.value.etc, path: '/settings/connectconfigmanage/etc' },
-    { label: lang.value.wirelesschannelbond, path: '/settings/connectconfigmanage/wirelesschannelbond' }
+    // { label: lang.value.wirelesschannelbond, path: '/settings/connectconfigmanage/wirelesschannelbond' }
   ];
   selectedTab.value = router.currentRoute.value.path;
 });

@@ -430,7 +430,7 @@
           <tbody>
             <tr>
               <th scope="row">FAN</th>
-              <td>정상</td>
+              <td class="green ta-c">정상</td>
             </tr>
             <tr>
               <th scope="row">온도</th>

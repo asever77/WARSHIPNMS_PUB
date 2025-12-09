@@ -133,12 +133,14 @@ const router = createRouter({
         name: 'SettingsConnectconfigmanageDefaultLayout',
         component: () => import('../layouts/SettingsConnectconfigmanageDefault.vue'),
         meta: { group: 'settings' },
-        children: [{
-          path: '/settings/connectconfigmanage/specialprocessunit',
-            name: 'SettingsConnectconfigmanageSpecialprocessunitView',
-            component: () => import('../views/Settings/Connectconfigmanage/Specialprocessunit.vue'),
-            meta: { group: 'settings' },
-        },
+        children: [
+        // 전문처리장치 관련 화면은 일단 보류
+        // {
+        //   path: '/settings/connectconfigmanage/specialprocessunit',
+        //     name: 'SettingsConnectconfigmanageSpecialprocessunitView',
+        //     component: () => import('../views/Settings/Connectconfigmanage/Specialprocessunit.vue'),
+        //     meta: { group: 'settings' },
+        // },
         {
           path: '/settings/connectconfigmanage/interlockdevice',
           name: 'SettingsConnectconfigmanageInterlockdeviceView',
@@ -163,12 +165,14 @@ const router = createRouter({
           component: () => import('../views/Settings/Connectconfigmanage/Etc.vue'),
           meta: { group: 'settings' },
         },
-        {
-          path: '/settings/connectconfigmanage/wirelesschannelbond',
-          name: 'SettingsConnectconfigmanageWirelesschannelbondView',
-          component: () => import('../views/Settings/Connectconfigmanage/Wirelesschannelbond.vue'),
-          meta: { group: 'settings' },
-        }],
+        // 전문처리장치 관련 화면은 일단 보류
+        // {
+        //   path: '/settings/connectconfigmanage/wirelesschannelbond',
+        //   name: 'SettingsConnectconfigmanageWirelesschannelbondView',
+        //   component: () => import('../views/Settings/Connectconfigmanage/Wirelesschannelbond.vue'),
+        //   meta: { group: 'settings' },
+        // }
+      ],
       },
       {
         path: '/settingscallmanagedefault',
