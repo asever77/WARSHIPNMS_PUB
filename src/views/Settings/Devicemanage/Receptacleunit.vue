@@ -10,64 +10,53 @@
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.filterDeviceName }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
+            <span class="ui-flex-1">{{ lang.thead1 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.thead1 }} {{ lang.sortAll }}"></BButton>
+          </div>
+        </th>
+        <td>
+          <BFormInput id="search-word" class="ui-input" placeholder=""></BFormInput>
+        </td>
+
+        <th scope="row">
+          <div class="ui-flex" data-item-align="center" data-gap="4">
+            <span class="ui-flex-1">{{ lang.thead2 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead2 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
           <BFormSelect
             id="device-type"
             class="ui-select"
-            :options="[{
-              value: '1',
-              text: '전체',
-            }]"
-          ></BFormSelect>
-        </td>
-
-        <th scope="row">
-          <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.filterLocation }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
-          </div>
-        </th>
-        <td>
-          <BFormSelect
-            id="search-target"
-            class="ui-select"
-           :options="[{
-              value: '1',
-              text: '전체',
-            }]"
+            :options="[
+              {value: '1', text: '선택',}
+            ]"
           ></BFormSelect>
         </td>
       </tr>
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.filterRadioSilence }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
+            <span class="ui-flex-1">{{ lang.thead3 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead3 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
-
-          <BFormInput id="search-word" class="ui-input" v-model="searchWord" placeholder=""></BFormInput>
+          <BFormInput id="search-word" class="ui-input" placeholder=""></BFormInput>
         </td>
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.filterStatus }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
+            <span class="ui-flex-1">{{ lang.thead4 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead4 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
           <BFormSelect
             id="search-target"
             class="ui-select"
-            :options="[{
-              value: '1',
-              text: '전체',
-            }]"
+            v-model="searchTarget"
+            :options="selectOptions"
           ></BFormSelect>
         </td>
       </tr>
@@ -82,8 +71,8 @@
     <div class="search-base">
       <div class="search-base--form">
         <span class="search-total">{{ lang.totalLabel }}:15</span>
-        <span class="search-total">{{ lang.onlineLabel || 'Online' }}:36</span>
-        <span class="search-total">{{ lang.offlineLabel || 'Offline' }}:177</span>
+        <span class="search-total">Online:36</span>
+        <span class="search-total">Offline:177</span>
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
@@ -95,7 +84,7 @@
               :placeholder="lang.searchPlaceholder"
               class="ui-input-28"
             />
-            <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
+            <button type="button" class="btn-search-icon" aria-label="{{ lang.btnSearch }}" @click="onFilter" ></button>
           </div>
         </BFormGroup>
         <BFormSelect
@@ -113,7 +102,7 @@
             :indeterminate="isIndeterminate"
             :model-value="isAllSelected"
             @update:modelValue="toggleSelectAll"
-            aria-label="전체 선택/해제"
+            aria-label="{{ lang.searchSelect }}"
           />
         </template>
         <template #cell(select)="data">
@@ -155,7 +144,7 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">{{ lang.filterLocation }}</th>
+            <th scope="row">{{ lang.modalth1 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -164,58 +153,58 @@
                 ]"
               />
             </td>
-            <th scope="row">{{ lang.colIpAddress }}</th>
+            <th scope="row">{{ lang.modalth2 }}</th>
             <td>
               <BFormInput type="number" value="192.239.12.2" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.filterDeviceName }}</th>
+            <th scope="row">{{ lang.modalth3 }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">{{ lang.colSubnetMask || 'Subnet Mask' }}</th>
+            <th scope="row">{{ lang.modalth4 }}</th>
             <td>
               <BFormInput type="number" value="255.255.255.0" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.colDescription || '설명/비고' }}</th>
+            <th scope="row">{{ lang.modalth5 }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">{{ lang.colDefaultGateway || 'Default Gateway' }}</th>
+            <th scope="row">{{ lang.modalth6 }}</th>
             <td>
               <BFormInput type="number" value="192.239.12.1" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.colSerial }}</th>
+            <th scope="row">{{ lang.modalth7 }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">{{ lang.colHeadsetVolume || '헤드셋볼륨' }}</th>
+            <th scope="row">{{ lang.modalth8 || '헤드셋볼륨' }}</th>
             <td>
               <BFormInput type="number" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.colExtensionNo }}</th>
+            <th scope="row">{{ lang.modalth9 }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">{{ lang.colAutoConnectWait || '자동연결 대기시간(초)' }}</th>
+            <th scope="row">{{ lang.modalth10 }}</th>
             <td>
               <BFormInput type="number" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row" rowspan="2">{{ lang.filterRadioSilence }}</th>
+            <th scope="row" rowspan="2">{{ lang.modalth11 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -237,7 +226,7 @@
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.colL2Switch }}</th>
+            <th scope="row">{{ lang.modalth12 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -253,8 +242,8 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalRegister.show = false">{{ lang.btnCancel || '취소' }}</BButton>
-      <BButton class="blue28">{{ lang.btnSave || '저장' }}</BButton>
+      <BButton class="gray28" @click="modals.modalRegister.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 </template>
@@ -271,6 +260,7 @@ import UiModal from '@/components/UiModal.vue'
 const ko = {
   sortAll: '전체 정렬',
   searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
   btnSearch: '조회',
@@ -278,9 +268,14 @@ const ko = {
   filterRadioSilence: '무선침묵권한',
   filterLocation: '위치(구역)',
   filterStatus: '상태',
+
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
   btnDelete: '삭제',
+  btnCancel: '최소',
+  btnSave: '저장',
+  btnAdd: '추가',
+
   colSelect: '선택',
   colNumber: 'No',
   colLocation: '위치(구역)',
@@ -294,14 +289,31 @@ const ko = {
   colIpAddress: 'IP Address',
   colL2Switch: 'L2 스위치',
   colSerial: 'Serial No',
-  thead1: '검색대상',
-  thead2: '검색어',
-  thead3: '무선침묵권한',
+
+  thead1: '장치명',
+  thead2: '모델명',
+  thead3: '위치(구역)',
   thead4: '상태',
+  modalTitle1: '리셉터클유닛 등록',
+
+  modalth1: '모델명',
+  modalth2: 'IP Address',
+  modalth3: '장치명',
+  modalth4: 'Subnet Mask',
+  modalth5: '설명/비고',
+  modalth6: 'Default Gateway',
+  modalth7: '시리얼 번호',
+  modalth8: '헤드셋 볼륨',
+  modalth9: '가입자정보 (내선번호)',
+  modalth10: '자동연결 대기시간(초)',
+  modalth11: '위치',
+  modalth12: 'L2 스위치',
+
 }
 const en = {
   sortAll: '전체 정렬',
   searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
   btnSearch: '조회',
@@ -309,9 +321,14 @@ const en = {
   filterRadioSilence: '무선침묵권한',
   filterLocation: '위치(구역)',
   filterStatus: '상태',
+
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
   btnDelete: '삭제',
+  btnCancel: '최소',
+  btnSave: '저장',
+  btnAdd: '추가',
+
   colSelect: '선택',
   colNumber: 'No',
   colLocation: '위치(구역)',
@@ -329,6 +346,43 @@ const en = {
   thead2: '검색어',
   thead3: '무선침묵권한',
   thead4: '상태',
+  modalTitle1: '사용자단말 정보 수정',
+  modalTitle2: '점대점 통화',
+  modalTitle3: '점대점 연결 등록',
+
+  modalth1: '모델명',
+  modalth2: '스피커볼륨',
+  modalth3: '장치명',
+  modalth4: '헤드셋볼륨',
+  modalth5: '설명/비고',
+  modalth6: '화면밝기',
+  modalth7: '시리얼 번호',
+  modalth8: '벨소리',
+  modalth9: '점대점',
+  modalth10: '가입자정보 (내선번호)',
+  modalth11: '회의통화',
+  modalth12: '그룹통화',
+  modalth13: '무선침묵 설정',
+  modalth14: '자동연결 대기시간(초)',
+  modalth15: 'L2 스위치',
+  modalth16: '무선채널 최대할당 개수',
+  modalth17: '경보권한',
+  modalth18: '방송권한',
+  modalth19: 'Muting-Relay 기능',
+  modalth20: '모델명',
+
+  modalth21: '피호출 사용자단말',
+  modalth22: '통화기능키 레이블',
+  modalth23: '통화모드',
+  modalth24: '응답모드',
+  modalth25: '녹음제어',
+  modalth26: '스피커 출력방향',
+  modalth27: '호출알림',
+
+  checkbox1: '왼쪽',
+  checkbox2: '오른쪽',
+  checkbox3: '벨소리',
+  checkbox4: '알림등',
 }
 const lang = ref({})
 
@@ -343,29 +397,29 @@ const searchWord = ref('')
 const filterText = ref('')
 const searchField = ref('')
 const searchText = ref('')
+const deviceType = ref(null)
+const searchTarget = ref(null)
+const selectOptions = []
+
 
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(40))
 
 function generateItems(n) {
-  const locations = ['후부장교실', '전방장교실', '기관실', '함교', '작전실']
   const statuses = ['정상', '정상(통화중)', '비정상']
-  const l2Switches = ['L2SW-01', 'L2SW-02', 'L2SW-03']
   const arr = []
   for (let i = 1; i <= n; i++) {
     const idx = (i - 1)
     arr.push({
       id: i,
       number: String(i),
-      location: locations[idx % locations.length],
-      deviceName: `Terminal-${String(i).padStart(3, '0')}`,
+      location: '위치내용',
+      deviceName: `장치명내용`,
       radioSilence: '모델명이름',
       alarmAuth: '시리얼넘버',
-      extensionNo: `${3000 + i}`,
+      extensionNo: `3000`,
       status: statuses[idx % statuses.length],
-      ipAddress: `192.168.${Math.floor(idx / 254) + 1}.${(idx % 254) + 1}`,
-      l2Switch: l2Switches[idx % l2Switches.length],
-      serial: `SN-${String(i).padStart(6, '0')}`,
+      ipAddress: `192.168.0.210`,
     })
   }
   return arr
@@ -401,13 +455,13 @@ function toggleSelectAll(checked) {
 const fields = computed(() => [
   { key: 'select', label: '', thStyle: { width: '3rem' } },
   { key: 'number', label: 'No', thStyle: { width: '5rem' } },
-  { key: 'location', label: '위치(구역)', thStyle: { width: 'auto' } },
-  { key: 'deviceName', label: '장치명', thStyle: { width: 'auto' } },
-  { key: 'radioSilence', label: '모델명', thStyle: { width: 'auto' } },
-  { key: 'alarmAuth', label: 'Serial No', thStyle: { width: '12rem' } },
-  { key: 'extensionNo', label: '내선번호', thStyle: { width: '6rem' } },
-  { key: 'status', label: '상태', thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'red' : '' },
-  { key: 'ipAddress', label: 'IP Address', thStyle: { width: '10rem' } },
+  { key: 'location', label: lang.value.colLocation, thStyle: { width: 'auto' } },
+  { key: 'deviceName', label: lang.value.colDeviceName, thStyle: { width: 'auto' } },
+  { key: 'radioSilence', label: lang.value.colRadioSilence, thStyle: { width: 'auto' } },
+  { key: 'alarmAuth', label: lang.value.colAlarmAuth, thStyle: { width: '12rem' } },
+  { key: 'extensionNo', label: lang.value.colExtensionNo, thStyle: { width: '6rem' } },
+  { key: 'status', label: lang.value.colStatus, thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'red' : '' },
+  { key: 'ipAddress', label: lang.value.colIpAddress, thStyle: { width: '10rem' } },
 ]);
 
 const filteredItems = computed(() => {

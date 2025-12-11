@@ -11,56 +11,59 @@
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.thead1 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceName} ${lang.sortAll}`"></BButton>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.thead1 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
           <BFormSelect
             id="device-type"
             class="ui-select"
-            v-model="deviceType"
-            :options="selectOptions"
+            :options="[
+              {value: '1', text: '선택',}
+            ]"
           ></BFormSelect>
         </td>
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.thead2 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead2 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
-          <BFormInput id="search-word" class="ui-input" v-model="searchWord" placeholder=""></BFormInput>
+          <BFormInput id="search-word" class="ui-input" placeholder=""></BFormInput>
         </td>
       </tr>
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.thead3 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead3 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
           <BFormSelect
             id="search-target"
             class="ui-select"
-            v-model="searchTarget"
-            :options="selectOptions"
+            :options="[
+              {value: '1', text: '선택',}
+            ]"
           ></BFormSelect>
         </td>
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.thead4 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead4 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
           <BFormSelect
             id="search-target"
             class="ui-select"
-            v-model="searchTarget"
-            :options="selectOptions"
+            :options="[
+              {value: '1', text: '선택',}
+            ]"
           ></BFormSelect>
         </td>
       </tr>
@@ -88,7 +91,7 @@
               :placeholder="lang.searchPlaceholder"
               class="ui-input-28"
             />
-            <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
+            <button type="button" class="btn-search-icon" aria-label="{{ lang.btnSearch }}" @click="onFilter" ></button>
           </div>
         </BFormGroup>
         <BFormSelect
@@ -106,7 +109,7 @@
             :indeterminate="isIndeterminate"
             :model-value="isAllSelected"
             @update:modelValue="toggleSelectAll"
-            aria-label="전체 선택/해제"
+            aria-label="{{ lang.searchSelect }}"
           />
         </template>
         <template #cell(select)="data">
@@ -133,7 +136,7 @@
 
   <UiModal
     v-model="modals.modalTerminalModify.show"
-    :title="'사용자단말 정보 수정'"
+    :title="lang.modalTitle1"
     type="modal"
     size="lg"
     @close-btn-click="modals.modalTerminalModify.show = false"
@@ -143,13 +146,13 @@
         <colgroup>
           <col style="width: 14rem" />
           <col style="width: auto" />
-          <col style="width: 7rem" />
-          <col style="width: 7rem" />
+          <col style="width: 6rem" />
+          <col style="width: 8rem" />
           <col style="width: auto" />
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">모델명</th>
+            <th scope="row">{{ lang.modalth1 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -158,41 +161,41 @@
                 ]"
               />
             </td>
-            <th scope="row" colspan="2">스피커볼륨</th>
+            <th scope="row" colspan="2">{{ lang.modalth2 }}</th>
             <td>
               <BFormInput type="number" value="50" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">장치명</th>
+            <th scope="row">{{ lang.modalth3 }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row" colspan="2">헤드셋볼륨</th>
+            <th scope="row" colspan="2">{{ lang.modalth4 }}</th>
             <td>
               <BFormInput type="number" value="50" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">설명/비고</th>
+            <th scope="row">{{ lang.modalth5 }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row" colspan="2">화면밝기</th>
+            <th scope="row" colspan="2">{{ lang.modalth6 }}</th>
             <td>
               <BFormInput type="number" value="50" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">시리얼 번호</th>
+            <th scope="row">{{ lang.modalth7 }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row" rowspan="3">벨소리</th>
-            <th scope="row">점대점</th>
+            <th scope="row" rowspan="3">{{ lang.modalth8 }}</th>
+            <th scope="row">{{ lang.modalth9 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -204,11 +207,11 @@
           </tr>
 
           <tr>
-            <th scope="row">가입자정보 (내선번호)</th>
+            <th scope="row">{{ lang.modalth10 }}</th>
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">회의통화</th>
+            <th scope="row">{{ lang.modalth11 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -220,7 +223,7 @@
           </tr>
 
           <tr>
-            <th scope="row">무선침묵 설정</th>
+            <th scope="row">{{ lang.modalth12 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -229,7 +232,7 @@
                 ]"
               />
             </td>
-            <th scope="row">그룹통화</th>
+            <th scope="row">{{ lang.modalth13 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -241,7 +244,7 @@
           </tr>
 
           <tr>
-            <th scope="row" rowspan="2">위치</th>
+            <th scope="row" rowspan="2">{{ lang.modalth14 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -250,7 +253,7 @@
                 ]"
               />
             </td>
-            <th scope="row" colspan="2">자동연결 대기시간(초)</th>
+            <th scope="row" colspan="2">{{ lang.modalth15 }}</th>
             <td>
               <BFormInput type="tel" />
             </td>
@@ -270,7 +273,7 @@
           </tr>
 
           <tr>
-            <th scope="row">L2 스위치</th>
+            <th scope="row">{{ lang.modalth16 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -284,7 +287,7 @@
           </tr>
 
           <tr>
-            <th scope="row">무선채널 최대할당 개수</th>
+            <th scope="row">{{ lang.modalth17 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -298,7 +301,7 @@
           </tr>
 
           <tr>
-            <th scope="row">경보권한</th>
+            <th scope="row">{{ lang.modalth18 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -312,7 +315,7 @@
           </tr>
 
           <tr>
-            <th scope="row">방송권한</th>
+            <th scope="row">{{ lang.modalth19 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -326,7 +329,7 @@
           </tr>
 
           <tr>
-            <th scope="row">Muting-Relay 기능</th>
+            <th scope="row">{{ lang.modalth20 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -344,9 +347,9 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalTerminalModify.show = false">취소</BButton>
-      <BButton class="blue28">저장</BButton>
-      <BButton class="blue28 footer-right-btn"  @click="modals.modalPointSetting.show = true">통화기능키 설정</BButton>
+      <BButton class="gray28" @click="modals.modalTerminalModify.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+      <BButton class="blue28 footer-right-btn"  @click="modals.modalPointSetting.show = true">{{ lang.btnBulkRegister }}</BButton>
     </template>
   </UiModal>
 
@@ -354,16 +357,16 @@
     <div class="ui-flex" data-direction="col" data-gap="8" style="padding-top: 0;">
       <h2 class="layer-title-box">
         <img src="@/assets/images/icon/icon-aspect-title-1.svg" alt="icon" />
-        점대점 통화
+        {{ lang.modalTitle2 }}
       </h2>
       <div class="box-pp">
         <div v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item">{{ btn }}</div>
-        <BButton class="box-pp--item" @click="openModify1">추가</BButton>
+        <BButton class="box-pp--item" @click="openModify1">{{ lang.btnAdd }}</BButton>
       </div>
     </div>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify1.show" :title="'점대점 연결 등록'" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
+  <UiModal v-model="modals.modalModify1.show" :title="lang.modalTitle3" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -372,7 +375,7 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">피호출 사용자단말</th>
+            <th scope="row">{{ lang.modalth21 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -384,7 +387,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">통화기능키 레이블</th>
+            <th scope="row">{{ lang.modalth22 }}</th>
             <td>
               <BFormInput
                 class="ui-input"
@@ -392,7 +395,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">통화모드</th>
+            <th scope="row">{{ lang.modalth23 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -404,7 +407,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">응답모드</th>
+            <th scope="row">{{ lang.modalth24 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -416,7 +419,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">녹음제어</th>
+            <th scope="row">{{ lang.modalth25 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -428,20 +431,20 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">스피커 출력방향</th>
+            <th scope="row">{{ lang.modalth26 }}</th>
             <td>
               <div class="d-flex w100-2">
-                <BFormCheckbox value="1">왼쪽</BFormCheckbox>
-                <BFormCheckbox value="2">오른쪽</BFormCheckbox>
+                <BFormCheckbox value="1">{{ lang.checkbox1 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.checkbox2 }}</BFormCheckbox>
               </div>
             </td>
           </tr>
           <tr>
-            <th scope="row">호출알림</th>
+            <th scope="row">{{ lang.modalth27 }}</th>
             <td>
               <div class="d-flex w100-2">
-                <BFormCheckbox value="1">벨소리</BFormCheckbox>
-                <BFormCheckbox value="2">알림등</BFormCheckbox>
+                <BFormCheckbox value="1">{{ lang.checkbox3 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.checkbox4 }}</BFormCheckbox>
               </div>
             </td>
           </tr>
@@ -449,8 +452,8 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify1.show = false">취소</BButton>
-      <BButton class="blue28">저장</BButton>
+      <BButton class="gray28" @click="modals.modalModify1.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 </template>
@@ -471,6 +474,7 @@ import UiModal from '@/components/UiModal.vue'
 const ko = {
   sortAll: '전체 정렬',
   searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
   btnSearch: '조회',
@@ -478,9 +482,14 @@ const ko = {
   filterRadioSilence: '무선침묵권한',
   filterLocation: '위치(구역)',
   filterStatus: '상태',
+
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
   btnDelete: '삭제',
+  btnCancel: '최소',
+  btnSave: '저장',
+  btnAdd: '추가',
+
   colSelect: '선택',
   colNumber: 'No',
   colLocation: '위치(구역)',
@@ -498,10 +507,48 @@ const ko = {
   thead2: '검색어',
   thead3: '무선침묵권한',
   thead4: '상태',
+  modalTitle1: '사용자단말 정보 수정',
+  modalTitle2: '점대점 통화',
+  modalTitle3: '점대점 연결 등록',
+
+  modalth1: '모델명',
+  modalth2: '스피커볼륨',
+  modalth3: '장치명',
+  modalth4: '헤드셋볼륨',
+  modalth5: '설명/비고',
+  modalth6: '화면밝기',
+  modalth7: '시리얼 번호',
+  modalth8: '벨소리',
+  modalth9: '점대점',
+  modalth10: '가입자정보 (내선번호)',
+  modalth11: '회의통화',
+  modalth12: '그룹통화',
+  modalth13: '무선침묵 설정',
+  modalth14: '자동연결 대기시간(초)',
+  modalth15: 'L2 스위치',
+  modalth16: '무선채널 최대할당 개수',
+  modalth17: '경보권한',
+  modalth18: '방송권한',
+  modalth19: 'Muting-Relay 기능',
+  modalth20: '모델명',
+
+  modalth21: '피호출 사용자단말',
+  modalth22: '통화기능키 레이블',
+  modalth23: '통화모드',
+  modalth24: '응답모드',
+  modalth25: '녹음제어',
+  modalth26: '스피커 출력방향',
+  modalth27: '호출알림',
+
+  checkbox1: '왼쪽',
+  checkbox2: '오른쪽',
+  checkbox3: '벨소리',
+  checkbox4: '알림등',
 }
 const en = {
   sortAll: '전체 정렬',
   searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
   btnSearch: '조회',
@@ -509,9 +556,14 @@ const en = {
   filterRadioSilence: '무선침묵권한',
   filterLocation: '위치(구역)',
   filterStatus: '상태',
+
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
   btnDelete: '삭제',
+  btnCancel: '최소',
+  btnSave: '저장',
+  btnAdd: '추가',
+
   colSelect: '선택',
   colNumber: 'No',
   colLocation: '위치(구역)',
@@ -529,6 +581,43 @@ const en = {
   thead2: '검색어',
   thead3: '무선침묵권한',
   thead4: '상태',
+  modalTitle1: '사용자단말 정보 수정',
+  modalTitle2: '점대점 통화',
+  modalTitle3: '점대점 연결 등록',
+
+  modalth1: '모델명',
+  modalth2: '스피커볼륨',
+  modalth3: '장치명',
+  modalth4: '헤드셋볼륨',
+  modalth5: '설명/비고',
+  modalth6: '화면밝기',
+  modalth7: '시리얼 번호',
+  modalth8: '벨소리',
+  modalth9: '점대점',
+  modalth10: '가입자정보 (내선번호)',
+  modalth11: '회의통화',
+  modalth12: '그룹통화',
+  modalth13: '무선침묵 설정',
+  modalth14: '자동연결 대기시간(초)',
+  modalth15: 'L2 스위치',
+  modalth16: '무선채널 최대할당 개수',
+  modalth17: '경보권한',
+  modalth18: '방송권한',
+  modalth19: 'Muting-Relay 기능',
+  modalth20: '모델명',
+
+  modalth21: '피호출 사용자단말',
+  modalth22: '통화기능키 레이블',
+  modalth23: '통화모드',
+  modalth24: '응답모드',
+  modalth25: '녹음제어',
+  modalth26: '스피커 출력방향',
+  modalth27: '호출알림',
+
+  checkbox1: '왼쪽',
+  checkbox2: '오른쪽',
+  checkbox3: '벨소리',
+  checkbox4: '알림등',
 }
 const lang = ref({})
 
@@ -562,31 +651,28 @@ const selectOptions = []
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(40))
 
-function onRowClicked(item) {
+function onRowClicked() {
   modals.modalTerminalModify.show = true;
 }
+
+// 샘플데이터 생성 함수
 function generateItems(n) {
-  const locations = ['후부장교실', '전방장교실', '기관실', '함교', '작전실']
   const statuses = ['정상', '정상(통화중)', '비정상']
-  const authTypes = ['O', '']
-  const l2Switches = ['L2SW-01', 'L2SW-02', 'L2SW-03']
   const arr = []
   for (let i = 1; i <= n; i++) {
     const idx = (i - 1)
     arr.push({
       id: i,
       number: String(i),
-      location: locations[idx % locations.length],
-      deviceName: `Terminal-${String(i).padStart(3, '0')}`,
-      radioSilence: authTypes[idx % authTypes.length],
-      alarmAuth: authTypes[(idx + 1) % authTypes.length],
-      broadcastAuth: authTypes[idx % authTypes.length],
-      muteAuth: authTypes[(idx + 1) % authTypes.length],
+      location: '위치내용',
+      deviceName: '장치명내용',
+      radioSilence: 'O',
+      alarmAuth:'O',
+      broadcastAuth: 'O',
+      muteAuth:'O',
       extensionNo: `${3000 + i}`,
       status: statuses[idx % statuses.length],
       ipAddress: `192.168.${Math.floor(idx / 254) + 1}.${(idx % 254) + 1}`,
-      l2Switch: l2Switches[idx % l2Switches.length],
-      serial: `SN-${String(i).padStart(6, '0')}`,
     })
   }
   return arr
@@ -621,16 +707,16 @@ function toggleSelectAll(checked) {
 
 const fields = computed(() => [
   { key: 'select', label: '', thStyle: { width: '3rem' } },
-  { key: 'number', label: 'No', thStyle: { width: '5rem' } },
-  { key: 'location', label: '위치(구역)', thStyle: { width: 'auto' } },
-  { key: 'deviceName', label: '장치명', thStyle: { width: 'auto' } },
-  { key: 'radioSilence', label: '무선침묵', thStyle: { width: '7rem' } },
-  { key: 'alarmAuth', label: '경보 권한', thStyle: { width: '7rem' } },
-  { key: 'broadcastAuth', label: '방송 권한', thStyle: { width: '7rem' } },
-  { key: 'muteAuth', label: 'Mute 권한', thStyle: { width: '7rem' } },
-  { key: 'extensionNo', label: '내선번호', thStyle: { width: '6rem' } },
-  { key: 'status', label: '상태', thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'red' : '' },
-  { key: 'ipAddress', label: 'IP Address', thStyle: { width: '10rem' } },
+  { key: 'number', label: lang.value.colNumber, thStyle: { width: '5rem' } },
+  { key: 'location', label: lang.value.colLocation, thStyle: { width: 'auto' } },
+  { key: 'deviceName', label: lang.value.colDeviceName, thStyle: { width: 'auto' } },
+  { key: 'radioSilence', label: lang.value.colRadioSilence, thStyle: { width: '7rem' } },
+  { key: 'alarmAuth', label: lang.value.colAlarmAuth, thStyle: { width: '7rem' } },
+  { key: 'broadcastAuth', label: lang.value.colBroadcastAuth, thStyle: { width: '7rem' } },
+  { key: 'muteAuth', label: lang.value.colMuteAuth, thStyle: { width: '7rem' } },
+  { key: 'extensionNo', label: lang.value.colExtensionNo, thStyle: { width: '6rem' } },
+  { key: 'status', label: lang.value.colStatus, thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'red' : '' },
+  { key: 'ipAddress', label: lang.value.colIpAddress, thStyle: { width: '10rem' } },
 ]);
 
 const filteredItems = computed(() => {
