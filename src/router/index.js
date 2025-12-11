@@ -128,6 +128,7 @@ const router = createRouter({
           meta: { group: 'settings' },
         }],
       },
+      // 설정/연결설정관리/보안장비연동장치
       {
         path: '/settingsconnectconfigmanagedefault',
         name: 'SettingsConnectconfigmanageDefaultLayout',
@@ -137,7 +138,7 @@ const router = createRouter({
         {
           path: '/settings/connectconfigmanage/interlockdevice/service',
           name: 'SettingsConnectconfigmanageInterlockdeviceView',
-          component: () => import('../views/Settings/Connectconfigmanage/Interlockdevice/ServicePage.vue'),
+          component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner.vue'),
           meta: { group: 'settings' },
           children: [
             {
@@ -154,10 +155,11 @@ const router = createRouter({
             },
           ]
         },
+        // 설정/연결설정관리/보안장비연동장치
         {
           path: '/settings/connectconfigmanage/wirelesslink/service',
           name: 'SettingsConnectconfigmanageWirelesslinkView',
-          component: () => import('../views/Settings/Connectconfigmanage/Wirelesslink/ServicePage.vue'),
+          component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner2.vue'),
           meta: { group: 'settings' },
            children: [
             {
@@ -177,13 +179,13 @@ const router = createRouter({
         {
           path: '/settings/connectconfigmanage/repeater/service',
           name: 'SettingsConnectconfigmanageRepeaterView',
-          component: () => import('../views/Settings/Connectconfigmanage/Repeater/ServicePage.vue'),
+          component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner3.vue'),
           meta: { group: 'settings' },
            children: [
             {
-              path: '/settings/connectconfigmanage/repeater/service',
-              name: 'SettingsConnectconfigmanageRepeaterServiceView',
-              component: () => import('../views/Settings/Connectconfigmanage/Repeater/ServicePage.vue'),
+              path: '/settings/connectconfigmanage/repeater/port',
+              name: 'SettingsConnectconfigmanageRepeaterPortView',
+              component: () => import('../views/Settings/Connectconfigmanage/Repeater/PortPage.vue'),
               meta: { group: 'settings' },
             },
           ]
@@ -191,7 +193,7 @@ const router = createRouter({
         {
           path: '/settings/connectconfigmanage/etc/port',
           name: 'SettingsConnectconfigmanageEtcView',
-          component: () => import('../views/Settings/Connectconfigmanage/Etc/PortPage.vue'),
+          component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner4.vue'),
           meta: { group: 'settings' },
            children: [
             {

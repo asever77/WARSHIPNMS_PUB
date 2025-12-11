@@ -568,7 +568,7 @@
           {{ lang.bulkGuide }}
         </p>
         <a href="/download/connector-bulk-template.cfg" download class="ui-link-underline"
-          >{{ `${lang.bulkTemplate}.cfg` }}</a
+          >연결단자함일괄등록양식.cfg</a
         >
       </div>
     </div>

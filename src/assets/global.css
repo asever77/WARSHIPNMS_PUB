@@ -353,6 +353,7 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
   justify-content: flex-end;
   width: 100%;
   position: relative;
+  margin-bottom: 1rem;;
 }
 .tab-inner::before {
   content:"";

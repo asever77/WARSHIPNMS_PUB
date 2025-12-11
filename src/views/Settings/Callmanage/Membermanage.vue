@@ -10,8 +10,8 @@
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">전화번호</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`전화번호 ${lang.sortAll}`"></BButton>
+            <span class="ui-flex-1">{{ lang.filter1 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`{{ lang.filter1 }} ${lang.sortAll}`"></BButton>
           </div>
         </th>
         <td>
@@ -20,8 +20,8 @@
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">아이디</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterLocation} ${lang.sortAll}`"></BButton>
+            <span class="ui-flex-1">{{ lang.filter2 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filter2} ${lang.sortAll}`"></BButton>
           </div>
         </th>
         <td>
@@ -31,8 +31,8 @@
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">단말유형</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterRadioSilence} ${lang.sortAll}`"></BButton>
+            <span class="ui-flex-1">{{ lang.filter3 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filter3} ${lang.sortAll}`"></BButton>
           </div>
         </th>
         <td>
@@ -47,8 +47,8 @@
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">등록일</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
+            <span class="ui-flex-1">{{ lang.filter4 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filter4} ${lang.sortAll}`"></BButton>
           </div>
         </th>
         <td>
@@ -80,8 +80,6 @@
     <div class="search-base">
       <div class="search-base--form">
         <span class="search-total">{{ lang.totalLabel }}:15</span>
-        <span class="search-total">Online:36</span>
-        <span class="search-total">Offline:177</span>
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
@@ -105,7 +103,7 @@
       </div>
     </div>
     <div class="base-table">
-      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive @row-clicked="onRowClicked" data-type="clickable">
+      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive >
          <template #head(select)>
           <BFormCheckbox
             :indeterminate="isIndeterminate"
@@ -131,12 +129,12 @@
   </div>
 
   <div class="ui-btn-group">
-    <BButton class="blue28">{{ lang.btnRegister }}</BButton>
-    <BButton class="blue28">{{ lang.btnBulkRegister }}</BButton>
+    <BButton class="blue28" @click="modals.modalModify1.show = true">{{ lang.btnRegister }}</BButton>
+    <BButton class="blue28"  @click="modals.modalFileUpload.show = true">{{ lang.btnBulkRegister }}</BButton>
     <BButton class="gray28">{{ lang.btnDelete }}</BButton>
   </div>
 
-  <UiModal v-model="modals.modalModify1.show" :title="'점대점 연결 등록'" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
+  <UiModal v-model="modals.modalModify1.show" :title="lang.modalTitle1" type="modal" size="md" >
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -145,31 +143,35 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">피호출 사용자단말</th>
+            <th scope="row">{{ lang.modalth1 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :disabled="true"
-                :options="[
-                  { value: '1', text: '선택' },
-                ]"
-              />
+              <BFormInput class="ui-input" />
             </td>
           </tr>
           <tr>
-            <th scope="row">통화기능키 레이블</th>
+            <th scope="row">{{ lang.modalth2 }}</th>
             <td>
-              <BFormInput
-                class="ui-input"
-              />
+              <BFormInput class="ui-input" />
             </td>
           </tr>
           <tr>
-            <th scope="row">통화모드</th>
+            <th scope="row">{{ lang.modalth3 }}</th>
+            <td>
+              <BFormInput class="ui-input" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.modalth4 }}</th>
+            <td>
+              <BFormInput class="ui-input" />
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">{{ lang.modalth5 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
-                :disabled="true"
                 :options="[
                   { value: '1', text: 'PTT' },
                 ]"
@@ -177,45 +179,9 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">응답모드</th>
+            <th scope="row">{{ lang.modalth6 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                v-model="formData.answerMode"
-                :options="[
-                  { value: '1', text: '수동연결' },
-                ]"
-              />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">녹음제어</th>
-            <td>
-              <BFormSelect
-                class="ui-select"
-                v-model="formData.recordControl"
-                :options="[
-                  { value: '1', text: '자동녹음' },
-                ]"
-              />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">스피커 출력방향</th>
-            <td>
-              <div class="d-flex w100-2">
-                <BFormCheckbox value="1">왼쪽</BFormCheckbox>
-                <BFormCheckbox value="2">오른쪽</BFormCheckbox>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">호출알림</th>
-            <td>
-              <div class="d-flex w100-2">
-                <BFormCheckbox value="1">벨소리</BFormCheckbox>
-                <BFormCheckbox value="2">알림등</BFormCheckbox>
-              </div>
+              <BFormInput class="ui-input" />
             </td>
           </tr>
         </tbody>
@@ -226,92 +192,155 @@
       <BButton class="blue28">저장</BButton>
     </template>
   </UiModal>
+
+  <UiModal v-model="modals.modalFileUpload.show"
+    :title="lang.modalTitle2"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalFileUpload.show = false"
+  >
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width: 10rem" />
+          <col style="width: auto" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">{{ lang.fileRegister }}</th>
+            <td>
+              <BFormFile
+                class="ui-input"
+                v-model="formData.file"
+                :placeholder="lang.fileSelect"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="ui-flex py-4" data-direction="col" data-gap="20" data-item-align="center">
+        <p class="text-12-400">
+          {{ lang.bulkGuide }}
+        </p>
+        <a href="/download/connector-bulk-template.cfg" download class="ui-link-underline"
+          >가입자일괄등록양식.cfg</a
+        >
+      </div>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalFileUpload.show = false"
+        >{{ lang.btnCancel }}</BButton
+      >
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+    </template>
+  </UiModal>
 </template>
 
 <script setup>
-// 모달 폼 데이터 및 옵션 선언 (에러 방지)
-const formData = reactive({
-  deviceType: null,
-  model: null,
-});
-
 import { ref, onMounted, computed, watch, reactive } from 'vue'
 import G from '@/config/global.js'
 import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
-import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
+import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox, BFormFile } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
 
 const ko = {
   sortAll: '전체 정렬',
+
   searchLabel: '검색어',
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
   btnSearch: '조회',
-  filterDeviceName: '장치명',
-  filterRadioSilence: '무선침묵권한',
-  filterLocation: '위치(구역)',
-  filterStatus: '상태',
+
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
   btnDelete: '삭제',
+  btnCancel: '취소',
+  btnSave: '저장',
+
+  fileRegister: '가입자 파일등록',
+  fileSelect: '파일찾기',
+  bulkGuide: '다음 문서 양식을 다운받아 작성 후 일괄등록에 사용할 수 있습니다.',
+
+
+  filter1: '전화번호',
+  filter2: '아이디',
+  filter3: '단말유형',
+  filter4: '등록일',
+
   colSelect: '선택',
-  colNumber: 'No',
-  colLocation: '위치(구역)',
-  colDeviceName: '장치명',
-  colRadioSilence: '무선침묵',
-  colAlarmAuth: '경보권한',
-  colBroadcastAuth: '방송권한',
-  colMuteAuth: 'Mute권한',
-  colExtensionNo: '내선번호',
-  colStatus: '상태',
-  colIpAddress: 'IP Address',
-  colL2Switch: 'L2 스위치',
-  colSerial: 'Serial No',
-  thead1: '검색대상',
-  thead2: '검색어',
-  thead3: '무선침묵권한',
-  thead4: '상태',
+  colTh1: 'No',
+  colTh2: '장치명',
+  colTh3: 'I/F 유형',
+  colTh4: '카드#',
+  colTh5: '포트#',
+  colTh6: 'VoIP 가입자',
+  colTh7: '연결 장치',
+
+  modalTitle1: '무선링크연동장치 포트 연결정보 설정',
+  modalTitle2: '가입자 일괄등록',
+
+  modalth1: '전화번호',
+  modalth2: '아이디',
+  modalth3: '패스워드',
+  modalth4: '패스워드 확인',
+  modalth5: '단말유형',
+  modalth6: 'Description',
 }
 const en = {
   sortAll: '전체 정렬',
+
   searchLabel: '검색어',
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
   btnSearch: '조회',
-  filterDeviceName: '장치명',
-  filterRadioSilence: '무선침묵권한',
-  filterLocation: '위치(구역)',
-  filterStatus: '상태',
+
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
   btnDelete: '삭제',
+  btnCancel: '취소',
+  btnSave: '저장',
+
+  filter1: '전화번호',
+  filter2: '아이디',
+  filter3: '단말유형',
+  filter4: '등록일',
+
   colSelect: '선택',
-  colNumber: 'No',
-  colLocation: '위치(구역)',
-  colDeviceName: '장치명',
-  colRadioSilence: '무선침묵',
-  colAlarmAuth: '경보권한',
-  colBroadcastAuth: '방송권한',
-  colMuteAuth: 'Mute권한',
-  colExtensionNo: '내선번호',
-  colStatus: '상태',
-  colIpAddress: 'IP Address',
-  colL2Switch: 'L2 스위치',
-  colSerial: 'Serial No',
-  thead1: '검색대상',
-  thead2: '검색어',
-  thead3: '무선침묵권한',
-  thead4: '상태',
+  colTh1: 'No',
+  colTh2: '장치명',
+  colTh3: 'I/F 유형',
+  colTh4: '카드#',
+  colTh5: '포트#',
+  colTh6: 'VoIP 가입자',
+  colTh7: '연결 장치',
+
+  modalTitle1: '무선링크연동장치 포트 연결정보 설정',
+
+  modalth1: '전화번호',
+  modalth2: '아이디',
+  modalth3: '패스워드',
+  modalth4: '패스워드 확인',
+  modalth5: '단말유형',
+  modalth6: 'Description',
 }
 const lang = ref({})
 
 // 모달 상태
 const modals = reactive({
-  modalTerminalModify: { show: false },
-  modalPointSetting: { show: false },
   modalModify1: { show: false },
+  modalFileUpload: { show: false },
 })
 
+const formData = reactive({
+  deviceType: '',
+  model: '',
+  location: lang.value.locationRack,
+})
+const portDropdown = ref(null)
+const deviceTypeOptions = computed(() => [
+  { value: formData.deviceType, text: formData.deviceType },
+])
+const modelOptions = computed(() => [{ value: formData.model, text: formData.model }])
 
 // 폼 상태
 const searchWord = ref('')
@@ -325,9 +354,6 @@ const selectOptions = []
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(40))
 
-function onRowClicked(item) {
-  modals.modalTerminalModify.show = true;
-}
 function generateItems(n) {
   const arr = []
   for (let i = 1; i <= n; i++) {

@@ -486,7 +486,7 @@ const ko = {
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
   btnDelete: '삭제',
-  btnCancel: '최소',
+  btnCancel: '취소',
   btnSave: '저장',
   btnAdd: '추가',
 
@@ -560,7 +560,7 @@ const en = {
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
   btnDelete: '삭제',
-  btnCancel: '최소',
+  btnCancel: '취소',
   btnSave: '저장',
   btnAdd: '추가',
 
