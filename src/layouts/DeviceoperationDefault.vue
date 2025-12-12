@@ -24,19 +24,19 @@ import { useRouter } from "vue-router";
 import TabBase from '@/components/TabBase.vue';
 
 const ko = {
-  "title": "장치운영",
-  "firmwaremanage": "펌웨어관리",
-  "firmwareupgrade": "펌웨어업그레이드",
-  "devicecontrol": "장치제어",
-  "resultinquiry": "결과조회"
+  title: "장치운영",
+  firmwareManage: "펌웨어관리",
+  firmwareUpgrade: "펌웨어 업그레이드",
+  deviceControl: "장치제어",
+  resultInquiry: "장치제어 수행이력"
 };
 
 const en = {
-  "title": "Deviceoperation",
-  "firmwaremanage": "Firmwaremanage",
-  "firmwareupgrade": "Firmwareupgrade",
-  "devicecontrol": "Devicecontrol",
-  "resultinquiry": "Resultinquiry"
+  title: "장치운영",
+  firmwareManage: "펌웨어관리",
+  firmwareUpgrade: "펌웨어 업그레이드",
+  deviceControl: "장치제어",
+  resultInquiry: "장치제어 수행이력"
 };
 
 const lang = ref({});
@@ -47,10 +47,10 @@ const tabList = ref([]);
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
   tabList.value = [
-    { label: lang.value.firmwaremanage, path: '/deviceoperation/firmwaremanage' },
-    { label: lang.value.firmwareupgrade, path: '/deviceoperation/firmwareupgrade' },
-    { label: lang.value.devicecontrol, path: '/deviceoperation/devicecontrol' },
-    { label: lang.value.resultinquiry, path: '/deviceoperation/resultinquiry' }
+    { label: lang.value.firmwareManage, path: '/deviceoperation/firmwaremanage' },
+    { label: lang.value.firmwareUpgrade, path: '/deviceoperation/firmwareupgrade' },
+    { label: lang.value.deviceControl, path: '/deviceoperation/devicecontrol' },
+    { label: lang.value.resultInquiry, path: '/deviceoperation/resultinquiry' }
   ];
   selectedTab.value = router.currentRoute.value.path;
 });
