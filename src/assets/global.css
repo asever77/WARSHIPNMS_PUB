@@ -348,6 +348,10 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 .form-check {gap:.4rem;display:flex;align-items:center;margin-bottom:0}
 .w100-2 .form-check {flex:1}
 
+/* sub TAB */
+.sub-tab-inner {display:flex;justify-content:center;margin-bottom:2rem}
+
+/*
 .tab-inner {
   display: flex;
   justify-content: flex-end;
@@ -371,3 +375,4 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
   border:1px solid #ccc;
   border-bottom:none;
 }
+*/

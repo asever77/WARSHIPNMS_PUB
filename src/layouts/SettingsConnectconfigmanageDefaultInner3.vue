@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div class="tab-inner">
-      <TabBase :tabs="tabList" :selected="selectedTab" @select="onClickView" />
-    </div>
     <router-view />
   </div>
 </template>
@@ -11,7 +8,6 @@
 import { ref, onMounted } from "vue";
 import G from "@/config/global.js";
 import { useRouter } from "vue-router";
-import TabBase from '@/components/TabBase.vue';
 
 const ko = {
   menu1 : "무선장치 설정",

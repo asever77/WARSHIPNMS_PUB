@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="tab-inner">
-      <TabBase :tabs="tabList" :selected="selectedTab" @select="onClickView" />
+    <div class="sub-tab-inner">
+      <TabBase class="sub-tab" :tabs="tabList" :selected="selectedTab" @select="onClickView" />
     </div>
     <router-view />
   </div>

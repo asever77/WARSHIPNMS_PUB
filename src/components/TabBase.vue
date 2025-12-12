@@ -30,11 +30,34 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .tab-base {
-  display: flex;
+  display:flex;
   gap:1rem;
   height: 3rem;
+  &.sub-tab {
+    height:auto;
+    padding:.4rem;
+    border-radius:99em;
+    gap:.4rem;
+    justify-content:center;
+    background-color:var(--color-secondary-blue);
+    [role="tab"] {
+      border-radius:99em;
+      background-color:transparent;
+      color:rgba(255,255,255,.7);
+      min-width:auto;
+      padding:0 2rem;
+      height:3rem;
+      font-weight:500;
+    }
+    .button.is-selected,
+    button[aria-selected="true"] {
+      background-color:#fff;
+      color:var(--color-secondary-blue);
+      font-weight:800;
+    }
+  }
 }
 .tab-base [role="tab"] {
   box-sizing: border-box;
@@ -56,5 +79,4 @@ export default {
   background-color: #fff;
   color: #000;
 }
-
 </style>

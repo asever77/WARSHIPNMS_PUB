@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div class="tab-inner">
-      <TabBase :tabs="tabList" :selected="selectedTab" @select="onClickView" />
-    </div>
     <router-view />
   </div>
 </template>
@@ -14,8 +11,7 @@ import { useRouter } from "vue-router";
 import TabBase from '@/components/TabBase.vue';
 
 const ko = {
-  menu1 : "서비스 설정",
-  menu2 : "포트 연결정보 설정"
+
 };
 
 const en = {
