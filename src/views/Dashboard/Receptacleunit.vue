@@ -15,11 +15,7 @@
           </div>
         </th>
         <td>
-          <BFormSelect
-            id="device-type"
-            class="ui-select"
-            :options="selectOptions"
-          ></BFormSelect>
+          <BFormInput id="search-id" class="ui-input" v-model="filterText" placeholder=""></BFormInput>
         </td>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
@@ -43,13 +39,19 @@
           </div>
         </th>
         <td>
-          <BFormInput id="search-word" class="ui-input" v-model="filterText" placeholder=""></BFormInput>
+          <BFormInput id="search-area" class="ui-input" v-model="filterText2" placeholder=""></BFormInput>
         </td>
         <th scope="row">
           {{ lang.filterStatus }}
           <BButton class="btn-sort ui-shrink-0" aria-sort="descending" :aria-label="`${lang.filterStatus} ${lang.sortAll}`"></BButton>
         </th>
-        <td></td>
+        <td>
+          <BFormSelect
+            id="device-type"
+            class="ui-select"
+            :options="selectOptions"
+          ></BFormSelect>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -172,6 +174,7 @@ const en = {
 
 const lang = ref({})
 const filterText = ref('')
+const filterText2 = ref('')
 
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(40))

@@ -19,12 +19,7 @@
           </div>
         </th>
         <td>
-          <BFormSelect
-            id="device-type"
-            class="ui-select"
-            v-model="deviceType"
-            :options="deviceTypeOptions"
-          ></BFormSelect>
+          <BFormInput id="search-code" class="ui-input" v-model="filterText1" placeholder=""></BFormInput>
         </td>
 
         <th scope="row">
@@ -38,12 +33,7 @@
           </div>
         </th>
         <td>
-          <BFormSelect
-            id="search-target"
-            class="ui-select"
-            v-model="searchTarget"
-            :options="searchTargetOptions"
-          ></BFormSelect>
+          <BFormInput id="search-name" class="ui-input" v-model="filterText2" placeholder=""></BFormInput>
         </td>
       </tr>
       <tr>
@@ -58,12 +48,7 @@
           </div>
         </th>
         <td>
-          <BFormSelect
-            id="search-target"
-            class="ui-select"
-            v-model="searchTarget"
-            :options="searchTargetOptions"
-          ></BFormSelect>
+          <BFormInput id="search-area" class="ui-input" v-model="filterText3" placeholder=""></BFormInput>
         </td>
 
         <th scope="row">
@@ -101,7 +86,6 @@
             class="ui-flex ui-data-box"
             data-item-align="center"
             data-gap="4"
-            style="width: 40rem"
           >
             <BFormInput
               id="reg-date-start"
@@ -138,8 +122,8 @@
         <BFormSelect
           id="search-target"
           class="ui-select-28"
-          v-model="searchTarget"
-          :options="searchTargetOptions"
+          v-model="deviceType"
+          :options="deviceTypeOptions"
         ></BFormSelect>
 
         <BFormSelect
@@ -194,9 +178,13 @@ const lang = ref({})
 const regDateStart = ref('')
 const regDateEnd = ref('')
 
+const filterText1 = ref('')
+const filterText2 = ref('')
+const filterText3 = ref('')
+
 // 셀렉트 상태
-const deviceType = ref(null)
-const searchTarget = ref(null)
+const deviceType = ref('기본정보')
+const searchTarget = ref('전체')
 
 const ko = {
   thead1: '알림코드',
@@ -229,8 +217,7 @@ const en = {
 
 // 장치 유형 옵션
 const deviceTypeOptions = computed(() => [
-  { value: null, text: lang.value.optionSelect ?? '' },
-  { value: '라우터', text: '라우터' },
+  { value: '기본정보', text: '기본정보' },
   { value: '스위치', text: '스위치' },
   { value: '무전기', text: '무전기' },
   { value: '중계기', text: '중계기' },
@@ -238,8 +225,7 @@ const deviceTypeOptions = computed(() => [
 
 // 검색 대상 옵션
 const searchTargetOptions = computed(() => [
-  { value: null, text: lang.value.optionSelect ?? '' },
-  { value: '위치', text: '위치' },
+  { value: '전체', text: '전체' },
   { value: '장치명', text: '장치명' },
   { value: '시리얼번호', text: '시리얼번호' },
 ])
