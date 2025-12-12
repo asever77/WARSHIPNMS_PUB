@@ -1,5 +1,5 @@
 <template>
-  <div class="base-wrap mt-20">
+  <div class="base-wrap">
     <div class="search-base">
       <div class="search-base--form">
         <span class="search-total">{{ lang.totalLabel }}:15</span>
