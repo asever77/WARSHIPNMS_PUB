@@ -232,11 +232,10 @@ const en = {
   colTh3: '사용자',
   colTh4: '장치 유형',
   colTh5: '위치',
-  colTh6: 'Caller',
-  colTh7: '장치명',
-  colTh8: '작업내용',
-  colTh9: '발생일시',
-  colTh10: '장치 관리자',
+  colTh6: '장치명',
+  colTh7: '작업내용',
+  colTh8: '발생일시',
+  colTh9: '장치 관리자',
 }
 
 const lang = ref({})
