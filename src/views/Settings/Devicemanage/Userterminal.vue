@@ -95,6 +95,12 @@
           </div>
         </BFormGroup>
         <BFormSelect
+          id="search-target"
+          class="ui-select-28"
+          v-model="searchType"
+          :options="searchTypeOptions"
+        ></BFormSelect>
+        <BFormSelect
           id="per-page"
           class="ui-select-28 w-60"
           v-model="perPage"
@@ -347,9 +353,13 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalTerminalModify.show = false">{{ lang.btnCancel }}</BButton>
-      <BButton class="blue28">{{ lang.btnSave }}</BButton>
-      <BButton class="blue28 footer-right-btn"  @click="modals.modalPointSetting.show = true">{{ lang.btnBulkRegister }}</BButton>
+      <div class="ui-flex ui-w-full" data-gap="16">
+        <BButton class="navy28"  @click="modals.modalPointSetting.show = true">{{ lang.btnSetting }}</BButton>
+        <div class="ml-auto ui-flex" data-gap="10">
+          <BButton class="gray28" @click="modals.modalTerminalModify.show = false">{{ lang.btnCancel }}</BButton>
+          <BButton class="blue28">{{ lang.btnSave }}</BButton>
+        </div>
+      </div>
     </template>
   </UiModal>
 
@@ -471,6 +481,14 @@ import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
 import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
 
+const searchType = ref('기본정보')
+const searchTypeOptions = computed(() => [
+  { value: '기본정보', text: '기본정보' },
+  { value: '스위치', text: '스위치' },
+  { value: '무전기', text: '무전기' },
+  { value: '중계기', text: '중계기' },
+])
+
 const ko = {
   sortAll: '전체 정렬',
   searchLabel: '검색어',
@@ -489,6 +507,7 @@ const ko = {
   btnCancel: '취소',
   btnSave: '저장',
   btnAdd: '추가',
+  btnSetting: '통화기능키 설정 ',
 
   colSelect: '선택',
   colNumber: 'No',
@@ -522,23 +541,24 @@ const ko = {
   modalth9: '점대점',
   modalth10: '가입자정보 (내선번호)',
   modalth11: '회의통화',
-  modalth12: '그룹통화',
-  modalth13: '무선침묵 설정',
-  modalth14: '자동연결 대기시간(초)',
-  modalth15: 'L2 스위치',
-  modalth16: '무선채널 최대할당 개수',
-  modalth17: '경보권한',
-  modalth18: '방송권한',
-  modalth19: 'Muting-Relay 기능',
-  modalth20: '모델명',
+  modalth12: '무선침묵 설정',
+  modalth13: '그룹통화',
+  modalth14: '위치',
+  modalth15: '자동연결 대기시간(초)',
+  modalth16: 'L2 스위치',
+  modalth17: '무선채널 최대할당 개수',
+  modalth18: '경보권한',
+  modalth19: '방송권한',
+  modalth20: 'Muting-Relay 기능',
+  modalth21: '모델명',
 
-  modalth21: '피호출 사용자단말',
-  modalth22: '통화기능키 레이블',
-  modalth23: '통화모드',
-  modalth24: '응답모드',
-  modalth25: '녹음제어',
-  modalth26: '스피커 출력방향',
-  modalth27: '호출알림',
+  modalth22: '피호출 사용자단말',
+  modalth23: '통화기능키 레이블',
+  modalth24: '통화모드',
+  modalth25: '응답모드',
+  modalth26: '녹음제어',
+  modalth27: '스피커 출력방향',
+  modalth28: '호출알림',
 
   checkbox1: '왼쪽',
   checkbox2: '오른쪽',

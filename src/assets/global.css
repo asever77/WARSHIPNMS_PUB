@@ -231,14 +231,14 @@ td.yellow{color:#353535 !important; background-color:#fbef4c !important;}
 .search-base {display:flex;width:100%;gap:2rem;align-items:center;justify-content:space-between;}
 .search-base--form {display:flex;align-items:center;gap:2rem;}
 .search-total {font-size:1.6rem;font-weight:700;color:var(--color-font-primary)}
-.search-base--btns {display:flex;align-items:center;gap:1rem;}
+.search-base--btns {display:flex;align-items:center;gap:.4rem;}
 .search-base .b-form-group {display:flex;align-items:center;gap:1rem;}
 .search-base .form-label {color:#627582;font-size:1.2rem;font-weight:700;white-space:nowrap;margin-bottom:0;}
 .search-base .form-select,
 .search-base .form-control{min-width:15rem;}
 .search-base .form-select.w-60 {min-width:6rem;}
 .search-base-desc {font-size:1.3rem;color:var(--color-primary);font-weight:700;}
-.ui-search-with-btn {position:relative;margin-right:-.6rem}
+.ui-search-with-btn {position:relative;}
 .btn-search-icon {position:absolute;top:0;right:0;width:2.8rem;height:100%;background:url("@/assets/images/icon/icon-aspect-sh.svg") no-repeat 50% 50%;background-size:contain;}
 .base-table thead th .form-check-input,
 .base-table thead th .form-check-input[type=checkbox]:indeterminate{background-color:transparent;}
