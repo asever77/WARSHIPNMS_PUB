@@ -88,6 +88,12 @@
           </div>
         </BFormGroup>
         <BFormSelect
+          id="search-target"
+          class="ui-select-28"
+          v-model="searchType"
+          :options="searchTypeOptions"
+        ></BFormSelect>
+        <BFormSelect
           id="per-page"
           class="ui-select-28 w-60"
           v-model="perPage"
@@ -153,9 +159,9 @@
                 ]"
               />
             </td>
-            <th scope="row">{{ lang.modalth2 }}</th>
+            <th scope="row">{{ lang.modalth8 || '헤드셋볼륨' }}</th>
             <td>
-              <BFormInput type="number" value="192.239.12.2" />
+              <BFormInput type="number" />
             </td>
           </tr>
 
@@ -164,9 +170,9 @@
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">{{ lang.modalth4 }}</th>
+            <th scope="row">{{ lang.modalth10 }}</th>
             <td>
-              <BFormInput type="number" value="255.255.255.0" />
+              <BFormInput type="number" />
             </td>
           </tr>
 
@@ -175,10 +181,8 @@
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">{{ lang.modalth6 }}</th>
-            <td>
-              <BFormInput type="number" value="192.239.12.1" />
-            </td>
+            <th scope="row"></th>
+            <td></td>
           </tr>
 
           <tr>
@@ -186,10 +190,8 @@
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">{{ lang.modalth8 || '헤드셋볼륨' }}</th>
-            <td>
-              <BFormInput type="number" />
-            </td>
+            <th scope="row"></th>
+            <td></td>
           </tr>
 
           <tr>
@@ -197,10 +199,8 @@
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">{{ lang.modalth10 }}</th>
-            <td>
-              <BFormInput type="number" />
-            </td>
+            <th scope="row"></th>
+            <td></td>
           </tr>
 
           <tr>
@@ -342,47 +342,25 @@ const en = {
   colIpAddress: 'IP Address',
   colL2Switch: 'L2 스위치',
   colSerial: 'Serial No',
-  thead1: '검색대상',
-  thead2: '검색어',
-  thead3: '무선침묵권한',
+
+  thead1: '장치명',
+  thead2: '모델명',
+  thead3: '위치(구역)',
   thead4: '상태',
-  modalTitle1: '사용자단말 정보 수정',
-  modalTitle2: '점대점 통화',
-  modalTitle3: '점대점 연결 등록',
+  modalTitle1: '리셉터클유닛 등록',
 
   modalth1: '모델명',
-  modalth2: '스피커볼륨',
+  modalth2: 'IP Address',
   modalth3: '장치명',
-  modalth4: '헤드셋볼륨',
+  modalth4: 'Subnet Mask',
   modalth5: '설명/비고',
-  modalth6: '화면밝기',
+  modalth6: 'Default Gateway',
   modalth7: '시리얼 번호',
-  modalth8: '벨소리',
-  modalth9: '점대점',
-  modalth10: '가입자정보 (내선번호)',
-  modalth11: '회의통화',
-  modalth12: '그룹통화',
-  modalth13: '무선침묵 설정',
-  modalth14: '자동연결 대기시간(초)',
-  modalth15: 'L2 스위치',
-  modalth16: '무선채널 최대할당 개수',
-  modalth17: '경보권한',
-  modalth18: '방송권한',
-  modalth19: 'Muting-Relay 기능',
-  modalth20: '모델명',
-
-  modalth21: '피호출 사용자단말',
-  modalth22: '통화기능키 레이블',
-  modalth23: '통화모드',
-  modalth24: '응답모드',
-  modalth25: '녹음제어',
-  modalth26: '스피커 출력방향',
-  modalth27: '호출알림',
-
-  checkbox1: '왼쪽',
-  checkbox2: '오른쪽',
-  checkbox3: '벨소리',
-  checkbox4: '알림등',
+  modalth8: '헤드셋 볼륨',
+  modalth9: '가입자정보 (내선번호)',
+  modalth10: '자동연결 대기시간(초)',
+  modalth11: '위치',
+  modalth12: 'L2 스위치',
 }
 const lang = ref({})
 
@@ -401,6 +379,13 @@ const deviceType = ref(null)
 const searchTarget = ref(null)
 const selectOptions = []
 
+const searchType = ref('기본정보')
+const searchTypeOptions = computed(() => [
+  { value: '기본정보', text: '기본정보' },
+  { value: '스위치', text: '스위치' },
+  { value: '무전기', text: '무전기' },
+  { value: '중계기', text: '중계기' },
+])
 
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(40))
