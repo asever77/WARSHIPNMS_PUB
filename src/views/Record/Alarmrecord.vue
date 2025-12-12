@@ -125,6 +125,17 @@
         responsive
         data-type="clickable"
       >
+        <template #head(select)>
+          <BFormCheckbox
+            :indeterminate="isIndeterminate"
+            :model-value="isAllSelected"
+            @update:modelValue="toggleSelectAll"
+            aria-label="전체 선택/해제"
+          />
+        </template>
+        <template #cell(select)="data">
+          <BFormCheckbox v-model="selectedIds" :value="data.item.id" />
+        </template>
       </BTable>
 
       <div class="d-flex justify-content-center mt-4">
@@ -143,7 +154,7 @@
 import { ref, onMounted, computed, watch, reactive } from 'vue'
 import G from '@/config/global.js'
 import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
-import { BButton, BFormGroup, BPagination, BTable } from 'bootstrap-vue-next'
+import { BButton, BFormCheckbox, BFormGroup, BPagination, BTable } from 'bootstrap-vue-next'
 
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(4))
@@ -152,7 +163,7 @@ function generateItems(n) {
   for (let i = 1; i <= n; i++) {
     arr.push({
       id: i,
-      th1: String(i),
+      select: '',
       th2: 'A0001',
       th3: 'LINK FAIL ALARM',
       th4: '88-856K 12335',
@@ -166,7 +177,7 @@ function generateItems(n) {
   return arr
 }
 const fields = computed(() => [
-  { key: 'th1', label: lang.value.colTh1, thStyle: { width: '4rem' } },
+  { key: 'select', label: lang.value.colTh1, thStyle: { width: '4rem' } },
   { key: 'th2', label: lang.value.colTh2, thStyle: { width: '6rem' } },
   { key: 'th3', label: lang.value.colTh3, thStyle: { width: '13rem' }, tdClass: 'ta-l' },
   { key: 'th4', label: lang.value.colTh4, thStyle: { width: '12rem' } },
@@ -176,6 +187,7 @@ const fields = computed(() => [
   { key: 'th8', label: lang.value.colTh8, thStyle: { width: '13.6rem' } },
   { key: 'th9', label: lang.value.colTh9, thStyle: { width: 'auto' }, tdClass: 'ta-l' },
 ])
+
 
 const filterText = ref('')
 const perPageOptions = [
@@ -216,8 +228,8 @@ const ko = {
   colTh8: '발생일시',
   colTh9: 'AckInfo',
 
-  btn1:'DELETE',
-  btn2:'ACK',
+  btn1: 'DELETE',
+  btn2: 'ACK',
 }
 
 const en = {
@@ -239,8 +251,8 @@ const en = {
   colTh8: '발생일시',
   colTh9: 'AckInfo',
 
-  btn1:'DELETE',
-  btn2:'ACK',
+  btn1: 'DELETE',
+  btn2: 'ACK',
 }
 
 const lang = ref({})
