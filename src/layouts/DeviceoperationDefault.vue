@@ -25,7 +25,7 @@ import TabBase from '@/components/TabBase.vue';
 
 const ko = {
   title: "장치운영",
-  firmwareManage: "펌웨어관리",
+  firmwareManage: "펌웨어 관리",
   firmwareUpgrade: "펌웨어 업그레이드",
   deviceControl: "장치제어",
   resultInquiry: "장치제어 수행이력"
@@ -33,7 +33,7 @@ const ko = {
 
 const en = {
   title: "장치운영",
-  firmwareManage: "펌웨어관리",
+  firmwareManage: "펌웨어 관리",
   firmwareUpgrade: "펌웨어 업그레이드",
   deviceControl: "장치제어",
   resultInquiry: "장치제어 수행이력"
