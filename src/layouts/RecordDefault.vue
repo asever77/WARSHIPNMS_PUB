@@ -24,17 +24,17 @@ import { useRouter, useRoute } from "vue-router";
 import TabBase from '@/components/TabBase.vue';
 
 const ko = {
-  "title": "이력",
-  "callrecord": "Call이력",
-  "alarmrecord": "Alarm이력",
-  "changerecord": "변경이력"
+  title: "이력",
+  callRecord: "통화이력",
+  alarmRecord: "경보이력",
+  changeRecord: "변경이력"
 };
 
 const en = {
-  "title": "Record",
-  "callrecord": "Callrecord",
-  "alarmrecord": "Alarmrecord",
-  "changerecord": "Changerecord"
+  title: "이력",
+  callRecord: "통화이력",
+  alarmRecord: "경보이력",
+  changeRecord: "변경이력"
 };
 
 const lang = ref({});
@@ -46,9 +46,9 @@ const tabList = ref([]);
 onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
   tabList.value = [
-    { label: lang.value.callrecord, path: '/record/callrecord' },
-    { label: lang.value.alarmrecord, path: '/record/alarmrecord' },
-    { label: lang.value.changerecord, path: '/record/changerecord' }
+    { label: lang.value.callRecord, path: '/record/callrecord' },
+    { label: lang.value.alarmRecord, path: '/record/alarmrecord' },
+    { label: lang.value.changeRecord, path: '/record/changerecord' }
   ];
   selectedTab.value = route.path;
 });

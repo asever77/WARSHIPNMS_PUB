@@ -180,7 +180,7 @@ table .form-check-inline ~ .form-check-inline,
 .ui-w-full {width:100%}
 
 .ui-data-box {display:inline-flex}
-.ui-data-box .form-control[type="datetime-local"] {width:18rem}
+.ui-data-box .form-control[type="datetime-local"] {width:17rem}
 
 /* modal */
 .modal-h-full {height:calc(100vh - 12rem);padding-bottom:2rem}
@@ -209,7 +209,7 @@ td.yellow{color:#353535 !important; background-color:#fbef4c !important;}
 .base-table thead th {background-color:#001B30;height:3rem;padding:.4rem;color:#fff;font-size:1.2rem;font-weight:700;text-align:center;line-height:1.2;vertical-align:middle;}
 .base-table thead tr:first-child th:first-child {border-top-left-radius:.5rem;}
 .base-table thead tr:first-child th:last-child {border-top-right-radius:.5rem;}
-.base-table tbody td {font-size:1.2rem;color:#3E3E3E;text-align:center;min-height:3rem;padding:.4rem 1rem;}
+.base-table tbody td {font-size:1.2rem;color:#3E3E3E;text-align:center;min-height:3rem;padding:.4rem 1rem;word-break:break-all}
 .base-table tbody tr {transition:background-color .15s ease-in-out;}
 .base-table [data-type="clickable"] tbody tr:hover td{background-color:#F1F6F9;cursor:pointer;}
 .page-link {background-color:transparent;color:#3E3E3E;font-size:1.2rem;min-height:2rem;min-width:2rem;padding:0;border:0;line-height:1.6;}
