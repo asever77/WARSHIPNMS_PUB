@@ -126,7 +126,6 @@
       { id: nextId(), label: lang.callconnectconfig, path: '/callconnectconfig/pointtopoint', icon: 'nav3', dep1:'callconnectconfig' },
       // 교환기관리
       { id: nextId(), label: lang.exchangemanagement, popup: 'https://www.naver.com', icon: 'nav4'},
-
       {
         id: nextId(),
         label: lang.recordingmanagement,
@@ -137,8 +136,6 @@
           { id: nextId(), label: '음성녹음장치', popup: 'https://www.naver.com', dep1:'recording' },
         ]
       },
-
-
       { id: nextId(), label: lang.deviceoperation, path: '/deviceoperation/firmwaremanage', icon: 'nav6', dep1:'deviceoperation' },
       { id: nextId(), label: lang.documentmanage, path: '/documentmanage/manual', icon: 'nav7', dep1:'documentmanage' },
       { id: nextId(), label: lang.usermanage, path: '/usermanage/accountmanage', icon: 'nav8', dep1:'usermanage' },
