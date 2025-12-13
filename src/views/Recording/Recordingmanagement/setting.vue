@@ -6,34 +6,33 @@
       </div>
     </div>
     <div class="base-table">
-      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive @row-clicked="onRowClicked" data-type="clickable">
+      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive>
         <template #cell(th4)="{ item }">
-          <BFormCheckbox
-            v-model="item.th4"
-            switch
-            :inline="true"
-            :value="true"
-            :unchecked-value="false"
-            class="switch-checkbox"
-          >
-            <template #label>
-              <span>{{ item.th4 ? 'on' : 'off' }}</span>
-            </template>
-          </BFormCheckbox>
+          <div v-if="item.th4 !== null && item.th4 !== undefined" class="form-switch--wrap">
+            <BFormCheckbox
+              v-model="item.th4"
+              switch
+              :inline="true"
+              :value="true"
+              :unchecked-value="false"
+              class="switch-checkbox"
+            />
+            <span class="form-switch--label">{{ item.th4 ? 'on' : 'off' }}</span>
+          </div>
+          <div v-else>-</div>
         </template>
         <template #cell(th6)="{ item }">
-          <BFormCheckbox
-            v-model="item.th6"
-            switch
-            :inline="true"
-            :value="true"
-            :unchecked-value="false"
-            class="switch-checkbox"
-          >
-            <template #label>
-              <span>{{ item.th6 ? 'on' : 'off' }}</span>
-            </template>
-          </BFormCheckbox>
+          <div class="form-switch--wrap">
+            <BFormCheckbox
+              v-model="item.th6"
+              switch
+              :inline="true"
+              :value="true"
+              :unchecked-value="false"
+              class="switch-checkbox"
+            />
+            <span>{{ item.th6 ? 'on' : 'off' }}</span>
+          </div>
         </template>
       </BTable>
 
@@ -99,32 +98,22 @@ const lang = ref({})
 // =========================
 // [상태/폼/리스트 관리]
 // =========================
-const filterText = ref('') // 검색어
-const selectedIds = ref([]) // 선택된 행 id
 const currentPage = ref(1) // 현재 페이지
 const perPage = ref(10) // 페이지당 개수
-const perPageOptions = [ { value: 10, text: '10' }, { value: 15, text: '15' }, { value: 20, text: '20' } ]
 
-// 실제 데이터 연동 시 아래 부분을 교체하세요
-// 임시 샘플 데이터 생성 함수 (th4, th6은 체크박스용 boolean)
-function generateItems(n) {
-  const statuses = ['IDLE', 'BUSY']
-  const arr = []
-  for (let i = 1; i <= n; i++) {
-    const idx = (i - 1)
-    arr.push({
-      id: i,
-      th1: String(i),
-      th2: 'th2 내용',
-      th3: 'th3 내용',
-      th4: false,
-      th5: statuses[idx % statuses.length],
-      th6: false,
-    })
-  }
-  return arr
-}
-const items = ref(generateItems(40)) // 임시 데이터 40개
+// 샘플 데이터 (JSON 배열)
+const items = ref([
+  { id: 1, th1: '1', th2: 'th2 내용', th3: 'th3 내용', th4: null, th5: '-', th6: false },
+  { id: 2, th1: '2', th2: 'th2 내용', th3: 'th3 내용', th4: false, th5: '-', th6: false },
+  { id: 3, th1: '3', th2: 'th2 내용', th3: 'th3 내용', th4: true, th5: '-', th6: true },
+  { id: 4, th1: '4', th2: 'th2 내용', th3: 'th3 내용', th4: false, th5: 'BUSY', th6: false },
+  { id: 5, th1: '5', th2: 'th2 내용', th3: 'th3 내용', th4: null, th5: 'IDLE', th6: true },
+  { id: 6, th1: '6', th2: 'th2 내용', th3: 'th3 내용', th4: true, th5: 'BUSY', th6: false },
+  { id: 7, th1: '7', th2: 'th2 내용', th3: 'th3 내용', th4: false, th5: 'IDLE', th6: false },
+  { id: 8, th1: '8', th2: 'th2 내용', th3: 'th3 내용', th4: null, th5: 'BUSY', th6: true },
+  { id: 9, th1: '9', th2: 'th2 내용', th3: 'th3 내용', th4: true, th5: 'BUSY', th6: false },
+  { id: 10, th1: '10', th2: 'th2 내용', th3: 'th3 내용', th4: false, th5: 'BUSY', th6: true },
+])
 const fields = computed(() => [
   { key: 'th1', label: lang.value.colTh1, thStyle: { width: '6rem' } },
   { key: 'th2', label: lang.value.colTh2, thStyle: { width: '14rem' } },

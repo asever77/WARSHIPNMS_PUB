@@ -361,28 +361,14 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 /* sub TAB */
 .sub-tab-inner {display:flex;justify-content:center;margin-bottom:2rem}
 
-/*
-.tab-inner {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
+.form-switch--wrap{
   position: relative;
-  margin-bottom: 1rem;;
+  display: inline-flex;
+  align-items: center;
 }
-.tab-inner::before {
-  content:"";
-  position: absolute;
-  bottom:0;
-  display: block;
-  width: 100%;
-  border-bottom:1px solid #ccc;
-}
-.tab-inner .tab-base{
-  z-index: 1;
-  gap:.4rem !important;
-}
-.tab-inner .tab-base [role="tab"] {
-  border:1px solid #ccc;
-  border-bottom:none;
-}
-*/
+.form-switch{padding: 0; }
+.form-switch .form-check-input {margin: 0;width:4rem;; height: 2rem; cursor:pointer}
+.form-check-input:checked {background-color: #1dcd1d;border-color: #1dcd1d;}
+
+.thead-sticky .table-responsive{overflow: auto; position: relative;}
+.thead-sticky thead{position:sticky;top:0;z-index:2; }
