@@ -174,7 +174,7 @@
       <div class="port-link-LR">
         <div class="flex-1">
           <h3 class="port-link-title">{{ lang.left }}</h3>
-          <table class="table-type-a">
+          <table class="table-type-a zebra-stripes">
             <colgroup>
               <col style="width: 8rem" />
               <col style="width: 10rem" />
@@ -203,8 +203,9 @@
                         menu-class="p-3"
                         no-caret
                         ref="portDropdown"
+                        placement="right"
                       >
-                        <div class="d-flex flex-column gap-2 mb-3" @click.stop>
+                        <div class="dropOptionSelect" @click.stop>
                           <BFormCheckbox v-model="portMapping.l01" value="1"
                             >{{ lang.option1 }}</BFormCheckbox
                           >
@@ -240,7 +241,8 @@
                 <th scope="row">{{ lang.remark }}</th>
                 <td></td>
               </tr>
-
+            </tbody>
+            <tbody>
               <tr>
                 <th scope="row" rowspan="3">P02</th>
                 <th scope="row">포트레이블</th>
@@ -255,8 +257,63 @@
                         menu-class="p-3"
                         no-caret
                         ref="portDropdown"
+                        placement="right"
                       >
-                        <div class="d-flex flex-column gap-2 mb-3" @click.stop>
+                        <div class="dropOptionSelect" @click.stop>
+                          <BFormCheckbox v-model="portMapping.l02" value="1"
+                            >{{ lang.option1 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.l02" value="2"
+                            >{{ lang.option2 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.l02" value="3"
+                            >{{ lang.option3 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.l02" value="4"
+                            >{{ lang.option4 }}</BFormCheckbox
+                          >
+                        </div>
+                        <div class="ui-btn-group">
+                          <BButton class="gray24 min-w-0" @click="onCancelPortMapping"
+                            >{{ lang.btnCancel }}</BButton
+                          >
+                          <BButton class="blue24 min-w-0" @click="onConfirmPortMapping"
+                            >{{ lang.apply }}</BButton
+                          >
+                        </div>
+                      </BDropdown>
+                    </div>
+                    <div class="mapping-td--item">P6,P4</div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">{{ lang.connectedDevice }}</th>
+                <td @click="onConnectorDetail" style="cursor: pointer">OP43DATA(보안장비 TX #1)</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ lang.remark }}</th>
+                <td></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <th scope="row" rowspan="3">P02</th>
+                <th scope="row">포트레이블</th>
+                <td>OP43DATA(보안장비 TX #1)</td>
+                <td class="mapping-td" rowspan="3">
+                  <div class="mapping-td--wrap">
+                    <div class="mapping-td--item">
+                      <BDropdown
+                        text=""
+                        variant="outline-secondary"
+                        class="btn-portlink checked"
+                        menu-class="p-3"
+                        no-caret
+                        ref="portDropdown"
+                        placement="right"
+                      >
+                        <div class="dropOptionSelect" @click.stop>
                           <BFormCheckbox v-model="portMapping.l02" value="1"
                             >{{ lang.option1 }}</BFormCheckbox
                           >
@@ -297,7 +354,7 @@
         </div>
         <div class="flex-1">
           <h3 class="port-link-title">{{ lang.right }}</h3>
-          <table class="table-type-a">
+          <table class="table-type-a zebra-stripes">
             <colgroup>
               <col style="width: 10rem" />
               <col style="width: 8rem" />
@@ -323,8 +380,9 @@
                         menu-class="p-3"
                         no-caret
                         ref="portDropdown"
+                        placement="left"
                       >
-                        <div class="d-flex flex-column gap-2 mb-3" @click.stop>
+                        <div class="dropOptionSelect" @click.stop>
                           <BFormCheckbox v-model="portMapping.r01" value="1"
                             >{{ lang.option1 }}</BFormCheckbox
                           >
@@ -363,7 +421,8 @@
                 <th scope="row">{{ lang.remark }}</th>
                 <td></td>
               </tr>
-
+            </tbody>
+            <tbody>
               <tr>
                 <td class="mapping-td" rowspan="3">
                   <div class="mapping-td--wrap">
@@ -375,8 +434,75 @@
                         menu-class="p-3"
                         no-caret
                         ref="portDropdown"
+                        placement="left"
                       >
-                        <div class="d-flex flex-column gap-2 mb-3" @click.stop>
+                        <div class="dropOptionSelect" @click.stop>
+                          <BFormCheckbox v-model="portMapping.r02" value="1"
+                            >{{ lang.option1 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="2"
+                            >{{ lang.option2 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="3"
+                            >{{ lang.option3 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="4"
+                            >{{ lang.option4 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="5"
+                            >{{ lang.option5 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="6"
+                            >{{ lang.option6 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="7"
+                            >{{ lang.option7 }}</BFormCheckbox
+                          >
+                          <BFormCheckbox v-model="portMapping.r02" value="8"
+                            >{{ lang.option8 }}</BFormCheckbox
+                          >
+                        </div>
+                        <div class="ui-btn-group">
+                          <BButton class="gray24 min-w-0" @click="onCancelPortMapping"
+                            >{{ lang.btnCancel }}</BButton
+                          >
+                          <BButton class="blue24 min-w-0" @click="onConfirmPortMapping"
+                            >{{ lang.apply }}</BButton
+                          >
+                        </div>
+                      </BDropdown>
+                    </div>
+                    <div class="mapping-td--item"></div>
+                  </div>
+                </td>
+                <th scope="row" rowspan="3">P01</th>
+                <th scope="row">{{ lang.portLabel }}</th>
+                <td>OP43DATA(보안장비 TX #1)</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ lang.connectedDevice }}</th>
+                <td @click="onConnectorDetail" style="cursor: pointer">OP43DATA(보안장비 TX #1)</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ lang.remark }}</th>
+                <td></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td class="mapping-td" rowspan="3">
+                  <div class="mapping-td--wrap">
+                    <div class="mapping-td--item">
+                      <BDropdown
+                        text=""
+                        variant="outline-secondary"
+                        class="btn-portlink"
+                        menu-class="p-3"
+                        no-caret
+                        ref="portDropdown"
+                        placement="left"
+                      >
+                        <div class="dropOptionSelect" @click.stop>
                           <BFormCheckbox v-model="portMapping.r02" value="1"
                             >{{ lang.option1 }}</BFormCheckbox
                           >
@@ -475,16 +601,7 @@
               />
             </td>
           </tr>
-          <tr>
-            <th scope="row" colspan="2">{{ lang.deviceName }}</th>
-            <td>
-              <BFormSelect
-                class="ui-select"
-                v-model="formData.deviceName"
-                :options="deviceNameOptions"
-              />
-            </td>
-          </tr>
+
           <tr>
             <th scope="row" rowspan="3">{{ lang.connectedDevice }}</th>
             <th scope="row">{{ lang.deviceName }}</th>
@@ -519,12 +636,7 @@
               </div>
             </td>
           </tr>
-          <tr>
-            <th scope="row" colspan="2">{{ lang.model }}</th>
-            <td>
-              <BFormSelect class="ui-select" v-model="formData.model" :options="modelOptions" />
-            </td>
-          </tr>
+
         </tbody>
       </table>
     </div>

@@ -109,6 +109,11 @@ table .form-check-inline ~ .form-check-inline,
 
 /* table */
 .table-title-box {background-color:var(--color-primary);padding:.8rem 1rem;color:#fff;font-size:1.4rem;font-weight:700;}
+.table-type-a.zebra-stripes tbody:nth-child(odd) th,
+.table-type-a.zebra-stripes tbody:nth-child(odd) td {background-color:#E3EDF4;}
+.table-type-a.zebra-stripes tbody th,
+.table-type-a.zebra-stripes tbody td {background-color:#fff;}
+
 .table-type-a {border:1px solid #D4E1E8;width:100%;table-layout:fixed}
 .table-type-a thead th {background-color:var(--color-primary);color:#fff;text-align:center;font-size:1.2rem;font-weight:700;height:3rem;line-height:1.2;padding:.4rem}
 .table-type-a thead th ~ th {border-left:1px solid rgba(255,255,255,.3)}
@@ -372,3 +377,13 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 
 .thead-sticky .table-responsive{overflow: auto; position: relative;}
 .thead-sticky thead{position:sticky;top:0;z-index:2; }
+
+.dropOptionSelect {
+  display: flex;
+  flex-direction: column;
+  max-height: 8rem;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  gap:.4rem;
+  padding:.5rem 0;
+}
