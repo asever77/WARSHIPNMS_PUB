@@ -10,8 +10,8 @@
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.thead1 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.thead1 }} {{ lang.sortAll }}"></BButton>
+            <span class="ui-flex-1">{{ lang.filter1 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.filter1 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
@@ -26,8 +26,8 @@
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.thead2 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead2 }} {{ lang.sortAll }}"></BButton>
+            <span class="ui-flex-1">{{ lang.filter2 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.filter2 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
@@ -37,8 +37,8 @@
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.thead3 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead3 }} {{ lang.sortAll }}"></BButton>
+            <span class="ui-flex-1">{{ lang.filter3 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.filter3 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
@@ -53,8 +53,8 @@
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.thead4 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead4 }} {{ lang.sortAll }}"></BButton>
+            <span class="ui-flex-1">{{ lang.filter4 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.filter4 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
@@ -97,8 +97,6 @@
         <BFormSelect
           id="search-target"
           class="ui-select-28"
-          v-model="searchType"
-          :options="searchTypeOptions"
         ></BFormSelect>
         <BFormSelect
           id="per-page"
@@ -363,20 +361,86 @@
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalPointSetting.show" :title="'BRDG1 CAPTS'" type="modal" size="md" class="bg-type" @close-btn-click="modals.modalPointSetting.show = false">
-    <div class="ui-flex" data-direction="col" data-gap="8" style="padding-top: 0;">
-      <h2 class="layer-title-box">
-        <img src="@/assets/images/icon/icon-aspect-title-1.svg" alt="icon" />
-        {{ lang.modalTitle2 }}
-      </h2>
-      <div class="box-pp">
-        <div v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item">{{ btn }}</div>
-        <BButton class="box-pp--item" @click="openModify1">{{ lang.btnAdd }}</BButton>
-      </div>
+  <UiModal v-model="modals.modalPointSetting.show" :title="'BRDG1 CAPTS'" type="modal" size="lg" class="p0-type" @close-btn-click="modals.modalPointSetting.show = false">
+    <div class="ui-flex" data-direction="row" data-gap="8" style="padding-top: 0;">
+      <UiTabs id="tabs-group-2" type="userDevice">
+        <!-- 슬롯을 통해 BTab 컴포넌트들을 전달합니다. -->
+        <BTab active>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-1.svg" alt="icon" />
+            <span>{{ lang.ccTab1 }}</span>
+          </template>
+
+          <div class="box-pp">
+            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify1(btn, idx)">{{ btn }}</BButton>
+            <BButton class="box-pp--item add" @click="openModify1" aria-label="{{ lang.btnAdd }}"></BButton>
+          </div>
+        </BTab>
+        <BTab>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-2.svg" alt="icon" />
+            <span>{{ lang.ccTab2 }}</span>
+          </template>
+          <div class="box-pp">
+            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify2(btn, idx)">{{ btn }}</BButton>
+            <BButton class="box-pp--item add" @click="openModify2" aria-label="{{ lang.btnAdd }}"></BButton>
+          </div>
+        </BTab>
+        <BTab>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-3.svg" alt="icon" />
+            <span>{{ lang.ccTab3 }}</span>
+          </template>
+          <div class="box-pp">
+            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify3(btn, idx)">{{ btn }}</BButton>
+            <BButton class="box-pp--item add" @click="openModify3" aria-label="{{ lang.btnAdd }}"></BButton>
+          </div>
+        </BTab>
+        <BTab>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-4.svg" alt="icon" />
+            <span>{{ lang.ccTab4 }}</span>
+          </template>
+          <div class="box-pp">
+            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify4(btn, idx)">{{ btn }}</BButton>
+            <BButton class="box-pp--item add" @click="openModify4" aria-label="{{ lang.btnAdd }}"></BButton>
+          </div>
+        </BTab>
+        <BTab>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-5.svg" alt="icon" />
+            <span>{{ lang.ccTab5 }}</span>
+          </template>
+          <div class="box-pp">
+            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify5(btn, idx)">{{ btn }}</BButton>
+            <BButton class="box-pp--item add" @click="openModify5" aria-label="{{ lang.btnAdd }}"></BButton>
+          </div>
+        </BTab>
+        <BTab>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-6.svg" alt="icon" />
+            <span>{{ lang.ccTab6 }}</span>
+          </template>
+          <div class="box-pp">
+            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify6(btn, idx)">{{ btn }}</BButton>
+            <BButton class="box-pp--item add" @click="openModify6" aria-label="{{ lang.btnAdd }}"></BButton>
+          </div>
+        </BTab>
+        <BTab>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-7.svg" alt="icon" />
+            <span>{{ lang.ccTab7 }}</span>
+          </template>
+          <div class="box-pp">
+            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify7(btn, idx)">{{ btn }}</BButton>
+            <BButton class="box-pp--item add" @click="openModify7" aria-label="{{ lang.btnAdd }}"></BButton>
+          </div>
+        </BTab>
+      </UiTabs>
     </div>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify1.show" :title="lang.modalTitle3" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
+  <UiModal v-model="modals.modalModify1.show" :title="lang.ccTab1" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -385,63 +449,37 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">{{ lang.modalth21 }}</th>
+            <th scope="row">{{ lang.ccTh1_1 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :disabled="true"
-                :options="[
-                  { value: '1', text: '선택' },
-                ]"
-              />
+              <b>피호출 사용자단말명</b>
             </td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.modalth22 }}</th>
+            <th scope="row">{{ lang.ccTh1_2 }}</th>
             <td>
-              <BFormInput
-                class="ui-input"
-              />
+              <BFormInput class="ui-input" />
             </td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.modalth23 }}</th>
+            <th scope="row">{{ lang.ccTh1_3 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :disabled="true"
-                :options="[
-                  { value: '1', text: 'PTT' },
-                ]"
-              />
+              <BFormSelect disabled class="ui-select" :options="[{ value: '1', text: '선택' },]" />
             </td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.modalth24 }}</th>
+            <th scope="row">{{ lang.ccTh1_4 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                v-model="formData.answerMode"
-                :options="[
-                  { value: '1', text: '수동연결' },
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '선택' },]" />
             </td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.modalth25 }}</th>
+            <th scope="row">{{ lang.ccTh1_5 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                v-model="formData.recordControl"
-                :options="[
-                  { value: '1', text: '자동녹음' },
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '선택' },]" />
             </td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.modalth26 }}</th>
+            <th scope="row">{{ lang.ccTh1_6 }}</th>
             <td>
               <div class="d-flex w100-2">
                 <BFormCheckbox value="1">{{ lang.checkbox1 }}</BFormCheckbox>
@@ -450,7 +488,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.modalth27 }}</th>
+            <th scope="row">{{ lang.ccTh1_7 }}</th>
             <td>
               <div class="d-flex w100-2">
                 <BFormCheckbox value="1">{{ lang.checkbox3 }}</BFormCheckbox>
@@ -466,29 +504,304 @@
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
+
+  <UiModal v-model="modals.modalModify2.show" :title="lang.ccTab2" type="modal" size="md" @close-btn-click="modals.modalModify2.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:18rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">{{ lang.ccTh2_1 }}</th>
+            <td>
+              <b>회의통화명</b>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh2_2 }}</th>
+            <td>
+              <BFormInput class="ui-input" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh2_3 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' }, ]" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh2_4 }}</th>
+            <td>
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">{{ lang.checkbox5 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.checkbox6 }}</BFormCheckbox>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh2_5 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' }, ]" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh2_6 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' }, ]" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh2_7 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' }, ]" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh2_8 }}</th>
+            <td>
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">{{ lang.checkbox1 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.checkbox2 }}</BFormCheckbox>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh2_9 }}</th>
+            <td>
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">{{ lang.checkbox3 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.checkbox4 }}</BFormCheckbox>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalModify2.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+    </template>
+  </UiModal>
+
+  <UiModal v-model="modals.modalModify3.show" :title="lang.ccTab3" type="modal" size="md" @close-btn-click="modals.modalModify3.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:18rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">{{ lang.ccTh3_1 }}</th>
+            <td><b>그룹통화명</b></td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh3_2 }}</th>
+            <td>
+              <BFormInput class="ui-input" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh3_3 }}</th>
+            <td>
+              <BFormSelect class="ui-select mb-1" :disabled="true" :options="[ { value: '1', text: '선택' }, ]" />
+              <BFormCheckbox value="1">{{ lang.checkbox7 }}</BFormCheckbox>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh3_4 }}</th>
+            <td>
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">{{ lang.checkbox5 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.checkbox6 }}</BFormCheckbox>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh3_5 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh3_6 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh3_7 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh3_8 }}</th>
+            <td>
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">{{ lang.checkbox1 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.checkbox2 }}</BFormCheckbox>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh3_9 }}</th>
+            <td>
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">{{ lang.checkbox3 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.checkbox4 }}</BFormCheckbox>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalModify3.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+    </template>
+  </UiModal>
+
+  <UiModal v-model="modals.modalModify4.show" :title="lang.ccTab4" type="modal" size="md" @close-btn-click="modals.modalModify4.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:18rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">{{ lang.ccTh5_1 }}</th>
+            <td><b>항목명</b></td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh5_2 }}</th>
+            <td>
+              <BFormInput class="ui-input"  />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh5_3 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' },]" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalModify4.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+    </template>
+  </UiModal>
+
+  <UiModal v-model="modals.modalModify5.show" :title="lang.ccTab5" type="modal" size="md" @close-btn-click="modals.modalModify5.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:18rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">{{ lang.ccTh5_1 }}</th>
+            <td><b>항목명</b></td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh5_2 }}</th>
+            <td>
+              <BFormInput class="ui-input"  />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh5_3 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' },]" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalModify5.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+    </template>
+  </UiModal>
+
+  <UiModal v-model="modals.modalModify6.show" :title="lang.ccTab6" type="modal" size="md" @close-btn-click="modals.modalModify6.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:18rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">{{ lang.ccTh6_1 }}</th>
+            <td><b>경보명</b></td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh6_2 }}</th>
+            <td>
+              <BFormInput class="ui-input"  />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalModify6.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+    </template>
+  </UiModal>
+
+  <UiModal v-model="modals.modalModify7.show" :title="lang.ccTab7" type="modal" size="md" @close-btn-click="modals.modalModify7.show = false">
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width:18rem">
+          <col style="width:auto">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">{{ lang.ccTh7_1 }}</th>
+            <td><b>CCTV구역명</b></td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh7_2 }}</th>
+            <td>
+              <BFormInput class="ui-input"  />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <template #footer>
+      <BButton class="gray28" @click="modals.modalModify7.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
+    </template>
+  </UiModal>
 </template>
 
 <script setup>
-// 모달 폼 데이터 및 옵션 선언 (에러 방지)
-const formData = reactive({
-  deviceType: null,
-  model: null,
-});
-
-import { ref, onMounted, computed, watch, reactive } from 'vue'
+// =========================
+// [IMPORTS]
+// =========================
+// NOTE: 컴포넌트 이름은 multi-word로 권장됨. 실제 이름 변경 시 파일명, 라우터 등 전체 영향 주의
+import { ref, onMounted, computed, reactive } from 'vue'
 import G from '@/config/global.js'
-import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
-import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
+import { BFormInput, BFormSelect, BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next/components'
 import UiModal from '@/components/UiModal.vue'
+import { BTab } from 'bootstrap-vue-next'
+import UiTabs from '@/components/UiTabs.vue'
 
-const searchType = ref('기본정보')
-const searchTypeOptions = computed(() => [
-  { value: '기본정보', text: '기본정보' },
-  { value: '스위치', text: '스위치' },
-  { value: '무전기', text: '무전기' },
-  { value: '중계기', text: '중계기' },
-])
-
+// =========================
+// [언어/라벨 관리]
+// =========================
 const ko = {
   sortAll: '전체 정렬',
   searchLabel: '검색어',
@@ -496,10 +809,11 @@ const ko = {
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
   btnSearch: '조회',
-  filterDeviceName: '장치명',
-  filterRadioSilence: '무선침묵권한',
-  filterLocation: '위치(구역)',
-  filterStatus: '상태',
+
+  filter1: '검색대상',
+  filter2: '검색어',
+  filter3: '무선침묵권한',
+  filter4: '상태',
 
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
@@ -509,23 +823,19 @@ const ko = {
   btnAdd: '추가',
   btnSetting: '통화기능키 설정 ',
 
-  colSelect: '선택',
-  colNumber: 'No',
-  colLocation: '위치(구역)',
-  colDeviceName: '장치명',
-  colRadioSilence: '무선침묵',
-  colAlarmAuth: '경보권한',
-  colBroadcastAuth: '방송권한',
-  colMuteAuth: 'Mute권한',
-  colExtensionNo: '내선번호',
-  colStatus: '상태',
-  colIpAddress: 'IP Address',
-  colL2Switch: 'L2 스위치',
-  colSerial: 'Serial No',
-  thead1: '검색대상',
-  thead2: '검색어',
-  thead3: '무선침묵권한',
-  thead4: '상태',
+  colTh1: 'No',
+  colTh2: '위치(구역)',
+  colTh3: '장치명',
+  colTh4: '무선침묵',
+  colTh5: '경보권한',
+  colTh6: '방송권한',
+  colTh7: 'Mute권한',
+  colTh8: '내선번호',
+  colTh9: '상태',
+  colTh10: 'IP Address',
+  colTh11: 'L2 스위치',
+  colTh12: 'Serial No',
+
   modalTitle1: '사용자단말 정보 수정',
   modalTitle2: '점대점 통화',
   modalTitle3: '점대점 연결 등록',
@@ -552,130 +862,108 @@ const ko = {
   modalth20: 'Muting-Relay 기능',
   modalth21: '모델명',
 
-  modalth22: '피호출 사용자단말',
-  modalth23: '통화기능키 레이블',
-  modalth24: '통화모드',
-  modalth25: '응답모드',
-  modalth26: '녹음제어',
-  modalth27: '스피커 출력방향',
-  modalth28: '호출알림',
+  ccTab1: '점대점 통화',
+  ccTab2: '회의통화',
+  ccTab3: '그룹통화',
+  ccTab4: '무선통신기',
+  ccTab5: '방송장비',
+  ccTab6: '경보',
+  ccTab7: 'CCTV',
+  // 점대점
+  ccTh1_1: '피호출 사용자단말',
+  ccTh1_2: '통화기능키 레이블',
+  ccTh1_3: '통화모드',
+  ccTh1_4: '응답모드',
+  ccTh1_5: '녹음제어',
+  ccTh1_6: '스피커 출력방향',
+  ccTh1_7: '호출알림',
+  // 회의통화
+  ccTh2_1: '회의통화명',
+  ccTh2_2: '통화기능키 레이블',
+  ccTh2_3: '통화모드',
+  ccTh2_4: '호출권한',
+  ccTh2_5: '발언권한',
+  ccTh2_6: '응답모드',
+  ccTh2_7: '녹음제어',
+  ccTh2_8: '스피커 출력방향',
+  ccTh2_9: '호출알림',
+  // 그룹통화
+  ccTh3_1: '그룹통화명',
+  ccTh3_2: '통화기능키 레이블',
+  ccTh3_3: '통화모드',
+  ccTh3_4: '호출권한',
+  ccTh3_5: '발언권한',
+  ccTh3_6: '응답모드',
+  ccTh3_7: '녹음설정',
+  ccTh3_8: '스피커 출력방향',
+  ccTh3_9: '호출알림',
+  // 무선통신
+  ccTh4_1: '무선통신기명',
+  ccTh4_2: '통화기능키 레이블',
+  ccTh4_3: '통화모드',
+  ccTh4_4: '녹음설정',
+  ccTh4_5: '스피커 출력방향',
+  // 방송장비
+  ccTh5_1: '항목명',
+  ccTh5_2: '통화기능키 레이블',
+  ccTh5_3: '통화모드',
+  // 경보
+  ccTh6_1: '경보명',
+  ccTh6_2: '통화기능키 레이블',
+  // CCTV
+  ccTh7_1: 'CCTV구역명',
+  ccTh7_2: '통화기능키 레이블',
 
   checkbox1: '왼쪽',
   checkbox2: '오른쪽',
   checkbox3: '벨소리',
   checkbox4: '알림등',
+  checkbox5: '발신',
+  checkbox6: '착신',
+  checkbox7: '일방통화',
 }
-const en = {
-  sortAll: '전체 정렬',
-  searchLabel: '검색어',
-  searchSelect: '전체 선택/해제',
-  searchPlaceholder: '검색어 입력',
-  totalLabel: '전체',
-  btnSearch: '조회',
-  filterDeviceName: '장치명',
-  filterRadioSilence: '무선침묵권한',
-  filterLocation: '위치(구역)',
-  filterStatus: '상태',
-
-  btnRegister: '등록',
-  btnBulkRegister: '일괄등록',
-  btnDelete: '삭제',
-  btnCancel: '취소',
-  btnSave: '저장',
-  btnAdd: '추가',
-
-  colSelect: '선택',
-  colNumber: 'No',
-  colLocation: '위치(구역)',
-  colDeviceName: '장치명',
-  colRadioSilence: '무선침묵',
-  colAlarmAuth: '경보권한',
-  colBroadcastAuth: '방송권한',
-  colMuteAuth: 'Mute권한',
-  colExtensionNo: '내선번호',
-  colStatus: '상태',
-  colIpAddress: 'IP Address',
-  colL2Switch: 'L2 스위치',
-  colSerial: 'Serial No',
-  thead1: '검색대상',
-  thead2: '검색어',
-  thead3: '무선침묵권한',
-  thead4: '상태',
-  modalTitle1: '사용자단말 정보 수정',
-  modalTitle2: '점대점 통화',
-  modalTitle3: '점대점 연결 등록',
-
-  modalth1: '모델명',
-  modalth2: '스피커볼륨',
-  modalth3: '장치명',
-  modalth4: '헤드셋볼륨',
-  modalth5: '설명/비고',
-  modalth6: '화면밝기',
-  modalth7: '시리얼 번호',
-  modalth8: '벨소리',
-  modalth9: '점대점',
-  modalth10: '가입자정보 (내선번호)',
-  modalth11: '회의통화',
-  modalth12: '그룹통화',
-  modalth13: '무선침묵 설정',
-  modalth14: '자동연결 대기시간(초)',
-  modalth15: 'L2 스위치',
-  modalth16: '무선채널 최대할당 개수',
-  modalth17: '경보권한',
-  modalth18: '방송권한',
-  modalth19: 'Muting-Relay 기능',
-  modalth20: '모델명',
-
-  modalth21: '피호출 사용자단말',
-  modalth22: '통화기능키 레이블',
-  modalth23: '통화모드',
-  modalth24: '응답모드',
-  modalth25: '녹음제어',
-  modalth26: '스피커 출력방향',
-  modalth27: '호출알림',
-
-  checkbox1: '왼쪽',
-  checkbox2: '오른쪽',
-  checkbox3: '벨소리',
-  checkbox4: '알림등',
-}
+const en = {}
 const lang = ref({})
-
-// 모달 상태
-const modals = reactive({
-  modalTerminalModify: { show: false },
-  modalPointSetting: { show: false },
-  modalModify1: { show: false },
-})
-function openModify1() {
-  modals.modalModify1.show = true;
-}
 const ppButtons = [
   'HLCPTR CONTRC', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
   'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
   'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
-  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
-  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
-  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+  'HLCPTR CONTRM', 'HLCPTR CONTRM'
 ];
 
-// 폼 상태
-const searchWord = ref('')
-const filterText = ref('')
-const searchField = ref('')
-const searchText = ref('')
-const deviceType = ref(null)
-const searchTarget = ref(null)
-const selectOptions = []
+// =========================
+// [모달 상태 관리]
+// =========================
+const modals = reactive({
+  modalTerminalModify: { show: false },
+  modalPointSetting: { show: false },
+  modalModify1: { show: false },
+  modalModify2: { show: false },
+  modalModify3: { show: false },
+  modalModify4: { show: false },
+  modalModify5: { show: false },
+  modalModify6: { show: false },
+  modalModify7: { show: false },
+})
+function openModify1() { modals.modalModify1.show = true } // 점대점
+function openModify2() { modals.modalModify2.show = true } // 회의통화
+function openModify3() { modals.modalModify3.show = true } // 그룹통화
+function openModify4() { modals.modalModify4.show = true } // 무선통신기
+function openModify5() { modals.modalModify5.show = true } // 방송장비
+function openModify6() { modals.modalModify6.show = true } // 경보
+function openModify7() { modals.modalModify7.show = true } // CCTV
 
-// 장치 목록 샘플 데이터 40개 생성 (테스트용)
-const items = ref(generateItems(40))
+// =========================
+// [상태/폼/리스트 관리]
+// =========================
+const filterText = ref('') // 검색어
+const selectedIds = ref([]) // 선택된 행 id
+const currentPage = ref(1) // 현재 페이지
+const perPage = ref(10) // 페이지당 개수
+const perPageOptions = [ { value: 10, text: '10' }, { value: 15, text: '15' }, { value: 20, text: '20' } ]
 
-function onRowClicked() {
-  modals.modalTerminalModify.show = true;
-}
-
-// 샘플데이터 생성 함수
+// 실제 데이터 연동 시 아래 부분을 교체하세요
+// 임시 샘플 데이터 생성 함수
 function generateItems(n) {
   const statuses = ['정상', '정상(통화중)', '비정상']
   const arr = []
@@ -683,24 +971,48 @@ function generateItems(n) {
     const idx = (i - 1)
     arr.push({
       id: i,
-      number: String(i),
-      location: '위치내용',
-      deviceName: '장치명내용',
-      radioSilence: 'O',
-      alarmAuth:'O',
-      broadcastAuth: 'O',
-      muteAuth:'O',
-      extensionNo: `${3000 + i}`,
-      status: statuses[idx % statuses.length],
-      ipAddress: `192.168.${Math.floor(idx / 254) + 1}.${(idx % 254) + 1}`,
+      th1: String(i),
+      th2: '위치내용',
+      th3: '장치명내용',
+      th4: 'O',
+      th5: 'O',
+      th6: 'O',
+      th7: 'O',
+      th8: '3000',
+      th9: statuses[idx % statuses.length],
+      th10: '192.168.1.4',
     })
   }
   return arr
 }
+const items = ref(generateItems(40)) // 임시 데이터 40개
+const fields = computed(() => [
+  { key: 'select', label: '', thStyle: { width: '3rem' } },
+  { key: 'th1', label: lang.value.colTh1, thStyle: { width: '5rem' } },
+  { key: 'th2', label: lang.value.colTh2, thStyle: { width: 'auto' } },
+  { key: 'th3', label: lang.value.colTh3, thStyle: { width: 'auto' } },
+  { key: 'th4', label: lang.value.colTh4, thStyle: { width: '7rem' } },
+  { key: 'th5', label: lang.value.colTh5, thStyle: { width: '7rem' } },
+  { key: 'th6', label: lang.value.colTh6, thStyle: { width: '7rem' } },
+  { key: 'th7', label: lang.value.colTh7, thStyle: { width: '7rem' } },
+  { key: 'th8', label: lang.value.colTh8, thStyle: { width: '6rem' } },
+  {
+    key: 'th9',
+    label: lang.value.colTh9,
+    thStyle: { width: '9rem' },
+    tdClass: (value, key, item) => item.th9 === '비정상' ? 'red' : '',
+  },
+  { key: 'th10', label: lang.value.colTh10, thStyle: { width: '10rem' } },
+])
 
-const selectedIds = ref([])
+// 필터링/페이지네이션
+const filteredItems = computed(() => items.value)
+const paginatedItems = computed(() => {
+  const start = (currentPage.value - 1) * perPage.value
+  return filteredItems.value.slice(start, start + perPage.value)
+})
 
-// 헤더 체크박스 상태 (현재 페이지 기준)
+// 체크박스 전체선택/부분선택
 const isAllSelected = computed(() => {
   const pageIds = paginatedItems.value.map(i => i.id)
   if (pageIds.length === 0) return false
@@ -712,65 +1024,26 @@ const isIndeterminate = computed(() => {
   const selectedOnPage = pageIds.filter(id => selectedIds.value.includes(id)).length
   return selectedOnPage > 0 && selectedOnPage < pageIds.length
 })
-
 function toggleSelectAll(checked) {
   const pageIds = paginatedItems.value.map(i => i.id)
   if (checked) {
-    // 현재 페이지의 모든 행 선택(중복 제거)
     const set = new Set([...selectedIds.value, ...pageIds])
     selectedIds.value = Array.from(set)
   } else {
-    // 현재 페이지의 모든 행 선택 해제
     selectedIds.value = selectedIds.value.filter(id => !pageIds.includes(id))
   }
 }
 
-const fields = computed(() => [
-  { key: 'select', label: '', thStyle: { width: '3rem' } },
-  { key: 'number', label: lang.value.colNumber, thStyle: { width: '5rem' } },
-  { key: 'location', label: lang.value.colLocation, thStyle: { width: 'auto' } },
-  { key: 'deviceName', label: lang.value.colDeviceName, thStyle: { width: 'auto' } },
-  { key: 'radioSilence', label: lang.value.colRadioSilence, thStyle: { width: '7rem' } },
-  { key: 'alarmAuth', label: lang.value.colAlarmAuth, thStyle: { width: '7rem' } },
-  { key: 'broadcastAuth', label: lang.value.colBroadcastAuth, thStyle: { width: '7rem' } },
-  { key: 'muteAuth', label: lang.value.colMuteAuth, thStyle: { width: '7rem' } },
-  { key: 'extensionNo', label: lang.value.colExtensionNo, thStyle: { width: '6rem' } },
-  { key: 'status', label: lang.value.colStatus, thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'red' : '' },
-  { key: 'ipAddress', label: lang.value.colIpAddress, thStyle: { width: '10rem' } },
-]);
+// =========================
+// [UI 이벤트 핸들러]
+// =========================
+function onRowClicked() { modals.modalTerminalModify.show = true }
+function onFilter() { currentPage.value = 1 }
 
-const filteredItems = computed(() => {
-  return items.value.filter(item => {
-    const matchType = !searchField.value || item.location === searchField.value
-    const matchText = !searchText.value || (item.location && item.location.includes(searchText.value))
-    return matchType && matchText
-  })
-})
-
-const currentPage = ref(1)
-const perPage = ref(10)
-const perPageOptions = [
-  { value: 10, text: '10' },
-  { value: 15, text: '15' },
-  { value: 20, text: '20' },
-]
-const paginatedItems = computed(() => {
-  const start = (currentPage.value - 1) * perPage.value
-  return filteredItems.value.slice(start, start + perPage.value)
-})
-
-// 페이지당 개수 변경 시 첫 페이지로 이동
-watch(perPage, () => {
-  currentPage.value = 1
-})
-
-function onFilter() {
-  searchField.value = searchWord.value
-  searchText.value = filterText.value
-  currentPage.value = 1
-}
-
+// =========================
+// [초기화]
+// =========================
 onMounted(() => {
-  lang.value = (G.lang === "ko") ? ko : en;
+  lang.value = (G.lang === 'ko') ? ko : en
 })
 </script>

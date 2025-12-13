@@ -231,6 +231,18 @@ const onHidden = () => {
   padding: 2rem 2.6rem 2rem;
 }
 
+.base-modal .modal-sm {
+  max-width: 30rem;
+}
+.base-modal .modal-md {
+  max-width: 50rem;
+}
+.base-modal .modal-lg {
+  max-width: 70rem;
+}
+.base-modal .modal-xl {
+  max-width: 100rem;
+}
 .base-modal .modal-xlg {
   max-width: 120rem;
 }

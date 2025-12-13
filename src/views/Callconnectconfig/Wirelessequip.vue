@@ -27,19 +27,61 @@
     </table>
   </div>
 
-  <UiModal v-model="modals.modalPointSetting.show" :title="tableData.tbody[modals.modalPointSetting.rowIdx]" type="modal" size="md" @close-btn-click="modals.modalPointSetting.show = false">
-    <div class="ui-flex" data-direction="col" data-gap="8" style="padding-top: 0;">
-      <h2 class="layer-title-box">
-        <img src="@/assets/images/icon/icon-aspect-title-4.svg" alt="icon" />
-        무선통신기
-      </h2>
-      <div class="box-pp">
-        <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify(btn, idx)">{{ btn }}</BButton>
-      </div>
+  <UiModal v-model="modals.modalPointSetting.show" :title="'BRDG1 CAPTS'" type="modal" size="lg" class="p0-type" @close-btn-click="modals.modalPointSetting.show = false">
+    <div class="ui-flex" data-direction="row" data-gap="8" style="padding-top: 0;">
+      <UiTabs id="tabs-group-2" type="userDevice">
+        <!-- 슬롯을 통해 BTab 컴포넌트들을 전달합니다. -->
+        <BTab disabled>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-1.svg" alt="icon" />
+            <span>{{ lang.ccTab1 }}</span>
+          </template>
+        </BTab>
+        <BTab disabled>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-2.svg" alt="icon" />
+            <span>{{ lang.ccTab2 }}</span>
+          </template>
+        </BTab>
+        <BTab disabled>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-3.svg" alt="icon" />
+            <span>{{ lang.ccTab3 }}</span>
+          </template>
+        </BTab>
+        <BTab active>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-4.svg" alt="icon" />
+            <span>{{ lang.ccTab4 }}</span>
+          </template>
+          <div class="box-pp">
+            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify4(btn, idx)">{{ btn }}</BButton>
+            <BButton class="box-pp--item add" @click="openModify4" aria-label="{{ lang.btnAdd }}"></BButton>
+          </div>
+        </BTab>
+        <BTab disabled>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-5.svg" alt="icon" />
+            <span>{{ lang.ccTab5 }}</span>
+          </template>
+        </BTab>
+        <BTab disabled>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-6.svg" alt="icon" />
+            <span>{{ lang.ccTab6 }}</span>
+          </template>
+        </BTab>
+        <BTab disabled>
+          <template #title>
+            <img src="@/assets/images/icon/icon-aspect-title-7.svg" alt="icon" />
+            <span>{{ lang.ccTab7 }}</span>
+          </template>
+        </BTab>
+      </UiTabs>
     </div>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify.show" :title="lang.modalTitle" type="modal" size="md" @close-btn-click="modals.modalModify.show = false">
+  <UiModal v-model="modals.modalModify4.show" :title="lang.ccModal4" type="modal" size="md" @close-btn-click="modals.modalModify4.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -48,114 +90,156 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">{{ lang.deviceName }}</th>
+            <th scope="row">{{ lang.ccTh5_1 }}</th>
+            <td><b>항목명</b></td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh5_2 }}</th>
             <td>
-              {{ tableData.thead[selectedButton.colIdx] }}
+              <BFormInput class="ui-input"  />
             </td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.deviceLabel }}</th>
+            <th scope="row">{{ lang.ccTh5_3 }}</th>
             <td>
-              <BFormInput
-                class="ui-input"
-                placeholder=""
-                :model-value="tableData.thead[selectedButton.colIdx]"
-              />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">{{ lang.callMode }}</th>
-            <td>
-                <BFormSelect
-                  v-model="selectCallMode"
-                  class="ui-select"
-                  :disabled="true"
-                  :options="[
-                    { value: '1', text: 'PTT' },
-                  ]"
-                />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">녹음설정</th>
-            <td>
-                <BFormSelect
-                  v-model="selectRecordSetting"
-                  class="ui-select"
-                  :options="[
-                    { value: '1', text: '자동녹음' },
-                  ]"
-                />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">{{ lang.speakerDirection }}</th>
-            <td>
-              <div class="d-flex w100-2">
-                <BFormCheckbox value="1">왼쪽</BFormCheckbox>
-                <BFormCheckbox value="2">오른쪽</BFormCheckbox>
-              </div>
+              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' },]" />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <template #footer>
-      <div class="ui-flex ui-w-full px-26" data-gap="8" data-justify-align="center">
-        <BButton class="gray28" @click="modals.modalModify.show = false">{{ lang.cancel }}</BButton>
-        <BButton class="blue28">{{ lang.save }}</BButton>
-      </div>
+      <BButton class="gray28" @click="modals.modalModify4.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
+
 </template>
 
 <script setup>
-import { ref, reactive, computed } from "vue";
+  // =========================
+// [IMPORTS]
+// =========================
+// NOTE: 컴포넌트 이름은 multi-word로 권장됨. 실제 이름 변경 시 파일명, 라우터 등 전체 영향 주의
+import { ref, onMounted, computed, reactive } from 'vue'
 import G from "@/config/global.js";
-import UiModal from "@/components/UiModal.vue";
-import { BFormSelect, BButton, BFormCheckbox, BFormInput } from "bootstrap-vue-next";
+import { BFormInput, BFormSelect, BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next/components'
+import UiModal from '@/components/UiModal.vue'
+import { BTab } from 'bootstrap-vue-next'
+import UiTabs from '@/components/UiTabs.vue'
 
-// Select default values for all selects
-const selectCallMode = ref('1');
-const selectRecordSetting = ref('1');
+// =========================
+// [언어/라벨 관리]
+// =========================
+const ko = {
+  modalTitle: '점대점 통화 연결 수정',
 
-// 점대점 통화 버튼 데이터
+  btnCancel: '취소',
+  btnSave: '저장',
+  btnDelete: '삭제',
+
+  ccTab1: '점대점 통화',
+  ccTab2: '회의통화',
+  ccTab3: '그룹통화',
+  ccTab4: '무선통신기',
+  ccTab5: '방송장비',
+  ccTab6: '경보',
+  ccTab7: 'CCTV',
+
+  ccModal1: '점대점 통화 연결 수정',
+  ccModal2: '회의통화 연결 등록',
+  ccModal3: '그룹통화 연결 등록',
+  ccModal4: '무선통신기 연결 등록',
+  ccModal5: '방송장비 연결 등록',
+  ccModal6: '경보 연결 등록',
+  ccModal7: 'CCTV 연결 등록',
+  // 점대점
+  ccTh1_1: '피호출 사용자단말',
+  ccTh1_2: '통화기능키 레이블',
+  ccTh1_3: '통화모드',
+  ccTh1_4: '응답모드',
+  ccTh1_5: '녹음제어',
+  ccTh1_6: '스피커 출력방향',
+  ccTh1_7: '호출알림',
+  // 회의통화
+  ccTh2_1: '회의통화명',
+  ccTh2_2: '통화기능키 레이블',
+  ccTh2_3: '통화모드',
+  ccTh2_4: '호출권한',
+  ccTh2_5: '발언권한',
+  ccTh2_6: '응답모드',
+  ccTh2_7: '녹음제어',
+  ccTh2_8: '스피커 출력방향',
+  ccTh2_9: '호출알림',
+  // 그룹통화
+  ccTh3_1: '그룹통화명',
+  ccTh3_2: '통화기능키 레이블',
+  ccTh3_3: '통화모드',
+  ccTh3_4: '호출권한',
+  ccTh3_5: '발언권한',
+  ccTh3_6: '응답모드',
+  ccTh3_7: '녹음설정',
+  ccTh3_8: '스피커 출력방향',
+  ccTh3_9: '호출알림',
+  // 무선통신
+  ccTh4_1: '무선통신기명',
+  ccTh4_2: '통화기능키 레이블',
+  ccTh4_3: '통화모드',
+  ccTh4_4: '녹음설정',
+  ccTh4_5: '스피커 출력방향',
+  // 방송장비
+  ccTh5_1: '항목명',
+  ccTh5_2: '통화기능키 레이블',
+  ccTh5_3: '통화모드',
+  // 경보
+  ccTh6_1: '경보명',
+  ccTh6_2: '통화기능키 레이블',
+  // CCTV
+  ccTh7_1: 'CCTV구역명',
+  ccTh7_2: '통화기능키 레이블',
+
+  checkbox1: '왼쪽',
+  checkbox2: '오른쪽',
+  checkbox3: '벨소리',
+  checkbox4: '알림등',
+  checkbox5: '발신',
+  checkbox6: '착신',
+  checkbox7: '일방통화',
+};
+
+const en = {};
+const lang = ref({})
 const ppButtons = [
   'HLCPTR CONTRC', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
   'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
   'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
-  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
+  'HLCPTR CONTRM', 'HLCPTR CONTRM'
 ];
 
-const ko = {
-  modalTitle: '무선통신기 연결 수정',
-  deviceName: '무선통신기명',
-  deviceLabel: '통화기능키 레이블',
-  callMode: '통화모드',
-  speakerDirection: '스피커 출력방향',
-  cancel: '취소',
-  save: '저장',
-  delete: '삭제',
-};
-
-const en = {
-  modalTitle: '무선통신기 연결 수정',
-  deviceName: '무선통신기명',
-  deviceLabel: '통화기능키 레이블',
-  callMode: '통화모드',
-  speakerDirection: '스피커 출력방향',
-  cancel: '취소',
-  save: '저장',
-  delete: '삭제',
-};
-
-const lang = computed(() => (G.lang === "ko" ? ko : en));
-
+// =========================
+// [모달 상태 관리]
+// =========================
 const modals = reactive({
-  modalModify: { show: false },
   modalPointSetting: { show: false, rowIdx: null },
+  modalModify1: { show: false },
+  modalModify2: { show: false },
+  modalModify3: { show: false },
+  modalModify4: { show: false },
+  modalModify5: { show: false },
+  modalModify6: { show: false },
+  modalModify7: { show: false },
 });
+function openModify1() { modals.modalModify1.show = true } // 점대점
+function openModify2() { modals.modalModify2.show = true } // 회의통화
+function openModify3() { modals.modalModify3.show = true } // 그룹통화
+function openModify4() { modals.modalModify4.show = true } // 무선통신기
+function openModify5() { modals.modalModify5.show = true } // 방송장비
+function openModify6() { modals.modalModify6.show = true } // 경보
+function openModify7() { modals.modalModify7.show = true } // CCTV
 
+// =========================
+// [상태/폼/리스트 관리]
+// =========================
 const selectedButton = reactive({
   label: '',
   rowIdx: null,
@@ -192,10 +276,13 @@ function handleTdClick(rowIdx, colIdx) {
   selectedButton.colIdx = colIdx;
   modals.modalPointSetting.show = true;
 }
-function openModify(buttonLabel, colIdx) {
-  selectedButton.label = buttonLabel;
-  modals.modalModify.show = true;
-}
+
+// =========================
+// [초기화]
+// =========================
+onMounted(() => {
+  lang.value = (G.lang === 'ko') ? ko : en
+})
 </script>
 
 <style scoped>

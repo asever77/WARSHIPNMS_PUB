@@ -10,8 +10,8 @@
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.thead1 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.thead1 }} {{ lang.sortAll }}"></BButton>
+            <span class="ui-flex-1">{{ lang.filter1 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.filter1 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
@@ -20,8 +20,8 @@
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.thead2 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead2 }} {{ lang.sortAll }}"></BButton>
+            <span class="ui-flex-1">{{ lang.filter2 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.filter2 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
@@ -37,8 +37,8 @@
       <tr>
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.thead3 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead3 }} {{ lang.sortAll }}"></BButton>
+            <span class="ui-flex-1">{{ lang.filter3 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.filter3 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
@@ -47,8 +47,8 @@
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
-            <span class="ui-flex-1">{{ lang.thead4 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.thead4 }} {{ lang.sortAll }}"></BButton>
+            <span class="ui-flex-1">{{ lang.filter4 }}</span>
+            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.filter4 }} {{ lang.sortAll }}"></BButton>
           </div>
         </th>
         <td>
@@ -152,14 +152,9 @@
           <tr>
             <th scope="row">{{ lang.modalth1 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: 'MC700',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
             </td>
-            <th scope="row">{{ lang.modalth8 || '헤드셋볼륨' }}</th>
+            <th scope="row">{{ lang.modalth2 }}</th>
             <td>
               <BFormInput type="number" />
             </td>
@@ -170,14 +165,23 @@
             <td>
               <BFormInput type="text" />
             </td>
-            <th scope="row">{{ lang.modalth10 }}</th>
+            <th scope="row">{{ lang.modalth4 }}</th>
             <td>
-              <BFormInput type="number" />
+              <BFormInput type="tel" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalth5 }}</th>
+            <td>
+              <BFormInput type="text" />
+            </td>
+            <th scope="row"></th>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th scope="row">{{ lang.modalth6 }}</th>
             <td>
               <BFormInput type="text" />
             </td>
@@ -195,45 +199,26 @@
           </tr>
 
           <tr>
+            <th scope="row" rowspan="2">{{ lang.modalth8 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
+            </td>
+            <th scope="row"></th>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>
+              <BFormInput type="text" />
+            </td>
+            <th scope="row"></th>
+            <td></td>
+          </tr>
+
+          <tr>
             <th scope="row">{{ lang.modalth9 }}</th>
             <td>
-              <BFormInput type="text" />
-            </td>
-            <th scope="row"></th>
-            <td></td>
-          </tr>
-
-          <tr>
-            <th scope="row" rowspan="2">{{ lang.modalth11 }}</th>
-            <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: 'ON',}
-                ]"
-              />
-            </td>
-            <th scope="row"></th>
-            <td></td>
-          </tr>
-
-          <tr>
-            <td>
-              <BFormInput type="text" />
-            </td>
-            <th scope="row"></th>
-            <td></td>
-          </tr>
-
-          <tr>
-            <th scope="row">{{ lang.modalth12 }}</th>
-            <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: '무선통신기시스템',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
             </td>
             <th scope="row"></th>
             <td></td>
@@ -249,14 +234,19 @@
 </template>
 
 <script setup>
-// 모달 폼 데이터 및 옵션 선언 (에러 방지)
-
+// =========================
+// [IMPORTS]
+// =========================
+// NOTE: 컴포넌트 이름은 multi-word로 권장됨. 실제 이름 변경 시 파일명, 라우터 등 전체 영향 주의
 import { ref, onMounted, computed, watch, reactive } from 'vue'
 import G from '@/config/global.js'
 import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
 import { BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
 
+// =========================
+// [언어/라벨 관리]
+// =========================
 const ko = {
   sortAll: '전체 정렬',
   searchLabel: '검색어',
@@ -264,10 +254,11 @@ const ko = {
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
   btnSearch: '조회',
-  filterDeviceName: '장치명',
-  filterRadioSilence: '무선침묵권한',
-  filterLocation: '위치(구역)',
-  filterStatus: '상태',
+
+  filter1: '장치명',
+  filter2: '모델명',
+  filter3: '위치(구역)',
+  filter4: '상태',
 
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
@@ -277,119 +268,53 @@ const ko = {
   btnAdd: '추가',
 
   colSelect: '선택',
-  colNumber: 'No',
-  colLocation: '위치(구역)',
-  colDeviceName: '장치명',
-  colRadioSilence: '무선침묵',
-  colAlarmAuth: '경보권한',
-  colBroadcastAuth: '방송권한',
-  colMuteAuth: 'Mute권한',
-  colExtensionNo: '내선번호',
-  colStatus: '상태',
-  colIpAddress: 'IP Address',
-  colL2Switch: 'L2 스위치',
-  colSerial: 'Serial No',
+  colTh1: 'No',
+  colTh2: '위치(구역)',
+  colTh3: '장치명',
+  colTh4: '무선침묵',
+  colTh5: '경보권한',
+  colTh6: '방송권한',
+  colTh7: 'Mute권한',
+  colTh8: '내선번호',
+  colTh9: '상태',
+  colTh10: 'IP Address',
+  colTh11: 'L2 스위치',
+  colTh12: 'Serial No',
 
-  thead1: '장치명',
-  thead2: '모델명',
-  thead3: '위치(구역)',
-  thead4: '상태',
   modalTitle1: '리셉터클유닛 등록',
 
   modalth1: '모델명',
-  modalth2: 'IP Address',
+  modalth2: '헤드셋 볼륨',
   modalth3: '장치명',
-  modalth4: 'Subnet Mask',
+  modalth4: '자동연결 대기시간(초)',
   modalth5: '설명/비고',
-  modalth6: 'Default Gateway',
-  modalth7: '시리얼 번호',
-  modalth8: '헤드셋 볼륨',
-  modalth9: '가입자정보 (내선번호)',
-  modalth10: '자동연결 대기시간(초)',
-  modalth11: '위치',
-  modalth12: 'L2 스위치',
+  modalth6: '시리얼 번호',
+  modalth7: '가입자정보 (내선번호)',
+  modalth8: '위치',
+  modalth9: 'L2 스위치',
 
 }
-const en = {
-  sortAll: '전체 정렬',
-  searchLabel: '검색어',
-  searchSelect: '전체 선택/해제',
-  searchPlaceholder: '검색어 입력',
-  totalLabel: '전체',
-  btnSearch: '조회',
-  filterDeviceName: '장치명',
-  filterRadioSilence: '무선침묵권한',
-  filterLocation: '위치(구역)',
-  filterStatus: '상태',
-
-  btnRegister: '등록',
-  btnBulkRegister: '일괄등록',
-  btnDelete: '삭제',
-  btnCancel: '취소',
-  btnSave: '저장',
-  btnAdd: '추가',
-
-  colSelect: '선택',
-  colNumber: 'No',
-  colLocation: '위치(구역)',
-  colDeviceName: '장치명',
-  colRadioSilence: '무선침묵',
-  colAlarmAuth: '경보권한',
-  colBroadcastAuth: '방송권한',
-  colMuteAuth: 'Mute권한',
-  colExtensionNo: '내선번호',
-  colStatus: '상태',
-  colIpAddress: 'IP Address',
-  colL2Switch: 'L2 스위치',
-  colSerial: 'Serial No',
-
-  thead1: '장치명',
-  thead2: '모델명',
-  thead3: '위치(구역)',
-  thead4: '상태',
-  modalTitle1: '리셉터클유닛 등록',
-
-  modalth1: '모델명',
-  modalth2: 'IP Address',
-  modalth3: '장치명',
-  modalth4: 'Subnet Mask',
-  modalth5: '설명/비고',
-  modalth6: 'Default Gateway',
-  modalth7: '시리얼 번호',
-  modalth8: '헤드셋 볼륨',
-  modalth9: '가입자정보 (내선번호)',
-  modalth10: '자동연결 대기시간(초)',
-  modalth11: '위치',
-  modalth12: 'L2 스위치',
-}
+const en = {}
 const lang = ref({})
 
-// 모달 상태
+// =========================
+// [모달 상태 관리]
+// =========================
 const modals = reactive({
   modalRegister: { show: false },
 })
 
+// =========================
+// [상태/폼/리스트 관리]
+// =========================
+const filterText = ref('') // 검색어
+const selectedIds = ref([]) // 선택된 행 id
+const currentPage = ref(1) // 현재 페이지
+const perPage = ref(10) // 페이지당 개수
+const perPageOptions = [ { value: 10, text: '10' }, { value: 15, text: '15' }, { value: 20, text: '20' } ]
 
-// 폼 상태
-const searchWord = ref('')
-const filterText = ref('')
-const searchField = ref('')
-const searchText = ref('')
-const deviceType = ref(null)
-const searchTarget = ref(null)
-const selectOptions = []
-
-const searchType = ref('기본정보')
-const searchTypeOptions = computed(() => [
-  { value: '기본정보', text: '기본정보' },
-  { value: '스위치', text: '스위치' },
-  { value: '무전기', text: '무전기' },
-  { value: '중계기', text: '중계기' },
-])
-
-// 장치 목록 샘플 데이터 40개 생성 (테스트용)
-const items = ref(generateItems(40))
-
+// 실제 데이터 연동 시 아래 부분을 교체하세요
+// 임시 샘플 데이터 생성 함수
 function generateItems(n) {
   const statuses = ['정상', '정상(통화중)', '비정상']
   const arr = []
@@ -397,22 +322,46 @@ function generateItems(n) {
     const idx = (i - 1)
     arr.push({
       id: i,
-      number: String(i),
-      location: '위치내용',
-      deviceName: `장치명내용`,
-      radioSilence: '모델명이름',
-      alarmAuth: '시리얼넘버',
-      extensionNo: `3000`,
-      status: statuses[idx % statuses.length],
-      ipAddress: `192.168.0.210`,
+      th1: String(i),
+      th2: '위치내용',
+      th3: '장치명내용',
+      th4: 'O',
+      th5: 'O',
+      th6: 'O',
+      th7: 'O',
+      th8: '3000',
+      th9: statuses[idx % statuses.length],
+      th10: '192.168.1.4',
     })
   }
   return arr
 }
+const items = ref(generateItems(40)) // 임시 데이터 40개
+const fields = computed(() => [
+  { key: 'select', label: '', thStyle: { width: '3rem' } },
+  { key: 'th1', label: lang.value.colTh1, thStyle: { width: '5rem' } },
+  { key: 'th2', label: lang.value.colTh2, thStyle: { width: 'auto' } },
+  { key: 'th3', label: lang.value.colTh3, thStyle: { width: 'auto' } },
+  { key: 'th4', label: lang.value.colTh4, thStyle: { width: 'auto' } },
+  { key: 'th5', label: lang.value.colTh5, thStyle: { width: '12rem' } },
+  { key: 'th8', label: lang.value.colTh8, thStyle: { width: '6rem' } },
+  {
+    key: 'th9',
+    label: lang.value.colTh9,
+    thStyle: { width: '9rem' },
+    tdClass: (value, key, item) => item.status === '비정상' ? 'red' : '',
+  },
+  { key: 'th10', label: lang.value.colTh10, thStyle: { width: '12rem' } },
+]);
 
-const selectedIds = ref([])
+// 필터링/페이지네이션
+const filteredItems = computed(() => items.value)
+const paginatedItems = computed(() => {
+  const start = (currentPage.value - 1) * perPage.value
+  return filteredItems.value.slice(start, start + perPage.value)
+})
 
-// 헤더 체크박스 상태 (현재 페이지 기준)
+// 체크박스 전체선택/부분선택
 const isAllSelected = computed(() => {
   const pageIds = paginatedItems.value.map(i => i.id)
   if (pageIds.length === 0) return false
@@ -424,63 +373,26 @@ const isIndeterminate = computed(() => {
   const selectedOnPage = pageIds.filter(id => selectedIds.value.includes(id)).length
   return selectedOnPage > 0 && selectedOnPage < pageIds.length
 })
-
 function toggleSelectAll(checked) {
   const pageIds = paginatedItems.value.map(i => i.id)
   if (checked) {
-    // 현재 페이지의 모든 행 선택(중복 제거)
     const set = new Set([...selectedIds.value, ...pageIds])
     selectedIds.value = Array.from(set)
   } else {
-    // 현재 페이지의 모든 행 선택 해제
     selectedIds.value = selectedIds.value.filter(id => !pageIds.includes(id))
   }
 }
 
-const fields = computed(() => [
-  { key: 'select', label: '', thStyle: { width: '3rem' } },
-  { key: 'number', label: 'No', thStyle: { width: '5rem' } },
-  { key: 'location', label: lang.value.colLocation, thStyle: { width: 'auto' } },
-  { key: 'deviceName', label: lang.value.colDeviceName, thStyle: { width: 'auto' } },
-  { key: 'radioSilence', label: lang.value.colRadioSilence, thStyle: { width: 'auto' } },
-  { key: 'alarmAuth', label: lang.value.colAlarmAuth, thStyle: { width: '12rem' } },
-  { key: 'extensionNo', label: lang.value.colExtensionNo, thStyle: { width: '6rem' } },
-  { key: 'status', label: lang.value.colStatus, thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'red' : '' },
-  { key: 'ipAddress', label: lang.value.colIpAddress, thStyle: { width: '10rem' } },
-]);
+// =========================
+// [UI 이벤트 핸들러]
+// =========================
+function onRowClicked() { modals.modalTerminalModify.show = true }
+function onFilter() { currentPage.value = 1 }
 
-const filteredItems = computed(() => {
-  return items.value.filter(item => {
-    const matchType = !searchField.value || item.location === searchField.value
-    const matchText = !searchText.value || (item.location && item.location.includes(searchText.value))
-    return matchType && matchText
-  })
-})
-
-const currentPage = ref(1)
-const perPage = ref(10)
-const perPageOptions = [
-  { value: 10, text: '10' },
-  { value: 15, text: '15' },
-  { value: 20, text: '20' },
-]
-const paginatedItems = computed(() => {
-  const start = (currentPage.value - 1) * perPage.value
-  return filteredItems.value.slice(start, start + perPage.value)
-})
-
-// 페이지당 개수 변경 시 첫 페이지로 이동
-watch(perPage, () => {
-  currentPage.value = 1
-})
-
-function onFilter() {
-  searchField.value = searchWord.value
-  searchText.value = filterText.value
-  currentPage.value = 1
-}
-
+// =========================
+// [초기화]
+// =========================
 onMounted(() => {
-  lang.value = (G.lang === "ko") ? ko : en;
+  lang.value = (G.lang === 'ko') ? ko : en
 })
 </script>
