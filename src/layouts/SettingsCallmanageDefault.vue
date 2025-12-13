@@ -28,7 +28,8 @@ const ko = {
   "membermanage": "가입자관리",
   "meetingcallmanage": "회의통화관리",
   "groupcallmanage": "그룹통화관리",
-  "dscpmanage": "DSCP관리"
+  "dscpmanage": "DSCP관리",
+  "othersystem": "타체계교환기",
 };
 
 const en = {
@@ -36,7 +37,8 @@ const en = {
   "membermanage": "Membermanage",
   "meetingcallmanage": "Meetingcallmanage",
   "groupcallmanage": "Groupcallmanage",
-  "dscpmanage": "DSCPmanage"
+  "dscpmanage": "DSCPmanage",
+  "othersystem": "OtherSystem",
 };
 
 const lang = ref({});
@@ -51,7 +53,8 @@ onMounted(() => {
     { label: lang.value.membermanage, path: '/settings/callmanage/membermanage' },
     { label: lang.value.meetingcallmanage, path: '/settings/callmanage/meetingcallmanage' },
     { label: lang.value.groupcallmanage, path: '/settings/callmanage/groupcallmanage' },
-    { label: lang.value.dscpmanage, path: '/settings/callmanage/dscpmanage' }
+    { label: lang.value.dscpmanage, path: '/settings/callmanage/dscpmanage' },
+    { label: lang.value.othersystem, path: '/settings/callmanage/othersystem' }
   ];
   selectedTab.value = route.path;
 });

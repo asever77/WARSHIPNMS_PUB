@@ -241,6 +241,12 @@ const router = createRouter({
           name: 'SettingsCallmanageDscpmanageView',
           component: () => import('../views/Settings/Callmanage/Dscpmanage.vue'),
           meta: { group: 'settings' },
+        },
+        {
+          path: '/settings/callmanage/otherSystem',
+          name: 'SettingsCallmanageOtherSystemView',
+          component: () => import('../views/Settings/Callmanage/OtherSystem.vue'),
+          meta: { group: 'settings' },
         }],
       },
       {
@@ -248,18 +254,26 @@ const router = createRouter({
         name: 'SettingsExternallinkagemanageDefaultLayout',
         component: () => import('../layouts/SettingsExternallinkagemanageDefault.vue'),
         meta: { group: 'settings' },
-        children: [{
-          path: '/settings/externallinkagemanage/broadcastequipmanage',
+        children: [
+          {
+            path: '/settings/externallinkagemanage/broadcastequipmanage',
             name: 'SettingsExternallinkagemanageBroadcastequipmanageView',
             component: () => import('../views/Settings/Externallinkagemanage/Broadcastequipmanage.vue'),
             meta: { group: 'settings' },
-        },
-        {
-          path: '/settings/externallinkagemanage/alarmdevicemanage',
-          name: 'SettingsExternallinkagemanageAlarmdevicemanageView',
-          component: () => import('../views/Settings/Externallinkagemanage/Alarmdevicemanage.vue'),
-          meta: { group: 'settings' },
-        }],
+          },
+          {
+            path: '/settings/externallinkagemanage/alarmdevicemanage',
+            name: 'SettingsExternallinkagemanageAlarmdevicemanageView',
+            component: () => import('../views/Settings/Externallinkagemanage/Alarmdevicemanage.vue'),
+            meta: { group: 'settings' },
+          },
+          {
+            path: '/settings/externallinkagemanage/cctvmanage',
+            name: 'SettingsExternallinkagemanageCctvmanageView',
+            component: () => import('../views/Settings/Externallinkagemanage/Cctvmanage.vue'),
+            meta: { group: 'settings' },
+          },
+        ],
       },
       {
         path: '/settingsoperationconfigmanagedefault',

@@ -26,13 +26,11 @@ import TabBase from '@/components/TabBase.vue';
 const ko = {
   "title": "설정/운영정보관리",
   "operationconfigbackup": "운영정보백업",
-  "operationconfigrestore": "백업복원"
 };
 
 const en = {
   "title": "Settings/Operationconfigmanage",
   "operationconfigbackup": "Operationconfigbackup",
-  "operationconfigrestore": "Operationconfigrestore"
 };
 
 const lang = ref({});
@@ -44,7 +42,6 @@ onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
   tabList.value = [
     { label: lang.value.operationconfigbackup, path: '/settings/operationconfigmanage/operationconfigbackup' },
-    { label: lang.value.operationconfigrestore, path: '/settings/operationconfigmanage/operationconfigrestore' }
   ];
   selectedTab.value = router.currentRoute.value.path;
 });

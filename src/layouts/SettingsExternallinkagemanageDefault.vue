@@ -26,13 +26,15 @@ import TabBase from '@/components/TabBase.vue';
 const ko = {
   "title": "설정/외부연계관리",
   "broadcastequipmanage": "방송장비관리",
-  "alarmdevicemanage": "경보장치관리"
+  "alarmdevicemanage": "경보장치관리",
+  "cctvmanage": "CCTV 관리"
 };
 
 const en = {
   "title": "Settings/Externallinkagemanage",
   "broadcastequipmanage": "Broadcastequipmanage",
-  "alarmdevicemanage": "Alarmdevicemanage"
+  "alarmdevicemanage": "Alarmdevicemanage",
+  "cctvmanage": "CCTV manage"
 };
 
 const lang = ref({});
@@ -44,7 +46,8 @@ onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
   tabList.value = [
     { label: lang.value.broadcastequipmanage, path: '/settings/externallinkagemanage/broadcastequipmanage' },
-    { label: lang.value.alarmdevicemanage, path: '/settings/externallinkagemanage/alarmdevicemanage' }
+    { label: lang.value.alarmdevicemanage, path: '/settings/externallinkagemanage/alarmdevicemanage' },
+    { label: lang.value.cctvmanage, path: '/settings/externallinkagemanage/cctvmanage' },
   ];
   selectedTab.value = router.currentRoute.value.path;
 });
