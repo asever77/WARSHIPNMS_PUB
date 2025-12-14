@@ -88,7 +88,7 @@
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
+        <BFormGroup>
           <div class="ui-search-with-btn">
             <BFormInput
               id="search-word-2"
@@ -809,7 +809,7 @@ const ko = {
   colSelect: '선택',
   colNumber: '순번',
   colDeviceType: '장치유형',
-  colModel: '모델',
+  colModel: '모델명',
   colDeviceName: '장치명',
   colLocation: '위치',
   colRegDate: '등록일',

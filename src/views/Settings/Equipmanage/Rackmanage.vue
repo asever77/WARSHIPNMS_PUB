@@ -73,7 +73,7 @@
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
+        <BFormGroup>
           <div class="ui-search-with-btn">
             <BFormInput
               id="search-word-2"
@@ -301,7 +301,7 @@ import UiModal from '@/components/UiModal.vue'
 
 const ko = {
   // 필터 영역
-  filterDeviceType: '장치유형',
+  filterDeviceType: '검색대상',
   filterSearchWord: '검색어',
   filterRegDate: '등록일',
 

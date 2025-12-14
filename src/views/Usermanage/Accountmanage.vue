@@ -186,7 +186,7 @@ const fields = computed(() => [
   { key: 'phone', label: lang.value.table5 || '핸드폰 번호', thStyle: { width: '15rem' } },
   { key: 'area', label: lang.value.table6 || '근무지', thStyle: { width: 'auto' } },
   { key: 'login', label: lang.value.table11 || '로그인 실패', thStyle: { width: '10rem' } },
-  { key: 'use', label: lang.value.table12 || '계정사용', thStyle: { width: '7.2rem' } }
+  { key: 'use', label: lang.value.table12 || '계정사용', thStyle: { width: '10rem' } }
 ])
 
 const radioOptions = computed(() => [

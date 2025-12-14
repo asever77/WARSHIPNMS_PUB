@@ -95,7 +95,7 @@
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
+        <BFormGroup>
           <div class="ui-search-with-btn">
             <BFormInput
               id="search-word-2"
@@ -167,15 +167,15 @@ function generateItems(n) {
 }
 const fields = computed(() => [
   { key: 'th1', label: lang.value.colTh1, thStyle: { width: '5rem' } },
-  { key: 'th2', label: lang.value.colTh2, thStyle: { width: '12rem' } },
-  { key: 'th3', label: lang.value.colTh3, thStyle: { width: '8rem' } },
-  { key: 'th4', label: lang.value.colTh4, thStyle: { width: '9rem' } },
-  { key: 'th5', label: lang.value.colTh5, thStyle: { width: '9rem' } },
-  { key: 'th6', label: lang.value.colTh6, thStyle: { width: '8rem' } },
+  { key: 'th2', label: lang.value.colTh2, thStyle: { width: 'auto' } },
+  { key: 'th3', label: lang.value.colTh3, thStyle: { width: 'auto' } },
+  { key: 'th4', label: lang.value.colTh4, thStyle: { width: 'auto' } },
+  { key: 'th5', label: lang.value.colTh5, thStyle: { width: 'auto' } },
+  { key: 'th6', label: lang.value.colTh6, thStyle: { width: 'auto' } },
   { key: 'th7', label: lang.value.colTh7, thStyle: { width: 'auto' } },
-  { key: 'th8', label: lang.value.colTh8, thStyle: { width: '10rem' } },
-  { key: 'th9', label: lang.value.colTh9, thStyle: { width: '13.6rem' } },
-  { key: 'th10', label: lang.value.colTh10, thStyle: { width: '13.6rem' } },
+  { key: 'th8', label: lang.value.colTh8, thStyle: { width: 'auto' } },
+  { key: 'th9', label: lang.value.colTh9, thStyle: { width: 'auto' } },
+  { key: 'th10', label: lang.value.colTh10, thStyle: { width: 'auto' } },
 ])
 
 const filterText = ref('')

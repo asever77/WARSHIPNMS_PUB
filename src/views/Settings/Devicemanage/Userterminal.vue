@@ -83,7 +83,7 @@
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
+        <BFormGroup>
           <div class="ui-search-with-btn">
             <BFormInput
               id="search-word-2"

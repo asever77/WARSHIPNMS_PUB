@@ -84,7 +84,7 @@
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
+        <BFormGroup>
           <div class="ui-search-with-btn">
             <BFormInput
               id="search-word-2"
@@ -362,7 +362,7 @@
       </table>
 
       <!-- 보안장비 -->
-       <p>VoIP 보안장비</p>
+       <p>보안장비</p>
       <table class="table-type-a">
         <colgroup>
           <col style="width:10rem">
@@ -690,7 +690,7 @@
           </td>
         </tr>
         <tr>
-          <th scope="row">{{ lang.modalDescription }}</th>
+          <th scope="row">{{ lang.description }}</th>
           <td>
             <BFormInput class="ui-input" />
           </td>
@@ -1080,11 +1080,11 @@ const ko = {
   sortAll: '전체 정렬',
 
   // 검색 영역
-  searchLabel: '검색어',
+  searchLabel: '검색어', // 중복: filterSearchWord
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
 
-  thead1: '포트 식별`자',
+  thead1: '포트 식별자',
   thead2: '포트 인터페이스 유형',
   thead3: '레이블',
   thead4: 'VoIP교환기 속성',
@@ -1101,26 +1101,26 @@ const ko = {
   // 테이블 헤더
   colSelect: '선택',
   colNumber: '순번',
-  colDeviceType: '장치유형',
-  colModel: '모델',
-  colDeviceName: '장치명',
+  colDeviceType: '장치유형', // 중복: filterDeviceType, modalDeviceType
+  colModel: '모델', // 중복: modalModel
+  colDeviceName: '장치명', // 중복: modalDeviceName, deviceName, modalDeviceName2
   colGrade: '등급',
-  colSerial: '시리얼번호',
-  colLocation: '위치',
+  colSerial: '시리얼번호', // 중복: modalSerial, serialNumber
+  colLocation: '위치', // 중복: modalLocation, location, locationDetail, locationType
   colRegDate: '등록일',
 
   // 모달
   modalTitleEdit: '장치 수정',
   modalTitleRegister: '장치 등록',
-  modalDeviceType: '장치유형',
-  modalModel: '모델명',
-  modalDeviceName: '장치명',
+  modalDeviceType: '장치유형', // 중복: colDeviceType
+  modalModel: '모델명', // 중복: colModel
+  modalDeviceName: '장치명', // 중복: colDeviceName, deviceName, modalDeviceName2
   modalDescription: '장비설명',
-  modalGrade: '설명/비고',
-  modalSerial: '시리얼번호',
-  modalLocation: '위치',
-  modalLocationDetail: '위치상세',
-  modalL2Switch: 'L2 스위치',
+  modalGrade: '설명/비고', // 중복: description
+  modalSerial: '시리얼번호', // 중복: colSerial, serialNumber
+  modalLocation: '위치', // 중복: colLocation, location, locationDetail, locationType
+  modalLocationDetail: '위치상세', // 중복: locationDetail
+  modalL2Switch: 'L2 스위치', // 중복: l2Switch
   modalIpAddress: 'IP Address',
   modalCardCount: '카드갯수',
   modalServerTYpe: '서버타입',
@@ -1144,7 +1144,7 @@ const ko = {
 
   // 추가 텍스트
   cardNumber: '카드번호',
-  cardLabel: '카드레이블',
+  cardLabel: '카드 레이블',
   portNumber: '포트번호',
   portLabel: '포트 레이블',
   cardInterface: '카드 인터페이스',
@@ -1153,13 +1153,13 @@ const ko = {
   btnLabeling: '라벨링',
   deviceSecurityType: '보안장비유형',
   portCount: '포트갯수',
-  deviceName: '장치명',
-  serialNumber: '시리얼번호',
-  locationType: '위치유형',
-  location: '위치',
-  locationDetail: '위치상세',
-  l2Switch: 'L2 스위치',
-  description: '설명/비고',
+  deviceName: '장치명', // 중복: colDeviceName, modalDeviceName, modalDeviceName2
+  serialNumber: '시리얼번호', // 중복: colSerial, modalSerial
+  locationType: '위치유형', // 중복: colLocation, modalLocation
+  location: '위치', // 중복: colLocation, modalLocation
+  locationDetail: '위치상세', // 중복: modalLocationDetail
+  l2Switch: 'L2 스위치', // 중복: modalL2Switch
+  description: '설명/비고', // 중복: modalGrade
   transceiverType: '송수신유형',
   frequencyBand: '주파수대역',
   channelCount: '채널갯수',
@@ -1169,10 +1169,10 @@ const ko = {
   dashboardLabel: '대시보드 레이블',
   btnApply: '적용',
   deviceWireless: '무선통신기',
-  modalL2PortIndex:'L2 포트 인덱스',
-  modalDeviceName2:'장치명 별명',
-  modalPortSum:'포트 개수',
-  modalAdminPort:'관리 포트',
+  modalL2PortIndex: 'L2 포트 인덱스',
+  modalDeviceName2: '장치명 별명', // 중복: deviceName, modalDeviceName
+  modalPortSum: '포트 개수',
+  modalAdminPort: '관리 포트',
 }
 const en = {}
 

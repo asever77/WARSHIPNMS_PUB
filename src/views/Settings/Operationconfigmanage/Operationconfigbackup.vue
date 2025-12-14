@@ -221,7 +221,7 @@
           <tr>
             <th scope="row">{{ lang.modalTh2_3 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="password" />
             </td>
           </tr>
 
@@ -354,11 +354,9 @@ const ko = {
   modalTh1_2: '버전명',
   modalTh1_3: '설명/비고',
 
-  modalTh2_1: '펌웨어 파일명',
-  modalTh2_2: '장치유형',
-  modalTh2_3: '장치 모델명',
-  modalTh2_4: '펌웨어 버전',
-  modalTh2_5: '설명/비고',
+  modalTh2_1: '복원 요청 버전',
+  modalTh2_2: '현재 운용 버전',
+  modalTh2_3: '확인코드',
 
   modalTh3_1: '백업명',
   modalTh3_2: '버전명',

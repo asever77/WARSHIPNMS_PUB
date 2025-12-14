@@ -109,7 +109,7 @@
         <span class="search-total">{{ lang.totalLabel }}:15</span>
       </div>
       <div class="search-base--btns">
-        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
+        <BFormGroup>
           <div class="ui-search-with-btn">
             <BFormInput
               id="search-word-2"
@@ -145,7 +145,7 @@
   <UiModal v-model="modals.modal2.show"
     :title="lang.modalTitle2"
     type="modal"
-    size="sm"
+    size="md"
     @close-btn-click="modals.modal2.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
@@ -160,7 +160,7 @@
       </div>
       <table class="table-type-a">
         <colgroup>
-          <col style="width: 10rem" />
+          <col style="width: 16rem" />
           <col style="width: auto" />
         </colgroup>
         <tbody>
@@ -430,7 +430,6 @@ const modals = reactive({
 const selectedIds = ref([]) // 선택된 행 id
 const currentPage = ref(1) // 현재 페이지
 const perPage = ref(10) // 페이지당 개수
-const perPageOptions = [ { value: 10, text: '10' }, { value: 15, text: '15' }, { value: 20, text: '20' } ]
 
 // 실제 데이터 연동 시 아래 부분을 교체하세요
 // 임시 샘플 데이터 생성 함수
@@ -483,7 +482,7 @@ function generateExtraItems(n) {
   return arr
 }
 const extraItems = ref(generateExtraItems(15))
-const extraFields = [
+const extraFields = computed(() => [
   { key: 'select', label: '', thStyle: { width: '3rem' } },
   { key: 'th1', label: lang.value.colTh2_1, thStyle: { width: '5rem' } },
   { key: 'th2', label: lang.value.colTh2_2, thStyle: { width: 'auto' } },
@@ -492,7 +491,7 @@ const extraFields = [
   { key: 'th5', label: lang.value.colTh2_5, thStyle: { width: '8rem' } },
   { key: 'th6', label: lang.value.colTh2_6, thStyle: { width: '14rem' } },
   { key: 'th7', label: lang.value.colTh2_7, thStyle: { width: 'auto' } },
-];
+]);
 
 const extraIsAllSelected = computed(() => {
   const ids = extraItems.value.map(i => i.id)

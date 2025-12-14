@@ -56,7 +56,8 @@
   </div>
 
   <div class="ui-btn-group">
-    <BButton class="blue28">{{ lang.btn2 }}</BButton>
+    <BButton class="blue28">{{ lang.btn1 }}</BButton>
+    <BButton class="gray28">{{ lang.btn2 }}</BButton>
   </div>
 
 </template>

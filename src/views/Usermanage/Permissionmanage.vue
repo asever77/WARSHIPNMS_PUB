@@ -61,7 +61,7 @@
 
   <UiModal v-model="modals.modalName.show" :title="lang.text1" type="modal" size="md" scrollable @close-btn-click="modals.modalName.show = false">
     <div class="base-table">
-      <BTable
+      <!-- <BTable
         :items="selectedRow ? [selectedRow] : []"
         :fields="modalFields"
         bordered
@@ -69,7 +69,7 @@
         small
         responsive
       >
-      </BTable>
+      </BTable> -->
       <div class="base-wrap">
         <MenuTree :nodes="selectedRow ? perUserMenuTrees[selectedRow.userId] : menuTreeData" />
       </div>

@@ -96,7 +96,7 @@
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
+        <BFormGroup>
           <div class="ui-search-with-btn">
             <BFormInput
               id="search-word-2"
@@ -159,15 +159,17 @@ import { BButton, BFormCheckbox, BFormGroup, BPagination, BTable } from 'bootstr
 // 장치 목록 샘플 데이터 40개 생성 (테스트용)
 const items = ref(generateItems(4))
 function generateItems(n) {
+   const severitys = ['CRITICAL', 'MINOR', 'MAJOR'] //심각도
   const arr = []
   for (let i = 1; i <= n; i++) {
+    const idx = i - 1
     arr.push({
       id: i,
       select: '',
       th2: 'A0001',
       th3: 'LINK FAIL ALARM',
       th4: '88-856K 12335',
-      th5: '',
+      th5: severitys[idx % severitys.length],
       th6: '무선통신기',
       th7: 'Unhandled:cliapprXWC',
       th8: '2024-08-15 12:28:01',
@@ -180,10 +182,21 @@ const fields = computed(() => [
   { key: 'select', label: lang.value.colTh1, thStyle: { width: '4rem' } },
   { key: 'th2', label: lang.value.colTh2, thStyle: { width: '6rem' } },
   { key: 'th3', label: lang.value.colTh3, thStyle: { width: '13rem' }, tdClass: 'ta-l' },
-  { key: 'th4', label: lang.value.colTh4, thStyle: { width: '12rem' } },
-  { key: 'th5', label: lang.value.colTh5, thStyle: { width: '8rem' } },
+  { key: 'th4', label: lang.value.colTh4, thStyle: { width: '13rem' } },
+  {
+    key: 'th5',
+    label: lang.value.colTh5,
+    thStyle: { width: '10rem' },
+    tdClass: (value) => {
+      if (value === 'CRITICAL') return 'red'
+      if (value === 'MINOR') return 'yellow'
+      if (value === 'MAJOR') return 'green'
+      return ''
+    },
+  },
+
   { key: 'th6', label: lang.value.colTh6, thStyle: { width: '10rem' } },
-  { key: 'th7', label: lang.value.colTh7, thStyle: { width: '15rem' }, tdClass: 'ta-l' },
+  { key: 'th7', label: lang.value.colTh7, thStyle: { width: 'auto' }, tdClass: 'ta-l' },
   { key: 'th8', label: lang.value.colTh8, thStyle: { width: '13.6rem' } },
   { key: 'th9', label: lang.value.colTh9, thStyle: { width: 'auto' }, tdClass: 'ta-l' },
 ])

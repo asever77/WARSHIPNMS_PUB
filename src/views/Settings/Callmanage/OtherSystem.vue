@@ -310,7 +310,7 @@ const ko = {
   colTh5: '설명',
   colTh6: '가입자 수',
   colTh7: '가입자 내선번호',
-  colTh8: '등록번호',
+  colTh8: '등록일',
   colTh9: '활성여부',
 
   modalTitle1: '타체계 교환기 정보 등록',

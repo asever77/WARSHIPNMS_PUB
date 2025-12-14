@@ -225,35 +225,35 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">{{ lang.modalTh1_1 }}</th>
+            <th scope="row">{{ lang.modalTh2_1 }}</th>
             <td>
               <b>펌웨어 파일명</b>
             </td>
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.modalTh1_2 }}</th>
+            <th scope="row">{{ lang.modalTh2_2 }}</th>
             <td>
               <BFormSelect class="ui-select" :options="[ {value: '1', text: '선택',} ]" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.modalTh1_3 }}</th>
+            <th scope="row">{{ lang.modalTh2_3 }}</th>
             <td>
               <BFormSelect class="ui-select" :options="[ {value: '1', text: '선택',} ]" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.modalTh1_4 }}</th>
+            <th scope="row">{{ lang.modalTh2_4 }}</th>
             <td>
               <BFormInput type="text" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.modalTh1_5 }}</th>
+            <th scope="row">{{ lang.modalTh2_5 }}</th>
             <td>
              <BFormTextarea rows="3" class="ui-input" />
             </td>
@@ -264,7 +264,7 @@
     </div>
     <template #footer>
       <BButton class="gray28" @click="modals.modal2.show = false">{{ lang.btn4 }}</BButton>
-      <BButton class="blue28">{{ lang.btn5 }}</BButton>
+      <BButton class="blue28">{{ lang.btn8 }}</BButton>
     </template>
   </UiModal>
 
@@ -303,7 +303,8 @@ const ko = {
   btn4: '취소',
   btn5: '저장',
   btn6: '추가',
-  btn7: '통화기능키 설정 ',
+  btn7: '통화기능키 설정',
+  btn8: '수정',
 
   colTh1: 'No',
   colTh2: 'F/W 이름',

@@ -69,7 +69,7 @@
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
+        <BFormGroup>
           <div class="ui-search-with-btn">
             <BFormInput
               id="search-word-2"
@@ -80,6 +80,7 @@
             <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
           </div>
         </BFormGroup>
+        <BFormSelect class="ui-select-28 w-60"></BFormSelect>
         <BFormSelect
             id="per-page"
             class="ui-select-28 w-60"
@@ -230,12 +231,12 @@ function toggleSelectAll(checked) {
 const fields = computed(() => [
   { key: 'select', label: lang.value.colSelect, thStyle: { width: '3rem' } },
   { key: 'number', label: lang.value.colNumber, thStyle: { width: '5rem' } },
-  { key: 'location', label: lang.value.colLocation, sortable: true, thStyle: { width: 'auto' } },
-  { key: 'deviceName', label: lang.value.colDeviceName, sortable: true, thStyle: { width: 'auto' } },
+  { key: 'location', label: lang.value.colLocation, thStyle: { width: 'auto' } },
+  { key: 'deviceName', label: lang.value.colDeviceName, thStyle: { width: 'auto' } },
   { key: 'radioSilence', label: lang.value.colModel, thStyle: { width: 'auto' } },
-  { key: 'extensionNo', label: lang.value.colExtensionNo, thStyle: { width: '8rem' } },
+  { key: 'extensionNo', label: lang.value.colExtensionNo, thStyle: { width: '10rem' } },
   { key: 'status', label: lang.value.colStatus, thStyle: { width: '9rem' }, tdClass: (value, key, item) => item.status === '비정상' ? 'red' : '' },
-  { key: 'ipAddress', label: lang.value.colIpAddress, thStyle: { width: '10rem' } },
+  { key: 'ipAddress', label: lang.value.colIpAddress, thStyle: { width: '14rem' } },
 ]);
 
 const filteredItems = computed(() => {

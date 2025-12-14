@@ -387,7 +387,7 @@
     v-model="modals.modalSwitchDetail.show"
     :title="modals.modalSwitchDetail.title"
     type="modal"
-    size="md"
+    size="lg"
     @close-btn-click="modals.modalSwitchDetail.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
@@ -593,10 +593,25 @@
             <td class="ta-c">192.168.0.40</td>
           </tr>
           <tr>
-            <th scope="row">DB상태</th>
-            <td class="ta-c" data-state="normal">정상</td>
-            <td class="ta-c" data-state="normal">정상</td>
+            <th scope="row">Real</th>
+             <td class="ta-c">192.168.0.40</td>
+            <td class="ta-c">192.168.0.40</td>
           </tr>
+
+          <!-- NMS -->
+          <tr>
+            <th scope="row" colspan="2">DB상태</th>
+            <td class="ta-c green">정상</td>
+            <td class="ta-c red">비정상</td>
+          </tr>
+
+          <!-- VoIP -->
+          <tr>
+            <th scope="row" colspan="2">일련번호</th>
+            <td class="ta-c">TG2z7ZbBQq</td>
+            <td class="ta-c">TG2z7ZbBQq</td>
+          </tr>
+
           <tr>
             <th scope="row" colspan="2">L2 스위치</th>
             <td class="ta-c">무선통신운용콘솔</td>

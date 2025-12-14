@@ -19,7 +19,7 @@
     @close-btn-click="modals.modal1.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
-      <table class="table-type-b">
+      <table class="table-type-a">
         <colgroup>
           <col style="width: 14rem" />
           <col style="width: auto" />

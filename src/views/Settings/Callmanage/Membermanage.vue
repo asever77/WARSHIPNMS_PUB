@@ -83,7 +83,7 @@
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
+        <BFormGroup>
           <div class="ui-search-with-btn">
             <BFormInput
               id="search-word-2"
@@ -129,12 +129,12 @@
   </div>
 
   <div class="ui-btn-group">
-    <BButton class="blue28" @click="modals.modalModify1.show = true">{{ lang.btnRegister }}</BButton>
+    <BButton class="blue28" @click="modals.modal1.show = true">{{ lang.btnRegister }}</BButton>
     <BButton class="blue28"  @click="modals.modalFileUpload.show = true">{{ lang.btnBulkRegister }}</BButton>
     <BButton class="gray28">{{ lang.btnDelete }}</BButton>
   </div>
 
-  <UiModal v-model="modals.modalModify1.show" :title="lang.modalTitle1" type="modal" size="md" >
+  <UiModal v-model="modals.modal1.show" :title="lang.modalTitle1" type="modal" size="md" >
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -188,7 +188,7 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify1.show = false">취소</BButton>
+      <BButton class="gray28" @click="modals.modal1.show = false">취소</BButton>
       <BButton class="blue28">저장</BButton>
     </template>
   </UiModal>
@@ -276,7 +276,7 @@ const ko = {
   colTh6: 'VoIP 가입자',
   colTh7: '연결 장치',
 
-  modalTitle1: '무선링크연동장치 포트 연결정보 설정',
+  modalTitle1: '가입자 등록',
   modalTitle2: '가입자 일괄등록',
 
   modalth1: '전화번호',
@@ -327,7 +327,7 @@ const lang = ref({})
 
 // 모달 상태
 const modals = reactive({
-  modalModify1: { show: false },
+  modal1: { show: false },
   modalFileUpload: { show: false },
 })
 

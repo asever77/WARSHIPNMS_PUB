@@ -70,14 +70,9 @@
         <span class="search-total">{{ lang.totalLabel }}:15</span>
       </div>
       <div class="search-base--btns">
-        <BFormGroup :label="lang.searchLabel" label-for="search-word-2">
+        <BFormGroup>
           <div class="ui-search-with-btn">
-            <BFormInput
-              id="search-word-2"
-              v-model="filterText"
-              :placeholder="lang.searchPlaceholder"
-              class="ui-input-28"
-            />
+            <BFormInput class="ui-input-28" />
             <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
           </div>
         </BFormGroup>
@@ -169,7 +164,7 @@
 // NOTE: 컴포넌트 이름은 multi-word로 권장됨. 실제 이름 변경 시 파일명, 라우터 등 전체 영향 주의
 import { ref, onMounted, computed, reactive } from 'vue'
 import G from '@/config/global.js'
-import { BFormInput, BFormSelect, BButton, BFormTextarea, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next/components'
+import { BFormInput, BFormSelect, BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next/components'
 import UiModal from '@/components/UiModal.vue'
 
 // =========================
@@ -238,13 +233,11 @@ const lang = ref({})
 // =========================
 const modals = reactive({
   modal1: { show: false },
-  modal2: { show: false },
 })
 
 // =========================
 // [상태/폼/리스트 관리]
 // =========================
-const selectedIds = ref([]) // 선택된 행 id
 const currentPage = ref(1) // 현재 페이지
 const perPage = ref(10) // 페이지당 개수
 const perPageOptions = [ { value: 10, text: '10' }, { value: 15, text: '15' }, { value: 20, text: '20' } ]
@@ -283,7 +276,6 @@ const fields = computed(() => [
 // =========================
 // [추가 테이블 상태 관리]
 // =========================
-const extraSelectedIds = ref([])
 function generateExtraItems(n) {
   const arr = []
   for (let i = 1; i <= n; i++) {
@@ -301,16 +293,17 @@ function generateExtraItems(n) {
   return arr
 }
 const extraItems = ref(generateExtraItems(15))
-const extraFields = [
-  { key: 'th1', label: lang.value.colTh2_1, thStyle: { width: '5rem' } },
-  { key: 'th2', label: lang.value.colTh2_2, thStyle: { width: 'auto' } },
-  { key: 'th3', label: lang.value.colTh2_3, thStyle: { width: 'auto' } },
-  { key: 'th4', label: lang.value.colTh2_4, thStyle: { width: 'auto' } },
-  { key: 'th5', label: lang.value.colTh2_5, thStyle: { width: '8rem' } },
-  { key: 'th6', label: lang.value.colTh2_6, thStyle: { width: '14rem' } },
-  { key: 'th7', label: lang.value.colTh2_7, thStyle: { width: 'auto' } },
-];
-
+const extraFields = computed(() => {
+  return [
+    { key: 'th1', label: 'No', thStyle: { width: '5rem' } },
+    { key: 'th2', label: '장치명', thStyle: { width: 'auto' } },
+    { key: 'th3', label: '장치유형', thStyle: { width: 'auto' } },
+    { key: 'th4', label: '장치 모델명', thStyle: { width: 'auto' } },
+    { key: 'th5', label: '장치유형', thStyle: { width: '8rem' } },
+    { key: 'th6', label: '응답결과', thStyle: { width: '14rem' } },
+    { key: 'th7', label: '부가정보', thStyle: { width: 'auto' } },
+  ];
+});
 
 // 필터링/페이지네이션
 const filteredItems = computed(() => items.value)
@@ -319,27 +312,6 @@ const paginatedItems = computed(() => {
   return filteredItems.value.slice(start, start + perPage.value)
 })
 
-// 체크박스 전체선택/부분선택
-const isAllSelected = computed(() => {
-  const pageIds = paginatedItems.value.map(i => i.id)
-  if (pageIds.length === 0) return false
-  return pageIds.every(id => selectedIds.value.includes(id))
-})
-const isIndeterminate = computed(() => {
-  const pageIds = paginatedItems.value.map(i => i.id)
-  if (pageIds.length === 0) return false
-  const selectedOnPage = pageIds.filter(id => selectedIds.value.includes(id)).length
-  return selectedOnPage > 0 && selectedOnPage < pageIds.length
-})
-function toggleSelectAll(checked) {
-  const pageIds = paginatedItems.value.map(i => i.id)
-  if (checked) {
-    const set = new Set([...selectedIds.value, ...pageIds])
-    selectedIds.value = Array.from(set)
-  } else {
-    selectedIds.value = selectedIds.value.filter(id => !pageIds.includes(id))
-  }
-}
 
 // =========================
 // [UI 이벤트 핸들러]
