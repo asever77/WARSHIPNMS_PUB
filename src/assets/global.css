@@ -116,7 +116,7 @@ table .form-check-inline ~ .form-check-inline,
 
 .table-type-a {border:1px solid #D4E1E8;width:100%;table-layout:fixed}
 .table-type-a thead th {background-color:var(--color-primary);color:#fff;text-align:center;font-size:1.2rem;font-weight:700;height:3rem;line-height:1.2;padding:.4rem}
-.table-type-a thead th ~ th {border-left:1px solid rgba(255,255,255,.3)}
+/* .table-type-a thead th ~ th {border-left:1px solid rgba(255,255,255,.3)} */
 .table-type-a tbody th {background-color:#E3EDF4;border-right:1px solid #D4E1E8;text-align:center;height:3rem;font-size:1.2rem;font-weight:700;color:#627582;line-height:1.2;padding:.4rem}
 .table-type-a tbody th ~ th {border-left:1px solid #D4E1E8}
 .table-type-a tbody td {padding:.4rem;font-size:1.2rem;color:#3E3E3E;line-height:1.2}
@@ -125,6 +125,11 @@ table .form-check-inline ~ .form-check-inline,
 .table-type-a tbody tr:not(:last-child) th,
 .table-type-a tbody tr:not(:last-child) td {border-bottom:1px solid #D4E1E8}
 .table-type-a tbody td.error {color:#E31F1F;background-color:#ffe0e0;}
+
+div.table-type-a {display: grid; grid-template-columns: 14rem 1fr 8rem 2fr;}
+.table-type-a--th {background-color:#E3EDF4;border-right:1px solid #D4E1E8;text-align:center;font-size:1.2rem;font-weight:700;color:#627582;line-height:1.2;padding:.4rem; display: flex; align-items: center; justify-content: center; flex:1;height:100%;}
+.table-type-a--td{padding:1.4rem;font-size:1.2rem;color:#3E3E3E;line-height:1.2;flex:1; display: flex; flex-direction: column; gap:.8rem;  height:100%;}
+.table-type-a--td.center{display: flex; align-items: center; justify-content: center; flex-direction: column;}
 
 .ui-excel-table {width:100%;max-height:calc(100vh - 11.5rem);overflow:auto;border:1px solid #D4E1E8;}
 .is-desktop .ui-excel-table::-webkit-scrollbar {height:1rem;width:1rem;}
@@ -386,4 +391,25 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
   margin-bottom: 1rem;
   gap:.4rem;
   padding:.5rem 0;
+}
+
+.tooltip-td  {
+  padding: .4rem;
+  color:#000;
+  background-color: #fef9ee;
+  border:1px solid #ccc;
+  border-radius: .4rem;;
+}
+.base-table .btn-link span{
+  font-size: 1.2rem;
+}
+.tooltip-td .tooltip-inner {
+  background-color: #fef9ee;
+  color:#000;
+  text-align: left;
+  font-size: 1.2rem;
+}
+.bs-tooltip-end.tooltip-td .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=right].tooltip-td .tooltip-arrow::before {
+  right:0;
 }
