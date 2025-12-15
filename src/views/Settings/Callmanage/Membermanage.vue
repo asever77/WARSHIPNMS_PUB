@@ -83,7 +83,7 @@
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormSelect class="ui-select-28 w-60"></BFormSelect>
+        <BFormSelect class="ui-select-28"></BFormSelect>
         <BFormSelect
           id="per-page"
           class="ui-select-28 w-60"
