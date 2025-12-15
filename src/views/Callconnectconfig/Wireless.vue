@@ -84,9 +84,9 @@
   <div class="ui-btn-group">
     <BButton class="navy28">{{ lang.btn2 }}</BButton>
     <div class="ui-flex ml-auto" data-gap="8">
-      <BButton class="blue28">{{ lang.btn5 }}</BButton>
       <BButton class="blue28">{{ lang.btn3 }}</BButton>
-      <BButton class="gray28">{{ lang.btn4 }}</BButton>
+      <BButton class="blue28">{{ lang.btn4 }}</BButton>
+      <BButton class="gray28">{{ lang.btn5 }}</BButton>
     </div>
   </div>
 

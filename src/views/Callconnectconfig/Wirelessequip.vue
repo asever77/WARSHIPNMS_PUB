@@ -105,6 +105,21 @@
               <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' },]" />
             </td>
           </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh4_4 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh4_5 }}</th>
+            <td>
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">{{ lang.checkbox1 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.checkbox2 }}</BFormCheckbox>
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

@@ -764,9 +764,7 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalDeviceRegister.show = false"
-        >{{ lang.btnCancel }}</BButton
-      >
+      <BButton class="gray28" @click="modals.modalDeviceRegister.show = false">{{ lang.btnCancel }}</BButton>
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
