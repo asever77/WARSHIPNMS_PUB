@@ -117,7 +117,6 @@
             <td>
               <BFormSelect
                 class="ui-select"
-                :disabled="true"
                 :options="[
                   { value: '1', text: 'PTT' },
                 ]"
@@ -141,7 +140,6 @@
             <td>
               <BFormSelect
                 class="ui-select"
-                :disabled="true"
                 :options="[
                   { value: '1', text: 'PTT' },
                 ]"

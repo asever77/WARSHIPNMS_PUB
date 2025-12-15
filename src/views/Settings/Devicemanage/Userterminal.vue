@@ -440,7 +440,7 @@
     </div>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify1.show" :title="lang.ccTab1" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
+  <UiModal v-model="modals.modalModify1.show" :title="lang.ccTab1Title" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -505,7 +505,7 @@
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify2.show" :title="lang.ccTab2" type="modal" size="md" @close-btn-click="modals.modalModify2.show = false">
+  <UiModal v-model="modals.modalModify2.show" :title="lang.ccTab2Title" type="modal" size="md" @close-btn-click="modals.modalModify2.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -585,7 +585,7 @@
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify3.show" :title="lang.ccTab3" type="modal" size="md" @close-btn-click="modals.modalModify3.show = false">
+  <UiModal v-model="modals.modalModify3.show" :title="lang.ccTab3Title" type="modal" size="md" @close-btn-click="modals.modalModify3.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -664,7 +664,7 @@
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify4.show" :title="lang.ccTab4" type="modal" size="md" @close-btn-click="modals.modalModify4.show = false">
+  <UiModal v-model="modals.modalModify4.show" :title="lang.ccTab4Title" type="modal" size="md" @close-btn-click="modals.modalModify4.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -673,19 +673,34 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">{{ lang.ccTh5_1 }}</th>
+            <th scope="row">{{ lang.ccTh4_1 }}</th>
             <td><b>항목명</b></td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.ccTh5_2 }}</th>
+            <th scope="row">{{ lang.ccTh4_2 }}</th>
             <td>
               <BFormInput class="ui-input"  />
             </td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.ccTh5_3 }}</th>
+            <th scope="row">{{ lang.ccTh4_3 }}</th>
             <td>
               <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' },]" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh4_4 }}</th>
+            <td>
+              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.ccTh4_5 }}</th>
+            <td>
+              <div class="d-flex w100-2">
+                <BFormCheckbox value="1">{{ lang.checkbox1 }}</BFormCheckbox>
+                <BFormCheckbox value="2">{{ lang.checkbox2 }}</BFormCheckbox>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -697,7 +712,7 @@
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify5.show" :title="lang.ccTab5" type="modal" size="md" @close-btn-click="modals.modalModify5.show = false">
+  <UiModal v-model="modals.modalModify5.show" :title="lang.ccTab5Title" type="modal" size="md" @close-btn-click="modals.modalModify5.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -730,7 +745,7 @@
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify6.show" :title="lang.ccTab6" type="modal" size="md" @close-btn-click="modals.modalModify6.show = false">
+  <UiModal v-model="modals.modalModify6.show" :title="lang.ccTab6Title" type="modal" size="md" @close-btn-click="modals.modalModify6.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -757,7 +772,7 @@
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify7.show" :title="lang.ccTab7" type="modal" size="md" @close-btn-click="modals.modalModify7.show = false">
+  <UiModal v-model="modals.modalModify7.show" :title="lang.ccTab7Title" type="modal" size="md" @close-btn-click="modals.modalModify7.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
@@ -869,6 +884,15 @@ const ko = {
   ccTab5: '방송장비',
   ccTab6: '경보',
   ccTab7: 'CCTV',
+
+  ccTab1Title: '점대점 연결 등록',
+  ccTab2Title: '회의통화 연결 등록',
+  ccTab3Title: '그룹통화 연결 등록',
+  ccTab4Title: '무선통신기 연결 등록',
+  ccTab5Title: '방송장비 연결 등록',
+  ccTab6Title: '경보 연결 등록',
+  ccTab7Title: 'CCTV 연결 등록 ',
+
   // 점대점
   ccTh1_1: '피호출 사용자단말',
   ccTh1_2: '통화기능키 레이블',
@@ -922,7 +946,135 @@ const ko = {
   checkbox6: '착신',
   checkbox7: '일방통화',
 }
-const en = {}
+const en = {
+  sortAll: '전체 정렬',
+  searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+  btnSearch: '조회',
+
+  filter1: '검색대상',
+  filter2: '검색어',
+  filter3: '무선침묵권한',
+  filter4: '상태',
+
+  btnRegister: '등록',
+  btnBulkRegister: '일괄등록',
+  btnDelete: '삭제',
+  btnCancel: '취소',
+  btnSave: '저장',
+  btnAdd: '추가',
+  btnSetting: '통화기능키 설정 ',
+
+  colTh1: 'No',
+  colTh2: '위치(구역)',
+  colTh3: '장치명',
+  colTh4: '무선침묵',
+  colTh5: '경보권한',
+  colTh6: '방송권한',
+  colTh7: 'Mute권한',
+  colTh8: '내선번호',
+  colTh9: '상태',
+  colTh10: 'IP Address',
+  colTh11: 'L2 스위치',
+  colTh12: 'Serial No',
+
+  modalTitle1: '사용자단말 정보 수정',
+  modalTitle2: '점대점 통화',
+  modalTitle3: '점대점 연결 등록',
+
+  modalth1: '모델명',
+  modalth2: '스피커볼륨',
+  modalth3: '장치명',
+  modalth4: '헤드셋볼륨',
+  modalth5: '설명/비고',
+  modalth6: '화면밝기',
+  modalth7: '시리얼 번호',
+  modalth8: '벨소리',
+  modalth9: '점대점',
+  modalth10: '가입자정보 (내선번호)',
+  modalth11: '회의통화',
+  modalth12: '무선침묵 설정',
+  modalth13: '그룹통화',
+  modalth14: '위치',
+  modalth15: '자동연결 대기시간(초)',
+  modalth16: 'L2 스위치',
+  modalth17: '무선채널 최대할당 개수',
+  modalth18: '경보권한',
+  modalth19: '방송권한',
+  modalth20: 'Muting-Relay 기능',
+  modalth21: '모델명',
+
+  ccTab1: '점대점 통화',
+  ccTab2: '회의통화',
+  ccTab3: '그룹통화',
+  ccTab4: '무선통신기',
+  ccTab5: '방송장비',
+  ccTab6: '경보',
+  ccTab7: 'CCTV',
+
+  ccTab1Title: '점대점 연결 등록',
+  ccTab2Title: '회의통화 연결 등록',
+  ccTab3Title: '그룹통화 연결 등록',
+  ccTab4Title: '무선통신기 연결 등록',
+  ccTab5Title: '방송장비 연결 등록',
+  ccTab6Title: '경보 연결 등록',
+  ccTab7Title: 'CCTV 연결 등록 ',
+
+  // 점대점
+  ccTh1_1: '피호출 사용자단말',
+  ccTh1_2: '통화기능키 레이블',
+  ccTh1_3: '통화모드',
+  ccTh1_4: '응답모드',
+  ccTh1_5: '녹음제어',
+  ccTh1_6: '스피커 출력방향',
+  ccTh1_7: '호출알림',
+  // 회의통화
+  ccTh2_1: '회의통화명',
+  ccTh2_2: '통화기능키 레이블',
+  ccTh2_3: '통화모드',
+  ccTh2_4: '호출권한',
+  ccTh2_5: '발언권한',
+  ccTh2_6: '응답모드',
+  ccTh2_7: '녹음제어',
+  ccTh2_8: '스피커 출력방향',
+  ccTh2_9: '호출알림',
+  // 그룹통화
+  ccTh3_1: '그룹통화명',
+  ccTh3_2: '통화기능키 레이블',
+  ccTh3_3: '통화모드',
+  ccTh3_4: '호출권한',
+  ccTh3_5: '발언권한',
+  ccTh3_6: '응답모드',
+  ccTh3_7: '녹음설정',
+  ccTh3_8: '스피커 출력방향',
+  ccTh3_9: '호출알림',
+  // 무선통신
+  ccTh4_1: '무선통신기명',
+  ccTh4_2: '통화기능키 레이블',
+  ccTh4_3: '통화모드',
+  ccTh4_4: '녹음설정',
+  ccTh4_5: '스피커 출력방향',
+  // 방송장비
+  ccTh5_1: '항목명',
+  ccTh5_2: '통화기능키 레이블',
+  ccTh5_3: '통화모드',
+  // 경보
+  ccTh6_1: '경보명',
+  ccTh6_2: '통화기능키 레이블',
+  // CCTV
+  ccTh7_1: 'CCTV구역명',
+  ccTh7_2: '통화기능키 레이블',
+
+  checkbox1: '왼쪽',
+  checkbox2: '오른쪽',
+  checkbox3: '벨소리',
+  checkbox4: '알림등',
+  checkbox5: '발신',
+  checkbox6: '착신',
+  checkbox7: '일방통화',
+}
 const lang = ref({})
 const ppButtons = [
   'HLCPTR CONTRC', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',

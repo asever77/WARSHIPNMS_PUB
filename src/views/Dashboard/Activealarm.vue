@@ -285,9 +285,9 @@ const fields = computed(() => [
     },
   },
   { key: 'category', label: lang.value.thead6, thStyle: { width: '10rem' } },
-  { key: 'detail', label: lang.value.thead7, thStyle: { width: 'auto' } },
+  { key: 'detail', label: lang.value.thead7, thStyle: { width: 'auto' }, tdClass: 'ta-l' },
   { key: 'eventTime', label: lang.value.thead5, thStyle: { width: '13rem' } },
-  { key: 'recognition', label:lang.value.thead8, thStyle: { width: '18rem' } },
+  { key: 'recognition', label:lang.value.thead8, thStyle: { width: '18rem' }, tdClass: 'ta-l' },
 ])
 
 const filteredItems = computed(() => {

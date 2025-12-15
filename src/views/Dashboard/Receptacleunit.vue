@@ -80,7 +80,7 @@
             <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
           </div>
         </BFormGroup>
-        <BFormSelect class="ui-select-28 w-60"></BFormSelect>
+        <BFormSelect class="ui-select-28"></BFormSelect>
         <BFormSelect
             id="per-page"
             class="ui-select-28 w-60"

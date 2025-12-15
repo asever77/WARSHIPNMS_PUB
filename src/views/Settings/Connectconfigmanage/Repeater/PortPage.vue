@@ -181,7 +181,7 @@ const ko = {
   colTh6: 'VoIP 가입자',
   colTh7: '연결 장치',
 
-  modalTitle1: '무선링크연동장치 포트 연결정보 설정',
+  modalTitle1: '유무선통합중계기 포트 연결정보 설정',
 
   modalth1: '장치명',
   modalth2: '카드 I/F 유형',
