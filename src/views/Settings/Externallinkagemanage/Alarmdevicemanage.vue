@@ -85,7 +85,7 @@
 // NOTE: 컴포넌트 이름은 multi-word로 권장됨. 실제 이름 변경 시 파일명, 라우터 등 전체 영향 주의
 import { ref, onMounted, computed, reactive } from 'vue'
 import G from '@/config/global.js'
-import { BFormInput, BButton, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next/components'
+import { BFormInput, BButton, BPagination, BTable, BFormCheckbox, BFormSelect } from 'bootstrap-vue-next/components'
 
 // =========================
 // [언어/라벨 관리]

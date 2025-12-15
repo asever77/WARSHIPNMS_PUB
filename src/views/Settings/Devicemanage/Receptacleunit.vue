@@ -156,25 +156,25 @@
             </td>
             <th scope="row">{{ lang.modalth2 }}</th>
             <td>
-              <BFormInput type="number" />
+              <BFormInput type="number" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalth3 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
             <th scope="row">{{ lang.modalth4 }}</th>
             <td>
-              <BFormInput type="tel" />
+              <BFormInput type="tel" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalth5 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
             <th scope="row"></th>
             <td></td>
@@ -183,7 +183,7 @@
           <tr>
             <th scope="row">{{ lang.modalth6 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
             <th scope="row"></th>
             <td></td>
@@ -192,7 +192,7 @@
           <tr>
             <th scope="row">{{ lang.modalth7 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
             <th scope="row"></th>
             <td></td>
@@ -209,7 +209,7 @@
 
           <tr>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
             <th scope="row"></th>
             <td></td>

@@ -117,28 +117,28 @@
           <tr>
             <th scope="row">{{ lang.modalTh1_1 }}</th>
             <td>
-               <BFormInput type="text" />
+               <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_2 }}</th>
             <td>
-               <BFormInput type="text" />
+               <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_3 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_4 }}</th>
             <td>
-               <BFormInput type="text" />
+               <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
         </tbody>
@@ -204,28 +204,28 @@
           <tr>
             <th scope="row">{{ lang.modalTh1_1 }}</th>
             <td>
-               <BFormInput type="text" />
+               <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_2 }}</th>
             <td>
-               <BFormInput type="text" />
+               <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_3 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_4 }}</th>
             <td>
-               <BFormInput type="text" />
+               <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
         </tbody>

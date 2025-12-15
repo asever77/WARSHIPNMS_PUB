@@ -167,36 +167,36 @@
             </td>
             <th scope="row" colspan="2">{{ lang.modalth2 }}</th>
             <td>
-              <BFormInput type="number" value="50" />
+              <BFormInput type="number" value="50" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalth3 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
             <th scope="row" colspan="2">{{ lang.modalth4 }}</th>
             <td>
-              <BFormInput type="number" value="50" />
+              <BFormInput type="number" value="50" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalth5 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
             <th scope="row" colspan="2">{{ lang.modalth6 }}</th>
             <td>
-              <BFormInput type="number" value="50" />
+              <BFormInput type="number" value="50" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalth7 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
             <th scope="row" rowspan="3">{{ lang.modalth8 }}</th>
             <th scope="row">{{ lang.modalth9 }}</th>
@@ -213,7 +213,7 @@
           <tr>
             <th scope="row">{{ lang.modalth10 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
             <th scope="row">{{ lang.modalth11 }}</th>
             <td>
@@ -259,7 +259,7 @@
             </td>
             <th scope="row" colspan="2">{{ lang.modalth15 }}</th>
             <td>
-              <BFormInput type="tel" />
+              <BFormInput type="tel" class="ui-input" />
             </td>
           </tr>
 

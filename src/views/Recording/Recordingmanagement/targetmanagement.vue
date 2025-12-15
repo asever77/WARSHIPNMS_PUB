@@ -163,14 +163,14 @@
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth4 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth5 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
@@ -178,14 +178,14 @@
             <th scope="row" rowspan="2">{{ lang.modalth6 }}</th>
             <th scope="row">{{ lang.modalth7 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalth8 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
         </tbody>

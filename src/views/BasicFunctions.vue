@@ -27,13 +27,14 @@
 
       <template #cell(name)="data">
         <BFormInput
+          class="ui-input"
           v-model="data.item.name"
           size="sm"
           @change="onInputChange(data.item, 'name')"
           placeholder="이름 입력"
         />
       </template>
-      
+
       <template #cell(status)="data">
         <BFormSelect
           v-model="data.item.status"
@@ -65,8 +66,8 @@
     </div>
 
     <p class="text-center mt-2">현재 페이지: {{ currentPage }}</p>
-    
-    
+
+
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h5>하단 테이블 필터 조회</h5>
       <div class="d-flex align-items-center w-50">
@@ -82,7 +83,7 @@
           v-model="filterText"
           size="sm"
           placeholder="검색어 입력"
-          class="me-2"
+          class="ui-input me-2"
         />
         <BButton size="sm" variant="primary" @click="onFilter">
           조회
@@ -127,9 +128,10 @@
           size="sm"
           @change="onInputChange(data.item, 'name')"
           placeholder="이름 입력"
+          class="ui-input"
         />
       </template>
-      
+
       <template #cell(status)="data">
         <BFormSelect
           v-model="data.item.status"

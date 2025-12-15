@@ -6,16 +6,16 @@
     <h4>1. Input (BFormInput)</h4>
     <div class="mb-5 p-3 border rounded">
       <BFormGroup label="기본 텍스트 입력:" label-for="input-1">
-        <BFormInput id="input-1" v-model="text" placeholder="텍스트를 입력하세요..."></BFormInput>
+        <BFormInput class="ui-input" id="input-1" v-model="text" placeholder="텍스트를 입력하세요..."></BFormInput>
       </BFormGroup>
       <p class="mt-2">입력된 값: {{ text }}</p>
 
       <BFormGroup label="비활성화된 입력:" label-for="input-disabled">
-        <BFormInput id="input-disabled" disabled value="비활성화됨"></BFormInput>
+        <BFormInput class="ui-input" id="input-disabled" disabled value="비활성화됨"></BFormInput>
       </BFormGroup>
 
       <BFormGroup label="입력 타입 (Number):" label-for="input-number">
-        <BFormInput id="input-number" v-model.number="number" type="number"></BFormInput>
+        <BFormInput class="ui-input" id="input-number" v-model.number="number" type="number"></BFormInput>
       </BFormGroup>
       <p class="mt-2">입력된 숫자: {{ number }}</p>
     </div>

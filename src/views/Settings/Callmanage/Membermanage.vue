@@ -83,17 +83,7 @@
       </div>
       <div class="search-base--btns">
         <!-- 검색어 입력 -->
-        <BFormGroup>
-          <div class="ui-search-with-btn">
-            <BFormInput
-              id="search-word-2"
-              v-model="filterText"
-              :placeholder="lang.searchPlaceholder"
-              class="ui-input-28"
-            />
-            <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
-          </div>
-        </BFormGroup>
+        <BFormSelect class="ui-select-28 w-60"></BFormSelect>
         <BFormSelect
           id="per-page"
           class="ui-select-28 w-60"

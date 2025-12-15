@@ -36,6 +36,7 @@
             v-model="filter"
             type="search"
             placeholder="검색어를 입력하세요..."
+            class="ui-input"
           ></BFormInput>
           <BButton :disabled="!filter" @click="filter = ''">지우기</BButton>
         </BInputGroup>

@@ -149,21 +149,21 @@
           <tr>
             <th scope="row">{{ lang.modalTh1_1 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_2 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_3 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
@@ -207,21 +207,21 @@
           <tr>
             <th scope="row">{{ lang.modalTh2_1 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh2_2 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh2_3 }}</th>
             <td>
-              <BFormInput type="password" />
+              <BFormInput type="password" class="ui-input" />
             </td>
           </tr>
 
@@ -267,28 +267,28 @@
           <tr>
             <th scope="row">{{ lang.modalTh3_1 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh3_2 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh3_3 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh3_4 }}</th>
             <td>
-              <BFormInput type="file" />
+              <BFormInput type="file" class="ui-input" />
             </td>
           </tr>
 
