@@ -160,7 +160,7 @@
           <tr>
             <th scope="row">{{ lang.modalTh1_1 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput class="ui-input" type="text" />
             </td>
             <th scope="row">{{ lang.modalTh1_2 }}</th>
             <td>
@@ -171,7 +171,7 @@
           <tr>
             <th scope="row">{{ lang.modalTh1_3 }}</th>
             <td>
-              <BFormInput type="text" />
+              <BFormInput class="ui-input" type="text" />
             </td>
             <th scope="row">{{ lang.modalTh1_4 }}</th>
             <td>
