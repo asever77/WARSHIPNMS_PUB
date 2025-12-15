@@ -191,20 +191,20 @@
         </tbody>
       </table>
 
-      <div class="table-type-a">
-        <div class="table-type-a--th" style="max-width: 14rem;">{{ lang.modalTh1_6 }}</div>
-        <div class="table-type-a--td">
-          <div class="search-base--btns">
-            <BFormGroup>
+      <div class="base-wrap">
+        <div class="base-wrap-top-box">
+          <h3 class="text-14-700">{{ lang.modalTh1_6 }}</h3>
+        </div>
+        <div class="ui-flex" data-gap="16" data-item-align="start">
+          <div class="table-col-1">
+            <div class="ui-flex" data-justify-align="end">
               <div class="ui-search-with-btn">
                 <BFormInput class="ui-input-28" />
                 <button type="button" class="btn-search-icon" aria-label="검색"></button>
               </div>
-            </BFormGroup>
-          </div>
-          <div class="base-table thead-sticky">
-            <div class="table-responsive" style="max-height: 21rem; overflow-y: auto;">
-              <table class="table-type-a" >
+            </div>
+            <div class="mt-8 ui-thead-sticky" data-max-h="210">
+              <table class="table-type-a" data-td-align="center">
                 <colgroup>
                   <col style="width: 5rem" />
                   <col style="width: 7rem" />
@@ -262,34 +262,26 @@
               </table>
             </div>
           </div>
-        </div>
-        <div class="table-type-a--td center">
-          <BButton class="blue24 min-w-0">{{ lang.btn6 }} >> </BButton>
-          <BButton class="gray24 min-w-0">{{ lang.btn4 }} << </BButton>
-        </div>
-        <div class="table-type-a--td">
-          <div class="search-base--btns">
-            <BFormGroup>
+          <div class="ui-shrink-0 ui-flex" data-gap="8" data-direction="col" data-self="center">
+            <BButton class="blue24 min-w-0">{{ lang.btn6 }} >> </BButton>
+            <BButton class="gray24 min-w-0"><< {{ lang.btn4 }}</BButton>
+          </div>
+          <div class="ui-flex-1">
+            <div class="ui-flex" data-justify-align="end">
               <div class="ui-search-with-btn">
                 <BFormInput class="ui-input-28" />
                 <button type="button" class="btn-search-icon" aria-label="검색"></button>
               </div>
-            </BFormGroup>
-          </div>
-          <div class="base-table thead-sticky">
-            <div class="table-responsive" style="max-height: 21rem; overflow-y: auto;">
-              <table class="table-type-a" >
+            </div>
+            <div class="ui-thead-sticky mt-8" data-max-h="210">
+              <table class="table-type-a" data-td-align="center">
                 <colgroup>
                   <col style="width: 5rem" />
                   <col style="width: 7rem" />
                   <col style="width: auto" />
-                  <col style="width: 4rem" />
-                  <col style="width: 4rem" />
-                  <col style="width: 4rem" />
-                  <col style="width: 4rem" />
-                  <col style="width: 4rem" />
-                  <col style="width: 4rem" />
-                  <col style="width: 4rem" />
+                  <col style="width: 5rem" span="2" />
+                  <col style="width: 7rem" />
+                  <col style="width: 5rem" span="4" />
                 </colgroup>
                 <thead>
                   <tr>
@@ -411,7 +403,7 @@ const ko = {
   colTh2_7_1: '벨소리',
   colTh2_7_2: '알림등',
 
-  modalTitle1: '횡의통화 목록',
+  modalTitle1: '그룹통화 등록',
 
   modalTh1_1: '그룹통화 이름',
   modalTh1_2: '응답모드',

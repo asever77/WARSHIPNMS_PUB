@@ -203,65 +203,63 @@
                 <button type="button" class="btn-search-icon" aria-label="검색"></button>
               </div>
             </div>
-            <div class="mt-8">
-              <div class="ui-thead-sticky" data-max-h="210">
-                <table class="table-type-a" data-td-align="center">
-                  <colgroup>
-                    <col style="width: 4rem" />
-                    <col style="width: 7rem" />
-                    <col style="width: auto" />
-                  </colgroup>
-                  <thead>
-                    <tr>
-                      <th scope="col" style="height:6rem"><BFormCheckbox /></th>
-                      <th scope="col" style="height:6rem">{{ lang.colTh2_2 }}</th>
-                      <th scope="col" style="height:6rem">{{ lang.colTh2_3 }}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><BFormCheckbox /></td>
-                      <td>1001</td>
-                      <td>장치명 내용</td>
-                    </tr>
-                    <tr>
-                      <td><BFormCheckbox /></td>
-                      <td>1001</td>
-                      <td>장치명 내용</td>
-                    </tr>
-                    <tr>
-                      <td><BFormCheckbox /></td>
-                      <td>1001</td>
-                      <td>장치명 내용</td>
-                    </tr>
-                    <tr>
-                      <td><BFormCheckbox /></td>
-                      <td>1001</td>
-                      <td>장치명 내용</td>
-                    </tr>
-                    <tr>
-                      <td><BFormCheckbox /></td>
-                      <td>1001</td>
-                      <td>장치명 내용</td>
-                    </tr>
-                    <tr>
-                      <td><BFormCheckbox /></td>
-                      <td>1001</td>
-                      <td>장치명 내용</td>
-                    </tr>
-                    <tr>
-                      <td><BFormCheckbox /></td>
-                      <td>1001</td>
-                      <td>장치명 내용</td>
-                    </tr>
-                    <tr>
-                      <td><BFormCheckbox /></td>
-                      <td>1001</td>
-                      <td>장치명 내용</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="mt-8 ui-thead-sticky" data-max-h="210">
+              <table class="table-type-a" data-td-align="center">
+                <colgroup>
+                  <col style="width: 4rem" />
+                  <col style="width: 7rem" />
+                  <col style="width: auto" />
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col" style="height:6rem"><BFormCheckbox /></th>
+                    <th scope="col" style="height:6rem">{{ lang.colTh2_2 }}</th>
+                    <th scope="col" style="height:6rem">{{ lang.colTh2_3 }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><BFormCheckbox /></td>
+                    <td>1001</td>
+                    <td>장치명 내용</td>
+                  </tr>
+                  <tr>
+                    <td><BFormCheckbox /></td>
+                    <td>1001</td>
+                    <td>장치명 내용</td>
+                  </tr>
+                  <tr>
+                    <td><BFormCheckbox /></td>
+                    <td>1001</td>
+                    <td>장치명 내용</td>
+                  </tr>
+                  <tr>
+                    <td><BFormCheckbox /></td>
+                    <td>1001</td>
+                    <td>장치명 내용</td>
+                  </tr>
+                  <tr>
+                    <td><BFormCheckbox /></td>
+                    <td>1001</td>
+                    <td>장치명 내용</td>
+                  </tr>
+                  <tr>
+                    <td><BFormCheckbox /></td>
+                    <td>1001</td>
+                    <td>장치명 내용</td>
+                  </tr>
+                  <tr>
+                    <td><BFormCheckbox /></td>
+                    <td>1001</td>
+                    <td>장치명 내용</td>
+                  </tr>
+                  <tr>
+                    <td><BFormCheckbox /></td>
+                    <td>1001</td>
+                    <td>장치명 내용</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="ui-shrink-0 ui-flex" data-gap="8" data-direction="col" data-self="center">
