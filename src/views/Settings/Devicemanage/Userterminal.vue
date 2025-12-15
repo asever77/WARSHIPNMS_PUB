@@ -15,13 +15,7 @@
           </div>
         </th>
         <td>
-          <BFormSelect
-            id="device-type"
-            class="ui-select"
-            :options="[
-              {value: '1', text: '선택',}
-            ]"
-          ></BFormSelect>
+          <BFormSelect class="ui-select"></BFormSelect>
         </td>
 
         <th scope="row">
@@ -31,7 +25,7 @@
           </div>
         </th>
         <td>
-          <BFormInput id="search-word" class="ui-input" placeholder=""></BFormInput>
+          <BFormInput class="ui-input" placeholder=""></BFormInput>
         </td>
       </tr>
       <tr>
@@ -42,13 +36,7 @@
           </div>
         </th>
         <td>
-          <BFormSelect
-            id="search-target"
-            class="ui-select"
-            :options="[
-              {value: '1', text: '선택',}
-            ]"
-          ></BFormSelect>
+          <BFormSelect class="ui-select"></BFormSelect>
         </td>
 
         <th scope="row">
@@ -58,13 +46,7 @@
           </div>
         </th>
         <td>
-          <BFormSelect
-            id="search-target"
-            class="ui-select"
-            :options="[
-              {value: '1', text: '선택',}
-            ]"
-          ></BFormSelect>
+          <BFormSelect class="ui-select"></BFormSelect>
         </td>
       </tr>
     </tbody>
@@ -94,10 +76,7 @@
             <button type="button" class="btn-search-icon" aria-label="{{ lang.btnSearch }}" @click="onFilter" ></button>
           </div>
         </BFormGroup>
-        <BFormSelect
-          id="search-target"
-          class="ui-select-28"
-        ></BFormSelect>
+        <BFormSelect class="ui-select-28"></BFormSelect>
         <BFormSelect
           id="per-page"
           class="ui-select-28 w-60"
@@ -819,7 +798,6 @@ import UiTabs from '@/components/UiTabs.vue'
 // =========================
 const ko = {
   sortAll: '전체 정렬',
-  searchLabel: '검색어',
   searchSelect: '전체 선택/해제',
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
@@ -848,12 +826,8 @@ const ko = {
   colTh8: '내선번호',
   colTh9: '상태',
   colTh10: 'IP Address',
-  colTh11: 'L2 스위치',
-  colTh12: 'Serial No',
 
   modalTitle1: '사용자단말 정보 수정',
-  modalTitle2: '점대점 통화',
-  modalTitle3: '점대점 연결 등록',
 
   modalth1: '모델명',
   modalth2: '스피커볼륨',
@@ -948,7 +922,6 @@ const ko = {
 }
 const en = {
   sortAll: '전체 정렬',
-  searchLabel: '검색어',
   searchSelect: '전체 선택/해제',
   searchPlaceholder: '검색어 입력',
   totalLabel: '전체',
@@ -977,12 +950,8 @@ const en = {
   colTh8: '내선번호',
   colTh9: '상태',
   colTh10: 'IP Address',
-  colTh11: 'L2 스위치',
-  colTh12: 'Serial No',
 
   modalTitle1: '사용자단말 정보 수정',
-  modalTitle2: '점대점 통화',
-  modalTitle3: '점대점 연결 등록',
 
   modalth1: '모델명',
   modalth2: '스피커볼륨',

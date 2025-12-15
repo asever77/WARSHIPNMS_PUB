@@ -252,58 +252,58 @@
     <div class="network-side" >
       <div class="network-info">
         <div class="network-info--item">
-          <h3>기상 정보</h3>
+          <h3>{{ lang.info1 }}</h3>
           <ul>
             <li class="network-info--text">
               <i class="network-info--icon w1-1"></i>
-              <em class="network-info--key">현재 온도</em>
+              <em class="network-info--key">{{ lang.info1_1 }}</em>
               <b class="network-info--value">25.7∘C</b>
             </li>
             <li class="network-info--text">
               <i class="network-info--icon w2"></i>
-              <em class="network-info--key">습도</em>
+              <em class="network-info--key">{{ lang.info1_2 }}</em>
               <b class="network-info--value">50%</b>
             </li>
             <li class="network-info--text">
               <i class="network-info--icon w3"></i>
-              <em class="network-info--key">풍속</em>
+              <em class="network-info--key">{{ lang.info1_3 }}</em>
               <b class="network-info--value">4.26 m/s</b>
             </li>
             <li class="network-info--text">
               <i class="network-info--icon w4"></i>
-              <em class="network-info--key">풍량</em>
+              <em class="network-info--key">{{ lang.info1_4 }}</em>
               <b class="network-info--value">170.17</b>
             </li>
           </ul>
         </div>
         <div class="network-info--item">
-          <h3>운항 정보</h3>
+          <h3>{{ lang.info2 }}</h3>
           <ul>
             <li class="network-info--text">
               <i class="network-info--icon s1"></i>
-              <em class="network-info--key">항속</em>
+              <em class="network-info--key">{{ lang.info2_1 }}</em>
               <b class="network-info--value">10.7 <span>knots</span></b>
             </li>
             <li class="network-info--text">
               <i class="network-info--icon s2"></i>
-              <em class="network-info--key">위도</em>
+              <em class="network-info--key">{{ lang.info2_2 }}</em>
               <b class="network-info--value">33°06'N</b>
             </li>
             <li class="network-info--text">
               <i class="network-info--icon s3"></i>
-              <em class="network-info--key">경도</em>
+              <em class="network-info--key">{{ lang.info2_3 }}</em>
               <b class="network-info--value">129°06'425E</b>
             </li>
             <li class="network-info--text">
               <i class="network-info--icon s4"></i>
-              <em class="network-info--key">방위</em>
+              <em class="network-info--key">{{ lang.info2_4 }}</em>
               <b class="network-info--value">170.71</b>
             </li>
           </ul>
         </div>
       </div>
       <div class="network-table">
-        <h3 class="network-title">무선통신기 (연결장치)</h3>
+        <h3 class="network-title">{{ lang.tbl_1_title }}</h3>
          <table class="base-table line">
           <colgroup>
             <col style="width:5rem">
@@ -313,10 +313,10 @@
           </colgroup>
           <thead>
             <tr>
-              <th scope="col">구분</th>
-              <th scope="col">장비명</th>
-              <th scope="col">연결장치</th>
-              <th scope="col">동작상태</th>
+              <th scope="col">{{ lang.tbl_1_th1 }}</th>
+              <th scope="col">{{ lang.tbl_1_th2 }}</th>
+              <th scope="col">{{ lang.tbl_1_th3 }}</th>
+              <th scope="col">{{ lang.tbl_1_th4 }}</th>
             </tr>
           </thead>
           <tbody>
@@ -400,21 +400,21 @@
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">장치명</th>
+            <th scope="row">{{ lang.tbl_2_th1 }}</th>
             <td>무선통신기시스템 L2 스위치</td>
-            <th scope="row">펌웨어버전</th>
+            <th scope="row">{{ lang.tbl_2_th2 }}</th>
             <td>1.0.1</td>
           </tr>
           <tr>
-            <th scope="row">모델명</th>
+            <th scope="row">{{ lang.tbl_2_th3 }}</th>
             <td>C9200-24T-4G-E</td>
-            <th scope="row">시리얼번호</th>
+            <th scope="row">{{ lang.tbl_2_th4 }}</th>
             <td>ZYXELaRTxu10</td>
           </tr>
           <tr>
-            <th scope="row">IP</th>
+            <th scope="row">{{ lang.tbl_2_th5 }}</th>
             <td>192.168.1.1</td>
-            <th scope="row">위치</th>
+            <th scope="row">{{ lang.tbl_2_th6 }}</th>
             <td>무선통신기시스템</td>
           </tr>
         </tbody>
@@ -429,19 +429,19 @@
           </colgroup>
           <tbody>
             <tr>
-              <th scope="row">FAN</th>
+              <th scope="row">{{ lang.tbl_3_th1 }}</th>
               <td class="green ta-c">정상</td>
             </tr>
             <tr>
-              <th scope="row">온도</th>
+              <th scope="row">{{ lang.tbl_3_th2 }}</th>
               <td>24.5 ℃</td>
             </tr>
             <tr>
-              <th scope="row">부팅시간</th>
+              <th scope="row">{{ lang.tbl_3_th3 }}</th>
               <td>20250820 09:00:00</td>
             </tr>
             <tr>
-              <th scope="row">소모전력(전체)</th>
+              <th scope="row">{{ lang.tbl_3_th4 }}</th>
               <td>123.45 watt</td>
             </tr>
           </tbody>
@@ -466,12 +466,12 @@
         </colgroup>
         <thead>
           <tr>
-            <th scope="col">Port #<br>(이름)</th>
+            <th scope="col">Port #<br>({{ lang.tbl_4_th1 }})</th>
             <th scope="col">Link Speed</th>
-            <th scope="col">소모전력<br>(watt)</th>
-            <th scope="col">Port #<br>(이름)</th>
+            <th scope="col">{{ lang.tbl_4_th2 }}<br>(watt)</th>
+            <th scope="col">Port #<br>({{ lang.tbl_4_th1 }})</th>
             <th scope="col">Link Speed</th>
-            <th scope="col">소모전력<br>(watt)</th>
+            <th scope="col">{{ lang.tbl_4_th2 }}<br>(watt)</th>
           </tr>
         </thead>
         <tbody>
@@ -531,10 +531,10 @@
         </colgroup>
         <thead>
           <tr>
-            <th scope="col">장치명</th>
-            <th scope="col">위치</th>
-            <th scope="col">내선 번호</th>
-            <th scope="col">상태</th>
+            <th scope="col">{{ lang.tbl_5_th1 }}</th>
+            <th scope="col">{{ lang.tbl_5_th2 }}</th>
+            <th scope="col">{{ lang.tbl_5_th3 }}</th>
+            <th scope="col">{{ lang.tbl_5_th4 }}</th>
           </tr>
         </thead>
         <tbody>
@@ -580,51 +580,51 @@
         </colgroup>
         <thead>
           <tr>
-            <th colspan="2" scope="col">장치명</th>
+            <th colspan="2" scope="col">{{ lang.tbl_6_th1 }}</th>
             <th class="ta-c" scope="col">NMS #1 (주)</th>
             <th class="ta-c" scope="col">NMS #3 (부)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row" rowspan="2">IP</th>
-            <th scope="row">VIP</th>
+            <th scope="row" rowspan="2">{{ lang.tbl_6_th2 }}</th>
+            <th scope="row">{{ lang.tbl_6_th2_1 }}</th>
             <td class="ta-c">192.168.0.40</td>
             <td class="ta-c">192.168.0.40</td>
           </tr>
           <tr>
-            <th scope="row">Real</th>
+            <th scope="row">{{ lang.tbl_6_th2_2 }}</th>
              <td class="ta-c">192.168.0.40</td>
             <td class="ta-c">192.168.0.40</td>
           </tr>
 
           <!-- NMS -->
           <tr>
-            <th scope="row" colspan="2">DB상태</th>
+            <th scope="row" colspan="2">{{ lang.tbl_6_th3 }}</th>
             <td class="ta-c green">정상</td>
             <td class="ta-c red">비정상</td>
           </tr>
 
           <!-- VoIP -->
           <tr>
-            <th scope="row" colspan="2">일련번호</th>
+            <th scope="row" colspan="2">{{ lang.tbl_6_th4 }}</th>
             <td class="ta-c">TG2z7ZbBQq</td>
             <td class="ta-c">TG2z7ZbBQq</td>
           </tr>
 
           <tr>
-            <th scope="row" colspan="2">L2 스위치</th>
+            <th scope="row" colspan="2">{{ lang.tbl_6_th5 }}</th>
             <td class="ta-c">무선통신운용콘솔</td>
             <td class="ta-c">무선통신운용콘솔</td>
           </tr>
           <tr>
-            <th scope="row" colspan="2">부팅시간</th>
+            <th scope="row" colspan="2">{{ lang.tbl_6_th6 }}</th>
             <td class="ta-c">2025-09-10 13:10:22</td>
             <td class="ta-c">2025-09-10 13:10:22</td>
           </tr>
 
           <tr>
-            <th scope="row" colspan="2" rowspan="2">CPU 사용률</th>
+            <th scope="row" colspan="2" rowspan="2">{{ lang.tbl_6_th6 }}</th>
             <td class="ta-c">
               <div class="box-round">
                 <img src="@/assets/images/network/sample.png" alt="">
@@ -658,7 +658,7 @@
           </tr>
 
           <tr>
-            <th scope="row" colspan="2" rowspan="2">메모리</th>
+            <th scope="row" colspan="2" rowspan="2">{{ lang.tbl_6_th7 }}</th>
             <td class="ta-c">
               <div class="box-round">
                 <img src="@/assets/images/network/sample.png" alt="">
@@ -692,7 +692,7 @@
           </tr>
 
           <tr>
-            <th scope="row" colspan="2">Disk 사용량</th>
+            <th scope="row" colspan="2">{{ lang.tbl_6_th8 }}</th>
             <td class="ta-c">
               <div class="progress-flex">
                 <progress
@@ -739,10 +739,104 @@ import imgNetwork3 from '@/assets/images/network/img3.png';
 import imgNetwork4 from '@/assets/images/network/img4.png';
 
 const ko = {
-  "title": "네트워크 내용"
+  info1: "기상 정보",
+  info1_1: "현재 온도",
+  info1_2: "습도",
+  info1_3: "풍속",
+  info1_4: "풍량",
+
+  info2: "운항 정보",
+  info2_1: "항속",
+  info2_2: "위도",
+  info2_3: "경도",
+  info2_4: "방위",
+
+  tbl_1_title: "무선통신기 (연결장치)",
+  tbl_1_th1: "구분",
+  tbl_1_th2: "장비명",
+  tbl_1_th3: "연결장치",
+  tbl_1_th4: "동작상태",
+
+  tbl_2_th1: "장치명",
+  tbl_2_th2: "펌웨어버전",
+  tbl_2_th3: "모델명",
+  tbl_2_th4: "시리얼번호",
+  tbl_2_th5: "IP",
+  tbl_2_th6: "위치",
+
+  tbl_3_th1: "FAN",
+  tbl_3_th2: "온도",
+  tbl_3_th3: "부팅시간",
+  tbl_3_th4: "소모전력(전체)",
+
+  tbl_4_th1: "이름",
+  tbl_4_th2: "소모전력",
+
+  tbl_5_th1: "장치명",
+  tbl_5_th2: "위치",
+  tbl_5_th3: "내선 번호",
+  tbl_5_th4: "상태",
+
+  tbl_6_th1: "장치명",
+  tbl_6_th2: "IP",
+  tbl_6_th2_1: "VIP",
+  tbl_6_th2_2: "Real",
+  tbl_6_th3: "DB상태",
+  tbl_6_th4: "일련번호",
+  tbl_6_th5: "L2 스위치",
+  tbl_6_th6: "CPU 사용률",
+  tbl_6_th7: "메모리",
+  tbl_6_th8: "Disk 사용량",
 };
 const en = {
-  "title": "네트워크 내용"
+  info1: "기상 정보",
+  info1_1: "현재 온도",
+  info1_2: "습도",
+  info1_3: "풍속",
+  info1_4: "풍량",
+
+  info2: "운항 정보",
+  info2_1: "항속",
+  info2_2: "위도",
+  info2_3: "경도",
+  info2_4: "방위",
+
+  tbl_1_title: "무선통신기 (연결장치)",
+  tbl_1_th1: "구분",
+  tbl_1_th2: "장비명",
+  tbl_1_th3: "연결장치",
+  tbl_1_th4: "동작상태",
+
+  tbl_2_th1: "장치명",
+  tbl_2_th2: "펌웨어버전",
+  tbl_2_th3: "모델명",
+  tbl_2_th4: "시리얼번호",
+  tbl_2_th5: "IP",
+  tbl_2_th6: "위치",
+
+  tbl_3_th1: "FAN",
+  tbl_3_th2: "온도",
+  tbl_3_th3: "부팅시간",
+  tbl_3_th4: "소모전력(전체)",
+
+  tbl_4_th1: "이름",
+  tbl_4_th2: "소모전력",
+
+  tbl_5_th1: "장치명",
+  tbl_5_th2: "위치",
+  tbl_5_th3: "내선 번호",
+  tbl_5_th4: "상태",
+
+  tbl_6_th1: "장치명",
+  tbl_6_th2: "IP",
+  tbl_6_th2_1: "VIP",
+  tbl_6_th2_2: "Real",
+  tbl_6_th3: "DB상태",
+  tbl_6_th4: "일련번호",
+  tbl_6_th5: "L2 스위치",
+  tbl_6_th6: "CPU 사용률",
+  tbl_6_th7: "메모리",
+  tbl_6_th8: "Disk 사용량",
 };
 const lang = ref({});
 
