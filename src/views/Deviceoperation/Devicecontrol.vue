@@ -134,6 +134,7 @@
     :title="lang.modalTitle2"
     type="modal"
     size="md"
+    scrollable
     @close-btn-click="modals.modal2.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
@@ -311,8 +312,8 @@
     </div>
 
     <template #footer>
-      <BButton class="blue28">{{ lang.btn7 }}</BButton>
       <BButton class="gray28" @click="modals.modal3.show = false">{{ lang.btn4 }}</BButton>
+      <BButton class="blue28">{{ lang.btn7 }}</BButton>
     </template>
   </UiModal>
 </template>
@@ -400,7 +401,72 @@ const ko = {
 
   modalTh2_1: '로그인 패스워드',
 }
-const en = {}
+const en = {
+  sortAll: '전체 정렬',
+  searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+  btnSearch: '조회',
+
+  filter1: '장치 유형',
+  filter2: '장치 모델명',
+  filter3: '펌웨어 버전',
+  filter4: '장치명',
+  filter5: '부팅일시',
+
+  btn1: '재시작 요청',
+  btn2: '취소',
+  btn3: '적용',
+  btn4: '닫기',
+  btn5: '초기화 요청',
+  btn6: '상세정보 조회',
+  btn7: '재시도',
+
+  colTh1: 'No',
+  colTh2: '장치명',
+  colTh3: '장치 유형',
+  colTh4: '장치 모델명',
+  colTh5: '펌웨어 버전',
+  colTh6: '펌웨어 적용 일시',
+  colTh7: '부팅 일시',
+
+  colTh2_1: 'No',
+  colTh2_2: '장치명',
+  colTh2_3: '장치 유형',
+  colTh2_4: '장치 모델명',
+  colTh2_5: '응답결과',
+  colTh2_6: '응답일시',
+  colTh2_7: '부가정보',
+
+  modalTitle1: '장치 재시작 작업 결과',
+  modalTitle2: '장치 재시작 요청',
+  modalTitle3: '장치 재시작 상세정보',
+
+  modalTh1_1: '대상 장치',
+  modalTh1_2: '재시작 요청',
+  modalTh1_3: '성공 응답 장치',
+  modalTh1_4: '실패 응답 장치',
+  modalTh1_5: '응답 타임아웃',
+
+  modalTh3_1: '작업유형',
+  modalTh3_2: '요청일시',
+  modalTh3_3: '종료일시',
+  modalTh3_4: '요청자(아이디)',
+  modalTh3_5: '제어장치 개수',
+  modalTh3_6: '결과',
+  modalTh3_7: '부가정보',
+
+  modalTh4_1: 'No',
+  modalTh4_2: '장치명',
+  modalTh4_3: '장치유형',
+  modalTh4_4: '장치 모델명',
+  modalTh4_5: '응답결과',
+  modalTh4_6: '응답일시',
+  modalTh4_7: '부가정보',
+
+  modalTh2_1: '로그인 패스워드',
+}
 const lang = ref({})
 
 // =========================

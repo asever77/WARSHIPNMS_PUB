@@ -76,7 +76,7 @@
             <button type="button" class="btn-search-icon" aria-label="검색" @click="onFilter" />
           </div>
         </BFormGroup>
-        <BFormSelect class="ui-select-28 w-60"></BFormSelect>
+        <BFormSelect class="ui-select-28"></BFormSelect>
         <BFormSelect
           id="per-page"
           class="ui-select-28 w-60"
@@ -105,6 +105,7 @@
     :title="lang.modalTitle1"
     type="modal"
     size="xlg"
+    scrollable
     @close-btn-click="modals.modal1.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
@@ -151,7 +152,7 @@
     </div>
 
     <template #footer>
-      <BButton class="blue28" @click="modals.modal1.show = false">{{ lang.btn2 }}</BButton>
+      <BButton class="gray28" @click="modals.modal1.show = false">{{ lang.btn2 }}</BButton>
     </template>
   </UiModal>
 
@@ -225,7 +226,59 @@ const ko = {
 
 
 }
-const en = {}
+const en = {
+  sortAll: '전체 정렬',
+  searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+  btnSearch: '조회',
+
+  filter1: '작업유형',
+  filter2: '요청자',
+  filter3: '요청일시',
+
+  btn1: '등록',
+  btn2: '닫기',
+  btn3: '삭제',
+  btn4: '취소',
+  btn5: '저장',
+  btn6: '추가',
+  btn7: '통화기능키 설정 ',
+
+  colTh1: 'No',
+  colTh2: '작업유형',
+  colTh3: '요청자(아이디)',
+  colTh4: '요청일시',
+  colTh5: '종료일시',
+  colTh6: '제어장치 개수',
+  colTh7: '결과',
+  colTh8: '부가정보',
+
+  modalTitle1: '수행이력 상세 조회',
+
+  modalTh1_1: '장치유형',
+  modalTh1_2: '장치 모델명',
+  modalTh1_3: '펌웨어 버전',
+  modalTh1_4: '펌웨어 파일',
+  modalTh1_5: '설명/비고',
+
+  modalTh3_1: '작업유형',
+  modalTh3_2: '요청일시',
+  modalTh3_3: '종료일시',
+  modalTh3_4: '요청자(아이디)',
+  modalTh3_5: '제어장치 개수',
+  modalTh3_6: '결과',
+  modalTh3_7: '부가정보',
+
+  modalTh4_1: 'No',
+  modalTh4_2: '장치명',
+  modalTh4_3: '장치유형',
+  modalTh4_4: '장치 모델명',
+  modalTh4_5: '응답결과',
+  modalTh4_6: '응답일시',
+  modalTh4_7: '부가정보',
+}
 const lang = ref({})
 
 // =========================

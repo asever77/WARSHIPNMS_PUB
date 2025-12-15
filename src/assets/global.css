@@ -110,7 +110,9 @@ table .form-check-inline ~ .form-check-inline,
 /* table */
 .table-title-box {background-color:var(--color-primary);padding:.8rem 1rem;color:#fff;font-size:1.4rem;font-weight:700;}
 .table-type-a.zebra-stripes tbody:nth-child(odd) th,
-.table-type-a.zebra-stripes tbody:nth-child(odd) td {background-color:#E3EDF4;}
+.table-type-a.zebra-stripes tbody:nth-child(odd) td {background-color:#f8f8f8;}
+.table-type-a.zebra-stripes tbody:not(:last-child) th,
+.table-type-a.zebra-stripes tbody:not(:last-child) td {border-bottom:1px solid #D4E1E8;}
 .table-type-a.zebra-stripes tbody th,
 .table-type-a.zebra-stripes tbody td {background-color:#fff;}
 

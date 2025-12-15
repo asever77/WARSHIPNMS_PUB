@@ -145,10 +145,9 @@
   </div>
 
   <div class="ui-btn-group">
-    <BButton class="blue28" @click="modals.modalConnectorRegister.show = true"
+    <BButton class="navy28" @click="modals.modalConnectorRegister.show = true"
       >{{ lang.bulkRegisterAll }}</BButton
     >
-
     <div class="ui-flex ml-auto" data-gap="10">
       <BButton class="blue28" @click="modals.modalDeviceRegister.show = true"
         >{{ lang.btnRegister }}</BButton

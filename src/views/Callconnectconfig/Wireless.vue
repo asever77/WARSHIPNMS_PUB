@@ -130,7 +130,7 @@
       </table>
     </div>
     <template #footer>
-      <div class="ui-flex ui-w-full px-26" data-justify-align="between">
+      <div class="ui-flex ui-w-full" data-justify-align="between">
         <BButton class="gray28" @click="modals.modalTimeSetting.show = false">
           {{ lang.btn6 }}
         </BButton>

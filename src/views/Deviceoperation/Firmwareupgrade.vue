@@ -204,8 +204,7 @@
     <template #footer>
       <BButton class="gray28" @click="modals.modal1.show = false">{{ lang.btn2 }}</BButton>
       <BButton class="blue28">{{ lang.btn3 }}</BButton>
-      <BButton class="blue28">{{ lang.btn2 }}</BButton>
-      <BButton class="blue28">{{ lang.btn4 }}</BButton>
+      <BButton class="gray28">{{ lang.btn4 }}</BButton>
     </template>
   </UiModal>
 </template>
@@ -263,7 +262,41 @@ const ko = {
   modalTh1_5: '업그레이드 버전',
 
 }
-const en = {}
+const en = {
+  sortAll: '전체 정렬',
+  searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+  btnSearch: '조회',
+
+  filter1: '장치 유형',
+  filter2: '장치 모델명',
+  filter3: '펌웨어 버전',
+  filter4: '장치명',
+  filter5: '부팅일시',
+
+  btn1: '업그레이드',
+  btn2: '취소',
+  btn3: '적용',
+  btn4: '닫기',
+
+  colTh1: 'No',
+  colTh2: '장치명',
+  colTh3: '장치 유형',
+  colTh4: '장치 모델명',
+  colTh5: '펌웨어 버전',
+  colTh6: '펌웨어 적용 일시',
+  colTh7: '부팅 일시',
+
+  modalTitle1: '펌웨어 업그레이드',
+
+  modalTh1_1: '장치명',
+  modalTh1_2: '장치유형',
+  modalTh1_3: '장치 모델명',
+  modalTh1_4: '현재 적용 버전',
+  modalTh1_5: '업그레이드 버전',
+}
 const lang = ref({})
 
 // =========================

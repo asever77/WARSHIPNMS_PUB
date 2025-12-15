@@ -127,9 +127,11 @@
   </div>
 
   <div class="ui-btn-group">
-    <BButton class="blue28" @click="modals.modal1.show = true">{{ lang.btn2 }}</BButton>
-    <BButton class="gray28">{{ lang.btn3 }}</BButton>
-    <BButton class="blue28" @click="modals.modal3.show = true">{{ lang.btn4 }}</BButton>
+    <BButton class="navy28" @click="modals.modal1.show = true">{{ lang.btn2 }}</BButton>
+    <div class="ui-flex ml-auto" data-gap="10">
+      <BButton class="gray28">{{ lang.btn3 }}</BButton>
+      <BButton class="blue28" @click="modals.modal3.show = true">{{ lang.btn4 }}</BButton>
+    </div>
   </div>
 
   <UiModal
