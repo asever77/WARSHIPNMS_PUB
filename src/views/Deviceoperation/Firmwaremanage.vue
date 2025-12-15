@@ -318,7 +318,52 @@ const ko = {
   modalTh2_5: '설명/비고',
 
 }
-const en = {}
+const en = {
+  sortAll: '전체 정렬',
+  searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+  btnSearch: '조회',
+
+  filter1: '장치 유형',
+  filter2: '장치 모델명',
+  filter3: '펌웨어 버전',
+  filter4: '설명',
+  filter5: '등록일',
+
+  btn1: '등록',
+  btn2: '일괄등록',
+  btn3: '삭제',
+  btn4: '취소',
+  btn5: '저장',
+  btn6: '추가',
+  btn7: '통화기능키 설정',
+  btn8: '수정',
+
+  colTh1: 'No',
+  colTh2: 'F/W 이름',
+  colTh3: '장치 유형',
+  colTh4: '장치 모델명',
+  colTh5: '펌웨어 버전',
+  colTh6: '설명/비고',
+  colTh7: '등록일',
+
+  modalTitle1: '펌웨어 등록',
+  modalTitle2: '펌웨어 정보 수정',
+
+  modalTh1_1: '장치유형',
+  modalTh1_2: '장치 모델명',
+  modalTh1_3: '펌웨어 버전',
+  modalTh1_4: '펌웨어 파일',
+  modalTh1_5: '설명/비고',
+
+  modalTh2_1: '펌웨어 파일명',
+  modalTh2_2: '장치유형',
+  modalTh2_3: '장치 모델명',
+  modalTh2_4: '펌웨어 버전',
+  modalTh2_5: '설명/비고',
+}
 const lang = ref({})
 
 // =========================
