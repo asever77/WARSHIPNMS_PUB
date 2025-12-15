@@ -111,7 +111,7 @@
         </template>
         <!-- th7: 복원 버튼 -->
         <template #cell(th7)="data">
-          <BButton class="gray24 min-w-0" @click.stop="modals.modal2.show = true">{{ lang.btn6 }}</BButton>
+          <BButton class="blue24 min-w-0" @click.stop="modals.modal2.show = true">{{ lang.btn6 }}</BButton>
         </template>
       </BTable>
 
@@ -361,7 +361,52 @@ const ko = {
   modalTh3_3: '설명/비고',
   modalTh3_4: '운용정보 백업 파일',
 }
-const en = {}
+const en = {
+  sortAll: '전체 정렬',
+  searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+  btnSearch: '조회',
+
+  filter1: '백업명',
+  filter2: '버전',
+  filter3: '생성일시',
+
+  btn1: '조회',
+  btn2: '운용정보 백업',
+  btn3: '삭제',
+  btn4: '백업파일 등록',
+  btn5: '다운로드',
+  btn6: '복원',
+  btn7: '저장',
+  btn8: '취소',
+
+  colTh1: 'No',
+  colTh2: '백업명',
+  colTh3: '버전명',
+  colTh4: '생성일시',
+  colTh5: '설명/비고',
+  colTh6: '내보내기',
+  colTh7: '복원',
+
+  modalTitle1: '운용정보 백업 등록',
+  modalTitle2: '운용정보 복원',
+  modalTitle3: '백업파일 불러오기',
+
+  modalTh1_1: '백업명',
+  modalTh1_2: '버전명',
+  modalTh1_3: '설명/비고',
+
+  modalTh2_1: '복원 요청 버전',
+  modalTh2_2: '현재 운용 버전',
+  modalTh2_3: '확인코드',
+
+  modalTh3_1: '백업명',
+  modalTh3_2: '버전명',
+  modalTh3_3: '설명/비고',
+  modalTh3_4: '운용정보 백업 파일',
+}
 const lang = ref({})
 
 // =========================

@@ -413,7 +413,59 @@ const ko = {
   modalTh1_6: '그룹통화 멤버',
 
 }
-const en = {}
+const en = {
+  sortAll: '전체 정렬',
+  searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+  btnSearch: '조회',
+
+  filter1: '그룹통화 번호',
+  filter2: '그룹통화 이름',
+  filter3: '그룹통화 멤버',
+  filter4: '등록일',
+
+  btn1: '등록',
+  btn2: '일괄등록',
+  btn3: '삭제',
+  btn4: '취소',
+  btn5: '저장',
+  btn6: '선택',
+  btn7: '통화기능키 설정 ',
+
+  colTh1: 'No',
+  colTh2: '그룹통화 번호',
+  colTh3: '그룹통화 이름',
+  colTh4: '응답모드',
+  colTh5: '일방통화',
+  colTh6: '멤버 수',
+  colTh7: '그룹통화 멤버',
+  colTh8: '등록일',
+
+  colTh2_1: '',
+  colTh2_2: '번호',
+  colTh2_3: '장치명',
+  colTh2_4: '호출권한',
+  colTh2_5: '발언 권한',
+  colTh2_6: '출력방향',
+  colTh2_7: '호출알림',
+  colTh2_4_1: '발신',
+  colTh2_4_2: '착신',
+  colTh2_6_1: '왼쪽',
+  colTh2_6_2: '오른쪽',
+  colTh2_7_1: '벨소리',
+  colTh2_7_2: '알림등',
+
+  modalTitle1: '그룹통화 등록',
+
+  modalTh1_1: '그룹통화 이름',
+  modalTh1_2: '응답모드',
+  modalTh1_3: '그룹통화 번호',
+  modalTh1_4: '통화모드',
+  modalTh1_5: '녹음제어',
+  modalTh1_6: '그룹통화 멤버',
+}
 const lang = ref({})
 
 // =========================

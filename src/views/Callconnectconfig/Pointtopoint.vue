@@ -240,7 +240,81 @@ const ko = {
   checkbox7: '일방통화',
 };
 
-const en = {};
+const en = {
+  modalTitle: '점대점 통화 연결 수정',
+
+  btnCancel: '취소',
+  btnSave: '저장',
+  btnDelete: '삭제',
+
+  ccTab1: '점대점 통화',
+  ccTab2: '회의통화',
+  ccTab3: '그룹통화',
+  ccTab4: '무선통신기',
+  ccTab5: '방송장비',
+  ccTab6: '경보',
+  ccTab7: 'CCTV',
+
+  ccModal1: '점대점 통화 연결 수정',
+  ccModal2: '회의통화 연결 등록',
+  ccModal3: '그룹통화 연결 등록',
+  ccModal4: '무선통신기 연결 등록',
+  ccModal5: '방송장비 연결 등록',
+  ccModal6: '경보 연결 등록',
+  ccModal7: 'CCTV 연결 등록',
+  // 점대점
+  ccTh1_1: '피호출 사용자단말',
+  ccTh1_2: '통화기능키 레이블',
+  ccTh1_3: '통화모드',
+  ccTh1_4: '응답모드',
+  ccTh1_5: '녹음제어',
+  ccTh1_6: '스피커 출력방향',
+  ccTh1_7: '호출알림',
+  // 회의통화
+  ccTh2_1: '회의통화명',
+  ccTh2_2: '통화기능키 레이블',
+  ccTh2_3: '통화모드',
+  ccTh2_4: '호출권한',
+  ccTh2_5: '발언권한',
+  ccTh2_6: '응답모드',
+  ccTh2_7: '녹음제어',
+  ccTh2_8: '스피커 출력방향',
+  ccTh2_9: '호출알림',
+  // 그룹통화
+  ccTh3_1: '그룹통화명',
+  ccTh3_2: '통화기능키 레이블',
+  ccTh3_3: '통화모드',
+  ccTh3_4: '호출권한',
+  ccTh3_5: '발언권한',
+  ccTh3_6: '응답모드',
+  ccTh3_7: '녹음설정',
+  ccTh3_8: '스피커 출력방향',
+  ccTh3_9: '호출알림',
+  // 무선통신
+  ccTh4_1: '무선통신기명',
+  ccTh4_2: '통화기능키 레이블',
+  ccTh4_3: '통화모드',
+  ccTh4_4: '녹음설정',
+  ccTh4_5: '스피커 출력방향',
+  // 방송장비
+  ccTh5_1: '항목명',
+  ccTh5_2: '통화기능키 레이블',
+  ccTh5_3: '통화모드',
+  // 경보
+  ccTh6_1: '경보명',
+  ccTh6_2: '통화기능키 레이블',
+  // CCTV
+  ccTh7_1: 'CCTV구역명',
+  ccTh7_2: '통화기능키 레이블',
+
+  checkbox1: '왼쪽',
+  checkbox2: '오른쪽',
+  checkbox3: '벨소리',
+  checkbox4: '알림등',
+  checkbox5: '발신',
+  checkbox6: '착신',
+  checkbox7: '일방통화',
+};
 const lang = ref({})
 const ppButtons = [
   'HLCPTR CONTRC', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',

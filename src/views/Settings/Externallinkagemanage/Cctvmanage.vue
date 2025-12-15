@@ -90,7 +90,20 @@ const ko = {
   colTh5: '활성여부',
 
 }
-const en = {}
+const en = {
+  title1:'CCTV 연동정보 관리',
+  totalLabel: '전체',
+
+  btn1: '등록',
+  btn2: '삭제',
+
+  colSelect: '',
+  colTh1: 'No',
+  colTh2: '구역명',
+  colTh3: 'CCTV URI',
+  colTh4: '설명/비고',
+  colTh5: '활성여부',
+}
 const lang = ref({})
 
 // =========================
