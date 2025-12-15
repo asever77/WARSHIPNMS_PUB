@@ -105,6 +105,7 @@
     :title="lang.modalTitle1"
     type="modal"
     size="md"
+    scrollable
     @close-btn-click="modals.modal1.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
@@ -146,7 +147,7 @@
 
       <div class="ui-flex" data-direction="col" data-gap="8">
         <div class="ui-btn-group">
-          <BButton class="blue24">{{ lang.btn6 }}</BButton>
+          <BButton class="blue28">{{ lang.btn6 }}</BButton>
         </div>
 
         <table class="table-type-a">
@@ -192,6 +193,7 @@
     :title="lang.modalTitle2"
     type="modal"
     size="md"
+    scrollable
     @close-btn-click="modals.modal2.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
@@ -233,7 +235,7 @@
 
       <div class="ui-flex" data-direction="col" data-gap="8">
         <div class="ui-btn-group">
-          <BButton class="blue24">{{ lang.btn6 }}</BButton>
+          <BButton class="blue28">{{ lang.btn6 }}</BButton>
         </div>
 
         <table class="table-type-a">
@@ -353,15 +355,15 @@ const items = ref([
 ])
 const fields = computed(() => [
   { key: 'select', label: lang.value.colSelect, thStyle: { width: '3rem' } },
-  { key: 'th1', label: lang.value.colTh1, thStyle: { width: '6rem' } },
-  { key: 'th2', label: lang.value.colTh2, thStyle: { width: '14rem' } },
-  { key: 'th3', label: lang.value.colTh3, thStyle: { width: 'auto' } },
-  { key: 'th4', label: lang.value.colTh4, thStyle: { width: '12rem' } },
-  { key: 'th5', label: lang.value.colTh5, thStyle: { width: '12rem' } },
-  { key: 'th6', label: lang.value.colTh6, thStyle: { width: '12rem' } },
-  { key: 'th7', label: lang.value.colTh7, thStyle: { width: '15rem' } },
-  { key: 'th8', label: lang.value.colTh8, thStyle: { width: '16rem' } },
-  { key: 'th9', label: lang.value.colTh9, thStyle: { width: '12rem' } },
+  { key: 'th1', label: lang.value.colTh1, thStyle: { width: '5rem' } },
+  { key: 'th2', label: lang.value.colTh2, thStyle: { width: '12rem' } },
+  { key: 'th3', label: lang.value.colTh3, thStyle: { width: '12rem' } },
+  { key: 'th4', label: lang.value.colTh4, thStyle: { width: '8rem' } },
+  { key: 'th5', label: lang.value.colTh5, thStyle: { width: 'auto' } },
+  { key: 'th6', label: lang.value.colTh6, thStyle: { width: '9rem' } },
+  { key: 'th7', label: lang.value.colTh7, thStyle: { width: '12rem' } },
+  { key: 'th8', label: lang.value.colTh8, thStyle: { width: '14rem' } },
+  { key: 'th9', label: lang.value.colTh9, thStyle: { width: '10rem' } },
 
 ])
 

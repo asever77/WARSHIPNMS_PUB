@@ -217,7 +217,7 @@ div.table-type-a {display:grid; grid-template-columns:14rem 1fr 8rem 2fr;}
 .p0-type .modal-body .ui-flex{width:100%;}
 /* common content */
 .base-wrap {display:flex;flex-direction:column;width:100%;padding:2rem;background-color:#F1F6F9;border-radius:.5rem;gap:.8rem;}
-.base-wrap-top-box {margin:-2rem -2rem 0;background-color:#2B77A9;border-radius:.5rem .5rem 0 0;padding:.8rem 2rem;color:#fff}
+.base-wrap-top-box {margin:-2rem -2rem 0;background-color:var(--color-primary);border-radius:.5rem .5rem 0 0;padding:.8rem 2rem;color:#fff}
 
 .base-table {width:100%;}
 .base-table table {border:0;border-collapse:collapse;width:100%;border-spacing:0;}

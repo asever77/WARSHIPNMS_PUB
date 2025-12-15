@@ -1,5 +1,8 @@
 <template>
   <div class="base-wrap">
+    <div class="base-wrap-top-box">
+      <h3 class="text-14-700">{{ lang.title1 }}</h3>
+    </div>
     <div class="search-base">
       <div class="search-base--form">
         <span class="search-total">{{ lang.totalLabel }}:15</span>
@@ -78,6 +81,7 @@ import UiModal from '@/components/UiModal.vue'
 // [언어/라벨 관리]
 // =========================
 const ko = {
+  title1:'방송 구역 관리',
   totalLabel: '전체',
 
   filter1: '교환기이름',
@@ -101,7 +105,30 @@ const ko = {
   modalTh1_4:'사용여부',
 
 }
-const en = {}
+const en = {
+  title1:'방송 구역 관리',
+  totalLabel: '전체',
+
+  filter1: '교환기이름',
+  filter2: '교환기주소',
+  filter3: '기압자정보',
+
+  btn1: '취소',
+  btn2: '저장',
+
+  colTh1: 'No',
+  colTh2: '구역명',
+  colTh3: '내선번호',
+  colTh4: '설명/비고',
+  colTh5: '사용여부',
+
+  modalTitle1: '방송구역 설정 수정',
+
+  modalTh1_1:'구역명',
+  modalTh1_2:'내선번호',
+  modalTh1_3:'설명/비고',
+  modalTh1_4:'사용여부',
+}
 const lang = ref({})
 
 // =========================

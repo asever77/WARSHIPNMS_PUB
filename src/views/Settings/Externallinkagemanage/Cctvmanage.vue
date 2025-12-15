@@ -1,7 +1,8 @@
 <template>
-  <h2 class="mb-4 fw-bold h3">CCTV 연동정보 관리 </h2>
-
-  <div class="base-wrap mt-20">
+  <div class="base-wrap">
+    <div class="base-wrap-top-box">
+      <h3 class="text-14-700">{{ lang.title1 }}</h3>
+    </div>
     <div class="search-base">
       <div class="search-base--form">
         <span class="search-total">{{ lang.totalLabel }}:15</span>
@@ -75,6 +76,7 @@ import { BFormSelect, BButton, BPagination, BTable, BFormCheckbox } from 'bootst
 // [언어/라벨 관리]
 // =========================
 const ko = {
+  title1:'CCTV 연동정보 관리',
   totalLabel: '전체',
 
   btn1: '등록',

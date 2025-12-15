@@ -1,35 +1,35 @@
 <template>
-  <h2 class="mb-4 fw-bold h3">경보장치 연동 정보</h2>
-   <table class="table-type-a">
+  <h2 class="table-title-box">
+    {{ lang.title1 }}
+  </h2>
+  <table class="table-type-a">
     <colgroup>
+      <col style="width: 16rem" />
+      <col style="width: auto" />
       <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
-      <tr>
-        <th scope="row">{{ lang.filter1 }}</th>
-        <td>
-          <BFormSelect class="ui-select"></BFormSelect>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">{{ lang.filter2 }}</th>
-        <td>
-          <BFormInput class="ui-input" placeholder=""></BFormInput>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">{{ lang.filter3 }}</th>
-        <td>
-          <BFormInput class="ui-input" placeholder=""></BFormInput>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">{{ lang.filter4 }}</th>
-        <td>
-          <BFormInput class="ui-input" placeholder=""></BFormInput>
-        </td>
-      </tr>
+    <tr>
+      <th scope="row">{{ lang.filter1 }}</th>
+      <td>
+        <BFormSelect class="ui-select"></BFormSelect>
+      </td>
+      <th scope="row">{{ lang.filter2 }}</th>
+      <td>
+        <BFormInput class="ui-input" placeholder=""></BFormInput>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">{{ lang.filter3 }}</th>
+      <td>
+        <BFormInput class="ui-input" placeholder=""></BFormInput>
+      </td>
+      <th scope="row">{{ lang.filter4 }}</th>
+      <td>
+        <BFormInput class="ui-input" placeholder=""></BFormInput>
+      </td>
+    </tr>
 
     </tbody>
   </table>
@@ -91,6 +91,7 @@ import { BFormInput, BButton, BPagination, BTable, BFormCheckbox, BFormSelect } 
 // [언어/라벨 관리]
 // =========================
 const ko = {
+  title1: '경보장치 연동 정보',
   totalLabel: '전체',
 
   filter1: '연동유형',
@@ -113,7 +114,30 @@ const ko = {
   colTh8: '등록일',
   colTh9: '스위치',
 }
-const en = {}
+const en = {
+  title1: '경보장치 연동 정보',
+  totalLabel: '전체',
+
+  filter1: '연동유형',
+  filter2: 'IP Address',
+  filter3: 'Port',
+  filter4: '연동 Parameter',
+
+  btn1: '연동정보 적용',
+  btn2: '사용여부 변경 적용',
+  btn3: '삭제',
+
+  colSelect: '',
+  colTh1: 'No',
+  colTh2: '항목명',
+  colTh3: '경보코드',
+  colTh4: '사용여부',
+  colTh5: '등급',
+  colTh6: '설명',
+  colTh7: '비고',
+  colTh8: '등록일',
+  colTh9: '스위치',
+}
 const lang = ref({})
 
 // =========================
