@@ -398,7 +398,7 @@
           </td>
           <th scope="row">{{ lang.modalLocationDetail }}</th>
           <td>
-            <BFormSelect class="ui-select" />
+           <BFormInput class="ui-input" />
           </td>
         </tr>
         <tr>
@@ -511,7 +511,7 @@
           </td>
           <th scope="row">{{ lang.location }}</th>
           <td>
-            <BFormSelect class="ui-select" />
+            <BFormInput class="ui-input" />
           </td>
         </tr>
         <tr>
@@ -609,7 +609,7 @@
           </td>
           <th scope="row">{{ lang.modalLocationDetail }}</th>
           <td>
-            <BFormSelect class="ui-select" />
+           <BFormInput class="ui-input" />
           </td>
         </tr>
         <tr>
@@ -893,7 +893,7 @@
           </td>
           <th scope="row">{{ lang.modalLocationDetail }}</th>
           <td>
-            <BFormSelect class="ui-select" />
+            <BFormInput class="ui-input" />
           </td>
         </tr>
 

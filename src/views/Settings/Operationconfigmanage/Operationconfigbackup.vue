@@ -206,16 +206,12 @@
         <tbody>
           <tr>
             <th scope="row">{{ lang.modalTh2_1 }}</th>
-            <td>
-              <BFormInput type="text" class="ui-input" />
-            </td>
+            <td>복원 요청 버전 내용</td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh2_2 }}</th>
-            <td>
-              <BFormInput type="text" class="ui-input" />
-            </td>
+            <td>현재 운영 버전 내용</td>
           </tr>
 
           <tr>

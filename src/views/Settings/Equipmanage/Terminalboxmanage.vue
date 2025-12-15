@@ -726,11 +726,7 @@
           <tr>
             <th scope="row">{{ lang.deviceName }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                v-model="formData.deviceName"
-                :options="deviceNameOptions"
-              />
+              <BFormInput type="text" class="ui-input" />
             </td>
           </tr>
           <tr>
@@ -759,7 +755,7 @@
               />
               <BFormInput
                 v-else-if="formData.location === lang.locationCustom"
-                class="ui-input-28"
+                class="ui-input"
                 v-model="formData.locationDetail4"
               />
             </td>
