@@ -157,13 +157,13 @@
           <tr>
             <th scope="row">{{ lang.modalth3 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              <BFormInput class="ui-input" type="password" />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.modalth4 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              <BFormInput class="ui-input" type="password" />
             </td>
           </tr>
 
