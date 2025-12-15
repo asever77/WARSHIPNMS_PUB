@@ -132,7 +132,21 @@ const ko = {
   th10: '5등급',
 
 }
-const en = {}
+const en = {
+  btn1: '적용',
+
+  th1: '가입자등급',
+  th2: '점대점 통화',
+  th3: '회의통화',
+  th4: '그룹통화',
+  th5: '방송',
+
+  th6: '1등급',
+  th7: '2등급',
+  th8: '3등급',
+  th9: '4등급',
+  th10: '5등급',
+}
 const lang = ref({})
 
 onMounted(() => {

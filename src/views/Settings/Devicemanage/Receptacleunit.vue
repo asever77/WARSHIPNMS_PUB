@@ -294,7 +294,52 @@ const ko = {
   modalth9: 'L2 스위치',
 
 }
-const en = {}
+const en = {
+  sortAll: '전체 정렬',
+  searchLabel: '검색어',
+  searchSelect: '전체 선택/해제',
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+  btnSearch: '조회',
+
+  filter1: '장치명',
+  filter2: '모델명',
+  filter3: '위치(구역)',
+  filter4: '상태',
+
+  btnRegister: '등록',
+  btnBulkRegister: '일괄등록',
+  btnDelete: '삭제',
+  btnCancel: '취소',
+  btnSave: '저장',
+  btnAdd: '추가',
+
+  colSelect: '선택',
+  colTh1: 'No',
+  colTh2: '위치(구역)',
+  colTh3: '장치명',
+  colTh4: '무선침묵',
+  colTh5: '경보권한',
+  colTh6: '방송권한',
+  colTh7: 'Mute권한',
+  colTh8: '내선번호',
+  colTh9: '상태',
+  colTh10: 'IP Address',
+  colTh11: 'L2 스위치',
+  colTh12: 'Serial No',
+
+  modalTitle1: '리셉터클유닛 등록',
+
+  modalth1: '모델명',
+  modalth2: '헤드셋 볼륨',
+  modalth3: '장치명',
+  modalth4: '자동연결 대기시간(초)',
+  modalth5: '설명/비고',
+  modalth6: '시리얼 번호',
+  modalth7: '가입자정보 (내선번호)',
+  modalth8: '위치',
+  modalth9: 'L2 스위치',
+}
 const lang = ref({})
 
 // =========================

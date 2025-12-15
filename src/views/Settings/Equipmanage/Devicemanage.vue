@@ -1174,7 +1174,109 @@ const ko = {
   modalPortSum: '포트 개수',
   modalAdminPort: '관리 포트',
 }
-const en = {}
+const en = {
+  // 필터 영역
+  filterDeviceType: '장치유형',
+  filterSearchTarget: '검색대상',
+  filterSearchWord: '검색어',
+  filterRegDate: '등록일',
+  sortAll: '전체 정렬',
+
+  // 검색 영역
+  searchLabel: '검색어', // 중복: filterSearchWord
+  searchPlaceholder: '검색어 입력',
+  totalLabel: '전체',
+
+  thead1: '포트 식별자',
+  thead2: '포트 인터페이스 유형',
+  thead3: '레이블',
+  thead4: 'VoIP교환기 속성',
+  thead5: 'VoIP 교환기 1',
+  thead6: 'VoIP 교환기 2',
+
+  // 버튼
+  btnSearch: '조회',
+  btnRegister: '등록',
+  btnDelete: '삭제',
+  btnSave: '저장',
+  btnCancel: '취소',
+
+  // 테이블 헤더
+  colSelect: '선택',
+  colNumber: '순번',
+  colDeviceType: '장치유형', // 중복: filterDeviceType, modalDeviceType
+  colModel: '모델', // 중복: modalModel
+  colDeviceName: '장치명', // 중복: modalDeviceName, deviceName, modalDeviceName2
+  colGrade: '등급',
+  colSerial: '시리얼번호', // 중복: modalSerial, serialNumber
+  colLocation: '위치', // 중복: modalLocation, location, locationDetail, locationType
+  colRegDate: '등록일',
+
+  // 모달
+  modalTitleEdit: '장치 수정',
+  modalTitleRegister: '장치 등록',
+  modalDeviceType: '장치유형', // 중복: colDeviceType
+  modalModel: '모델명', // 중복: colModel
+  modalDeviceName: '장치명', // 중복: colDeviceName, deviceName, modalDeviceName2
+  modalDescription: '장비설명',
+  modalGrade: '설명/비고', // 중복: description
+  modalSerial: '시리얼번호', // 중복: colSerial, serialNumber
+  modalLocation: '위치', // 중복: colLocation, location, locationDetail, locationType
+  modalLocationDetail: '위치상세', // 중복: locationDetail
+  modalL2Switch: 'L2 스위치', // 중복: l2Switch
+  modalIpAddress: 'IP Address',
+  modalCardCount: '카드갯수',
+  modalServerTYpe: '서버타입',
+
+  // 옵션
+  optionSelect: '선택하세요',
+  optionAdmin: '관리자',
+  optionManager: '매니저',
+  optionLocation1: '위치1',
+  optionLocation2: '위치2',
+  optionDetailA: 'A구역',
+  optionDetailB: 'B구역',
+  optionL2SW01: 'L2SW-01',
+  optionL2SW02: 'L2SW-02',
+  optionCardCount1: '1',
+  optionCardCount2: '2',
+  optionCardCount4: '4',
+  optionEthernet: '이더넷',
+  optionSerial: '시리얼',
+  optionFiber: '광',
+
+  // 추가 텍스트
+  cardNumber: '카드번호',
+  cardLabel: '카드 레이블',
+  portNumber: '포트번호',
+  portLabel: '포트 레이블',
+  cardInterface: '카드 인터페이스',
+  label: '라벨',
+  portManage: '포트관리',
+  btnLabeling: '라벨링',
+  deviceSecurityType: '보안장비유형',
+  portCount: '포트갯수',
+  deviceName: '장치명', // 중복: colDeviceName, modalDeviceName, modalDeviceName2
+  serialNumber: '시리얼번호', // 중복: colSerial, modalSerial
+  locationType: '위치유형', // 중복: colLocation, modalLocation
+  location: '위치', // 중복: colLocation, modalLocation
+  locationDetail: '위치상세', // 중복: modalLocationDetail
+  l2Switch: 'L2 스위치', // 중복: modalL2Switch
+  description: '설명/비고', // 중복: modalGrade
+  transceiverType: '송수신유형',
+  frequencyBand: '주파수대역',
+  channelCount: '채널갯수',
+  switchAttributes: '스위치 속성',
+  poeSupport: 'POE 지원 여부',
+  managementIp: '관리 IP',
+  dashboardLabel: '대시보드 레이블',
+  btnApply: '적용',
+  deviceWireless: '무선통신기',
+  modalL2PortIndex: 'L2 포트 인덱스',
+  modalDeviceName2: '장치명 별명', // 중복: deviceName, modalDeviceName
+  modalPortSum: '포트 개수',
+  modalAdminPort: '관리 포트',
+}
 
 const lang = ref({})
 const textEx = ref('');

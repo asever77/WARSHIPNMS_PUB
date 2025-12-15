@@ -328,7 +328,43 @@ const ko = {
   modalTh2_3:'이름(설명)',
   modalTh2_4:'삭제',
 }
-const en = {}
+const en = {
+  totalLabel: '전체',
+
+  filter1: '교환기이름',
+  filter2: '교환기주소',
+  filter3: '기압자정보',
+
+  btn1: '조회',
+  btn2: '등록',
+  btn3: '삭제',
+  btn4: '취소',
+  btn5: '저장',
+  btn6: '가입자 추가 +',
+
+  colTh1: 'No',
+  colTh2: '타체계 교환기 이름',
+  colTh3: '타체계 교환기 주소',
+  colTh4: '프리픽스',
+  colTh5: '설명',
+  colTh6: '가입자 수',
+  colTh7: '가입자 내선번호',
+  colTh8: '등록일',
+  colTh9: '활성여부',
+
+  modalTitle1: '타체계 교환기 정보 등록',
+  modalTitle2: '타체계 교환기 정보 수정',
+
+  modalTh1_1:'타체계 교환기 이름',
+  modalTh1_2:'타체계 교환기 주소',
+  modalTh1_3:'프리픽스',
+  modalTh1_4:'설명/비고',
+
+  modalTh2_1:'No',
+  modalTh2_2:'내선번호',
+  modalTh2_3:'이름(설명)',
+  modalTh2_4:'삭제',
+}
 const lang = ref({})
 
 // =========================
