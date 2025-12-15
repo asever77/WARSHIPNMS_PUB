@@ -235,7 +235,39 @@ const ko = {
   modalth7: '발신',
   modalth8: '착신',
 }
-const en = {}
+const en = {
+  totalLabel: '전체',
+
+  filter1: '유형',
+  filter2: '녹음대상 명칭',
+  filter3: '아이디',
+  filter4: '도메인(IP)',
+
+  btnSearch: '조회',
+  btnCancel: '취소',
+  btnSave: '저장',
+
+  colTh1: 'No',
+  colTh2: '유형',
+  colTh3: 'VoIP 녹음대상',
+  colTh3_1: '발신가입자',
+  colTh3_2: '착신가입자',
+  colTh4: '카트/포트',
+  colTh5: '발신 전화번호',
+  colTh6: '녹음 전화번호',
+  colTh7: '녹음대상 (설명/비고)',
+
+  modalTitle1: '녹음대상 정보 등록/수정',
+
+  modalth1: '녹음대상 유형',
+  modalth2: '연결정보(카드/포트)',
+  modalth3: '발신 전화번호',
+  modalth4: '녹음(착신) 전화번호',
+  modalth5: '녹음대상 (설명/비고)',
+  modalth6: 'VoIP 녹음대상',
+  modalth7: '발신',
+  modalth8: '착신',
+}
 const lang = ref({})
 
 

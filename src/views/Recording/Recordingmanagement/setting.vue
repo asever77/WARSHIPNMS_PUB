@@ -88,7 +88,25 @@ const ko = {
   modalTitle1: '사용자단말 정보 수정',
 
 }
-const en = {}
+const en = {
+  totalLabel: '전체',
+
+  filter1: '검색대상',
+  filter2: '검색어',
+  filter3: '무선침묵권한',
+  filter4: '상태',
+
+  btn1: '자동녹음설정 변경 적용',
+
+  colTh1: 'No',
+  colTh2: '유형',
+  colTh3: '녹음대상',
+  colTh4: '녹음제어 (자동녹음설정)',
+  colTh5: '통화상태',
+  colTh6: '녹음 개시/중지',
+
+  modalTitle1: '사용자단말 정보 수정',
+}
 const lang = ref({})
 
 // =========================
