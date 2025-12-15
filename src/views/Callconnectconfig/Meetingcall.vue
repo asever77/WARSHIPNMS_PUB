@@ -168,9 +168,9 @@
 // [IMPORTS]
 // =========================
 // NOTE: 컴포넌트 이름은 multi-word로 권장됨. 실제 이름 변경 시 파일명, 라우터 등 전체 영향 주의
-import { ref, onMounted, computed, reactive } from 'vue'
+import { ref, onMounted, reactive } from 'vue'
 import G from "@/config/global.js";
-import { BFormInput, BFormSelect, BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next/components'
+import { BFormInput, BFormSelect, BButton, BFormCheckbox } from 'bootstrap-vue-next/components'
 import UiModal from '@/components/UiModal.vue'
 import { BTab } from 'bootstrap-vue-next'
 import UiTabs from '@/components/UiTabs.vue'
@@ -268,21 +268,9 @@ const ppButtons = [
 // =========================
 const modals = reactive({
   modalPointSetting: { show: false, rowIdx: null },
-  modalModify1: { show: false },
   modalModify2: { show: false },
-  modalModify3: { show: false },
-  modalModify4: { show: false },
-  modalModify5: { show: false },
-  modalModify6: { show: false },
-  modalModify7: { show: false },
 });
-function openModify1() { modals.modalModify1.show = true } // 점대점
 function openModify2() { modals.modalModify2.show = true } // 회의통화
-function openModify3() { modals.modalModify3.show = true } // 그룹통화
-function openModify4() { modals.modalModify4.show = true } // 무선통신기
-function openModify5() { modals.modalModify5.show = true } // 방송장비
-function openModify6() { modals.modalModify6.show = true } // 경보
-function openModify7() { modals.modalModify7.show = true } // CCTV
 
 // =========================
 // [상태/폼/리스트 관리]

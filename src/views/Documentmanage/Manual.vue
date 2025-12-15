@@ -2,9 +2,7 @@
   <table class="table-type-a">
     <colgroup>
       <col style="width: 16rem" />
-      <col style="width: 18rem" />
-      <col style="width: 16rem" />
-      <col style="width: 18rem" />
+      <col style="width: auto" />
       <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
@@ -38,6 +36,8 @@
           :options="filterFieldOptions2"
         />
       </td>
+    </tr>
+    <tr>
       <th scope="row">
         {{ lang.text10 }}
       </th>
@@ -48,6 +48,10 @@
           :placeholder="lang.text11"
           class="ui-input-28"
         />
+      </td>
+      <th scope="row">
+      </th>
+      <td>
       </td>
     </tr>
     </tbody>

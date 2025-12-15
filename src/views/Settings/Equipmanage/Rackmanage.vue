@@ -152,11 +152,7 @@
           <tr>
             <th scope="row">{{ lang.thead3 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                v-model="formData.deviceType"
-                :options="deviceTypeOptions"
-              />
+              <BFormInput class="ui-input" placeholder="" />
             </td>
           </tr>
           <tr>

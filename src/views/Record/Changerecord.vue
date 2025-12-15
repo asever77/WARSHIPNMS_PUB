@@ -50,11 +50,6 @@
       <th scope="row">
         <div class="ui-flex" data-item-align="center" data-gap="4">
           <span class="ui-flex-1">{{ lang.search3 }}</span>
-          <BButton
-            class="btn-sort ui-shrink-0"
-            aria-sort="none"
-            :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"
-          ></BButton>
         </div>
       </th>
       <td colspan="3">

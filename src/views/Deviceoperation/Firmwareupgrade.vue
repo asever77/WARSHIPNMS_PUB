@@ -31,7 +31,7 @@
           </div>
         </th>
         <td>
-          <BFormInput id="search-word" class="ui-input" placeholder=""></BFormInput>
+          <BFormInput class="ui-input" placeholder=""></BFormInput>
         </td>
       </tr>
       <tr>
@@ -42,13 +42,7 @@
           </div>
         </th>
         <td>
-          <BFormSelect
-            id="search-target"
-            class="ui-select"
-            :options="[
-              {value: '1', text: '선택',}
-            ]"
-          ></BFormSelect>
+          <BFormInput class="ui-input" placeholder=""></BFormInput>
         </td>
 
         <th scope="row">
@@ -58,13 +52,7 @@
           </div>
         </th>
         <td>
-          <BFormSelect
-            id="search-target"
-            class="ui-select"
-            :options="[
-              {value: '1', text: '선택',}
-            ]"
-          ></BFormSelect>
+          <BFormInput class="ui-input" placeholder=""></BFormInput>
         </td>
       </tr>
       <tr>
