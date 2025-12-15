@@ -12,15 +12,15 @@
       <tbody>
       <tr>
         <th scope="row">{{ lang.table1 }}</th>
-        <td><BFormInput id="input-1" class="ui-input" v-model="password" type="password" autocomplete="current-password" placeholder=""></BFormInput></td>
+        <td><BFormInput id="input-1" class="ui-input" type="password" autocomplete="current-password" placeholder=""></BFormInput></td>
       </tr>
       <tr>
         <th scope="row">{{ lang.table2 }}</th>
-        <td><BFormInput id="input-2" class="ui-input" v-model="password" type="password" autocomplete="new-password" placeholder=""></BFormInput></td>
+        <td><BFormInput id="input-2" class="ui-input" type="password" autocomplete="new-password" placeholder=""></BFormInput></td>
       </tr>
       <tr>
         <th scope="row">{{ lang.table3 }}</th>
-        <td><BFormInput id="input-3" class="ui-input" v-model="password" type="password" autocomplete="new-password" placeholder=""></BFormInput></td>
+        <td><BFormInput id="input-3" class="ui-input" type="password" autocomplete="new-password" placeholder=""></BFormInput></td>
       </tr>
       </tbody>
     </table>

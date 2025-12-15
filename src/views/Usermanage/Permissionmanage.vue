@@ -13,14 +13,15 @@
         </BFormGroup>
 
         <!-- 검색어 입력 -->
-        <BFormGroup :label="lang.text10" label-for="search-word">
+        <BFormGroup label="검색어" label-for="search-word">
           <BFormInput
             id="search-word"
             v-model="filterText"
-            :placeholder="lang.text11"
+            :placeholder="lang.placeholder1"
             class="ui-input-28"
           />
         </BFormGroup>
+
         <BFormRadioGroup v-model="radioSelected" :options="radioOptions" name="radio-group-1" />
       </div>
       <div class="search-base--btns">
