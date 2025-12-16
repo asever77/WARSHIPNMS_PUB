@@ -7,7 +7,7 @@
       <div class="search-base--btns">
         <BFormSelect
           id="search-target"
-          class="ui-select"
+          class="ui-select-28"
           :options="[
             {value: '1', text: '선택',}
           ]"
