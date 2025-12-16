@@ -48,7 +48,7 @@
     "externallinkagemanage": "외부연계관리",
     "operationconfigmanage": "운영정보관리",
     "equipmanage": "장치관리",
-    "planmanage": "도면관리",
+    // "planmanage": "도면관리",
 
     "callconnectconfig": "통화연결설정",
     "exchangemanagement": "교환기관리",
@@ -73,7 +73,7 @@
     "externallinkagemanage": "외부연계관리",
     "operationconfigmanage": "운영정보관리",
     "equipmanage": "장치관리",
-    "planmanage": "도면관리",
+    // "planmanage": "도면관리",
 
     "callconnectconfig": "통화연결설정",
     "exchangemanagement": "교환기관리",
@@ -120,7 +120,7 @@
           { id: nextId(), label: lang.externallinkagemanage, path: '/settings/externallinkagemanage/broadcastequipmanage', dep1:'settings' },
           { id: nextId(), label: lang.operationconfigmanage, path: '/settings/operationconfigmanage/operationconfigbackup', dep1:'settings' },
           { id: nextId(), label: lang.equipmanage, path: '/settings/equipmanage/devicemanage', dep1:'settings' },
-          { id: nextId(), label: lang.planmanage, path: '/settings/planmanage/drawingmanage', dep1:'settings' },
+          // { id: nextId(), label: lang.planmanage, path: '/settings/planmanage/drawingmanage', dep1:'settings' },
         ]
       },
       { id: nextId(), label: lang.callconnectconfig, path: '/callconnectconfig/pointtopoint', icon: 'nav3', dep1:'callconnectconfig' },
