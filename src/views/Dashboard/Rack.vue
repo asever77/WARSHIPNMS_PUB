@@ -1,7 +1,7 @@
 <template>
   <div class="rack-wrap" ref="rootEl">
     <div class="rack-item">
-      <h2>무선통신기시스템</h2>
+      <h2 class="table-title-box">무선통신기시스템</h2>
       <div class="rack-item-row">
         <div class="rack-item-col">
           <div class="rack-item-col--item" data-col="1">
@@ -93,7 +93,7 @@
     </div>
 
     <div class="rack-item">
-      <h2>무선통신운용콘솔</h2>
+      <h2 class="table-title-box">무선통신운용콘솔</h2>
       <div class="rack-item-row">
         <div class="rack-item-col">
           <div class="rack-item-col--item" data-col="1">
@@ -238,7 +238,7 @@
     </div>
 
     <div class="rack-item">
-      <h2>비상통신시스템</h2>
+      <h2 class="table-title-box">비상통신시스템</h2>
       <div class="rack-item-row">
         <div class="rack-item-col">
           <div class="rack-item-col--item" data-col="1">
