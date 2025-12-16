@@ -57,10 +57,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch, reactive } from 'vue'
+import { ref, onMounted } from 'vue'
 import G from '@/config/global.js'
 import { BFormSelect } from 'bootstrap-vue-next/components'
-import { BButton, BFormGroup, BPagination, BTable } from 'bootstrap-vue-next'
+import { BButton, BFormGroup } from 'bootstrap-vue-next'
 
 const ko = {
   btn1: '적용',
