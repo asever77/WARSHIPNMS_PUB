@@ -230,12 +230,12 @@ div.table-type-a {display:grid; grid-template-columns:14rem 1fr 8rem 2fr;}
 .base-table th + th {border-left:1px solid #2A598D;}
 .base-table td + td {border-left:1px solid #D4E1E8;}
 
-td.red{color:#fcdfdf !important; background-color:#d32121 !important;}
-td.green{color:#dffcdf !important; background-color:#1dcd1d !important;}
-td.green-txt{color:#3EA832 !important;font-weight:900;}
+td.red{color:#fcdfdf !important; background-color:#DF0562 !important;}
+td.green{color:#dffcdf !important; background-color:#00ACA9 !important;}
+td.green-txt{color:#00ACA9 !important;font-weight:900;}
 td.blue{color:#dfdffc !important; background-color:#2671db !important;}
 td.blue-txt{color:#2B77A9 !important;font-weight:900;}
-td.yellow{color:#353535 !important; background-color:#fbef4c !important;}
+td.yellow{color:#353535 !important; background-color:#FECF00 !important;}
 
 .base-table thead th {background-color:#001B30;height:3rem;padding:.4rem;color:#fff;font-size:1.2rem;font-weight:700;text-align:center;line-height:1.2;vertical-align:middle;}
 .base-table thead tr:first-child th:first-child {border-top-left-radius:.5rem;}

@@ -57,7 +57,7 @@
     "deviceoperation": "장치운영",
     "documentmanage": "문서관리",
     "usermanage": "사용자관리",
-    "statistics": "통계",
+    //"statistics": "통계",
     "record": "이력"
   };
 
@@ -82,7 +82,7 @@
     "deviceoperation": "장치운영",
     "documentmanage": "문서관리",
     "usermanage": "사용자관리",
-    "statistics": "통계",
+    //"statistics": "통계",
     "record": "이력"
   };
 
@@ -139,7 +139,6 @@
       { id: nextId(), label: lang.deviceoperation, path: '/deviceoperation/firmwaremanage', icon: 'nav6', dep1:'deviceoperation' },
       { id: nextId(), label: lang.documentmanage, path: '/documentmanage/manual', icon: 'nav7', dep1:'documentmanage' },
       { id: nextId(), label: lang.usermanage, path: '/usermanage/accountmanage', icon: 'nav8', dep1:'usermanage' },
-      { id: nextId(), label: lang.statistics, path: '/statistics/manual', icon: 'nav9', dep1:'statistics' },
       { id: nextId(), label: lang.record, path: '/record/callrecord', icon: 'nav10', dep1:'record' },
     ];
   }
