@@ -341,7 +341,6 @@ const tableData = ref({
   tbody: Array.from({ length: 40 }, (_, i) => `BRIDGE 8/INF-CONNING ${i + 1}`),
   rows: Array.from({ length: 40 }, (_, rowIdx) => ({
     cols: Array.from({ length: 40 }, (__, colIdx) => {
-      if (rowIdx === colIdx) return 'not'; // 대각선은 'not'
       if ((rowIdx + colIdx) % 13 === 0) return true; // 임의로 true 배치
       return false;
     })
