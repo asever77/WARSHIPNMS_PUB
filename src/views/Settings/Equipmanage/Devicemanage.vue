@@ -637,14 +637,16 @@
       <table class="table-type-a">
         <colgroup>
           <col style="width:10rem">
+          <col style="width:20rem">
           <col style="width:auto">
-          <col style="width:30rem">
+          <col style="width:20rem">
         </colgroup>
         <thead>
         <tr>
           <th scope="col">{{ lang.thead1 }}</th>
           <th scope="col">{{ lang.thead2 }}</th>
           <th scope="col">{{ lang.thead3 }}</th>
+          <th scope="col">{{ lang.thead7 }}</th>
         </tr>
         </thead>
         <tbody>
@@ -656,6 +658,9 @@
           <td>
             <BFormInput class="ui-input" />
           </td>
+          <td>
+            <BFormSelect class="ui-select" />
+          </td>
         </tr>
         <tr>
           <th scope="row">P02</th>
@@ -664,6 +669,9 @@
           </td>
           <td>
             <BFormInput class="ui-input" />
+          </td>
+          <td>
+            <BFormSelect class="ui-select" />
           </td>
         </tr>
         </tbody>
@@ -1090,6 +1098,7 @@ const ko = {
   thead4: 'VoIP교환기 속성',
   thead5: 'VoIP 교환기 1',
   thead6: 'VoIP 교환기 2',
+  thead7: '주파수 채널',
 
   // 버튼
   btnSearch: '조회',
@@ -1193,6 +1202,7 @@ const en = {
   thead4: 'VoIP교환기 속성',
   thead5: 'VoIP 교환기 1',
   thead6: 'VoIP 교환기 2',
+  thead7: '주파수 채널',
 
   // 버튼
   btnSearch: '조회',

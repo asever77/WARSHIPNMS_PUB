@@ -28,6 +28,7 @@ const ko = {
   firmwareManage: "펌웨어 관리",
   firmwareUpgrade: "펌웨어 업그레이드",
   deviceControl: "장치제어",
+  lightControl: "광원제어",
   resultInquiry: "장치제어 수행이력"
 };
 
@@ -36,6 +37,7 @@ const en = {
   firmwareManage: "펌웨어 관리",
   firmwareUpgrade: "펌웨어 업그레이드",
   deviceControl: "장치제어",
+  lightControl: "광원제어",
   resultInquiry: "장치제어 수행이력"
 };
 
@@ -50,6 +52,7 @@ onMounted(() => {
     { label: lang.value.firmwareManage, path: '/deviceoperation/firmwaremanage' },
     { label: lang.value.firmwareUpgrade, path: '/deviceoperation/firmwareupgrade' },
     { label: lang.value.deviceControl, path: '/deviceoperation/devicecontrol' },
+    { label: lang.value.lightControl, path: '/deviceoperation/lightcontrol' },
     { label: lang.value.resultInquiry, path: '/deviceoperation/resultinquiry' }
   ];
   selectedTab.value = router.currentRoute.value.path;

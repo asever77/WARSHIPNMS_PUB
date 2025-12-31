@@ -78,34 +78,34 @@ const router = createRouter({
         component: () => import('../layouts/DashboardDefault.vue'),
         meta: { group: 'dashboard' },
         children: [{
-            path: '/dashboard/network',
-            name: 'DashboardNetworkView',
-            component: () => import('../views/Dashboard/Network.vue'),
-            meta: { group: 'dashboard' },
+          path: '/dashboard/network',
+          name: 'DashboardNetworkView',
+          component: () => import('../views/Dashboard/Network.vue'),
+          meta: { group: 'dashboard' },
         },
         {
-           path: '/dashboard/userterminal',
-           name: 'DashboardUserterminalView',
-           component: () => import('../views/Dashboard/Userterminal.vue'),
-           meta: { group: 'dashboard' },
+          path: '/dashboard/userterminal',
+          name: 'DashboardUserterminalView',
+          component: () => import('../views/Dashboard/Userterminal.vue'),
+          meta: { group: 'dashboard' },
         },
         {
-           path: '/dashboard/receptacleunit',
-           name: 'DashboardReceptacleunitView',
-           component: () => import('../views/Dashboard/Receptacleunit.vue'),
-           meta: { group: 'dashboard' },
+          path: '/dashboard/receptacleunit',
+          name: 'DashboardReceptacleunitView',
+          component: () => import('../views/Dashboard/Receptacleunit.vue'),
+          meta: { group: 'dashboard' },
         },
         {
-           path: '/dashboard/rack',
-           name: 'DashboardRackView',
-           component: () => import('../views/Dashboard/Rack.vue'),
-           meta: { group: 'dashboard' },
+          path: '/dashboard/rack',
+          name: 'DashboardRackView',
+          component: () => import('../views/Dashboard/Rack.vue'),
+          meta: { group: 'dashboard' },
         },
         {
-           path: '/dashboard/activealarm',
-           name: 'DashboardActivealarmView',
-           component: () => import('../views/Dashboard/Activealarm.vue'),
-           meta: { group: 'dashboard' },
+          path: '/dashboard/activealarm',
+          name: 'DashboardActivealarmView',
+          component: () => import('../views/Dashboard/Activealarm.vue'),
+          meta: { group: 'dashboard' },
         }],
       },
 
@@ -117,9 +117,9 @@ const router = createRouter({
         meta: { group: 'settings' },
         children: [{
           path: '/settings/devicemanage/userterminal',
-            name: 'SettingsDevicemanageUserterminalView',
-            component: () => import('../views/Settings/Devicemanage/Userterminal.vue'),
-            meta: { group: 'settings' },
+          name: 'SettingsDevicemanageUserterminalView',
+          component: () => import('../views/Settings/Devicemanage/Userterminal.vue'),
+          meta: { group: 'settings' },
         },
         {
           path: '/settings/devicemanage/receptacleunit',
@@ -135,83 +135,83 @@ const router = createRouter({
         component: () => import('../layouts/SettingsConnectconfigmanageDefault.vue'),
         meta: { group: 'settings' },
         children: [
-        {
-          path: '/settings/connectconfigmanage/interlockdevice/service',
-          name: 'SettingsConnectconfigmanageInterlockdeviceView',
-          component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner.vue'),
-          meta: { group: 'settings' },
-          children: [
-            {
-              path: '/settings/connectconfigmanage/interlockdevice/service',
-              name: 'SettingsConnectconfigmanageInterlockdeviceServiceView',
-              component: () => import('../views/Settings/Connectconfigmanage/Interlockdevice/ServicePage.vue'),
-              meta: { group: 'settings' },
-            },
-            {
-              path: '/settings/connectconfigmanage/interlockdevice/port',
-              name: 'SettingsConnectconfigmanageInterlockdevicePortView',
-              component: () => import('../views/Settings/Connectconfigmanage/Interlockdevice/PortPage.vue'),
-              meta: { group: 'settings' },
-            },
-          ]
-        },
-        // 설정/연결설정관리/보안장비연동장치
-        {
-          path: '/settings/connectconfigmanage/wirelesslink/service',
-          name: 'SettingsConnectconfigmanageWirelesslinkView',
-          component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner2.vue'),
-          meta: { group: 'settings' },
-           children: [
-            {
-              path: '/settings/connectconfigmanage/wirelesslink/service',
-              name: 'SettingsConnectconfigmanageWirelesslinkServiceView',
-              component: () => import('../views/Settings/Connectconfigmanage/Wirelesslink/ServicePage.vue'),
-              meta: { group: 'settings' },
-            },
-            {
-              path: '/settings/connectconfigmanage/wirelesslink/port',
-              name: 'SettingsConnectconfigmanageWirelesslinkPortView',
-              component: () => import('../views/Settings/Connectconfigmanage/Wirelesslink/PortPage.vue'),
-              meta: { group: 'settings' },
-            },
-          ]
-        },
-        {
-          path: '/settings/connectconfigmanage/repeater/service',
-          name: 'SettingsConnectconfigmanageRepeaterView',
-          component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner3.vue'),
-          meta: { group: 'settings' },
-           children: [
-            {
-              path: '/settings/connectconfigmanage/repeater/port',
-              name: 'SettingsConnectconfigmanageRepeaterPortView',
-              component: () => import('../views/Settings/Connectconfigmanage/Repeater/PortPage.vue'),
-              meta: { group: 'settings' },
-            },
-          ]
-        },
-        {
-          path: '/settings/connectconfigmanage/etc/port',
-          name: 'SettingsConnectconfigmanageEtcView',
-          component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner4.vue'),
-          meta: { group: 'settings' },
-           children: [
-            {
-              path: '/settings/connectconfigmanage/etc/port',
-              name: 'SettingsConnectconfigmanageEtcPortView',
-              component: () => import('../views/Settings/Connectconfigmanage/Etc/PortPage.vue'),
-              meta: { group: 'settings' },
-            },
-          ]
-        },
-        // 전문처리장치 관련 화면은 일단 보류
-        // {
-        //   path: '/settings/connectconfigmanage/wirelesschannelbond',
-        //   name: 'SettingsConnectconfigmanageWirelesschannelbondView',
-        //   component: () => import('../views/Settings/Connectconfigmanage/Wirelesschannelbond.vue'),
-        //   meta: { group: 'settings' },
-        // }
-      ],
+          {
+            path: '/settings/connectconfigmanage/interlockdevice/service',
+            name: 'SettingsConnectconfigmanageInterlockdeviceView',
+            component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner.vue'),
+            meta: { group: 'settings' },
+            children: [
+              {
+                path: '/settings/connectconfigmanage/interlockdevice/service',
+                name: 'SettingsConnectconfigmanageInterlockdeviceServiceView',
+                component: () => import('../views/Settings/Connectconfigmanage/Interlockdevice/ServicePage.vue'),
+                meta: { group: 'settings' },
+              },
+              {
+                path: '/settings/connectconfigmanage/interlockdevice/port',
+                name: 'SettingsConnectconfigmanageInterlockdevicePortView',
+                component: () => import('../views/Settings/Connectconfigmanage/Interlockdevice/PortPage.vue'),
+                meta: { group: 'settings' },
+              },
+            ]
+          },
+          // 설정/연결설정관리/보안장비연동장치
+          {
+            path: '/settings/connectconfigmanage/wirelesslink/service',
+            name: 'SettingsConnectconfigmanageWirelesslinkView',
+            component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner2.vue'),
+            meta: { group: 'settings' },
+            children: [
+              {
+                path: '/settings/connectconfigmanage/wirelesslink/service',
+                name: 'SettingsConnectconfigmanageWirelesslinkServiceView',
+                component: () => import('../views/Settings/Connectconfigmanage/Wirelesslink/ServicePage.vue'),
+                meta: { group: 'settings' },
+              },
+              {
+                path: '/settings/connectconfigmanage/wirelesslink/port',
+                name: 'SettingsConnectconfigmanageWirelesslinkPortView',
+                component: () => import('../views/Settings/Connectconfigmanage/Wirelesslink/PortPage.vue'),
+                meta: { group: 'settings' },
+              },
+            ]
+          },
+          {
+            path: '/settings/connectconfigmanage/repeater/service',
+            name: 'SettingsConnectconfigmanageRepeaterView',
+            component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner3.vue'),
+            meta: { group: 'settings' },
+            children: [
+              {
+                path: '/settings/connectconfigmanage/repeater/port',
+                name: 'SettingsConnectconfigmanageRepeaterPortView',
+                component: () => import('../views/Settings/Connectconfigmanage/Repeater/PortPage.vue'),
+                meta: { group: 'settings' },
+              },
+            ]
+          },
+          {
+            path: '/settings/connectconfigmanage/etc/port',
+            name: 'SettingsConnectconfigmanageEtcView',
+            component: () => import('../layouts/SettingsConnectconfigmanageDefaultInner4.vue'),
+            meta: { group: 'settings' },
+            children: [
+              {
+                path: '/settings/connectconfigmanage/etc/port',
+                name: 'SettingsConnectconfigmanageEtcPortView',
+                component: () => import('../views/Settings/Connectconfigmanage/Etc/PortPage.vue'),
+                meta: { group: 'settings' },
+              },
+            ]
+          },
+          // 전문처리장치 관련 화면은 일단 보류
+          // {
+          //   path: '/settings/connectconfigmanage/wirelesschannelbond',
+          //   name: 'SettingsConnectconfigmanageWirelesschannelbondView',
+          //   component: () => import('../views/Settings/Connectconfigmanage/Wirelesschannelbond.vue'),
+          //   meta: { group: 'settings' },
+          // }
+        ],
       },
       {
         path: '/settingscallmanagedefault',
@@ -220,9 +220,9 @@ const router = createRouter({
         meta: { group: 'settings' },
         children: [{
           path: '/settings/callmanage/membermanage',
-            name: 'SettingsCallmanageMembermanageView',
-            component: () => import('../views/Settings/Callmanage/Membermanage.vue'),
-            meta: { group: 'settings' },
+          name: 'SettingsCallmanageMembermanageView',
+          component: () => import('../views/Settings/Callmanage/Membermanage.vue'),
+          meta: { group: 'settings' },
         },
         {
           path: '/settings/callmanage/meetingcallmanage',
@@ -281,17 +281,17 @@ const router = createRouter({
         component: () => import('../layouts/SettingsOperationconfigmanageDefault.vue'),
         meta: { group: 'settings' },
         children: [{
-            path: '/settings/operationconfigmanage/operationconfigbackup',
-              name: 'SettingsOperationconfigmanageOperationconfigbackupView',
-              component: () => import('../views/Settings/Operationconfigmanage/Operationconfigbackup.vue'),
-              meta: { group: 'settings' },
-          },
-          {
-            path: '/settings/operationconfigmanage/operationconfigrestore',
-            name: 'SettingsOperationconfigmanageOperationconfigrestoreView',
-            component: () => import('../views/Settings/Operationconfigmanage/Operationconfigrestore.vue'),
-            meta: { group: 'settings' },
-          }],
+          path: '/settings/operationconfigmanage/operationconfigbackup',
+          name: 'SettingsOperationconfigmanageOperationconfigbackupView',
+          component: () => import('../views/Settings/Operationconfigmanage/Operationconfigbackup.vue'),
+          meta: { group: 'settings' },
+        },
+        {
+          path: '/settings/operationconfigmanage/operationconfigrestore',
+          name: 'SettingsOperationconfigmanageOperationconfigrestoreView',
+          component: () => import('../views/Settings/Operationconfigmanage/Operationconfigrestore.vue'),
+          meta: { group: 'settings' },
+        }],
       },
       {
         path: '/settingsequipmanagedefault',
@@ -300,9 +300,9 @@ const router = createRouter({
         meta: { group: 'settings' },
         children: [{
           path: '/settings/equipmanage/devicemanage',
-            name: 'SettingsEquipmanageDevicemanageView',
-            component: () => import('../views/Settings/Equipmanage/Devicemanage.vue'),
-            meta: { group: 'settings' },
+          name: 'SettingsEquipmanageDevicemanageView',
+          component: () => import('../views/Settings/Equipmanage/Devicemanage.vue'),
+          meta: { group: 'settings' },
         },
         {
           path: '/settings/equipmanage/terminalboxmanage',
@@ -342,9 +342,9 @@ const router = createRouter({
         meta: { group: 'settings' },
         children: [{
           path: '/settings/planmanage/drawingmanage',
-            name: 'SettingsPlanmanageDrawingmanageView',
-            component: () => import('../views/Settings/Planmanage/Drawingmanage.vue'),
-            meta: { group: 'settings' },
+          name: 'SettingsPlanmanageDrawingmanageView',
+          component: () => import('../views/Settings/Planmanage/Drawingmanage.vue'),
+          meta: { group: 'settings' },
         },
         {
           path: '/settings/planmanage/areamanage',
@@ -362,9 +362,9 @@ const router = createRouter({
         meta: { group: 'callconnectconfig' },
         children: [{
           path: '/callconnectconfig/pointtopoint',
-            name: 'CallconnectconfigPointtopointView',
-            component: () => import('../views/Callconnectconfig/Pointtopoint.vue'),
-            meta: { group: 'callconnectconfig' },
+          name: 'CallconnectconfigPointtopointView',
+          component: () => import('../views/Callconnectconfig/Pointtopoint.vue'),
+          meta: { group: 'callconnectconfig' },
         },
         {
           path: '/callconnectconfig/meetingcall',
@@ -418,9 +418,9 @@ const router = createRouter({
         meta: { group: 'recording' },
         children: [{
           path: '/recording/othersystemrecording/setting',
-            name: 'RecordingmanagementSettingView',
-            component: () => import('../views/Recording/Recordingmanagement/Setting.vue'),
-            meta: { group: 'recording' },
+          name: 'RecordingmanagementSettingView',
+          component: () => import('../views/Recording/Recordingmanagement/Setting.vue'),
+          meta: { group: 'recording' },
         },
         {
           path: '/recording/othersystemrecording/targetmanagement',
@@ -438,9 +438,9 @@ const router = createRouter({
         meta: { group: 'deviceoperation' },
         children: [{
           path: '/deviceoperation/firmwaremanage',
-            name: 'DeviceoperationFirmwaremanageView',
-            component: () => import('../views/Deviceoperation/Firmwaremanage.vue'),
-            meta: { group: 'deviceoperation' },
+          name: 'DeviceoperationFirmwaremanageView',
+          component: () => import('../views/Deviceoperation/Firmwaremanage.vue'),
+          meta: { group: 'deviceoperation' },
         },
         {
           path: '/deviceoperation/firmwareupgrade',
@@ -452,6 +452,12 @@ const router = createRouter({
           path: '/deviceoperation/devicecontrol',
           name: 'DeviceoperationDevicecontrolView',
           component: () => import('../views/Deviceoperation/Devicecontrol.vue'),
+          meta: { group: 'deviceoperation' },
+        },
+        {
+          path: '/deviceoperation/lightcontrol',
+          name: 'DeviceoperationLightcontrolView',
+          component: () => import('../views/Deviceoperation/Lightcontrol.vue'),
           meta: { group: 'deviceoperation' },
         },
         {
@@ -470,9 +476,9 @@ const router = createRouter({
         meta: { group: 'documentmanage' },
         children: [{
           path: '/documentmanage/manual',
-            name: 'DocumentmanageManualView',
-            component: () => import('../views/Documentmanage/Manual.vue'),
-            meta: { group: 'documentmanage' },
+          name: 'DocumentmanageManualView',
+          component: () => import('../views/Documentmanage/Manual.vue'),
+          meta: { group: 'documentmanage' },
         }],
       },
 
@@ -484,9 +490,9 @@ const router = createRouter({
         meta: { group: 'usermanage' },
         children: [{
           path: '/usermanage/accountmanage',
-            name: 'UsermanageAccountmanageView',
-            component: () => import('../views/Usermanage/Accountmanage.vue'),
-            meta: { group: 'usermanage' },
+          name: 'UsermanageAccountmanageView',
+          component: () => import('../views/Usermanage/Accountmanage.vue'),
+          meta: { group: 'usermanage' },
         },
         {
           path: '/usermanage/permissionmanage',
@@ -516,9 +522,9 @@ const router = createRouter({
         meta: { group: 'statistics' },
         children: [{
           path: '/statistics/manual',
-            name: 'StatisticsManualView',
-            component: () => import('../views/Statistics/Manual.vue'),
-            meta: { group: 'statistics' },
+          name: 'StatisticsManualView',
+          component: () => import('../views/Statistics/Manual.vue'),
+          meta: { group: 'statistics' },
         }],
       },
 
