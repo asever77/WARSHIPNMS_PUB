@@ -138,6 +138,15 @@ table .form-check-inline ~ .form-check-inline,
 .ui-thead-sticky .l-line {border-left:1px solid #D4E1E8}
 [data-max-h="210"] {max-height:210px;}
 
+.thead-sticky {overflow-y:auto;overflow-x:hidden}
+.thead-sticky thead {position:sticky;top:1px;z-index:2}
+.is-desktop .thead-sticky .table-responsive::-webkit-scrollbar {height:1rem;width:1rem;}
+.is-desktop .thead-sticky .table-responsive::-webkit-scrollbar-track {border-radius:999em;background-color:transparent}
+.is-desktop .thead-sticky .table-responsive::-webkit-scrollbar-thumb {width:.6rem;border-radius:999em;background-color:rgba(0,0,0,.1);background-clip:content-box;border:.2rem solid transparent}
+.thead-sticky thead th ~ th {border-color:#D4E1E8}
+.thead-sticky thead tr + tr th {border-top:1px solid #D4E1E8}
+.thead-sticky .l-line {border-left:1px solid #D4E1E8}
+
 div.table-type-a {display:grid; grid-template-columns:14rem 1fr 8rem 2fr;}
 .table-type-a--th {background-color:#E3EDF4;border-right:1px solid #D4E1E8;text-align:center;font-size:1.2rem;font-weight:700;color:#627582;line-height:1.2;padding:.4rem; display:flex; align-items:center; justify-content:center; flex:1;height:100%;}
 .table-type-a--td{padding:1.4rem;font-size:1.2rem;color:#3E3E3E;line-height:1.2;flex:1; display:flex; flex-direction:column; gap:.8rem;  height:100%;}
