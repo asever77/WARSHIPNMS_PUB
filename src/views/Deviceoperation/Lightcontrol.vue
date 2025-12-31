@@ -10,11 +10,12 @@
       <div class="search-base--btns">
         <BFormGroup>
           <div class="ui-search-with-btn">
-            <BFormInput
-              id="search-word-2"
-              class="ui-input-28"
-            />
-            <button type="button" class="btn-search-icon" aria-label="{{ lang.btnSearch }}" ></button>
+            <BFormInput id="search-word-2" class="ui-input-28" />
+            <button
+              type="button"
+              class="btn-search-icon"
+              aria-label="{{ lang.btnSearch }}"
+            ></button>
           </div>
         </BFormGroup>
       </div>
@@ -36,11 +37,13 @@
       </BTable>
     </div>
   </div>
-``
+
   <div class="ui-btn-group">
-    <BButton class="blue28" @click="modals.modal2.show = true">{{ lang.btn5 }}</BButton>
-    <BButton class="blue28" @click="modals.modal3.show = true">{{ lang.btn6 }}</BButton>
-    <BButton class="blue28">{{ lang.btn7 }}</BButton>
+    <BButton class="navy28" @click="modals.modal2.show = true">{{ lang.btn5 }}</BButton>
+    <div class="ml-auto ui-flex" data-gap="8">
+      <BButton class="gray28" @click="modals.modal3.show = true">{{ lang.btn6 }}</BButton>
+      <BButton class="blue28">{{ lang.btn7 }}</BButton>
+    </div>
   </div>
 
   <UiModal
@@ -66,23 +69,13 @@
           <tr>
             <th scope="row">{{ lang.modalTh1_3 }}</th>
             <td>
-              <BFormInput
-                v-model="timeValue1"
-                class="ui-input-28"
-                type="time"
-                placeholder=""
-              />
+              <BFormInput v-model="timeValue1" class="ui-input-28" type="time" placeholder="" />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.modalTh1_4 }}</th>
             <td>
-              <BFormInput
-                v-model="timeValue2"
-                class="ui-input-28"
-                type="time"
-                placeholder=""
-              />
+              <BFormInput v-model="timeValue2" class="ui-input-28" type="time" placeholder="" />
             </td>
           </tr>
         </tbody>
@@ -94,7 +87,7 @@
           {{ lang.btn2 }}
         </BButton>
         <div class="ui-flex" data-gap="8">
-          <BButton class="blue28">{{ lang.btn3 }}</BButton>
+          <BButton class="blue28">{{ lang.btn8 }}</BButton>
           <BButton class="gray28">{{ lang.btn4 }}</BButton>
         </div>
       </div>
@@ -104,18 +97,15 @@
   <!-- Light off -->
   <UiModal
     v-model="modals.modal3.show"
-    :title="lang.modalTitle2"
+    :title="lang.modalTitle3"
     type="modal"
     size="md"
     scrollable
     @close-btn-click="modals.modal3.show = false"
   >
     <div class="ui-flex" data-direction="col" data-gap="16">
-
       <div class="ui-flex py-4" data-direction="col" data-gap="20" data-item-align="center">
-        <p class="fs-4 ta-c fw-bold">
-          선택한 4개의 장치 광원을 끕니다.
-        </p>
+        <p class="fs-4 ta-c fw-bold">선택한 4개의 장치 광원을 끕니다.</p>
         <p class="fs-5 ta-c">
           계속 진행하시려면 로그인 패스워드를 <br />입력하여 작업을 승인해야 합니다.
         </p>
@@ -144,7 +134,7 @@
 
   <UiModal
     v-model="modals.modal2.show"
-    :title="lang.modalTitle3"
+    :title="lang.modalTitle2"
     type="modal"
     size="md"
     @close-btn-click="modals.modal2.show = false"
@@ -186,17 +176,26 @@
 </template>
 
 <style scoped>
-.thead-sticky .table-responsive{height: calc(100dvh - 26rem);}
+.thead-sticky .table-responsive {
+  height: calc(100dvh - 26rem);
+}
 </style>
 
 <script setup>
-
 // [IMPORTS]
 // =========================
 // NOTE: 컴포넌트 이름은 multi-word로 권장됨. 실제 이름 변경 시 파일명, 라우터 등 전체 영향 주의
 import { ref, onMounted, computed, reactive } from 'vue'
 import G from '@/config/global.js'
-import { BFormInput, BFormSelect, BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next/components'
+import {
+  BFormInput,
+  BFormSelect,
+  BButton,
+  BFormGroup,
+  BPagination,
+  BTable,
+  BFormCheckbox,
+} from 'bootstrap-vue-next/components'
 import UiModal from '@/components/UiModal.vue'
 
 // =========================
@@ -219,6 +218,7 @@ const ko = {
   btn5: '설정변경',
   btn6: 'Light Off',
   btn7: 'Light On',
+  btn8: '저장',
 
   colTh1: 'No',
   colTh2: '장치명',
@@ -260,6 +260,7 @@ const en = {
   btn5: '설정변경',
   btn6: 'Light Off',
   btn7: 'Light On',
+  btn8: '저장',
 
   colTh1: 'No',
   colTh2: '장치명',
@@ -342,23 +343,23 @@ const paginatedItems = computed(() => {
 
 // 체크박스 전체선택/부분선택
 const isAllSelected = computed(() => {
-  const pageIds = paginatedItems.value.map(i => i.id)
+  const pageIds = paginatedItems.value.map((i) => i.id)
   if (pageIds.length === 0) return false
-  return pageIds.every(id => selectedIds.value.includes(id))
+  return pageIds.every((id) => selectedIds.value.includes(id))
 })
 const isIndeterminate = computed(() => {
-  const pageIds = paginatedItems.value.map(i => i.id)
+  const pageIds = paginatedItems.value.map((i) => i.id)
   if (pageIds.length === 0) return false
-  const selectedOnPage = pageIds.filter(id => selectedIds.value.includes(id)).length
+  const selectedOnPage = pageIds.filter((id) => selectedIds.value.includes(id)).length
   return selectedOnPage > 0 && selectedOnPage < pageIds.length
 })
 function toggleSelectAll(checked) {
-  const pageIds = paginatedItems.value.map(i => i.id)
+  const pageIds = paginatedItems.value.map((i) => i.id)
   if (checked) {
     const set = new Set([...selectedIds.value, ...pageIds])
     selectedIds.value = Array.from(set)
   } else {
-    selectedIds.value = selectedIds.value.filter(id => !pageIds.includes(id))
+    selectedIds.value = selectedIds.value.filter((id) => !pageIds.includes(id))
   }
 }
 
@@ -370,9 +371,9 @@ function toggleSelectAll(checked) {
 // [초기화]
 // =========================
 onMounted(() => {
-  lang.value = (G.lang === 'ko') ? ko : en
+  lang.value = G.lang === 'ko' ? ko : en
 })
 function openTimeSetting() {
-  modals.modalTimeSetting.show = true;
+  modals.modalTimeSetting.show = true
 }
 </script>
