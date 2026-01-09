@@ -31,7 +31,7 @@ const sortedLinks = computed(() => {
   .favorites-links {
     width: 100%;
     list-style: none;
-    padding: 0 2.5rem;
+    padding: 0 1.2rem;
     margin: 0;
     display: flex;
     flex-direction: column;

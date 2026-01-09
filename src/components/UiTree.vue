@@ -344,7 +344,7 @@ export default {
 .base-nav[data-style="base"] {
   position: relative;
   flex: 1;
-  padding: 1.5rem 1.5rem 4rem;
+  padding: 1.5rem 1.2rem 4rem;
   li {
     margin: 0;
   }
@@ -362,8 +362,8 @@ export default {
     min-height: 3.6rem;
     justify-content: flex-start;
     align-items: center;
-    padding-left:1.6rem;
-    gap:1.5rem;
+    padding-left:1.2rem;
+    gap:1.2rem;
     font-size: 1.6rem;
     font-weight: 700;
     color:#fff;
