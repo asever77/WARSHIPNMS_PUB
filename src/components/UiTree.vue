@@ -362,7 +362,7 @@ export default {
     min-height: 3.6rem;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 2.4rem;
+    padding-left:1.6rem;
     gap:1.5rem;
     font-size: 1.6rem;
     font-weight: 700;
