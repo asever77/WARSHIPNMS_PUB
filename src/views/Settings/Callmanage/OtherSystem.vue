@@ -384,10 +384,9 @@ const perPage = ref(10) // 페이지당 개수
 // 샘플 데이터 (JSON 배열)
 const items = ref([
   { id: 1, th1: '1', th2: 'th2 내용', th3: 'th3 내용', th4: 'th4 내용', th5: 'th5 내용',  th6: 'th6 내용',  th7: 'th7 내용',  th8: '2025-09-12 12:22:33', th9: false },
-  { id: 1, th1: '1', th2: 'th2 내용', th3: 'th3 내용', th4: 'th4 내용', th5: 'th5 내용',  th6: 'th6 내용',  th7: 'th7 내용',  th8: '2025-09-12 12:22:33', th9: true },
-  { id: 1, th1: '1', th2: 'th2 내용', th3: 'th3 내용', th4: 'th4 내용', th5: 'th5 내용',  th6: 'th6 내용',  th7: 'th7 내용',  th8: '2025-09-12 12:22:33', th9: false },
-  { id: 1, th1: '1', th2: 'th2 내용', th3: 'th3 내용', th4: 'th4 내용', th5: 'th5 내용',  th6: 'th6 내용',  th7: 'th7 내용',  th8: '2025-09-12 12:22:33', th9: false },
-
+  { id: 2, th1: '2', th2: 'th2 내용', th3: 'th3 내용', th4: 'th4 내용', th5: 'th5 내용',  th6: 'th6 내용',  th7: 'th7 내용',  th8: '2025-09-12 12:22:33', th9: true },
+  { id: 3, th1: '3', th2: 'th2 내용', th3: 'th3 내용', th4: 'th4 내용', th5: 'th5 내용',  th6: 'th6 내용',  th7: 'th7 내용',  th8: '2025-09-12 12:22:33', th9: false },
+  { id: 4, th1: '4', th2: 'th2 내용', th3: 'th3 내용', th4: 'th4 내용', th5: 'th5 내용',  th6: 'th6 내용',  th7: 'th7 내용',  th8: '2025-09-12 12:22:33', th9: false },
 ])
 const fields = computed(() => [
   { key: 'select', label: lang.value.colSelect, thStyle: { width: '3rem' } },

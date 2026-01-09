@@ -351,25 +351,25 @@ const paginatedItems = computed(() => {
   return filteredItems.value.slice(start, start + perPage.value)
 })
 
-// 체크박스 전체선택/부분선택
+// 체크박스 전체선택/부분선택 (전체 필터 결과 기준)
 const isAllSelected = computed(() => {
-  const pageIds = paginatedItems.value.map(i => i.id)
-  if (pageIds.length === 0) return false
-  return pageIds.every(id => selectedIds.value.includes(id))
+  const allIds = filteredItems.value.map(i => i.id)
+  if (allIds.length === 0) return false
+  return allIds.every(id => selectedIds.value.includes(id))
 })
 const isIndeterminate = computed(() => {
-  const pageIds = paginatedItems.value.map(i => i.id)
-  if (pageIds.length === 0) return false
-  const selectedOnPage = pageIds.filter(id => selectedIds.value.includes(id)).length
-  return selectedOnPage > 0 && selectedOnPage < pageIds.length
+  const allIds = filteredItems.value.map(i => i.id)
+  if (allIds.length === 0) return false
+  const selectedCount = allIds.filter(id => selectedIds.value.includes(id)).length
+  return selectedCount > 0 && selectedCount < allIds.length
 })
 function toggleSelectAll(checked) {
-  const pageIds = paginatedItems.value.map(i => i.id)
+  const allIds = filteredItems.value.map(i => i.id)
   if (checked) {
-    const set = new Set([...selectedIds.value, ...pageIds])
+    const set = new Set([...selectedIds.value, ...allIds])
     selectedIds.value = Array.from(set)
   } else {
-    selectedIds.value = selectedIds.value.filter(id => !pageIds.includes(id))
+    selectedIds.value = selectedIds.value.filter(id => !allIds.includes(id))
   }
 }
 
