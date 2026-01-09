@@ -219,7 +219,7 @@ div.table-type-a {display:grid; grid-template-columns:14rem 1fr 8rem 2fr;}
 .text-14-700 {font-size:1.4rem;line-height:1.4;font-weight:700;}
 
 .ui-data-box {display:inline-flex}
-.ui-data-box .form-control[type="datetime-local"] {width:17rem}
+.ui-data-box .form-control[type="datetime-local"] {width:16.9rem}
 
 /* modal */
 .modal-h-full {height:calc(100vh - 12rem);padding-bottom:2rem}
