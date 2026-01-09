@@ -30,7 +30,7 @@
         <router-link
            v-else-if="item.path"
            :to="item.path"
-           @click="goToPage(item.path, item.path)"
+           @click="goToPage($event, item.path, item.path)"
            class="tree-page"
            active-class="router-link-active"
            v-bind="item.icon ? { 'data-icon': item.icon } : {}"
@@ -67,7 +67,7 @@
                 <router-link
                   v-else-if="child.path"
                   :to="child.path"
-                  @click="goToPage(child.path, item.path)"
+                  @click="goToPage($event, child.path, item.path)"
                   class="tree-page"
                   active-class="router-link-active"
                   v-bind="child.icon ? { 'data-icon': child.icon } : {}"
@@ -167,6 +167,13 @@ export default {
       const open = this.isOpen(item.id);
       const subActive = item.children && item.children.some(child => this.isSubActive(child));
 
+      // 축소 상태에서는 라우트 활성(child) 여부로 자동 오픈하지 않음
+      const baseSide = this.$el.closest('.base-side');
+      const isCollapsed = baseSide && baseSide.getAttribute('data-state') === 'close';
+      if (isCollapsed) {
+        return open;
+      }
+
       if (this.isInitialLoad) {
         return open || subActive;
       } else {
@@ -186,9 +193,12 @@ export default {
         this.openMenus = [id];
       } else if (isDep2) {
         // dep2 메뉴인 경우: 다른 dep2 메뉴들을 닫고 현재 메뉴만 토글
-        const isCurrentlyOpen = this.isInitialLoad
-          ? (this.isOpen(id) || this.isRouteDrivenOpen(id))
-          : this.isOpen(id);
+        const baseSide = this.$el.closest('.base-side');
+        const isCollapsed = baseSide && baseSide.getAttribute('data-state') === 'close';
+
+        const isCurrentlyOpen = isCollapsed
+          ? this.isOpen(id)
+          : (this.isInitialLoad ? (this.isOpen(id) || this.isRouteDrivenOpen(id)) : this.isOpen(id));
 
         if (isCurrentlyOpen) {
           // 현재 열려있으면 닫기
@@ -283,7 +293,47 @@ export default {
       const result = this.openMenus.includes(id);
       return result;
     },
-    goToPage(path, dep1) {
+    goToPage(event, path, dep1) {
+      // 축소 상태 확인
+      const baseSide = document.querySelector('.base-side');
+      const isCollapsed = baseSide && baseSide.getAttribute('data-state') === 'close';
+
+      if (isCollapsed && event) {
+        setTimeout(() => {
+          const clickedElement = event.target.closest('.tree-page');
+          if (clickedElement) {
+            // 부모 tree-submenu 찾기
+            const parentSubmenu = clickedElement.closest('.tree-submenu');
+            if (parentSubmenu) {
+              // active 클래스 제거
+              parentSubmenu.classList.remove('active');
+              // aria-hidden을 true로 변경
+              parentSubmenu.setAttribute('aria-hidden', 'true');
+
+              // has-children 찾기
+              const hasChildrenLi = clickedElement.closest('.has-children');
+              if (hasChildrenLi) {
+                // 바로 자식 tree-toggle 찾기
+                const toggleButton = hasChildrenLi.querySelector(':scope > .tree-toggle');
+                if (toggleButton) {
+                  // aria-expanded를 false로 변경
+                  toggleButton.setAttribute('aria-expanded', 'false');
+
+                  // openMenus에서 부모 ID 제거
+                  const parentItem = this.menu.find(item =>
+                    item.children && item.children.some(child => child.path === path)
+                  );
+                  if (parentItem) {
+                    this.openMenus = this.openMenus.filter(id => id !== parentItem.id);
+                    this.isInitialLoad = false;
+                  }
+                }
+              }
+            }
+          }
+        }, 100);
+      }
+
       if (path) {
         this.dep1 = dep1 || '';
         this.$router.push(path);
@@ -291,19 +341,22 @@ export default {
     },
     setDep1ByRoute() {
       // dep1: 첫번째 메뉴 path 기준
-      this.isInitialLoad = true; // 라우트 변경 시 초기 진입
+      const baseSide = document.querySelector('.base-side');
+      const isCollapsed = baseSide && baseSide.getAttribute('data-state') === 'close';
+      // 축소 상태에서는 초기 라우트 기반 auto-open을 건너뛰기 위해 isInitialLoad를 false로 둔다
+      this.isInitialLoad = !isCollapsed; // 라우트 변경 시 초기 진입 (단, 축소 시 false)
       if (this.menu && this.menu.length > 0) {
         for (const item of this.menu) {
           if (item.path && this.$route.path.startsWith(item.path)) {
             this.dep1 = item.dep1;
-            this.openMenus = [item.id];
+            this.openMenus = isCollapsed ? [] : [item.id];
             return;
           }
           if (item.children) {
             for (const child of item.children) {
               if (child.path && this.$route.path === child.path) {
                 this.dep1 = item.dep1;
-                this.openMenus = [item.id, child.id];
+                this.openMenus = isCollapsed ? [] : [item.id, child.id];
                 return;
               }
             }

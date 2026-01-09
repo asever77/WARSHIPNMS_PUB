@@ -181,7 +181,7 @@ const fields = computed(() => [
   {
     key: 'th5',
     label: lang.value.colTh5,
-    thStyle: { width: '10rem' },
+    thStyle: { width: '8rem' },
     tdClass: (value) => {
       if (value === 'CRITICAL') return 'red'
       if (value === 'MINOR') return 'yellow'
