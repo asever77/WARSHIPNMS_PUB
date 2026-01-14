@@ -210,14 +210,14 @@
             <div class="network-rack-u-item" v-for="n in 42" :key="n">{{ n }}</div>
           </div>
           <div class="network-rack-wrap">
-            <div class="network-rack-item" data-u="1" data-sp="0">
+            <div class="network-rack-item" data-u="1" data-sp="1">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
             <div class="network-rack-item" data-u="3" data-sp="9">
               <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
             </div>
 
-            <div class="network-rack-item" data-u="8" data-sp="54">
+            <div class="network-rack-item" data-u="8" data-sp="23">
               <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
             </div>
           </div>
@@ -228,14 +228,14 @@
             <div class="network-rack-u-item" v-for="n in 36" :key="n">{{ n }}</div>
           </div>
           <div class="network-rack-wrap">
-            <div class="network-rack-item" data-u="1" data-sp="0">
+            <div class="network-rack-item" data-u="1" data-sp="1">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
             <div class="network-rack-item" data-u="3" data-sp="9">
               <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
             </div>
 
-            <div class="network-rack-item" data-u="8" data-sp="54">
+            <div class="network-rack-item" data-u="8" data-sp="17">
               <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
             </div>
           </div>
@@ -246,14 +246,14 @@
             <div class="network-rack-u-item" v-for="n in 36" :key="n">{{ n }}</div>
           </div>
           <div class="network-rack-wrap">
-            <div class="network-rack-item" data-u="1" data-sp="0">
+            <div class="network-rack-item" data-u="1" data-sp="1">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
             <div class="network-rack-item" data-u="3" data-sp="9">
               <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
             </div>
 
-            <div class="network-rack-item" data-u="8" data-sp="54">
+            <div class="network-rack-item" data-u="8" data-sp="23">
               <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
             </div>
           </div>
@@ -264,14 +264,14 @@
             <div class="network-rack-u-item" v-for="n in 36" :key="n">{{ n }}</div>
           </div>
           <div class="network-rack-wrap">
-            <div class="network-rack-item" data-u="1" data-sp="0">
+            <div class="network-rack-item" data-u="1" data-sp="1">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
             <div class="network-rack-item" data-u="3" data-sp="9">
               <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
             </div>
 
-            <div class="network-rack-item" data-u="8" data-sp="54">
+            <div class="network-rack-item" data-u="8" data-sp="23">
               <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
             </div>
           </div>
@@ -282,14 +282,14 @@
             <div class="network-rack-u-item" v-for="n in 36" :key="n">{{ n }}</div>
           </div>
           <div class="network-rack-wrap">
-            <div class="network-rack-item" data-u="1" data-sp="0">
+            <div class="network-rack-item" data-u="1" data-sp="1">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
             <div class="network-rack-item" data-u="3" data-sp="9">
               <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
             </div>
 
-            <div class="network-rack-item" data-u="8" data-sp="54">
+            <div class="network-rack-item" data-u="8" data-sp="23">
               <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
             </div>
           </div>
