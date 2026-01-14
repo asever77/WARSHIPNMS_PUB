@@ -203,7 +203,7 @@
     @close-btn-click="modals.modalRackOption.show = false"
   >
     <div class="ui-flex modal-h-full" data-gap="16">
-      <div class="ui-shrink-0 rack-setting-area ui-flex" data-direction="row" data-gap="16" data-justify-align="between">
+      <div class="ui-shrink-0 rack-setting-area ui-flex" data-direction="row" data-gap="8" data-justify-align="between">
 
         <div class="network-rack" data-u="42">
           <div class="network-rack-u">
