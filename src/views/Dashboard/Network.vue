@@ -450,7 +450,7 @@
 
       <div class="ui-flex box-round p-3" data-bg="gray" data-direction="col">
         <h4 class="ports-status--title">Port Status</h4>
-        <PortStatusList :ports="portStatusList" />
+        <PortStatusList />
       </div>
 
       <table class="table-type-a line">
@@ -724,12 +724,6 @@ import NetworkLine from "@/components/NetworkLine.vue";
 import NetworkBox from "@/components/NetworkBox.vue";
 import UiModal from '@/components/UiModal.vue'
 import PortStatusList from '@/components/PortStatusList.vue';
-
-// 예시: 1~28번 포트, 상태는 normal/abnormal/null 중 하나
-const portStatusList = Array.from({ length: 28 }, (_, i) => ({
-  number: i + 1,
-  status: (i % 3 === 0) ? 'normal' : (i % 3 === 1) ? 'abnormal' : null
-}));
 
 import G from "@/config/global.js";
 
