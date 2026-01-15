@@ -223,7 +223,7 @@
           </div>
           <div class="network-rack-wrap">
             <!-- D : 랙 아이템 위치 설정 [data-sp="1 ~ 42"] 랙 아이템 사이즈 설정 [data-u="1 ~ 11"]  -->
-            <div class="network-rack-item" data-u="1" data-sp="1">
+            <div class="network-rack-item" data-u="1.5" data-sp="1">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
             <div class="network-rack-item" data-u="3" data-sp="9">
@@ -263,7 +263,7 @@
             <div class="network-rack-item" data-u="1" data-sp="1">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
-            <div class="network-rack-item" data-u="3" data-sp="9">
+            <div class="network-rack-item" data-u="3.5" data-sp="9">
               <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
             </div>
 
@@ -281,7 +281,7 @@
             <div class="network-rack-item" data-u="1" data-sp="1">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
-            <div class="network-rack-item" data-u="3" data-sp="9">
+            <div class="network-rack-item" data-u="2.5" data-sp="9">
               <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
             </div>
 
