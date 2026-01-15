@@ -11,7 +11,11 @@
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.filter1 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.filter1 }} {{ lang.sortAll }}"></BButton>
+            <BButton
+              class="btn-sort ui-shrink-0"
+              aria-sort="none"
+              aria-label="{{ lang.filter1 }} {{ lang.sortAll }}"
+            ></BButton>
           </div>
         </th>
         <td>
@@ -21,7 +25,11 @@
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.filter2 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.filter2 }} {{ lang.sortAll }}"></BButton>
+            <BButton
+              class="btn-sort ui-shrink-0"
+              aria-sort="descending"
+              aria-label="{{ lang.filter2 }} {{ lang.sortAll }}"
+            ></BButton>
           </div>
         </th>
         <td>
@@ -32,17 +40,33 @@
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.filter3 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.filter3 }} {{ lang.sortAll }}"></BButton>
+            <BButton
+              class="btn-sort ui-shrink-0"
+              aria-sort="descending"
+              aria-label="{{ lang.filter3 }} {{ lang.sortAll }}"
+            ></BButton>
           </div>
         </th>
         <td>
-          <BFormSelect class="ui-select"></BFormSelect>
+          <BDropdown text="전체" auto-close="outside" class="ui-dropdown-line">
+            <BDropdownForm>
+              <BFormCheckbox id="option0" name="" value="option0"> 전체 </BFormCheckbox>
+              <BFormCheckbox id="option1" name="" value="option1"> 무선침묵 </BFormCheckbox>
+              <BFormCheckbox id="option2" name="" value="option2"> 경보권한 </BFormCheckbox>
+              <BFormCheckbox id="option3" name="" value="option3"> 방송권한 </BFormCheckbox>
+              <BFormCheckbox id="option4" name="" value="option4"> Mute권한 </BFormCheckbox>
+            </BDropdownForm>
+          </BDropdown>
         </td>
 
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.filter4 }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="descending" aria-label="{{ lang.filter4 }} {{ lang.sortAll }}"></BButton>
+            <BButton
+              class="btn-sort ui-shrink-0"
+              aria-sort="descending"
+              aria-label="{{ lang.filter4 }} {{ lang.sortAll }}"
+            ></BButton>
           </div>
         </th>
         <td>
@@ -73,7 +97,12 @@
               :placeholder="lang.searchPlaceholder"
               class="ui-input-28"
             />
-            <button type="button" class="btn-search-icon" aria-label="{{ lang.btnSearch }}" @click="onFilter" ></button>
+            <button
+              type="button"
+              class="btn-search-icon"
+              aria-label="{{ lang.btnSearch }}"
+              @click="onFilter"
+            ></button>
           </div>
         </BFormGroup>
         <BFormSelect class="ui-select-28"></BFormSelect>
@@ -86,8 +115,17 @@
       </div>
     </div>
     <div class="base-table">
-      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive @row-clicked="onRowClicked" data-type="clickable">
-         <template #head(select)>
+      <BTable
+        :items="paginatedItems"
+        :fields="fields"
+        bordered
+        hover
+        small
+        responsive
+        @row-clicked="onRowClicked"
+        data-type="clickable"
+      >
+        <template #head(select)>
           <BFormCheckbox
             :indeterminate="isIndeterminate"
             :model-value="isAllSelected"
@@ -137,12 +175,7 @@
           <tr>
             <th scope="row">{{ lang.modalth1 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: 'MC700',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: 'MC700' }]" />
             </td>
             <th scope="row" colspan="2">{{ lang.modalth2 }}</th>
             <td>
@@ -180,12 +213,7 @@
             <th scope="row" rowspan="3">{{ lang.modalth8 }}</th>
             <th scope="row">{{ lang.modalth9 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: '모닝글로리',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '모닝글로리' }]" />
             </td>
           </tr>
 
@@ -196,45 +224,25 @@
             </td>
             <th scope="row">{{ lang.modalth11 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: '기상나팔',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '기상나팔' }]" />
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalth12 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: 'ON',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: 'ON' }]" />
             </td>
             <th scope="row">{{ lang.modalth13 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: '기상나팔',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '기상나팔' }]" />
             </td>
           </tr>
 
           <tr>
             <th scope="row" rowspan="2">{{ lang.modalth14 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: '구역',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '구역' }]" />
             </td>
             <th scope="row" colspan="2">{{ lang.modalth15 }}</th>
             <td>
@@ -244,12 +252,7 @@
 
           <tr>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: '전탐실',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '전탐실' }]" />
             </td>
             <th scope="row" colspan="2"></th>
             <td></td>
@@ -260,9 +263,7 @@
             <td>
               <BFormSelect
                 class="ui-select"
-                :options="[
-                  {value: '1', text: '무선통신기시스템',}
-                ]"
+                :options="[{ value: '1', text: '무선통신기시스템' }]"
               />
             </td>
             <th scope="row" colspan="2"></th>
@@ -272,12 +273,7 @@
           <tr>
             <th scope="row">{{ lang.modalth17 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: '6',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '6' }]" />
             </td>
             <th scope="row" colspan="2"></th>
             <td></td>
@@ -286,12 +282,7 @@
           <tr>
             <th scope="row">{{ lang.modalth18 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: 'ON',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: 'ON' }]" />
             </td>
             <th scope="row" colspan="2"></th>
             <td></td>
@@ -300,12 +291,7 @@
           <tr>
             <th scope="row">{{ lang.modalth19 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  {value: '1', text: 'OFF',}
-                ]"
-              />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: 'OFF' }]" />
             </td>
             <th scope="row" colspan="2"></th>
             <td></td>
@@ -317,31 +303,39 @@
               <BFormSelect
                 class="ui-select"
                 :disabled="true"
-                :options="[
-                  {value: '1', text: 'OFF',}
-                ]"
+                :options="[{ value: '1', text: 'OFF' }]"
               />
             </td>
             <th scope="row" colspan="2"></th>
             <td></td>
           </tr>
-
         </tbody>
       </table>
     </div>
     <template #footer>
       <div class="ui-flex ui-w-full" data-gap="16">
-        <BButton class="navy28"  @click="modals.modalPointSetting.show = true">{{ lang.btnSetting }}</BButton>
+        <BButton class="navy28" @click="modals.modalPointSetting.show = true">{{
+          lang.btnSetting
+        }}</BButton>
         <div class="ml-auto ui-flex" data-gap="10">
-          <BButton class="gray28" @click="modals.modalTerminalModify.show = false">{{ lang.btnCancel }}</BButton>
+          <BButton class="gray28" @click="modals.modalTerminalModify.show = false">{{
+            lang.btnCancel
+          }}</BButton>
           <BButton class="blue28">{{ lang.btnSave }}</BButton>
         </div>
       </div>
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalPointSetting.show" :title="'BRDG1 CAPTS'" type="modal" size="lg" class="p0-type" @close-btn-click="modals.modalPointSetting.show = false">
-    <div class="ui-flex" data-direction="row" data-gap="8" style="padding-top: 0;">
+  <UiModal
+    v-model="modals.modalPointSetting.show"
+    :title="'BRDG1 CAPTS'"
+    type="modal"
+    size="lg"
+    class="p0-type"
+    @close-btn-click="modals.modalPointSetting.show = false"
+  >
+    <div class="ui-flex" data-direction="row" data-gap="8" style="padding-top: 0">
       <UiTabs id="tabs-group-2" type="userDevice">
         <!-- 슬롯을 통해 BTab 컴포넌트들을 전달합니다. -->
         <BTab active>
@@ -351,8 +345,18 @@
           </template>
 
           <div class="box-pp">
-            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify1(btn, idx)">{{ btn }}</BButton>
-            <BButton class="box-pp--item add" @click="openModify1" aria-label="{{ lang.btnAdd }}"></BButton>
+            <BButton
+              v-for="(btn, idx) in ppButtons"
+              :key="idx"
+              class="box-pp--item"
+              @click="openModify1(btn, idx)"
+              >{{ btn }}</BButton
+            >
+            <BButton
+              class="box-pp--item add"
+              @click="openModify1"
+              aria-label="{{ lang.btnAdd }}"
+            ></BButton>
           </div>
         </BTab>
         <BTab>
@@ -361,8 +365,18 @@
             <span>{{ lang.ccTab2 }}</span>
           </template>
           <div class="box-pp">
-            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify2(btn, idx)">{{ btn }}</BButton>
-            <BButton class="box-pp--item add" @click="openModify2" aria-label="{{ lang.btnAdd }}"></BButton>
+            <BButton
+              v-for="(btn, idx) in ppButtons"
+              :key="idx"
+              class="box-pp--item"
+              @click="openModify2(btn, idx)"
+              >{{ btn }}</BButton
+            >
+            <BButton
+              class="box-pp--item add"
+              @click="openModify2"
+              aria-label="{{ lang.btnAdd }}"
+            ></BButton>
           </div>
         </BTab>
         <BTab>
@@ -371,8 +385,18 @@
             <span>{{ lang.ccTab3 }}</span>
           </template>
           <div class="box-pp">
-            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify3(btn, idx)">{{ btn }}</BButton>
-            <BButton class="box-pp--item add" @click="openModify3" aria-label="{{ lang.btnAdd }}"></BButton>
+            <BButton
+              v-for="(btn, idx) in ppButtons"
+              :key="idx"
+              class="box-pp--item"
+              @click="openModify3(btn, idx)"
+              >{{ btn }}</BButton
+            >
+            <BButton
+              class="box-pp--item add"
+              @click="openModify3"
+              aria-label="{{ lang.btnAdd }}"
+            ></BButton>
           </div>
         </BTab>
         <BTab>
@@ -381,8 +405,18 @@
             <span>{{ lang.ccTab4 }}</span>
           </template>
           <div class="box-pp">
-            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify4(btn, idx)">{{ btn }}</BButton>
-            <BButton class="box-pp--item add" @click="openModify4" aria-label="{{ lang.btnAdd }}"></BButton>
+            <BButton
+              v-for="(btn, idx) in ppButtons"
+              :key="idx"
+              class="box-pp--item"
+              @click="openModify4(btn, idx)"
+              >{{ btn }}</BButton
+            >
+            <BButton
+              class="box-pp--item add"
+              @click="openModify4"
+              aria-label="{{ lang.btnAdd }}"
+            ></BButton>
           </div>
         </BTab>
         <BTab>
@@ -391,8 +425,18 @@
             <span>{{ lang.ccTab5 }}</span>
           </template>
           <div class="box-pp">
-            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify5(btn, idx)">{{ btn }}</BButton>
-            <BButton class="box-pp--item add" @click="openModify5" aria-label="{{ lang.btnAdd }}"></BButton>
+            <BButton
+              v-for="(btn, idx) in ppButtons"
+              :key="idx"
+              class="box-pp--item"
+              @click="openModify5(btn, idx)"
+              >{{ btn }}</BButton
+            >
+            <BButton
+              class="box-pp--item add"
+              @click="openModify5"
+              aria-label="{{ lang.btnAdd }}"
+            ></BButton>
           </div>
         </BTab>
         <BTab>
@@ -401,8 +445,18 @@
             <span>{{ lang.ccTab6 }}</span>
           </template>
           <div class="box-pp">
-            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify6(btn, idx)">{{ btn }}</BButton>
-            <BButton class="box-pp--item add" @click="openModify6" aria-label="{{ lang.btnAdd }}"></BButton>
+            <BButton
+              v-for="(btn, idx) in ppButtons"
+              :key="idx"
+              class="box-pp--item"
+              @click="openModify6(btn, idx)"
+              >{{ btn }}</BButton
+            >
+            <BButton
+              class="box-pp--item add"
+              @click="openModify6"
+              aria-label="{{ lang.btnAdd }}"
+            ></BButton>
           </div>
         </BTab>
         <BTab>
@@ -411,20 +465,36 @@
             <span>{{ lang.ccTab7 }}</span>
           </template>
           <div class="box-pp">
-            <BButton v-for="(btn, idx) in ppButtons" :key="idx" class="box-pp--item" @click="openModify7(btn, idx)">{{ btn }}</BButton>
-            <BButton class="box-pp--item add" @click="openModify7" aria-label="{{ lang.btnAdd }}"></BButton>
+            <BButton
+              v-for="(btn, idx) in ppButtons"
+              :key="idx"
+              class="box-pp--item"
+              @click="openModify7(btn, idx)"
+              >{{ btn }}</BButton
+            >
+            <BButton
+              class="box-pp--item add"
+              @click="openModify7"
+              aria-label="{{ lang.btnAdd }}"
+            ></BButton>
           </div>
         </BTab>
       </UiTabs>
     </div>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify1.show" :title="lang.ccTab1Title" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
+  <UiModal
+    v-model="modals.modalModify1.show"
+    :title="lang.ccTab1Title"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalModify1.show = false"
+  >
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width:18rem">
-          <col style="width:auto">
+          <col style="width: 18rem" />
+          <col style="width: auto" />
         </colgroup>
         <tbody>
           <tr>
@@ -442,19 +512,19 @@
           <tr>
             <th scope="row">{{ lang.ccTh1_3 }}</th>
             <td>
-              <BFormSelect disabled class="ui-select" :options="[{ value: '1', text: '선택' },]" />
+              <BFormSelect disabled class="ui-select" :options="[{ value: '1', text: '선택' }]" />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.ccTh1_4 }}</th>
             <td>
-              <BFormSelect class="ui-select" :options="[{ value: '1', text: '선택' },]" />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '선택' }]" />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.ccTh1_5 }}</th>
             <td>
-              <BFormSelect class="ui-select" :options="[{ value: '1', text: '선택' },]" />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '선택' }]" />
             </td>
           </tr>
           <tr>
@@ -479,17 +549,25 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify1.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="gray28" @click="modals.modalModify1.show = false">{{
+        lang.btnCancel
+      }}</BButton>
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify2.show" :title="lang.ccTab2Title" type="modal" size="md" @close-btn-click="modals.modalModify2.show = false">
+  <UiModal
+    v-model="modals.modalModify2.show"
+    :title="lang.ccTab2Title"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalModify2.show = false"
+  >
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width:18rem">
-          <col style="width:auto">
+          <col style="width: 18rem" />
+          <col style="width: auto" />
         </colgroup>
         <tbody>
           <tr>
@@ -507,7 +585,11 @@
           <tr>
             <th scope="row">{{ lang.ccTh2_3 }}</th>
             <td>
-              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' }, ]" />
+              <BFormSelect
+                class="ui-select"
+                :disabled="true"
+                :options="[{ value: '1', text: '선택' }]"
+              />
             </td>
           </tr>
           <tr>
@@ -522,19 +604,31 @@
           <tr>
             <th scope="row">{{ lang.ccTh2_5 }}</th>
             <td>
-              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' }, ]" />
+              <BFormSelect
+                class="ui-select"
+                :disabled="true"
+                :options="[{ value: '1', text: '선택' }]"
+              />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.ccTh2_6 }}</th>
             <td>
-              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' }, ]" />
+              <BFormSelect
+                class="ui-select"
+                :disabled="true"
+                :options="[{ value: '1', text: '선택' }]"
+              />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.ccTh2_7 }}</th>
             <td>
-              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' }, ]" />
+              <BFormSelect
+                class="ui-select"
+                :disabled="true"
+                :options="[{ value: '1', text: '선택' }]"
+              />
             </td>
           </tr>
           <tr>
@@ -559,17 +653,25 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify2.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="gray28" @click="modals.modalModify2.show = false">{{
+        lang.btnCancel
+      }}</BButton>
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify3.show" :title="lang.ccTab3Title" type="modal" size="md" @close-btn-click="modals.modalModify3.show = false">
+  <UiModal
+    v-model="modals.modalModify3.show"
+    :title="lang.ccTab3Title"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalModify3.show = false"
+  >
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width:18rem">
-          <col style="width:auto">
+          <col style="width: 18rem" />
+          <col style="width: auto" />
         </colgroup>
         <tbody>
           <tr>
@@ -585,7 +687,11 @@
           <tr>
             <th scope="row">{{ lang.ccTh3_3 }}</th>
             <td>
-              <BFormSelect class="ui-select mb-1" :disabled="true" :options="[ { value: '1', text: '선택' }, ]" />
+              <BFormSelect
+                class="ui-select mb-1"
+                :disabled="true"
+                :options="[{ value: '1', text: '선택' }]"
+              />
               <BFormCheckbox value="1">{{ lang.checkbox7 }}</BFormCheckbox>
             </td>
           </tr>
@@ -601,19 +707,19 @@
           <tr>
             <th scope="row">{{ lang.ccTh3_5 }}</th>
             <td>
-              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '선택' }]" />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.ccTh3_6 }}</th>
             <td>
-              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '선택' }]" />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.ccTh3_7 }}</th>
             <td>
-              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '선택' }]" />
             </td>
           </tr>
           <tr>
@@ -638,17 +744,25 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify3.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="gray28" @click="modals.modalModify3.show = false">{{
+        lang.btnCancel
+      }}</BButton>
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify4.show" :title="lang.ccTab4Title" type="modal" size="md" @close-btn-click="modals.modalModify4.show = false">
+  <UiModal
+    v-model="modals.modalModify4.show"
+    :title="lang.ccTab4Title"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalModify4.show = false"
+  >
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width:18rem">
-          <col style="width:auto">
+          <col style="width: 18rem" />
+          <col style="width: auto" />
         </colgroup>
         <tbody>
           <tr>
@@ -658,19 +772,23 @@
           <tr>
             <th scope="row">{{ lang.ccTh4_2 }}</th>
             <td>
-              <BFormInput class="ui-input"  />
+              <BFormInput class="ui-input" />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.ccTh4_3 }}</th>
             <td>
-              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' },]" />
+              <BFormSelect
+                class="ui-select"
+                :disabled="true"
+                :options="[{ value: '1', text: '선택' }]"
+              />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.ccTh4_4 }}</th>
             <td>
-              <BFormSelect class="ui-select" :options="[ { value: '1', text: '선택' }, ]" />
+              <BFormSelect class="ui-select" :options="[{ value: '1', text: '선택' }]" />
             </td>
           </tr>
           <tr>
@@ -686,17 +804,25 @@
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify4.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="gray28" @click="modals.modalModify4.show = false">{{
+        lang.btnCancel
+      }}</BButton>
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify5.show" :title="lang.ccTab5Title" type="modal" size="md" @close-btn-click="modals.modalModify5.show = false">
+  <UiModal
+    v-model="modals.modalModify5.show"
+    :title="lang.ccTab5Title"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalModify5.show = false"
+  >
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width:18rem">
-          <col style="width:auto">
+          <col style="width: 18rem" />
+          <col style="width: auto" />
         </colgroup>
         <tbody>
           <tr>
@@ -706,30 +832,42 @@
           <tr>
             <th scope="row">{{ lang.ccTh5_2 }}</th>
             <td>
-              <BFormInput class="ui-input"  />
+              <BFormInput class="ui-input" />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.ccTh5_3 }}</th>
             <td>
-              <BFormSelect class="ui-select" :disabled="true" :options="[ { value: '1', text: '선택' },]" />
+              <BFormSelect
+                class="ui-select"
+                :disabled="true"
+                :options="[{ value: '1', text: '선택' }]"
+              />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify5.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="gray28" @click="modals.modalModify5.show = false">{{
+        lang.btnCancel
+      }}</BButton>
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify6.show" :title="lang.ccTab6Title" type="modal" size="md" @close-btn-click="modals.modalModify6.show = false">
+  <UiModal
+    v-model="modals.modalModify6.show"
+    :title="lang.ccTab6Title"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalModify6.show = false"
+  >
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width:18rem">
-          <col style="width:auto">
+          <col style="width: 18rem" />
+          <col style="width: auto" />
         </colgroup>
         <tbody>
           <tr>
@@ -739,43 +877,53 @@
           <tr>
             <th scope="row">{{ lang.ccTh6_2 }}</th>
             <td>
-              <BFormInput class="ui-input"  />
+              <BFormInput class="ui-input" />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify6.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="gray28" @click="modals.modalModify6.show = false">{{
+        lang.btnCancel
+      }}</BButton>
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
 
-  <UiModal v-model="modals.modalModify7.show" :title="lang.ccTab7Title" type="modal" size="md" @close-btn-click="modals.modalModify7.show = false">
+  <UiModal
+    v-model="modals.modalModify7.show"
+    :title="lang.ccTab7Title"
+    type="modal"
+    size="md"
+    @close-btn-click="modals.modalModify7.show = false"
+  >
     <div class="ui-flex" data-direction="col" data-gap="16">
       <div class="ui-flex" data-direction="col" data-gap="16">
-      <table class="table-type-a">
-        <colgroup>
-          <col style="width:18rem">
-          <col style="width:auto">
-        </colgroup>
-        <tbody>
-          <tr>
-            <th scope="row">{{ lang.ccTh7_1 }}</th>
-            <td><b>CCTV구역명</b></td>
-          </tr>
-          <tr>
-            <th scope="row">{{ lang.ccTh7_2 }}</th>
-            <td>
-              <BFormInput class="ui-input"  />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        <table class="table-type-a">
+          <colgroup>
+            <col style="width: 18rem" />
+            <col style="width: auto" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <th scope="row">{{ lang.ccTh7_1 }}</th>
+              <td><b>CCTV구역명</b></td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.ccTh7_2 }}</th>
+              <td>
+                <BFormInput class="ui-input" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modalModify7.show = false">{{ lang.btnCancel }}</BButton>
+      <BButton class="gray28" @click="modals.modalModify7.show = false">{{
+        lang.btnCancel
+      }}</BButton>
       <BButton class="blue28">{{ lang.btnSave }}</BButton>
     </template>
   </UiModal>
@@ -788,7 +936,17 @@
 // NOTE: 컴포넌트 이름은 multi-word로 권장됨. 실제 이름 변경 시 파일명, 라우터 등 전체 영향 주의
 import { ref, onMounted, computed, reactive } from 'vue'
 import G from '@/config/global.js'
-import { BFormInput, BFormSelect, BButton, BFormGroup, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next/components'
+import {
+  BFormInput,
+  BFormSelect,
+  BDropdown,
+  BDropdownForm,
+  BButton,
+  BFormGroup,
+  BPagination,
+  BTable,
+  BFormCheckbox,
+} from 'bootstrap-vue-next/components'
 import UiModal from '@/components/UiModal.vue'
 import { BTab } from 'bootstrap-vue-next'
 import UiTabs from '@/components/UiTabs.vue'
@@ -805,8 +963,8 @@ const ko = {
 
   filter1: '검색대상',
   filter2: '검색어',
-  filter3: '무선침묵권한',
-  filter4: '상태',
+  filter3: '단말권한',
+  filter4: 'L2 스위치',
 
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
@@ -929,8 +1087,8 @@ const en = {
 
   filter1: '검색대상',
   filter2: '검색어',
-  filter3: '무선침묵권한',
-  filter4: '상태',
+  filter3: '단말권한',
+  filter4: 'L2 스위치',
 
   btnRegister: '등록',
   btnBulkRegister: '일괄등록',
@@ -1046,11 +1204,21 @@ const en = {
 }
 const lang = ref({})
 const ppButtons = [
-  'HLCPTR CONTRC', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
-  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
-  'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM', 'HLCPTR CONTRM',
-  'HLCPTR CONTRM', 'HLCPTR CONTRM'
-];
+  'HLCPTR CONTRC',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+  'HLCPTR CONTRM',
+]
 
 // =========================
 // [모달 상태 관리]
@@ -1066,13 +1234,27 @@ const modals = reactive({
   modalModify6: { show: false },
   modalModify7: { show: false },
 })
-function openModify1() { modals.modalModify1.show = true } // 점대점
-function openModify2() { modals.modalModify2.show = true } // 회의통화
-function openModify3() { modals.modalModify3.show = true } // 그룹통화
-function openModify4() { modals.modalModify4.show = true } // 무선통신기
-function openModify5() { modals.modalModify5.show = true } // 방송장비
-function openModify6() { modals.modalModify6.show = true } // 경보
-function openModify7() { modals.modalModify7.show = true } // CCTV
+function openModify1() {
+  modals.modalModify1.show = true
+} // 점대점
+function openModify2() {
+  modals.modalModify2.show = true
+} // 회의통화
+function openModify3() {
+  modals.modalModify3.show = true
+} // 그룹통화
+function openModify4() {
+  modals.modalModify4.show = true
+} // 무선통신기
+function openModify5() {
+  modals.modalModify5.show = true
+} // 방송장비
+function openModify6() {
+  modals.modalModify6.show = true
+} // 경보
+function openModify7() {
+  modals.modalModify7.show = true
+} // CCTV
 
 // =========================
 // [상태/폼/리스트 관리]
@@ -1081,7 +1263,11 @@ const filterText = ref('') // 검색어
 const selectedIds = ref([]) // 선택된 행 id
 const currentPage = ref(1) // 현재 페이지
 const perPage = ref(10) // 페이지당 개수
-const perPageOptions = [ { value: 10, text: '10' }, { value: 15, text: '15' }, { value: 20, text: '20' } ]
+const perPageOptions = [
+  { value: 10, text: '10' },
+  { value: 15, text: '15' },
+  { value: 20, text: '20' },
+]
 
 // 실제 데이터 연동 시 아래 부분을 교체하세요
 // 임시 샘플 데이터 생성 함수
@@ -1089,7 +1275,7 @@ function generateItems(n) {
   const statuses = ['정상', '정상(통화중)', '비정상']
   const arr = []
   for (let i = 1; i <= n; i++) {
-    const idx = (i - 1)
+    const idx = i - 1
     arr.push({
       id: i,
       th1: String(i),
@@ -1121,7 +1307,7 @@ const fields = computed(() => [
     key: 'th9',
     label: lang.value.colTh9,
     thStyle: { width: '9rem' },
-    tdClass: (value, key, item) => item.th9 === '비정상' ? 'red' : '',
+    tdClass: (value, key, item) => (item.th9 === '비정상' ? 'red' : ''),
   },
   { key: 'th10', label: lang.value.colTh10, thStyle: { width: '10rem' } },
 ])
@@ -1135,36 +1321,40 @@ const paginatedItems = computed(() => {
 
 // 체크박스 전체선택/부분선택
 const isAllSelected = computed(() => {
-  const pageIds = paginatedItems.value.map(i => i.id)
+  const pageIds = paginatedItems.value.map((i) => i.id)
   if (pageIds.length === 0) return false
-  return pageIds.every(id => selectedIds.value.includes(id))
+  return pageIds.every((id) => selectedIds.value.includes(id))
 })
 const isIndeterminate = computed(() => {
-  const pageIds = paginatedItems.value.map(i => i.id)
+  const pageIds = paginatedItems.value.map((i) => i.id)
   if (pageIds.length === 0) return false
-  const selectedOnPage = pageIds.filter(id => selectedIds.value.includes(id)).length
+  const selectedOnPage = pageIds.filter((id) => selectedIds.value.includes(id)).length
   return selectedOnPage > 0 && selectedOnPage < pageIds.length
 })
 function toggleSelectAll(checked) {
-  const pageIds = paginatedItems.value.map(i => i.id)
+  const pageIds = paginatedItems.value.map((i) => i.id)
   if (checked) {
     const set = new Set([...selectedIds.value, ...pageIds])
     selectedIds.value = Array.from(set)
   } else {
-    selectedIds.value = selectedIds.value.filter(id => !pageIds.includes(id))
+    selectedIds.value = selectedIds.value.filter((id) => !pageIds.includes(id))
   }
 }
 
 // =========================
 // [UI 이벤트 핸들러]
 // =========================
-function onRowClicked() { modals.modalTerminalModify.show = true }
-function onFilter() { currentPage.value = 1 }
+function onRowClicked() {
+  modals.modalTerminalModify.show = true
+}
+function onFilter() {
+  currentPage.value = 1
+}
 
 // =========================
 // [초기화]
 // =========================
 onMounted(() => {
-  lang.value = (G.lang === 'ko') ? ko : en
+  lang.value = G.lang === 'ko' ? ko : en
 })
 </script>
