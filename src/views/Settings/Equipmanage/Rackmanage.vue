@@ -2,7 +2,7 @@
   <table class="table-type-a">
     <colgroup>
       <col style="width: 16rem" />
-      <col style="width:auto;min-width: 38.6rem" />
+      <col style="width: auto; min-width: 38.6rem" />
       <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
@@ -11,7 +11,11 @@
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.filterDeviceType }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterDeviceType} ${lang.sortAll}`"></BButton>
+            <BButton
+              class="btn-sort ui-shrink-0"
+              aria-sort="none"
+              :aria-label="`${lang.filterDeviceType} ${lang.sortAll}`"
+            ></BButton>
           </div>
         </th>
         <td>
@@ -36,11 +40,15 @@
         <th scope="row">
           <div class="ui-flex" data-item-align="center" data-gap="4">
             <span class="ui-flex-1">{{ lang.filterRegDate }}</span>
-            <BButton class="btn-sort ui-shrink-0" aria-sort="none" :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"></BButton>
+            <BButton
+              class="btn-sort ui-shrink-0"
+              aria-sort="none"
+              :aria-label="`${lang.filterRegDate} ${lang.sortAll}`"
+            ></BButton>
           </div>
         </th>
         <td colspan="3">
-          <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4" >
+          <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4">
             <BFormInput
               id="reg-date-start"
               class="ui-input"
@@ -203,13 +211,18 @@
     @close-btn-click="modals.modalRackOption.show = false"
   >
     <div class="ui-flex modal-h-full" data-gap="16">
-      <div class="ui-shrink-0 rack-setting-area ui-flex" data-direction="row" data-gap="8" data-justify-align="between">
-
+      <div
+        class="ui-shrink-0 rack-setting-area ui-flex"
+        data-direction="row"
+        data-gap="8"
+      >
+        <!-- D : 랙 사이즈 설정 [data-u="42 | 36"] -->
         <div class="network-rack" data-u="42">
           <div class="network-rack-u">
             <div class="network-rack-u-item" v-for="n in 42" :key="n">{{ n }}</div>
           </div>
           <div class="network-rack-wrap">
+            <!-- D : 랙 아이템 위치 설정 [data-sp="1 ~ 42"] 랙 아이템 사이즈 설정 [data-u="1 ~ 11"]  -->
             <div class="network-rack-item" data-u="1" data-sp="1">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
@@ -228,6 +241,7 @@
             <div class="network-rack-u-item" v-for="n in 36" :key="n">{{ n }}</div>
           </div>
           <div class="network-rack-wrap">
+            <!-- D : 랙 아이템 위치 설정 [data-sp="1 ~ 36"] 랙 아이템 사이즈 설정 [data-u="1 ~ 11"]  -->
             <div class="network-rack-item" data-u="1" data-sp="1">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
@@ -294,13 +308,6 @@
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
       </div>
       <div>
         <table class="table-type-a">
@@ -521,7 +528,7 @@ const formData = reactive({
   rackNumber: '',
   rackPosition: '',
   rackSize: '',
-  file: ''
+  file: '',
 })
 const deviceTypeOptions = computed(() => [
   { value: formData.deviceType, text: formData.deviceType },
