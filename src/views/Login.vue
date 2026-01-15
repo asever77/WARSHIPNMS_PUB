@@ -45,7 +45,7 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  min-width:135rem;
+  min-width:128rem;
 }
 .login-content {
   display:flex;

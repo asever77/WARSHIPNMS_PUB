@@ -222,7 +222,7 @@ div.table-type-a {display:grid; grid-template-columns:14rem 1fr 8rem 2fr;}
 .ui-data-box .form-control[type="datetime-local"] {width:16.9rem}
 
 /* modal */
-.modal-h-full {height:calc(100vh - 12rem);padding-bottom:2rem}
+.modal-h-full {height:calc(100vh - 13rem)}
 .modal-footer .btn-secondary {min-width:8rem}
 .bg-type .modal-body {background-color:#f3f3f3}
 .p0-type .modal-body {padding:0 !important; }
@@ -477,533 +477,145 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 [data-bg="yellow"] .ui-drag-in-box ~ .ui-drag-in-box {border-top:1px dashed #E7E1B8}
 .ui-drag-area2-section-group .icon-connection-status {position:absolute;display:block;margin:0;top:50%;right:-1.8rem;transform:translateY(-50%);z-index:2}
 
-.network-rack {
-  display: flex;
-  padding: 1rem;
-  background-color: #616161;
-  border-radius: .4rem;
-  justify-content: space-around;
-  min-width: 11rem;
-  max-width: 24rem;
-  flex:1;
-}
-.network-rack-wrap{
-  display:flex;
-  position: relative;
-  flex-direction: column;
-  height: 100%;
-  outline: 1px solid #000;
-  background-color: #fff;
-
-  width: 100%;
-
-}
+/* 랙관리 */
+.network-rack {display:flex;padding:1rem;background-color:#333;border-radius:.4rem;justify-content:space-around;max-width:30rem;flex:1;}
+.network-rack-wrap {display:flex;position:relative;flex-direction:column;height:100%;outline:1px solid #000;background-color:#fff;width:100%;}
 [data-u="42"] .network-rack-wrap::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background-image: repeating-linear-gradient(
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  background-image:repeating-linear-gradient(
     to bottom,
     transparent,
     transparent calc(100% / 42 - 1px),
-    #b1b1b1 calc(100% / 42 - 1px),
-    #b1b1b1 calc(100% / 42)
+    #f1f1f1 calc(100% / 42 - 1px),
+    #f1f1f1 calc(100% / 42)
   );
 }
-/* [data-u="42"] .network-rack-wrap::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent calc(100% / 42 - 1px),
-    #ebebeb calc(100% / 42 - 1px),
-    #ebebeb calc(100% / 42)
-  );
-  pointer-events: none;
-  z-index: 1;
-} */
 [data-u="36"] .network-rack-wrap::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background-image: repeating-linear-gradient(
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  background-image:repeating-linear-gradient(
     to bottom,
     transparent,
     transparent calc(100% / 36 - 1px),
-    #b1b1b1 calc(100% / 36 - 1px),
-    #b1b1b1 calc(100% / 36)
+    #f1f1f1 calc(100% / 36 - 1px),
+    #f1f1f1 calc(100% / 36)
   );
 }
-/* [data-u="36"] .network-rack-wrap::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent calc(100% / 36 - 1px),
-    #ebebeb calc(100% / 36 - 1px),
-    #ebebeb calc(100% / 36)
-  );
-  pointer-events: none;
-  z-index: 1;
-} */
-.network-rack-u{
-  display: flex;
-  flex-direction: column;
-}
-.network-rack-u-item{
-  display: flex;
-  flex:1;
-  text-align: right;
-  justify-content: center;
-  align-items: center;
-  color:#fff;
-  box-sizing: border-box;
-  padding-right:.4rem;
-  font-size: 1rem;
-  line-height: 100%;
-}
-.network-rack[data-u="42"] {
-  /* 0~128까지 129개 규칙 자동 생성 */
-  .network-rack-item[data-sp="1"] {top: calc((100 / 42) * 0%)}
-  .network-rack-item[data-sp="2"] {top: calc((100 / 42) * 1%)}
-  .network-rack-item[data-sp="3"] {top: calc((100 / 42) * 2%)}
-  .network-rack-item[data-sp="4"] {top: calc((100 / 42) * 3%)}
-  .network-rack-item[data-sp="5"] {top: calc((100 / 42) * 4%)}
-  .network-rack-item[data-sp="6"] {top: calc((100 / 42) * 5%)}
-  .network-rack-item[data-sp="7"] {top: calc((100 / 42) * 6%)}
-  .network-rack-item[data-sp="8"] {top: calc((100 / 42) * 7%)}
-  .network-rack-item[data-sp="9"] {top: calc((100 / 42) * 8%)}
-  .network-rack-item[data-sp="10"] {top: calc((100 / 42) * 9%)}
-  .network-rack-item[data-sp="11"] {top: calc((100 / 42) * 10%)}
-  .network-rack-item[data-sp="12"] {top: calc((100 / 42) * 11%)}
-  .network-rack-item[data-sp="13"] {top: calc((100 / 42) * 12%)}
-  .network-rack-item[data-sp="14"] {top: calc((100 / 42) * 13%)}
-  .network-rack-item[data-sp="15"] {top: calc((100 / 42) * 14%)}
-  .network-rack-item[data-sp="16"] {top: calc((100 / 42) * 15%)}
-  .network-rack-item[data-sp="17"] {top: calc((100 / 42) * 16%)}
-  .network-rack-item[data-sp="18"] {top: calc((100 / 42) * 17%)}
-  .network-rack-item[data-sp="19"] {top: calc((100 / 42) * 18%)}
-  .network-rack-item[data-sp="20"] {top: calc((100 / 42) * 19%)}
-  .network-rack-item[data-sp="21"] {top: calc((100 / 42) * 20%)}
-  .network-rack-item[data-sp="22"] {top: calc((100 / 42) * 21%)}
-  .network-rack-item[data-sp="23"] {top: calc((100 / 42) * 22%)}
-  .network-rack-item[data-sp="24"] {top: calc((100 / 42) * 23%)}
-  .network-rack-item[data-sp="25"] {top: calc((100 / 42) * 24%)}
-  .network-rack-item[data-sp="26"] {top: calc((100 / 42) * 25%)}
-  .network-rack-item[data-sp="27"] {top: calc((100 / 42) * 26%)}
-  .network-rack-item[data-sp="28"] {top: calc((100 / 42) * 27%)}
-  .network-rack-item[data-sp="29"] {top: calc((100 / 42) * 28%)}
-  .network-rack-item[data-sp="30"] {top: calc((100 / 42) * 29%)}
-  .network-rack-item[data-sp="31"] {top: calc((100 / 42) * 30%)}
-  .network-rack-item[data-sp="32"] {top: calc((100 / 42) * 31%)}
-  .network-rack-item[data-sp="33"] {top: calc((100 / 42) * 32%)}
-  .network-rack-item[data-sp="34"] {top: calc((100 / 42) * 33%)}
-  .network-rack-item[data-sp="35"] {top: calc((100 / 42) * 34%)}
-  .network-rack-item[data-sp="36"] {top: calc((100 / 42) * 35%)}
-  .network-rack-item[data-sp="37"] {top: calc((100 / 42) * 36%)}
-  .network-rack-item[data-sp="38"] {top: calc((100 / 42) * 37%)}
-  .network-rack-item[data-sp="39"] {top: calc((100 / 42) * 38%)}
-  .network-rack-item[data-sp="40"] {top: calc((100 / 42) * 39%)}
-  .network-rack-item[data-sp="41"] {top: calc((100 / 42) * 40%)}
-  .network-rack-item[data-sp="42"] {top: calc((100 / 42) * 41%)}
-  .network-rack-item[data-sp="43"] {top: calc((100 / 42) * 42%)}
-  .network-rack-item[data-sp="44"] {top: calc((100 / 42) * 43%)}
-  .network-rack-item[data-sp="45"] {top: calc((100 / 42) * 44%)}
-  .network-rack-item[data-sp="46"] {top: calc((100 / 42) * 45%)}
-  .network-rack-item[data-sp="47"] {top: calc((100 / 42) * 46%)}
-  .network-rack-item[data-sp="48"] {top: calc((100 / 42) * 47%)}
-  .network-rack-item[data-sp="49"] {top: calc((100 / 42) * 48%)}
-  .network-rack-item[data-sp="50"] {top: calc((100 / 42) * 49%)}
-  .network-rack-item[data-sp="51"] {top: calc((100 / 42) * 50%)}
-  .network-rack-item[data-sp="52"] {top: calc((100 / 42) * 51%)}
-  .network-rack-item[data-sp="53"] {top: calc((100 / 42) * 52%)}
-  .network-rack-item[data-sp="54"] {top: calc((100 / 42) * 53%)}
-  .network-rack-item[data-sp="55"] {top: calc((100 / 42) * 54%)}
-  .network-rack-item[data-sp="56"] {top: calc((100 / 42) * 55%)}
-  .network-rack-item[data-sp="57"] {top: calc((100 / 42) * 56%)}
-  .network-rack-item[data-sp="58"] {top: calc((100 / 42) * 57%)}
-  .network-rack-item[data-sp="59"] {top: calc((100 / 42) * 58%)}
-  .network-rack-item[data-sp="60"] {top: calc((100 / 42) * 59%)}
-  .network-rack-item[data-sp="61"] {top: calc((100 / 42) * 60%)}
-  .network-rack-item[data-sp="62"] {top: calc((100 / 42) * 61%)}
-  .network-rack-item[data-sp="63"] {top: calc((100 / 42) * 62%)}
-  .network-rack-item[data-sp="64"] {top: calc((100 / 42) * 63%)}
-  .network-rack-item[data-sp="65"] {top: calc((100 / 42) * 64%)}
-  .network-rack-item[data-sp="66"] {top: calc((100 / 42) * 65%)}
-  .network-rack-item[data-sp="67"] {top: calc((100 / 42) * 66%)}
-  .network-rack-item[data-sp="68"] {top: calc((100 / 42) * 67%)}
-  .network-rack-item[data-sp="69"] {top: calc((100 / 42) * 68%)}
-  .network-rack-item[data-sp="70"] {top: calc((100 / 42) * 69%)}
-  .network-rack-item[data-sp="71"] {top: calc((100 / 42) * 70%)}
-  .network-rack-item[data-sp="72"] {top: calc((100 / 42) * 71%)}
-  .network-rack-item[data-sp="73"] {top: calc((100 / 42) * 72%)}
-  .network-rack-item[data-sp="74"] {top: calc((100 / 42) * 73%)}
-  .network-rack-item[data-sp="75"] {top: calc((100 / 42) * 74%)}
-  .network-rack-item[data-sp="76"] {top: calc((100 / 42) * 75%)}
-  .network-rack-item[data-sp="77"] {top: calc((100 / 42) * 76%)}
-  .network-rack-item[data-sp="78"] {top: calc((100 / 42) * 77%)}
-  .network-rack-item[data-sp="79"] {top: calc((100 / 42) * 78%)}
-  .network-rack-item[data-sp="80"] {top: calc((100 / 42) * 79%)}
-  .network-rack-item[data-sp="81"] {top: calc((100 / 42) * 80%)}
-  .network-rack-item[data-sp="82"] {top: calc((100 / 42) * 81%)}
-  .network-rack-item[data-sp="83"] {top: calc((100 / 42) * 82%)}
-  .network-rack-item[data-sp="84"] {top: calc((100 / 42) * 83%)}
-  .network-rack-item[data-sp="85"] {top: calc((100 / 42) * 84%)}
-  .network-rack-item[data-sp="86"] {top: calc((100 / 42) * 85%)}
-  .network-rack-item[data-sp="87"] {top: calc((100 / 42) * 86%)}
-  .network-rack-item[data-sp="88"] {top: calc((100 / 42) * 87%)}
-  .network-rack-item[data-sp="89"] {top: calc((100 / 42) * 88%)}
-  .network-rack-item[data-sp="90"] {top: calc((100 / 42) * 89%)}
-  .network-rack-item[data-sp="91"] {top: calc((100 / 42) * 90%)}
-  .network-rack-item[data-sp="92"] {top: calc((100 / 42) * 91%)}
-  .network-rack-item[data-sp="93"] {top: calc((100 / 42) * 92%)}
-  .network-rack-item[data-sp="94"] {top: calc((100 / 42) * 93%)}
-  .network-rack-item[data-sp="95"] {top: calc((100 / 42) * 94%)}
-  .network-rack-item[data-sp="96"] {top: calc((100 / 42) * 95%)}
-  .network-rack-item[data-sp="97"] {top: calc((100 / 42) * 96%)}
-  .network-rack-item[data-sp="98"] {top: calc((100 / 42) * 97%)}
-  .network-rack-item[data-sp="99"] {top: calc((100 / 42) * 98%)}
-  .network-rack-item[data-sp="100"] {top: calc((100 / 42) * 99%)}
-  .network-rack-item[data-sp="101"] {top: calc((100 / 42) * 100%)}
-  .network-rack-item[data-sp="102"] {top: calc((100 / 42) * 101%)}
-  .network-rack-item[data-sp="103"] {top: calc((100 / 42) * 102%)}
-  .network-rack-item[data-sp="104"] {top: calc((100 / 42) * 103%)}
-  .network-rack-item[data-sp="105"] {top: calc((100 / 42) * 104%)}
-  .network-rack-item[data-sp="106"] {top: calc((100 / 42) * 105%)}
-  .network-rack-item[data-sp="107"] {top: calc((100 / 42) * 106%)}
-  .network-rack-item[data-sp="108"] {top: calc((100 / 42) * 107%)}
-  .network-rack-item[data-sp="109"] {top: calc((100 / 42) * 108%)}
-  .network-rack-item[data-sp="110"] {top: calc((100 / 42) * 109%)}
-  .network-rack-item[data-sp="111"] {top: calc((100 / 42) * 110%)}
-  .network-rack-item[data-sp="112"] {top: calc((100 / 42) * 111%)}
-  .network-rack-item[data-sp="113"] {top: calc((100 / 42) * 112%)}
-  .network-rack-item[data-sp="114"] {top: calc((100 / 42) * 113%)}
-  .network-rack-item[data-sp="115"] {top: calc((100 / 42) * 114%)}
-  .network-rack-item[data-sp="116"] {top: calc((100 / 42) * 115%)}
-  .network-rack-item[data-sp="117"] {top: calc((100 / 42) * 116%)}
-  .network-rack-item[data-sp="118"] {top: calc((100 / 42) * 117%)}
-  .network-rack-item[data-sp="119"] {top: calc((100 / 42) * 118%)}
-  .network-rack-item[data-sp="120"] {top: calc((100 / 42) * 119%)}
-  .network-rack-item[data-sp="121"] {top: calc((100 / 42) * 120%)}
-  .network-rack-item[data-sp="122"] {top: calc((100 / 42) * 121%)}
-  .network-rack-item[data-sp="123"] {top: calc((100 / 42) * 122%)}
-  .network-rack-item[data-sp="124"] {top: calc((100 / 42) * 123%)}
-  .network-rack-item[data-sp="125"] {top: calc((100 / 42) * 124%)}
-  .network-rack-item[data-sp="126"] {top: calc((100 / 42) * 125%)}
-  .network-rack-item[data-sp="127"] {top: calc((100 / 42) * 126%)}
-  .network-rack-item[data-sp="128"] {top: calc((100 / 42) * 127%)}
-  .network-rack-item[data-sp="129"] {top: calc((100 / 42) * 128%)}
-  .network-rack-item[data-sp="16"] {top: calc((100 / 42) * 16%)}
-  .network-rack-item[data-sp="17"] {top: calc((100 / 42) * 17%)}
-  .network-rack-item[data-sp="18"] {top: calc((100 / 42) * 18%)}
-  .network-rack-item[data-sp="19"] {top: calc((100 / 42) * 19%)}
-  .network-rack-item[data-sp="20"] {top: calc((100 / 42) * 20%)}
-  .network-rack-item[data-sp="21"] {top: calc((100 / 42) * 21%)}
-  .network-rack-item[data-sp="22"] {top: calc((100 / 42) * 22%)}
-  .network-rack-item[data-sp="23"] {top: calc((100 / 42) * 23%)}
-  .network-rack-item[data-sp="24"] {top: calc((100 / 42) * 24%)}
-  .network-rack-item[data-sp="25"] {top: calc((100 / 42) * 25%)}
-  .network-rack-item[data-sp="26"] {top: calc((100 / 42) * 26%)}
-  .network-rack-item[data-sp="27"] {top: calc((100 / 42) * 27%)}
-  .network-rack-item[data-sp="28"] {top: calc((100 / 42) * 28%)}
-  .network-rack-item[data-sp="29"] {top: calc((100 / 42) * 29%)}
-  .network-rack-item[data-sp="30"] {top: calc((100 / 42) * 30%)}
-  .network-rack-item[data-sp="31"] {top: calc((100 / 42) * 31%)}
-  .network-rack-item[data-sp="32"] {top: calc((100 / 42) * 32%)}
-  .network-rack-item[data-sp="33"] {top: calc((100 / 42) * 33%)}
-  .network-rack-item[data-sp="34"] {top: calc((100 / 42) * 34%)}
-  .network-rack-item[data-sp="35"] {top: calc((100 / 42) * 35%)}
-  .network-rack-item[data-sp="36"] {top: calc((100 / 42) * 36%)}
-  .network-rack-item[data-sp="37"] {top: calc((100 / 42) * 37%)}
-  .network-rack-item[data-sp="38"] {top: calc((100 / 42) * 38%)}
-  .network-rack-item[data-sp="39"] {top: calc((100 / 42) * 39%)}
-  .network-rack-item[data-sp="40"] {top: calc((100 / 42) * 40%)}
-  .network-rack-item[data-sp="41"] {top: calc((100 / 42) * 41%)}
-  .network-rack-item[data-sp="42"] {top: calc((100 / 42) * 42%)}
-  .network-rack-item[data-sp="43"] {top: calc((100 / 42) * 43%)}
-  .network-rack-item[data-sp="44"] {top: calc((100 / 42) * 44%)}
-  .network-rack-item[data-sp="45"] {top: calc((100 / 42) * 45%)}
-  .network-rack-item[data-sp="46"] {top: calc((100 / 42) * 46%)}
-  .network-rack-item[data-sp="47"] {top: calc((100 / 42) * 47%)}
-  .network-rack-item[data-sp="48"] {top: calc((100 / 42) * 48%)}
-  .network-rack-item[data-sp="49"] {top: calc((100 / 42) * 49%)}
-  .network-rack-item[data-sp="50"] {top: calc((100 / 42) * 50%)}
-  .network-rack-item[data-sp="51"] {top: calc((100 / 42) * 51%)}
-  .network-rack-item[data-sp="52"] {top: calc((100 / 42) * 52%)}
-  .network-rack-item[data-sp="53"] {top: calc((100 / 42) * 53%)}
-  .network-rack-item[data-sp="54"] {top: calc((100 / 42) * 54%)}
-  .network-rack-item[data-sp="55"] {top: calc((100 / 42) * 55%)}
-  .network-rack-item[data-sp="56"] {top: calc((100 / 42) * 56%)}
-  .network-rack-item[data-sp="57"] {top: calc((100 / 42) * 57%)}
-  .network-rack-item[data-sp="58"] {top: calc((100 / 42) * 58%)}
-  .network-rack-item[data-sp="59"] {top: calc((100 / 42) * 59%)}
-  .network-rack-item[data-sp="60"] {top: calc((100 / 42) * 60%)}
-  .network-rack-item[data-sp="61"] {top: calc((100 / 42) * 61%)}
-  .network-rack-item[data-sp="62"] {top: calc((100 / 42) * 62%)}
-  .network-rack-item[data-sp="63"] {top: calc((100 / 42) * 63%)}
-  .network-rack-item[data-sp="64"] {top: calc((100 / 42) * 64%)}
-  .network-rack-item[data-sp="65"] {top: calc((100 / 42) * 65%)}
-  .network-rack-item[data-sp="66"] {top: calc((100 / 42) * 66%)}
-  .network-rack-item[data-sp="67"] {top: calc((100 / 42) * 67%)}
-  .network-rack-item[data-sp="68"] {top: calc((100 / 42) * 68%)}
-  .network-rack-item[data-sp="69"] {top: calc((100 / 42) * 69%)}
-  .network-rack-item[data-sp="70"] {top: calc((100 / 42) * 70%)}
-  .network-rack-item[data-sp="71"] {top: calc((100 / 42) * 71%)}
-  .network-rack-item[data-sp="72"] {top: calc((100 / 42) * 72%)}
-  .network-rack-item[data-sp="73"] {top: calc((100 / 42) * 73%)}
-  .network-rack-item[data-sp="74"] {top: calc((100 / 42) * 74%)}
-  .network-rack-item[data-sp="75"] {top: calc((100 / 42) * 75%)}
-  .network-rack-item[data-sp="76"] {top: calc((100 / 42) * 76%)}
-  .network-rack-item[data-sp="77"] {top: calc((100 / 42) * 77%)}
-  .network-rack-item[data-sp="78"] {top: calc((100 / 42) * 78%)}
-  .network-rack-item[data-sp="79"] {top: calc((100 / 42) * 79%)}
-  .network-rack-item[data-sp="80"] {top: calc((100 / 42) * 80%)}
-  .network-rack-item[data-sp="81"] {top: calc((100 / 42) * 81%)}
-  .network-rack-item[data-sp="82"] {top: calc((100 / 42) * 82%)}
-  .network-rack-item[data-sp="83"] {top: calc((100 / 42) * 83%)}
-  .network-rack-item[data-sp="84"] {top: calc((100 / 42) * 84%)}
-  .network-rack-item[data-sp="85"] {top: calc((100 / 42) * 85%)}
-  .network-rack-item[data-sp="86"] {top: calc((100 / 42) * 86%)}
-  .network-rack-item[data-sp="87"] {top: calc((100 / 42) * 87%)}
-  .network-rack-item[data-sp="88"] {top: calc((100 / 42) * 88%)}
-  .network-rack-item[data-sp="89"] {top: calc((100 / 42) * 89%)}
-  .network-rack-item[data-sp="90"] {top: calc((100 / 42) * 90%)}
-  .network-rack-item[data-sp="91"] {top: calc((100 / 42) * 91%)}
-  .network-rack-item[data-sp="92"] {top: calc((100 / 42) * 92%)}
-  .network-rack-item[data-sp="93"] {top: calc((100 / 42) * 93%)}
-  .network-rack-item[data-sp="94"] {top: calc((100 / 42) * 94%)}
-  .network-rack-item[data-sp="95"] {top: calc((100 / 42) * 95%)}
-  .network-rack-item[data-sp="96"] {top: calc((100 / 42) * 96%)}
-  .network-rack-item[data-sp="97"] {top: calc((100 / 42) * 97%)}
-  .network-rack-item[data-sp="98"] {top: calc((100 / 42) * 98%)}
-  .network-rack-item[data-sp="99"] {top: calc((100 / 42) * 99%)}
-  .network-rack-item[data-sp="100"] {top: calc((100 / 42) * 100%)}
-  .network-rack-item[data-sp="101"] {top: calc((100 / 42) * 101%)}
-  .network-rack-item[data-sp="102"] {top: calc((100 / 42) * 102%)}
-  .network-rack-item[data-sp="103"] {top: calc((100 / 42) * 103%)}
-  .network-rack-item[data-sp="104"] {top: calc((100 / 42) * 104%)}
-  .network-rack-item[data-sp="105"] {top: calc((100 / 42) * 105%)}
-  .network-rack-item[data-sp="106"] {top: calc((100 / 42) * 106%)}
-  .network-rack-item[data-sp="107"] {top: calc((100 / 42) * 107%)}
-  .network-rack-item[data-sp="108"] {top: calc((100 / 42) * 108%)}
-  .network-rack-item[data-sp="109"] {top: calc((100 / 42) * 109%)}
-  .network-rack-item[data-sp="110"] {top: calc((100 / 42) * 110%)}
-  .network-rack-item[data-sp="111"] {top: calc((100 / 42) * 111%)}
-  .network-rack-item[data-sp="112"] {top: calc((100 / 42) * 112%)}
-  .network-rack-item[data-sp="113"] {top: calc((100 / 42) * 113%)}
-  .network-rack-item[data-sp="114"] {top: calc((100 / 42) * 114%)}
-  .network-rack-item[data-sp="115"] {top: calc((100 / 42) * 115%)}
-  .network-rack-item[data-sp="116"] {top: calc((100 / 42) * 116%)}
-  .network-rack-item[data-sp="117"] {top: calc((100 / 42) * 117%)}
-  .network-rack-item[data-sp="118"] {top: calc((100 / 42) * 118%)}
-  .network-rack-item[data-sp="119"] {top: calc((100 / 42) * 119%)}
-  .network-rack-item[data-sp="120"] {top: calc((100 / 42) * 120%)}
-  .network-rack-item[data-sp="121"] {top: calc((100 / 42) * 121%)}
-  .network-rack-item[data-sp="122"] {top: calc((100 / 42) * 122%)}
-  .network-rack-item[data-sp="123"] {top: calc((100 / 42) * 123%)}
-  .network-rack-item[data-sp="124"] {top: calc((100 / 42) * 124%)}
-  .network-rack-item[data-sp="125"] {top: calc((100 / 42) * 125%)}
-  .network-rack-item[data-sp="126"] {top: calc((100 / 42) * 126%)}
-  .network-rack-item[data-sp="127"] {top: calc((100 / 42) * 127%)}
-  .network-rack-item[data-sp="128"] {top: calc((100 / 42) * 128%)}
-  .network-rack-item {
-    position: absolute;
-    width: 100%;
-    z-index: 2;
-    img {
-      position: absolute;
-      left:0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      bottom: 0;
-    }
-  }
-  .network-rack-item[data-u="1"] {height: calc((100 / 42) * 1%);}
-  .network-rack-item[data-u="2"] {height: calc((100 / 42) * 2%);}
-  .network-rack-item[data-u="3"] {height: calc((100 / 42) * 3%);}
-  .network-rack-item[data-u="4"] {height: calc((100 / 42) * 4%);}
-  .network-rack-item[data-u="5"] {height: calc((100 / 42) * 5%);}
-  .network-rack-item[data-u="6"] {height: calc((100 / 42) * 6%);}
-  .network-rack-item[data-u="7"] {height: calc((100 / 42) * 7%);}
-  .network-rack-item[data-u="8"] {height: calc((100 / 42) * 8%);}
-  .network-rack-item[data-u="9"] {height: calc((100 / 42) * 9%);}
-  .network-rack-item[data-u="10"] {height: calc((100 / 42) * 10%);}
-  .network-rack-item[data-u="11"] {height: calc((100 / 42) * 11%);}
-}
+.network-rack-u {display:flex;flex-direction:column;}
+.network-rack-u-item {display:flex;flex:1;text-align:right;justify-content:center;align-items:center;color:#fff;box-sizing:border-box;padding-right:.4rem;font-size:1rem;line-height:100%;}
+.network-rack-item {position:absolute;width:100%;z-index:2;}
+.network-rack-item img {position:absolute;left:0;width:100%;height:100%;display:block;bottom:0;}
+/* 0~ 42 까지 42개 규칙 자동 생성 */
+.network-rack[data-u="42"] .network-rack-item[data-sp="1"] {top:calc((100 / 42) * 0%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="2"] {top:calc((100 / 42) * 1%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="3"] {top:calc((100 / 42) * 2%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="4"] {top:calc((100 / 42) * 3%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="5"] {top:calc((100 / 42) * 4%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="6"] {top:calc((100 / 42) * 5%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="7"] {top:calc((100 / 42) * 6%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="8"] {top:calc((100 / 42) * 7%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="9"] {top:calc((100 / 42) * 8%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="10"] {top:calc((100 / 42) * 9%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="11"] {top:calc((100 / 42) * 10%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="12"] {top:calc((100 / 42) * 11%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="13"] {top:calc((100 / 42) * 12%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="14"] {top:calc((100 / 42) * 13%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="15"] {top:calc((100 / 42) * 14%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="16"] {top:calc((100 / 42) * 15%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="17"] {top:calc((100 / 42) * 16%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="18"] {top:calc((100 / 42) * 17%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="19"] {top:calc((100 / 42) * 18%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="20"] {top:calc((100 / 42) * 19%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="21"] {top:calc((100 / 42) * 20%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="22"] {top:calc((100 / 42) * 21%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="23"] {top:calc((100 / 42) * 22%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="24"] {top:calc((100 / 42) * 23%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="25"] {top:calc((100 / 42) * 24%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="26"] {top:calc((100 / 42) * 25%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="27"] {top:calc((100 / 42) * 26%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="28"] {top:calc((100 / 42) * 27%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="29"] {top:calc((100 / 42) * 28%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="30"] {top:calc((100 / 42) * 29%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="31"] {top:calc((100 / 42) * 30%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="32"] {top:calc((100 / 42) * 31%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="33"] {top:calc((100 / 42) * 32%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="34"] {top:calc((100 / 42) * 33%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="35"] {top:calc((100 / 42) * 34%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="36"] {top:calc((100 / 42) * 35%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="37"] {top:calc((100 / 42) * 36%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="38"] {top:calc((100 / 42) * 37%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="39"] {top:calc((100 / 42) * 38%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="40"] {top:calc((100 / 42) * 39%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="41"] {top:calc((100 / 42) * 40%)}
+.network-rack[data-u="42"] .network-rack-item[data-sp="42"] {top:calc((100 / 42) * 41%)}
+.network-rack[data-u="42"] .network-rack-item[data-u="1"] {height:calc((100 / 42) * 1%);}
+.network-rack[data-u="42"] .network-rack-item[data-u="2"] {height:calc((100 / 42) * 2%);}
+.network-rack[data-u="42"] .network-rack-item[data-u="3"] {height:calc((100 / 42) * 3%);}
+.network-rack[data-u="42"] .network-rack-item[data-u="4"] {height:calc((100 / 42) * 4%);}
+.network-rack[data-u="42"] .network-rack-item[data-u="5"] {height:calc((100 / 42) * 5%);}
+.network-rack[data-u="42"] .network-rack-item[data-u="6"] {height:calc((100 / 42) * 6%);}
+.network-rack[data-u="42"] .network-rack-item[data-u="7"] {height:calc((100 / 42) * 7%);}
+.network-rack[data-u="42"] .network-rack-item[data-u="8"] {height:calc((100 / 42) * 8%);}
+.network-rack[data-u="42"] .network-rack-item[data-u="9"] {height:calc((100 / 42) * 9%);}
+.network-rack[data-u="42"] .network-rack-item[data-u="10"] {height:calc((100 / 42) * 10%);}
+.network-rack[data-u="42"] .network-rack-item[data-u="11"] {height:calc((100 / 42) * 11%);}
 
-
-.network-rack[data-u="36"] {
-  /* 0~128까지 129개 규칙 자동 생성 */
-  .network-rack-item[data-sp="1"] {top: calc((100 / 36) * 0%)}
-  .network-rack-item[data-sp="2"] {top: calc((100 / 36) * 1%)}
-  .network-rack-item[data-sp="3"] {top: calc((100 / 36) * 2%)}
-  .network-rack-item[data-sp="4"] {top: calc((100 / 36) * 3%)}
-  .network-rack-item[data-sp="5"] {top: calc((100 / 36) * 4%)}
-  .network-rack-item[data-sp="6"] {top: calc((100 / 36) * 5%)}
-  .network-rack-item[data-sp="7"] {top: calc((100 / 36) * 6%)}
-  .network-rack-item[data-sp="8"] {top: calc((100 / 36) * 7%)}
-  .network-rack-item[data-sp="9"] {top: calc((100 / 36) * 8%)}
-  .network-rack-item[data-sp="10"] {top: calc((100 / 36) * 9%)}
-  .network-rack-item[data-sp="11"] {top: calc((100 / 36) * 10%)}
-  .network-rack-item[data-sp="12"] {top: calc((100 / 36) * 11%)}
-  .network-rack-item[data-sp="13"] {top: calc((100 / 36) * 12%)}
-  .network-rack-item[data-sp="14"] {top: calc((100 / 36) * 13%)}
-  .network-rack-item[data-sp="15"] {top: calc((100 / 36) * 14%)}
-  .network-rack-item[data-sp="16"] {top: calc((100 / 36) * 15%)}
-  .network-rack-item[data-sp="17"] {top: calc((100 / 36) * 16%)}
-  .network-rack-item[data-sp="18"] {top: calc((100 / 36) * 17%)}
-  .network-rack-item[data-sp="19"] {top: calc((100 / 36) * 18%)}
-  .network-rack-item[data-sp="20"] {top: calc((100 / 36) * 19%)}
-  .network-rack-item[data-sp="21"] {top: calc((100 / 36) * 20%)}
-  .network-rack-item[data-sp="22"] {top: calc((100 / 36) * 21%)}
-  .network-rack-item[data-sp="23"] {top: calc((100 / 36) * 22%)}
-  .network-rack-item[data-sp="24"] {top: calc((100 / 36) * 23%)}
-  .network-rack-item[data-sp="25"] {top: calc((100 / 36) * 24%)}
-  .network-rack-item[data-sp="26"] {top: calc((100 / 36) * 25%)}
-  .network-rack-item[data-sp="27"] {top: calc((100 / 36) * 26%)}
-  .network-rack-item[data-sp="28"] {top: calc((100 / 36) * 27%)}
-  .network-rack-item[data-sp="29"] {top: calc((100 / 36) * 28%)}
-  .network-rack-item[data-sp="30"] {top: calc((100 / 36) * 29%)}
-  .network-rack-item[data-sp="31"] {top: calc((100 / 36) * 30%)}
-  .network-rack-item[data-sp="32"] {top: calc((100 / 36) * 31%)}
-  .network-rack-item[data-sp="33"] {top: calc((100 / 36) * 32%)}
-  .network-rack-item[data-sp="34"] {top: calc((100 / 36) * 33%)}
-  .network-rack-item[data-sp="35"] {top: calc((100 / 36) * 34%)}
-  .network-rack-item[data-sp="36"] {top: calc((100 / 36) * 35%)}
-  .network-rack-item[data-sp="37"] {top: calc((100 / 36) * 36%)}
-  .network-rack-item[data-sp="38"] {top: calc((100 / 36) * 37%)}
-  .network-rack-item[data-sp="39"] {top: calc((100 / 36) * 38%)}
-  .network-rack-item[data-sp="40"] {top: calc((100 / 36) * 39%)}
-  .network-rack-item[data-sp="41"] {top: calc((100 / 36) * 40%)}
-  .network-rack-item[data-sp="42"] {top: calc((100 / 36) * 41%)}
-  .network-rack-item[data-sp="42"] {top: calc((100 / 36) * 42%)}
-  .network-rack-item[data-sp="43"] {top: calc((100 / 36) * 43%)}
-  .network-rack-item[data-sp="44"] {top: calc((100 / 36) * 44%)}
-  .network-rack-item[data-sp="45"] {top: calc((100 / 36) * 45%)}
-  .network-rack-item[data-sp="46"] {top: calc((100 / 36) * 46%)}
-  .network-rack-item[data-sp="47"] {top: calc((100 / 36) * 47%)}
-  .network-rack-item[data-sp="48"] {top: calc((100 / 36) * 48%)}
-  .network-rack-item[data-sp="49"] {top: calc((100 / 36) * 49%)}
-  .network-rack-item[data-sp="50"] {top: calc((100 / 36) * 50%)}
-  .network-rack-item[data-sp="51"] {top: calc((100 / 36) * 51%)}
-  .network-rack-item[data-sp="52"] {top: calc((100 / 36) * 52%)}
-  .network-rack-item[data-sp="53"] {top: calc((100 / 36) * 53%)}
-  .network-rack-item[data-sp="54"] {top: calc((100 / 36) * 54%)}
-  .network-rack-item[data-sp="55"] {top: calc((100 / 36) * 55%)}
-  .network-rack-item[data-sp="56"] {top: calc((100 / 36) * 56%)}
-  .network-rack-item[data-sp="57"] {top: calc((100 / 36) * 57%)}
-  .network-rack-item[data-sp="58"] {top: calc((100 / 36) * 58%)}
-  .network-rack-item[data-sp="59"] {top: calc((100 / 36) * 59%)}
-  .network-rack-item[data-sp="60"] {top: calc((100 / 36) * 60%)}
-  .network-rack-item[data-sp="61"] {top: calc((100 / 36) * 61%)}
-  .network-rack-item[data-sp="62"] {top: calc((100 / 36) * 62%)}
-  .network-rack-item[data-sp="63"] {top: calc((100 / 36) * 63%)}
-  .network-rack-item[data-sp="64"] {top: calc((100 / 36) * 64%)}
-  .network-rack-item[data-sp="65"] {top: calc((100 / 36) * 65%)}
-  .network-rack-item[data-sp="66"] {top: calc((100 / 36) * 66%)}
-  .network-rack-item[data-sp="67"] {top: calc((100 / 36) * 67%)}
-  .network-rack-item[data-sp="68"] {top: calc((100 / 36) * 68%)}
-  .network-rack-item[data-sp="69"] {top: calc((100 / 36) * 69%)}
-  .network-rack-item[data-sp="70"] {top: calc((100 / 36) * 70%)}
-  .network-rack-item[data-sp="71"] {top: calc((100 / 36) * 71%)}
-  .network-rack-item[data-sp="72"] {top: calc((100 / 36) * 72%)}
-  .network-rack-item[data-sp="73"] {top: calc((100 / 36) * 73%)}
-  .network-rack-item[data-sp="74"] {top: calc((100 / 36) * 74%)}
-  .network-rack-item[data-sp="75"] {top: calc((100 / 36) * 75%)}
-  .network-rack-item[data-sp="76"] {top: calc((100 / 36) * 76%)}
-  .network-rack-item[data-sp="77"] {top: calc((100 / 36) * 77%)}
-  .network-rack-item[data-sp="78"] {top: calc((100 / 36) * 78%)}
-  .network-rack-item[data-sp="79"] {top: calc((100 / 36) * 79%)}
-  .network-rack-item[data-sp="80"] {top: calc((100 / 36) * 80%)}
-  .network-rack-item[data-sp="81"] {top: calc((100 / 36) * 81%)}
-  .network-rack-item[data-sp="82"] {top: calc((100 / 36) * 82%)}
-  .network-rack-item[data-sp="83"] {top: calc((100 / 36) * 83%)}
-  .network-rack-item[data-sp="84"] {top: calc((100 / 36) * 84%)}
-  .network-rack-item[data-sp="85"] {top: calc((100 / 36) * 85%)}
-  .network-rack-item[data-sp="86"] {top: calc((100 / 36) * 86%)}
-  .network-rack-item[data-sp="87"] {top: calc((100 / 36) * 87%)}
-  .network-rack-item[data-sp="88"] {top: calc((100 / 36) * 88%)}
-  .network-rack-item[data-sp="89"] {top: calc((100 / 36) * 89%)}
-  .network-rack-item[data-sp="90"] {top: calc((100 / 36) * 90%)}
-  .network-rack-item[data-sp="91"] {top: calc((100 / 36) * 91%)}
-  .network-rack-item[data-sp="92"] {top: calc((100 / 36) * 92%)}
-  .network-rack-item[data-sp="93"] {top: calc((100 / 36) * 93%)}
-  .network-rack-item[data-sp="94"] {top: calc((100 / 36) * 94%)}
-  .network-rack-item[data-sp="95"] {top: calc((100 / 36) * 95%)}
-  .network-rack-item[data-sp="96"] {top: calc((100 / 36) * 96%)}
-  .network-rack-item[data-sp="97"] {top: calc((100 / 36) * 97%)}
-  .network-rack-item[data-sp="98"] {top: calc((100 / 36) * 98%)}
-  .network-rack-item[data-sp="99"] {top: calc((100 / 36) * 99%)}
-  .network-rack-item[data-sp="100"] {top: calc((100 / 36) * 100%)}
-  .network-rack-item[data-sp="101"] {top: calc((100 / 36) * 101%)}
-  .network-rack-item[data-sp="102"] {top: calc((100 / 36) * 102%)}
-  .network-rack-item[data-sp="103"] {top: calc((100 / 36) * 103%)}
-  .network-rack-item[data-sp="104"] {top: calc((100 / 36) * 104%)}
-  .network-rack-item[data-sp="105"] {top: calc((100 / 36) * 105%)}
-  .network-rack-item[data-sp="106"] {top: calc((100 / 36) * 106%)}
-  .network-rack-item[data-sp="107"] {top: calc((100 / 36) * 107%)}
-  .network-rack-item[data-sp="108"] {top: calc((100 / 36) * 108%)}
-  .network-rack-item[data-sp="109"] {top: calc((100 / 36) * 109%)}
-  .network-rack-item[data-sp="110"] {top: calc((100 / 36) * 110%)}
-  .network-rack-item[data-sp="111"] {top: calc((100 / 36) * 111%)}
-  .network-rack-item[data-sp="112"] {top: calc((100 / 36) * 112%)}
-  .network-rack-item[data-sp="113"] {top: calc((100 / 36) * 113%)}
-  .network-rack-item[data-sp="114"] {top: calc((100 / 36) * 114%)}
-  .network-rack-item[data-sp="115"] {top: calc((100 / 36) * 115%)}
-  .network-rack-item[data-sp="116"] {top: calc((100 / 36) * 116%)}
-  .network-rack-item[data-sp="117"] {top: calc((100 / 36) * 117%)}
-  .network-rack-item[data-sp="118"] {top: calc((100 / 36) * 118%)}
-  .network-rack-item[data-sp="119"] {top: calc((100 / 36) * 119%)}
-  .network-rack-item[data-sp="120"] {top: calc((100 / 36) * 120%)}
-  .network-rack-item[data-sp="121"] {top: calc((100 / 36) * 121%)}
-  .network-rack-item[data-sp="122"] {top: calc((100 / 36) * 122%)}
-  .network-rack-item[data-sp="123"] {top: calc((100 / 36) * 123%)}
-  .network-rack-item[data-sp="124"] {top: calc((100 / 36) * 124%)}
-  .network-rack-item[data-sp="125"] {top: calc((100 / 36) * 125%)}
-  .network-rack-item[data-sp="126"] {top: calc((100 / 36) * 126%)}
-  .network-rack-item[data-sp="127"] {top: calc((100 / 36) * 127%)}
-  .network-rack-item[data-sp="128"] {top: calc((100 / 36) * 128%)}
-  .network-rack-item {
-    position: absolute;
-    width: 100%;
-    z-index: 2;
-    img {
-      position: absolute;
-      left:0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      bottom: 0;
-    }
-  }
-  .network-rack-item[data-u="1"] {height: calc((100 / 36) * 1%);}
-  .network-rack-item[data-u="2"] {height: calc((100 / 36) * 2%);}
-  .network-rack-item[data-u="3"] {height: calc((100 / 36) * 3%);}
-  .network-rack-item[data-u="4"] {height: calc((100 / 36) * 4%);}
-  .network-rack-item[data-u="5"] {height: calc((100 / 36) * 5%);}
-  .network-rack-item[data-u="6"] {height: calc((100 / 36) * 6%);}
-  .network-rack-item[data-u="7"] {height: calc((100 / 36) * 7%);}
-  .network-rack-item[data-u="8"] {height: calc((100 / 36) * 8%);}
-  .network-rack-item[data-u="9"] {height: calc((100 / 36) * 9%);}
-  .network-rack-item[data-u="10"] {height: calc((100 / 36) * 10%);}
-  .network-rack-item[data-u="11"] {height: calc((100 / 36) * 11%);}
-}
+/* 0~36까지 36개 규칙 자동 생성 */
+.network-rack[data-u="36"] .network-rack-item[data-sp="1"] {top:calc((100 / 36) * 0%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="2"] {top:calc((100 / 36) * 1%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="3"] {top:calc((100 / 36) * 2%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="4"] {top:calc((100 / 36) * 3%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="5"] {top:calc((100 / 36) * 4%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="6"] {top:calc((100 / 36) * 5%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="7"] {top:calc((100 / 36) * 6%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="8"] {top:calc((100 / 36) * 7%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="9"] {top:calc((100 / 36) * 8%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="10"] {top:calc((100 / 36) * 9%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="11"] {top:calc((100 / 36) * 10%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="12"] {top:calc((100 / 36) * 11%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="13"] {top:calc((100 / 36) * 12%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="14"] {top:calc((100 / 36) * 13%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="15"] {top:calc((100 / 36) * 14%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="16"] {top:calc((100 / 36) * 15%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="17"] {top:calc((100 / 36) * 16%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="18"] {top:calc((100 / 36) * 17%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="19"] {top:calc((100 / 36) * 18%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="20"] {top:calc((100 / 36) * 19%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="21"] {top:calc((100 / 36) * 20%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="22"] {top:calc((100 / 36) * 21%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="23"] {top:calc((100 / 36) * 22%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="24"] {top:calc((100 / 36) * 23%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="25"] {top:calc((100 / 36) * 24%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="26"] {top:calc((100 / 36) * 25%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="27"] {top:calc((100 / 36) * 26%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="28"] {top:calc((100 / 36) * 27%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="29"] {top:calc((100 / 36) * 28%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="30"] {top:calc((100 / 36) * 29%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="31"] {top:calc((100 / 36) * 30%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="32"] {top:calc((100 / 36) * 31%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="33"] {top:calc((100 / 36) * 32%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="34"] {top:calc((100 / 36) * 33%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="35"] {top:calc((100 / 36) * 34%)}
+.network-rack[data-u="36"] .network-rack-item[data-sp="36"] {top:calc((100 / 36) * 35%)}
+.network-rack[data-u="36"] .network-rack-item[data-u="1"] {height:calc((100 / 36) * 1%);}
+.network-rack[data-u="36"] .network-rack-item[data-u="2"] {height:calc((100 / 36) * 2%);}
+.network-rack[data-u="36"] .network-rack-item[data-u="3"] {height:calc((100 / 36) * 3%);}
+.network-rack[data-u="36"] .network-rack-item[data-u="4"] {height:calc((100 / 36) * 4%);}
+.network-rack[data-u="36"] .network-rack-item[data-u="5"] {height:calc((100 / 36) * 5%);}
+.network-rack[data-u="36"] .network-rack-item[data-u="6"] {height:calc((100 / 36) * 6%);}
+.network-rack[data-u="36"] .network-rack-item[data-u="7"] {height:calc((100 / 36) * 7%);}
+.network-rack[data-u="36"] .network-rack-item[data-u="8"] {height:calc((100 / 36) * 8%);}
+.network-rack[data-u="36"] .network-rack-item[data-u="9"] {height:calc((100 / 36) * 9%);}
+.network-rack[data-u="36"] .network-rack-item[data-u="10"] {height:calc((100 / 36) * 10%);}
+.network-rack[data-u="36"] .network-rack-item[data-u="11"] {height:calc((100 / 36) * 11%);}
