@@ -526,6 +526,7 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 .network-rack-u-item {display:flex;flex:1;text-align:right;justify-content:center;align-items:center;color:#fff;box-sizing:border-box;padding-right:.4rem;font-size:1rem;line-height:100%;}
 .network-rack-item {position:absolute;width:100%;z-index:2;}
 .network-rack-item img {position:absolute;left:0;width:100%;height:100%;display:block;bottom:0;}
+.network-rack-item[data-state="selected"] img {outline:3px solid #ff7f10;outline-offset:-3px}
 /* 0~ 42 까지 42개 규칙 자동 생성 */
 .network-rack[data-u="42"] .network-rack-item[data-sp="1"] {top:calc((100 / 42) * 0%)}
 .network-rack[data-u="42"] .network-rack-item[data-sp="2"] {top:calc((100 / 42) * 1%)}

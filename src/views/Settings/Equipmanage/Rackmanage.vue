@@ -211,22 +211,18 @@
     @close-btn-click="modals.modalRackOption.show = false"
   >
     <div class="ui-flex modal-h-full" data-gap="16">
-      <div
-        class="ui-shrink-0 rack-setting-area ui-flex"
-        data-direction="row"
-        data-gap="8"
-      >
+      <div class="ui-shrink-0 rack-setting-area ui-flex" data-direction="row" data-gap="8">
         <!-- D : 랙 사이즈 설정 [data-u="42 | 36"] -->
         <div class="network-rack" data-u="42">
           <div class="network-rack-u">
             <div class="network-rack-u-item" v-for="n in 42" :key="n">{{ n }}</div>
           </div>
           <div class="network-rack-wrap">
-            <!-- D : 랙 아이템 위치 설정 [data-sp="1 ~ 42"] 랙 아이템 사이즈 설정 [data-u="1 ~ 11"]  -->
-            <div class="network-rack-item" data-u="1.5" data-sp="1">
+            <!-- D : 랙 아이템 위치 설정 [data-sp="1 ~ 42"] 랙 아이템 사이즈 설정 [data-u="1 ~ 11"] 렉 아이템 선택시 [data-state="selected"] -->
+            <div class="network-rack-item" data-u="1.5" data-sp="1" data-state="">
               <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
             </div>
-            <div class="network-rack-item" data-u="3" data-sp="9">
+            <div class="network-rack-item" data-u="3" data-sp="9" data-state="selected">
               <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
             </div>
 
