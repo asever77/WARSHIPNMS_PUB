@@ -317,11 +317,12 @@ const router = createRouter({
           meta: { group: 'settings' },
         },
         {
-          path: '/settings/equipmanage/modelmanage',
-          name: 'SettingsEquipmanageModelmanageView',
-          component: () => import('../views/Settings/Equipmanage/Modelmanage.vue'),
+          path: '/settings/equipmanage/wirelesschannelmanage',
+          name: 'SettingsEquipmanageWirelesschannelmanageView',
+          component: () => import('../views/Settings/Equipmanage/Wirelesschannelmanage.vue'),
           meta: { group: 'settings' },
         },
+
         {
           path: '/settings/equipmanage/frequencymanage',
           name: 'SettingsEquipmanageFrequencymanageView',
