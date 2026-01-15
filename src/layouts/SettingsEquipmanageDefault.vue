@@ -28,6 +28,7 @@ const ko = {
   "devicemanage": "장치관리",
   "terminalboxmanage": "연결단자함관리",
   "rackmanage": "랙관리",
+  "wirelesschannelmanage": "무선채널관리",
 };
 
 const en = {
@@ -35,6 +36,7 @@ const en = {
   "devicemanage": "Devicemanage",
   "terminalboxmanage": "Terminalboxmanage",
   "rackmanage": "Rackmanage",
+  "wirelesschannelmanage": "Wirelesschannelmanage",
 };
 
 const lang = ref({});
@@ -48,6 +50,7 @@ onMounted(() => {
     { label: lang.value.devicemanage, path: '/settings/equipmanage/devicemanage' },
     { label: lang.value.terminalboxmanage, path: '/settings/equipmanage/terminalboxmanage' },
     { label: lang.value.rackmanage, path: '/settings/equipmanage/rackmanage' },
+    { label: lang.value.wirelesschannelmanage, path: '/settings/equipmanage/wirelesschannelmanage' },
   ];
   selectedTab.value = router.currentRoute.value.path;
 });
