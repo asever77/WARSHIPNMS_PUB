@@ -16,34 +16,21 @@
     </div>
     <table class="base-table line">
       <colgroup>
-        <col style="width: 8rem" />
-        <col style="width: 12rem" />
-        <col style="width: 12rem" />
         <col style="width: 10rem" />
-        <col style="width: 10rem" />
-        <col style="width: 8rem" />
-        <col style="width: 10rem" />
+        <col style="width: 12rem" span="5" />
         <col style="width: auto" v-if="showDetailColumns" />
         <col style="width: auto" v-if="showDetailColumns" />
       </colgroup>
       <thead>
         <tr>
-          <th scope="col" rowspan="2">{{ lang.thead1 }}</th>
-          <th scope="col" rowspan="2">{{ lang.thead2 }}</th>
-          <th scope="col" rowspan="2">{{ lang.thead3 }}</th>
-          <th scope="col" colspan="2">{{ lang.thead4 }}</th>
-          <th scope="col" rowspan="2">{{ lang.thead5 }}</th>
-          <th scope="col" rowspan="2">{{ lang.thead6 }}</th>
-          <th scope="col" rowspan="2" v-if="showDetailColumns">{{ lang.thead7 }}</th>
-          <th scope="col" rowspan="2" v-if="showDetailColumns">{{ lang.thead8 }}</th>
-        </tr>
-        <tr>
-          <th scope="row" class="l-line">{{ lang.thead9 }}</th>
-          <th scope="row">
-            <div class="ui-flex" data-gap="4" data-item-align="center" data-justify-align="center">
-              <BFormCheckbox value="all" />{{ lang.thead10 }}
-            </div>
-          </th>
+          <th scope="col">{{ lang.thead1 }}</th>
+          <th scope="col">{{ lang.thead2 }}</th>
+          <th scope="col">{{ lang.thead3 }}</th>
+          <th scope="col">{{ lang.thead4 }}</th>
+          <th scope="col">{{ lang.thead5 }}</th>
+          <th scope="col">{{ lang.thead6 }}</th>
+          <th scope="col" v-if="showDetailColumns">{{ lang.thead7 }}</th>
+          <th scope="col" v-if="showDetailColumns">{{ lang.thead8 }}</th>
         </tr>
       </thead>
       <tbody>
@@ -52,7 +39,6 @@
           <th scope="row">HF송수신기 #1</th>
           <td>사용자단말 #1</td>
           <td class="green-txt">Busy</td>
-          <td><BFormCheckbox value="1" /></td>
           <td>0821</td>
           <td>21.0MHz</td>
           <td v-if="showDetailColumns">4CH 확장지 #1 TX1</td>
@@ -62,7 +48,6 @@
           <th scope="row">HF송수신기 #2</th>
           <td>사용자단말 #2</td>
           <td class="blue-txt">Ready</td>
-          <td><BFormCheckbox value="2" /></td>
           <td>0821</td>
           <td>21.0MHz</td>
           <td v-if="showDetailColumns">4CH 확장지 #1 TX1</td>
@@ -72,7 +57,6 @@
           <th scope="row">HF송수신기 #2</th>
           <td>사용자단말 #2</td>
           <td>-</td>
-          <td><BFormCheckbox value="3" /></td>
           <td>0821</td>
           <td>21.0MHz</td>
           <td v-if="showDetailColumns">4CH 확장지 #1 TX1</td>
@@ -84,9 +68,9 @@
   <div class="ui-btn-group">
     <BButton class="navy28">{{ lang.btn2 }}</BButton>
     <div class="ui-flex ml-auto" data-gap="8">
-      <BButton class="blue28">{{ lang.btn3 }}</BButton>
-      <BButton class="blue28">{{ lang.btn4 }}</BButton>
-      <BButton class="gray28">{{ lang.btn5 }}</BButton>
+      <BFormCheckbox switch :inline="true" :value="true" :unchecked-value="false" class="ui-switch">
+        {{ lang.label1 }}
+      </BFormCheckbox>
     </div>
   </div>
 
@@ -107,23 +91,13 @@
           <tr>
             <th scope="row">{{ lang.tbody1 }}</th>
             <td>
-              <BFormInput
-                v-model="timeValue1"
-                class="ui-input-28"
-                type="time"
-                placeholder=""
-              />
+              <BFormInput v-model="timeValue1" class="ui-input-28" type="time" placeholder="" />
             </td>
           </tr>
           <tr>
             <th scope="row">{{ lang.tbody2 }}</th>
             <td>
-              <BFormInput
-                v-model="timeValue2"
-                class="ui-input-28"
-                type="time"
-                placeholder=""
-              />
+              <BFormInput v-model="timeValue2" class="ui-input-28" type="time" placeholder="" />
             </td>
           </tr>
         </tbody>
@@ -146,8 +120,8 @@
 <script setup>
 import { ref, onMounted, computed, reactive } from 'vue'
 import G from '@/config/global.js'
-import { BButton, BFormCheckbox, BFormInput } from 'bootstrap-vue-next'
-import { BFormSelect } from 'bootstrap-vue-next/components'
+import { BButton, BFormInput } from 'bootstrap-vue-next'
+import { BFormCheckbox, BFormSelect } from 'bootstrap-vue-next/components'
 import UiModal from '@/components/UiModal.vue'
 
 const modals = reactive({
@@ -175,15 +149,10 @@ const ko = {
   thead6: '주파수',
   thead7: 'TX',
   thead8: 'RX',
-  thead9: '동작상태',
-  thead10: '무선침묵',
   tbody1: '시작시간',
   tbody2: '종료시간',
   btn1: '설정',
   btn2: '무선채널 조합',
-  btn3: '전체 무선침묵',
-  btn4: '전체 무선침묵 해제',
-  btn5: '무선침묵 적용',
   btn6: '취소',
   btn7: '저장',
   btn8: '설정안함',
@@ -191,6 +160,7 @@ const ko = {
   option1: '기본정보',
   option2: '상세정보',
   modalTitle: '무선침묵시간 설정',
+  label1: '무선침묵상태',
 }
 
 const en = {
@@ -203,15 +173,10 @@ const en = {
   thead6: '주파수',
   thead7: 'TX',
   thead8: 'RX',
-  thead9: '동작상태',
-  thead10: '무선침묵',
   tbody1: '시작시간',
   tbody2: '종료시간',
   btn1: '설정',
   btn2: '무선채널 조합',
-  btn3: '전체 무선침묵',
-  btn4: '전체 무선침묵 해제',
-  btn5: '무선침묵 적용',
   btn6: '취소',
   btn7: '저장',
   btn8: '설정안함',
@@ -219,6 +184,7 @@ const en = {
   option1: '기본정보',
   option2: '상세정보',
   modalTitle: '무선침묵시간 설정',
+  label1: '무선침묵상태',
 }
 
 const lang = ref({})
@@ -228,6 +194,6 @@ onMounted(() => {
 })
 
 function openTimeSetting() {
-  modals.modalTimeSetting.show = true;
+  modals.modalTimeSetting.show = true
 }
 </script>

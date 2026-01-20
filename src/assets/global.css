@@ -78,6 +78,9 @@ img, fieldset, iframe, button {border:0 none;}
 .my-checkbox .form-check-input {width:2rem;height:2rem;margin:0;cursor:pointer;}
 .my-checkbox .form-check-input:checked {background-color:var(--color-primary);border-color:var(--color-primary);}
 .my-checkbox .form-check-label {font-size:1.4rem;color:#000;line-height:2rem;cursor:pointer;}
+.ui-switch.form-check {gap:.8rem;margin:0;background-color:#f4f4f4;height:2.8rem;padding:0 1.6rem;border-radius:.4rem}
+.ui-switch .form-check-input {order:2;}
+.ui-switch .form-check-label {order:1;font-size:1.2rem;font-weight:700}
 
 .tree-check .form-check-input,
 .search-base .form-check-input,
