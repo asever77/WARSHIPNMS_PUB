@@ -41,44 +41,67 @@
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth1 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              <b>보안장비연동장치 #1</b>
             </td>
           </tr>
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth2 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              무선링크연동장치 I/F
             </td>
           </tr>
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth3 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              C01
             </td>
           </tr>
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth4 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              P01
             </td>
           </tr>
+
+          <!-- 단자함/ICU연동으로 정보 표시만 하는 케이스 -->
           <tr>
             <th scope="row" colspan="2" rowspan="2">{{ lang.modalth5 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :disabled="true"
-                :options="[
-                  { value: '1', text: 'PTT' },
-                ]"
-              />
+              ICU #2
             </td>
           </tr>
           <tr>
             <td>
+              OP43DATA(보안장비TX#1)/L
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row" rowspan="3">{{ lang.modalth6 }}</th>
+            <th scope="row">{{ lang.modalth7 }}</th>
+            <td>
+              무선링크연동장치 #1
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.modalth8 }}</th>
+            <td>
+              C04
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.modalth9 }}</th>
+            <td>
+              P03
+            </td>
+          </tr>
+
+           <!-- 직접연결 설정을 하는 케이스 -->
+          <tr>
+            <th scope="row" colspan="2">{{ lang.modalth5 }}</th>
+            <td>
               <BFormSelect
                 class="ui-select"
-                :disabled="true"
                 :options="[
                   { value: '1', text: 'PTT' },
                 ]"
@@ -92,7 +115,6 @@
             <td>
               <BFormSelect
                 class="ui-select"
-                :disabled="true"
                 :options="[
                   { value: '1', text: 'PTT' },
                 ]"
@@ -116,7 +138,6 @@
             <td>
               <BFormSelect
                 class="ui-select"
-                :disabled="true"
                 :options="[
                   { value: '1', text: 'PTT' },
                 ]"
@@ -137,7 +158,7 @@
 <script setup>
 import { ref, onMounted, computed, watch, reactive } from 'vue'
 import G from '@/config/global.js'
-import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
+import { BFormSelect } from 'bootstrap-vue-next/components'
 import { BButton, BPagination, BTable } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
 
@@ -155,7 +176,7 @@ const ko = {
   colTh5: '포트#',
   colTh6: '연결 장치',
 
-  modalTitle1: '보안장비연동장치 포트 연결정보 설정',
+  modalTitle1: '보안장비연동장치 포트 연결정보 상세',
 
   modalth1: '장치명',
   modalth2: '카드 I/F 유형',
@@ -181,7 +202,7 @@ const en = {
   colTh5: '포트#',
   colTh6: '연결 장치',
 
-  modalTitle1: '보안장비연동장치 포트 연결정보 설정',
+  modalTitle1: '보안장비연동장치 포트 연결정보 상세',
 
   modalth1: '장치명',
   modalth2: '카드 I/F 유형',

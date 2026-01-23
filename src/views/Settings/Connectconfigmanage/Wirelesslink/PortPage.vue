@@ -41,41 +41,37 @@
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth1 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              <b>무선링크연동장치 #1</b>
             </td>
           </tr>
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth2 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              Analog Data I/F 2P
             </td>
           </tr>
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth3 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              C03
             </td>
           </tr>
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth4 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              P03
             </td>
           </tr>
 
           <tr>
-            <th scope="row" rowspan="2">{{ lang.modalth5 }}</th>
-            <th scope="row">{{ lang.modalth6 }}</th>
+            <th scope="row" colspan="2" rowspan="2">{{ lang.modalth5 }}</th>
             <td>
               <div class="d-flex gap-1">
                 <BFormCheckbox value="1">{{ lang.checkbox1 }}</BFormCheckbox>
-                <BFormInput class="ui-input mt-2" />
               </div>
-
             </td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.modalth7 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -87,30 +83,49 @@
             </td>
           </tr>
 
-
+          <!-- VoIP 가입자 사용여부 X -->
           <tr>
             <th scope="row" colspan="2" rowspan="2">{{ lang.modalth8 }}</th>
             <td>
-              <BFormSelect
-                class="ui-select"
-                :options="[
-                  { value: '1', text: 'PTT' },
-                ]"
-              />
+              연결단자함 #2
             </td>
           </tr>
           <tr>
             <td>
+             OPDATA123
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row" rowspan="3">{{ lang.modalth9 }}</th>
+            <th scope="row">{{ lang.modalth10 }}</th>
+            <td>
+              HF송수신기 #1
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.modalth11 }}</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.modalth12 }}</th>
+            <td>
+              P02
+            </td>
+          </tr>
+
+          <!-- VoIP 가입자 사용여부 O -->
+          <tr>
+            <th scope="row" colspan="2">{{ lang.modalth8 }}</th>
+            <td>
               <BFormSelect
                 class="ui-select"
-                :disabled="true"
                 :options="[
                   { value: '1', text: 'PTT' },
                 ]"
               />
             </td>
           </tr>
-
           <tr>
             <th scope="row" rowspan="3">{{ lang.modalth9 }}</th>
             <th scope="row">{{ lang.modalth10 }}</th>
@@ -160,7 +175,7 @@
 <script setup>
 import { ref, onMounted, computed, watch, reactive } from 'vue'
 import G from '@/config/global.js'
-import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
+import { BFormSelect } from 'bootstrap-vue-next/components'
 import { BButton, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
 
@@ -179,13 +194,14 @@ const ko = {
   colTh6: 'VoIP 가입자',
   colTh7: '연결 장치',
 
+  checkbox1: '사용여부',
   modalTitle1: '무선링크연동장치 포트 연결정보 설정',
 
   modalth1: '장치명',
   modalth2: '카드 I/F 유형',
   modalth3: '카드번호',
   modalth4: '포트번호',
-  modalth5: 'VoIP',
+  modalth5: 'VoIP 가입자',
   modalth6: '가입자',
   modalth7: '등급',
   modalth8: '연결유형',
@@ -209,13 +225,14 @@ const en = {
   colTh6: 'VoIP 가입자',
   colTh7: '연결 장치',
 
+  heckbox1: '사용여부',
   modalTitle1: '무선링크연동장치 포트 연결정보 설정',
 
   modalth1: '장치명',
   modalth2: '카드 I/F 유형',
   modalth3: '카드번호',
   modalth4: '포트번호',
-  modalth5: 'VoIP',
+  modalth5: 'VoIP 가입자',
   modalth6: '가입자',
   modalth7: '등급',
   modalth8: '연결유형',

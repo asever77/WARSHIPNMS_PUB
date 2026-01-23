@@ -8,10 +8,12 @@
         <BFormSelect
           id="search-target"
           class="ui-select"
-          :options="[
-            {value: '1', text: '선택',}
-          ]"
-        ></BFormSelect>
+            :options="[
+              {value: '1', text: '음력전화연동장치 #1',},
+              {value: '2', text: '텔레브리프연동장치 #1',}
+            ]"
+            v-model="searchTarget"
+          ></BFormSelect>
       </div>
     </div>
     <div class="base-table">
@@ -29,7 +31,7 @@
     </div>
   </div>
 
-  <UiModal v-model="modals.modalModify1.show" :title="lang.modalTitle1" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
+  <UiModal v-model="modals.modalModify1.show" :title="searchTarget === '1' ? lang.modalTitle1 : lang.modalTitle2" type="modal" size="md" @close-btn-click="modals.modalModify1.show = false">
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
@@ -41,55 +43,37 @@
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth1 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              <b>음력전화연동장치 #1</b>
             </td>
           </tr>
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth2 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              음력전화 I/F 2P
             </td>
           </tr>
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth3 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              C01
             </td>
           </tr>
           <tr>
             <th scope="row" colspan="2">{{ lang.modalth4 }}</th>
             <td>
-              <BFormInput class="ui-input" />
+              P02
             </td>
           </tr>
 
           <tr>
-            <th scope="row" rowspan="2">{{ lang.modalth5 }}</th>
-            <th scope="row">{{ lang.modalth6 }}</th>
+            <th scope="row" colspan="2" rowspan="2">{{ lang.modalth5 }}</th>
             <td>
               <div class="d-flex gap-1">
                 <BFormCheckbox value="1">{{ lang.checkbox1 }}</BFormCheckbox>
-                <BFormInput class="ui-input mt-2" />
               </div>
-
             </td>
           </tr>
           <tr>
-            <th scope="row">{{ lang.modalth7 }}</th>
-            <td>
-              <BFormSelect
-                class="ui-select"
-                :disabled="true"
-                :options="[
-                  { value: '1', text: 'PTT' },
-                ]"
-              />
-            </td>
-          </tr>
-
-
-          <tr>
-            <th scope="row" colspan="2" rowspan="2">{{ lang.modalth8 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
@@ -99,11 +83,12 @@
               />
             </td>
           </tr>
+
           <tr>
+            <th scope="row" colspan="2">{{ lang.modalth8 }}</th>
             <td>
               <BFormSelect
                 class="ui-select"
-                :disabled="true"
                 :options="[
                   { value: '1', text: 'PTT' },
                 ]"
@@ -117,7 +102,6 @@
             <td>
               <BFormSelect
                 class="ui-select"
-                :disabled="true"
                 :options="[
                   { value: '1', text: 'PTT' },
                 ]"
@@ -141,7 +125,6 @@
             <td>
               <BFormSelect
                 class="ui-select"
-                :disabled="true"
                 :options="[
                   { value: '1', text: 'PTT' },
                 ]"
@@ -161,8 +144,9 @@
 
 <script setup>
 import { ref, onMounted, computed, watch, reactive } from 'vue'
+const searchTarget = ref('1')
 import G from '@/config/global.js'
-import { BFormInput, BFormSelect } from 'bootstrap-vue-next/components'
+import { BFormSelect } from 'bootstrap-vue-next/components'
 import { BButton, BPagination, BTable, BFormCheckbox } from 'bootstrap-vue-next'
 import UiModal from '@/components/UiModal.vue'
 
@@ -181,14 +165,16 @@ const ko = {
   colTh6: 'VoIP 가입자',
   colTh7: '연결 장치',
 
+  checkbox1: '사용여부',
   modalTitle1: '음력전화연동장치 포트 연결정보 설정',
+  modalTitle2: '텔레브리프연동장치 포트 연결정보 설정',
 
   modalth1: '장치명',
   modalth2: '카드 I/F 유형',
   modalth3: '카드번호',
   modalth4: '포트번호',
-  modalth5: 'VoIP',
-  modalth6: '가입자',
+  modalth5: 'VoIP 가입자',
+  modalth6: '가입자 ',
   modalth7: '등급',
   modalth8: '연결유형',
   modalth9: '연결장치',
@@ -211,7 +197,9 @@ const en = {
   colTh6: 'VoIP 가입자',
   colTh7: '연결 장치',
 
+  checkbox1: '사용여부',
   modalTitle1: '음력전화연동장치 포트 연결정보 설정',
+  modalTitle2: '텔레브리프연동장치 포트 연결정보 설정',
 
   modalth1: '장치명',
   modalth2: '카드 I/F 유형',
