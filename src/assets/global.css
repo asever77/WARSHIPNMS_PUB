@@ -431,9 +431,11 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 
 /* 설정 */
 .table-col-1 {width:32rem;flex-shrink:0}
-
-.ui-drag-area1 {height:calc(100vh - 28rem);display:flex;flex-direction:column;gap:1.6rem;padding-top:2rem;}
-.ui-drag-section {display:flex;flex-shrink:0;height:8.8rem;gap:1.6rem}
+.ui-drag-area1 {height:calc(100vh - 28rem);display:flex;flex-direction:column;gap:1.6rem;padding-top:1.2rem;}
+.ui-drag-section {display:flex;flex-shrink:0;gap:1.6rem;background-color:#f7f7f7;padding:1.2rem;flex-wrap:wrap}
+.ui-drag-section .ui-drag-section-item {height:6rem}
+.ui-drag-section-select {width:100%;display:flex;justify-content:flex-start;margin-bottom:-.8rem}
+.ui-drag-section-select .ui-select-28 {width:auto;min-width:calc((100% - 3.2rem) / 3)}
 .ui-drag-section-item {height:100%;border:1px solid transparent;border-radius:.5rem;flex:1;display:flex;align-items:center;justify-content:center;padding:.8rem;font-size:1.4rem;font-weight:500;color:#000}
 .ui-drag-section-item .ui-drag-item {width:100%;font-size:1.4rem;font-weight:500;height:100%}
 .ui-drag-section-item[data-bg="sky"] {background-color:#C2E2F5;border-color:#C2E2F5}

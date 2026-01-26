@@ -1,38 +1,57 @@
 <template>
   <div class="base-wrap">
     <div class="search-base">
-      <div class="search-base--form">
+      <div class="search-base--btns ml-auto">
         <BFormSelect
           id="search-target"
-          class="ui-select-28"
+          class="ui-select-28 min-w-200"
           :options="[{ value: '1', text: '보안장비연동장치' }]"
         ></BFormSelect>
-      </div>
-      <div class="search-base--btns">
-        <BFormGroup :label="lang.label1" label-for="search-deviceType">
+        <!--        <BFormGroup :label="lang.label1" label-for="search-deviceType">
           <BFormSelect
             id="search-deviceType"
             class="ui-select-28 min-w-400"
             :options="[{ value: '1', text: '사용자단말 <-> MRU-09  <-> UHF NB' }]"
           />
-        </BFormGroup>
+        </BFormGroup>-->
       </div>
     </div>
   </div>
   <div class="ui-drag-area1">
     <div class="ui-drag-section">
+      <div class="ui-drag-section-select">
+        <BFormSelect
+          id="search-deviceType"
+          class="ui-select-28"
+          :options="[{ value: '1', text: '사용자단말 <-> MRU-09  <-> UHF NB' }]"
+        />
+      </div>
       <div class="ui-drag-section-item" data-bg="sky">
         <div class="ui-drag-item" data-bg="sky">사용자단말</div>
       </div>
       <i class="icon-connection-status" data-connection="true"></i>
-      <div class="ui-drag-section-item" data-bg="yellow">
-
-      </div>
+      <div class="ui-drag-section-item" data-bg="yellow"></div>
       <i class="icon-connection-status" data-connection="false"></i>
-      <div class="ui-drag-section-item" data-bg="pink">
-        UHF(T) #1
-      </div>
+      <div class="ui-drag-section-item" data-bg="pink">UHF(T) #1</div>
     </div>
+
+    <div class="ui-drag-section">
+      <div class="ui-drag-section-select">
+        <BFormSelect
+          id="search-deviceType2"
+          class="ui-select-28"
+          :options="[{ value: '1', text: '사용자단말 <-> MRU-09  <-> UHF NB' }]"
+        />
+      </div>
+      <div class="ui-drag-section-item" data-bg="sky">
+        <div class="ui-drag-item" data-bg="sky">사용자단말</div>
+      </div>
+      <i class="icon-connection-status" data-connection="true"></i>
+      <div class="ui-drag-section-item" data-bg="yellow"></div>
+      <i class="icon-connection-status" data-connection="false"></i>
+      <div class="ui-drag-section-item" data-bg="pink">UHF(T) #1</div>
+    </div>
+
     <div class="ui-drag-item-section">
       <div class="ui-drag-item-group">
         <div class="ui-drag-item-grid">
