@@ -71,18 +71,36 @@
     </div>
   </div>
   <div class="ui-btn-group">
-    <BButton class="blue28">{{ lang.btn1 }}</BButton>
+    <BButton class="blue28" @click="modals.systemName.show = true">{{ lang.btn1 }}</BButton>
   </div>
+
+  <UiModal
+    v-model="modals.systemName.show"
+    title="무선링크연동장치 연계설정 필요"
+    type="system"
+  >
+    <p class="ta-c text-12-400">무선링크연동장치 연계 설정 정보가 없습니다.
+    <br />무선링크연동장치와의 연결을 선행해야 합니다.</p>
+    <template #footer>
+      <div class="ui-flex ui-w-full" data-item-align="center" data-justify-align="center" data-gap="4">
+        <BButton class="gray28" @click="modals.systemName.show = false">{{ lang.btn2 }}</BButton>
+        <BButton class="blue28">{{ lang.btn3 }}</BButton>
+      </div>
+    </template>
+  </UiModal>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, reactive } from 'vue'
 import G from '@/config/global.js'
 import { BFormSelect } from 'bootstrap-vue-next/components'
-import { BButton, BFormGroup } from 'bootstrap-vue-next'
+import { BButton } from 'bootstrap-vue-next'
+import UiModal from '@/components/UiModal.vue'
 
 const ko = {
   btn1: '적용',
+  btn2: '취소',
+  btn3: '확인',
   label1: '템플릿 운영모드',
 }
 
@@ -92,4 +110,9 @@ const lang = ref({})
 onMounted(() => {
   lang.value = G.lang === 'ko' ? ko : en
 })
+
+const modals = reactive({
+  systemName: { show: false },
+})
+
 </script>
