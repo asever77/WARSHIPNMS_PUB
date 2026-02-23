@@ -286,9 +286,13 @@ const onHidden = () => {
 .modal-content--no-title .modal-body {
   padding-top:0;
 }
+
+.base-system .modal-dialog {
+  max-width: 36rem !important;
+}
 .base-system .modal-footer{border-top:0;}
-.base-system .modal-header{border-bottom:0;text-align:center;width:100%;justify-content:center;align-items:center;}
-.base-system .modal-title{font-size:1.4rem;font-weight:700;color:#000;width:100%;padding:0.4rem 3rem;}
+.base-system .modal-header{border-bottom:0;text-align:center;width:100%;justify-content:center;align-items:center;background:#CCC9C9;}
+.base-system .modal-title{font-size:1.6rem;font-weight:700;color:#000;width:100%;padding:0.4rem 3rem;}
 .base-system .modal-header .btn-close{
   position: absolute;
   padding:0;
@@ -301,6 +305,44 @@ const onHidden = () => {
   background-size: 1.9rem 1.9rem;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-image: url("data:image/svg+xml,%3Csvg width='19' height='19' viewBox='0 0 19 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.5 6.5L12.5 12.5M12.5 6.5L6.5 12.5M0.5 2.5C0.5 1.96957 0.710714 1.46086 1.08579 1.08579C1.46086 0.710714 1.96957 0.5 2.5 0.5H16.5C17.0304 0.5 17.5391 0.710714 17.9142 1.08579C18.2893 1.46086 18.5 1.96957 18.5 2.5V16.5C18.5 17.0304 18.2893 17.5391 17.9142 17.9142C17.5391 18.2893 17.0304 18.5 16.5 18.5H2.5C1.96957 18.5 1.46086 18.2893 1.08579 17.9142C0.710714 17.5391 0.5 17.0304 0.5 16.5V2.5Z' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  background-image: url("data:image/svg+xml,%3Csvg width='19' height='19' viewBox='0 0 19 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.5 6.5L12.5 12.5M12.5 6.5L6.5 12.5M0.5 2.5C0.5 1.96957 0.710714 1.46086 1.08579 1.08579C1.46086 0.710714 1.96957 0.5 2.5 0.5H16.5C17.0304 0.5 17.5391 0.710714 17.9142 1.08579C18.2893 1.46086 18.5 1.96957 18.5 2.5V16.5C18.5 17.0304 18.2893 17.5391 17.9142 17.9142C17.5391 18.2893 17.0304 18.5 16.5 18.5H2.5C1.96957 18.5 1.46086 18.2893 1.08579 17.9142C0.710714 17.5391 0.5 17.0304 0.5 16.5V2.5Z' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+}
+.base-system .modal-body{
+  padding:3.2rem 3.7rem 2rem;
+}
+.base-system-content {
+  display: flex;
+  gap:1rem;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.base-system[data-icon="warning"] .base-system-content::before {
+  content: "";
+  display: block;
+  width: 3.7rem;
+  height: 3.7rem;
+  background-image: url(../assets/images/icon/icon-noti-warning.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.base-system[data-icon="danger"] .base-system-content::before {
+  content: "";
+  display: block;
+  width: 3.7rem;
+  height: 3.7rem;
+  background-image: url(../assets/images/icon/icon-noti-danger.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.base-system[data-icon="info"] .base-system-content::before {
+  content: "";
+  display: block;
+  width: 3.7rem;
+  height: 3.7rem;
+  background-image: url(../assets/images/icon/icon-noti-info.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 </style>

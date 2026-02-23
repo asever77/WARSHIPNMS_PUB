@@ -74,15 +74,25 @@
     <BButton class="blue28" @click="modals.systemName.show = true">{{ lang.btn1 }}</BButton>
   </div>
 
+
+  <!--
+    알림: data-icon="info"
+    위험: data-icon="danger"
+    경고: data-icon="warning"
+  -->
   <UiModal
     v-model="modals.systemName.show"
     title="무선링크연동장치 연계설정 필요"
     type="system"
+    data-icon="info"
   >
-    <p class="ta-c text-12-400">무선링크연동장치 연계 설정 정보가 없습니다.
-    <br />무선링크연동장치와의 연결을 선행해야 합니다.</p>
+    <div class="base-system-content">
+      <p class="ta-c text-12-400">무선링크연동장치 연계 설정 정보가 없습니다.
+      <br />무선링크연동장치와의 연결을 선행해야 합니다.</p>
+    </div>
+
     <template #footer>
-      <div class="ui-flex ui-w-full" data-item-align="center" data-justify-align="center" data-gap="4">
+      <div class="ui-flex ui-w-full" data-item-align="center" data-justify-align="center" data-gap="10">
         <BButton class="gray28" @click="modals.systemName.show = false">{{ lang.btn2 }}</BButton>
         <BButton class="blue28">{{ lang.btn3 }}</BButton>
       </div>
