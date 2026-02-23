@@ -84,9 +84,16 @@
     v-model="modals.systemName.show"
     title="무선링크연동장치 연계설정 필요"
     type="system"
-    data-icon="info"
   >
-    <div class="base-system-content">
+    <div class="base-system-content" data-icon="info">
+      <p class="ta-c text-12-400">무선링크연동장치 연계 설정 정보가 없습니다.
+      <br />무선링크연동장치와의 연결을 선행해야 합니다.</p>
+    </div>
+    <div class="base-system-content" data-icon="danger">
+      <p class="ta-c text-12-400">무선링크연동장치 연계 설정 정보가 없습니다.
+      <br />무선링크연동장치와의 연결을 선행해야 합니다.</p>
+    </div>
+    <div class="base-system-content" data-icon="warning">
       <p class="ta-c text-12-400">무선링크연동장치 연계 설정 정보가 없습니다.
       <br />무선링크연동장치와의 연결을 선행해야 합니다.</p>
     </div>

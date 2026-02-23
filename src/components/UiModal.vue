@@ -318,7 +318,7 @@ const onHidden = () => {
   justify-content: center;
   font-size: 1.2rem;
 }
-.base-system[data-icon="warning"] .base-system-content::before {
+[data-icon="warning"].base-system-content::before {
   content: "";
   display: block;
   width: 3.7rem;
@@ -327,7 +327,7 @@ const onHidden = () => {
   background-size: contain;
   background-repeat: no-repeat;
 }
-.base-system[data-icon="danger"] .base-system-content::before {
+[data-icon="danger"].base-system-content::before {
   content: "";
   display: block;
   width: 3.7rem;
@@ -336,7 +336,7 @@ const onHidden = () => {
   background-size: contain;
   background-repeat: no-repeat;
 }
-.base-system[data-icon="info"] .base-system-content::before {
+[data-icon="info"].base-system-content::before {
   content: "";
   display: block;
   width: 3.7rem;
