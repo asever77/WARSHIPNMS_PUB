@@ -251,33 +251,8 @@
     </div>
     <div class="network-side" >
       <div class="network-info">
+        <h3>{{ lang.info1 }}</h3>
         <div class="network-info--item">
-          <h3>{{ lang.info1 }}</h3>
-          <ul>
-            <li class="network-info--text">
-              <i class="network-info--icon w1-1"></i>
-              <em class="network-info--key">{{ lang.info1_1 }}</em>
-              <b class="network-info--value">25.7∘C</b>
-            </li>
-            <li class="network-info--text">
-              <i class="network-info--icon w2"></i>
-              <em class="network-info--key">{{ lang.info1_2 }}</em>
-              <b class="network-info--value">50%</b>
-            </li>
-            <li class="network-info--text">
-              <i class="network-info--icon w3"></i>
-              <em class="network-info--key">{{ lang.info1_3 }}</em>
-              <b class="network-info--value">4.26 m/s</b>
-            </li>
-            <li class="network-info--text">
-              <i class="network-info--icon w4"></i>
-              <em class="network-info--key">{{ lang.info1_4 }}</em>
-              <b class="network-info--value">170.17</b>
-            </li>
-          </ul>
-        </div>
-        <div class="network-info--item">
-          <h3>{{ lang.info2 }}</h3>
           <ul>
             <li class="network-info--text">
               <i class="network-info--icon s1"></i>
@@ -290,14 +265,28 @@
               <b class="network-info--value">33°06'N</b>
             </li>
             <li class="network-info--text">
+              <i class="network-info--icon w3"></i>
+              <em class="network-info--key">{{ lang.info1_3 }}</em>
+              <b class="network-info--value">4.26 m/s</b>
+            </li>
+          </ul>
+        </div>
+        <div class="network-info--item">
+          <ul>
+            <li class="network-info--text">
+              <i class="network-info--icon s4"></i>
+              <em class="network-info--key">{{ lang.info2_4 }}</em>
+              <b class="network-info--value">170.71</b>
+            </li>
+            <li class="network-info--text">
               <i class="network-info--icon s3"></i>
               <em class="network-info--key">{{ lang.info2_3 }}</em>
               <b class="network-info--value">129°06'425E</b>
             </li>
             <li class="network-info--text">
-              <i class="network-info--icon s4"></i>
-              <em class="network-info--key">{{ lang.info2_4 }}</em>
-              <b class="network-info--value">170.71</b>
+              <i class="network-info--icon w4"></i>
+              <em class="network-info--key">{{ lang.info1_4 }}</em>
+              <b class="network-info--value">170.17</b>
             </li>
           </ul>
         </div>
@@ -453,63 +442,43 @@
         <PortStatusList />
       </div>
 
-      <table class="table-type-a line">
+      <div class="ui-thead-sticky" data-max-h="300">
+        <table class="table-type-a line">
         <colgroup>
           <col style="width:6rem">
+          <col style="width:auto" span="3">
+          <col style="width:6rem" span="2">
           <col style="width:auto">
-          <col style="width:auto">
-        </colgroup>
-        <colgroup>
-          <col style="width:6rem">
-          <col style="width:auto">
-          <col style="width:auto">
+          <col style="width:6rem" span="2">
         </colgroup>
         <thead>
           <tr>
             <th scope="col">Port #<br>({{ lang.tbl_4_th1 }})</th>
-            <th scope="col">Link Speed</th>
+            <th scope="col">Link<br>Speed</th>
             <th scope="col">{{ lang.tbl_4_th2 }}<br>(watt)</th>
-            <th scope="col">Port #<br>({{ lang.tbl_4_th1 }})</th>
-            <th scope="col">Link Speed</th>
-            <th scope="col">{{ lang.tbl_4_th2 }}<br>(watt)</th>
+            <th scope="col">{{ lang.tbl_4_th3 }}<br>(bytes)</th>
+            <th scope="col">{{ lang.tbl_4_th4 }}</th>
+            <th scope="col">{{ lang.tbl_4_th5 }}</th>
+            <th scope="col">{{ lang.tbl_4_th6 }}<br>(bytes)</th>
+            <th scope="col">{{ lang.tbl_4_th7 }}</th>
+            <th scope="col">{{ lang.tbl_4_th8 }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
+          <tr v-for="n in 20" :key="n">
+            <th scope="row">{{ n }}</th>
             <td class="ta-c">1 G/F</td>
-            <td class="ta-c">12.34</td>
-            <th scope="row">2</th>
-            <td class="ta-c">1 G/F</td>
-            <td class="ta-c">12.34</td>
+            <td class="ta-c">14.2</td>
+            <td class="ta-c">123456</td>
+            <td class="ta-c">0</td>
+            <td class="ta-c">0</td>
+            <td class="ta-c">123456</td>
+            <td class="ta-c">0</td>
+            <td class="ta-c">0</td>
           </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td class="ta-c">1 G/F</td>
-            <td class="ta-c">12.34</td>
-            <th scope="row">2</th>
-            <td class="ta-c">1 G/F</td>
-            <td class="ta-c">12.34</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td class="ta-c">1 G/F</td>
-            <td class="ta-c">12.34</td>
-            <th scope="row">2</th>
-            <td class="ta-c">1 G/F</td>
-            <td class="ta-c">12.34</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td class="ta-c">1 G/F</td>
-            <td class="ta-c">12.34</td>
-            <th scope="row">2</th>
-            <td class="ta-c">1 G/F</td>
-            <td class="ta-c">12.34</td>
-          </tr>
-
         </tbody>
       </table>
+      </div>
     </div>
   </UiModal>
 
@@ -733,7 +702,7 @@ import imgNetwork3 from '@/assets/images/network/img3.png';
 import imgNetwork4 from '@/assets/images/network/img4.png';
 
 const ko = {
-  info1: "기상 정보",
+  info1: "운항/기상 정보",
   info1_1: "현재 온도",
   info1_2: "습도",
   info1_3: "풍속",
@@ -765,6 +734,12 @@ const ko = {
 
   tbl_4_th1: "이름",
   tbl_4_th2: "소모전력",
+  tbl_4_th3: "수신옥텟",
+  tbl_4_th4: "수신폐기 패킷수",
+  tbl_4_th5: "수신오류 패킷수",
+  tbl_4_th6: "전송옥텟",
+  tbl_4_th7: "전송폐기 패킷수",
+  tbl_4_th8: "전송오류 패킷수",
 
   tbl_5_th1: "장치명",
   tbl_5_th2: "위치",
