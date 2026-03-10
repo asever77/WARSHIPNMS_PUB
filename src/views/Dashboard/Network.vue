@@ -51,12 +51,21 @@
               :callback="openDetailsModal"
             />
           </NetworkLine>
-          <NetworkLine line="poe" ps="tl-br" width="9rem" height="3rem" top="100%" left="70%" >
+          <NetworkLine line="poe" ps="tr-bl" width="4rem" height="3rem" top="100%" left="37%" >
             <NetworkBox
               type="gray"
               top="100%"
-              left="calc(50% - .4rem)"
+              left="calc(-2rem - 50%)"
               text="VoIP 교환기"
+              :callback="openDetailsModal"
+            />
+          </NetworkLine>
+          <NetworkLine line="poe" ps="tl-br" width="6rem" height="3rem" top="100%" left="84%" >
+            <NetworkBox
+              type="gray"
+              top="100%"
+              left="calc(50% - 1.4rem)"
+              text="음성녹음장치"
               :callback="openDetailsModal"
             />
           </NetworkLine>
@@ -159,7 +168,7 @@
           left="calc(50% - 30rem)"
           :img="imgNetwork1"
           text="소형통신랙 #1"
-          :callback="openSwitchModal"
+          :callback="openSwitchModal2"
         >
           <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
             <NetworkBox
@@ -180,7 +189,7 @@
           left="calc(50% - 14rem)"
           :img="imgNetwork1"
           text="소형통신랙 #2"
-          :callback="openSwitchModal"
+          :callback="openSwitchModal2"
         >
           <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
             <NetworkBox
@@ -201,7 +210,7 @@
           left="calc(50% + 2rem)"
           :img="imgNetwork1"
           text="소형통신랙 #3"
-          :callback="openSwitchModal"
+          :callback="openSwitchModal2"
         >
           <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
             <NetworkBox
@@ -222,7 +231,7 @@
           left="calc(50% + 18rem)"
           :img="imgNetwork1"
           text="소형통신랙 #4"
-          :callback="openSwitchModal"
+          :callback="openSwitchModal2"
         >
           <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
             <NetworkBox
@@ -482,6 +491,267 @@
     </div>
   </UiModal>
 
+  <!-- modal 소형통신렉 -->
+  <UiModal
+    v-model="modals.modalSwitchDetail2.show"
+    :title="`${modals.modalSwitchDetail2.title} / UPS`"
+    type="modal"
+    size="xlg"
+    @close-btn-click="modals.modalSwitchDetail2.show = false"
+  >
+    <div class="ui-flex" data-direction="row" data-gap="16">
+      <div class="ui-flex" data-direction="col" data-gap="16">
+        <table class="table-type-a">
+          <colgroup>
+            <col style="width:7rem">
+            <col style="width:auto">
+            <col style="width:7rem">
+            <col style="width:auto">
+          </colgroup>
+          <tbody>
+            <tr>
+              <th scope="row">{{ lang.tbl_2_th1 }}</th>
+              <td>무선통신기시스템 L2 스위치</td>
+              <th scope="row">{{ lang.tbl_2_th2 }}</th>
+              <td>1.0.1</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.tbl_2_th3 }}</th>
+              <td>C9200-24T-4G-E</td>
+              <th scope="row">{{ lang.tbl_2_th4 }}</th>
+              <td>ZYXELaRTxu10</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.tbl_2_th5 }}</th>
+              <td>192.168.1.1</td>
+              <th scope="row">{{ lang.tbl_2_th6 }}</th>
+              <td>무선통신기시스템</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ui-flex" data-gap="10">
+          <div class="box-round ui-flex-1"></div>
+          <table class="table-type-a ui-flex-1">
+            <colgroup>
+              <col style="width:8rem">
+              <col style="width:auto">
+            </colgroup>
+            <tbody>
+              <tr>
+                <th scope="row">{{ lang.tbl_3_th1 }}</th>
+                <td class="green ta-c">정상</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ lang.tbl_3_th2 }}</th>
+                <td>24.5 ℃</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ lang.tbl_3_th3 }}</th>
+                <td>20250820 09:00:00</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ lang.tbl_3_th4 }}</th>
+                <td>123.45 watt</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ui-flex box-round p-3" data-bg="gray" data-direction="col">
+          <h4 class="ports-status--title">Port Status</h4>
+          <PortStatusList />
+        </div>
+
+        <div class="ui-thead-sticky" data-max-h="300">
+          <table class="table-type-a line">
+          <colgroup>
+            <col style="width:6rem">
+            <col style="width:auto" span="3">
+            <col style="width:6rem" span="2">
+            <col style="width:auto">
+            <col style="width:6rem" span="2">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Port #<br>({{ lang.tbl_4_th1 }})</th>
+              <th scope="col">Link<br>Speed</th>
+              <th scope="col">{{ lang.tbl_4_th2 }}<br>(watt)</th>
+              <th scope="col">{{ lang.tbl_4_th3 }}<br>(bytes)</th>
+              <th scope="col">{{ lang.tbl_4_th4 }}</th>
+              <th scope="col">{{ lang.tbl_4_th5 }}</th>
+              <th scope="col">{{ lang.tbl_4_th6 }}<br>(bytes)</th>
+              <th scope="col">{{ lang.tbl_4_th7 }}</th>
+              <th scope="col">{{ lang.tbl_4_th8 }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="n in 20" :key="n">
+              <th scope="row">{{ n }}</th>
+              <td class="ta-c">1 G/F</td>
+              <td class="ta-c">14.2</td>
+              <td class="ta-c">123456</td>
+              <td class="ta-c">0</td>
+              <td class="ta-c">0</td>
+              <td class="ta-c">123456</td>
+              <td class="ta-c">0</td>
+              <td class="ta-c">0</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <!-- ups -->
+      <div class="ui-flex" data-justify-align="between" data-direction="col" data-gap="16">
+        <table class="table-type-a">
+          <colgroup>
+            <col style="width:9rem">
+            <col style="width:auto">
+            <col style="width:9rem">
+            <col style="width:auto">
+          </colgroup>
+          <tbody>
+            <tr>
+              <th scope="row">{{ lang.tbl_2_th1 }}</th>
+              <td>소형통신랙 #1 UPS</td>
+              <th scope="row">{{ lang.tbl_2_th2 }}</th>
+              <td>1.2.3</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.tbl_2_th3 }}</th>
+              <td>UPSM-1.0</td>
+              <th scope="row">{{ lang.tbl_2_th4 }}</th>
+              <td>UPSSN-123-001</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.tbl_2_th5 }}</th>
+              <td>192.168.0.113</td>
+              <th scope="row">{{ lang.tbl_2_th6 }}</th>
+              <td>소형통신랙 #1</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table-type-a">
+          <colgroup>
+            <col style="width:9rem">
+            <col style="width:auto">
+            <col style="width:9rem">
+            <col style="width:auto">
+          </colgroup>
+          <tbody>
+            <tr>
+              <th scope="row">{{ lang.ups_1 }}</th>
+              <td class="ta-c">정상</td>
+              <th scope="row">{{ lang.ups_2 }}</th>
+              <td class="ta-c">전원미사용</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.ups_3 }}</th>
+              <td class="ta-c">50</td>
+              <th scope="row">{{ lang.ups_4 }}</th>
+              <td class="ta-c">50</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.ups_5 }}</th>
+              <td class="ta-c">34</td>
+              <th scope="row">{{ lang.ups_6 }}</th>
+              <td class="ta-c">65</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.ups_7 }}</th>
+              <td class="ta-c">34</td>
+              <th scope="row">{{ lang.ups_8 }}</th>
+              <td class="ta-c">65</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.ups_9 }}</th>
+              <td class="ta-c">34</td>
+              <th scope="row">{{ lang.ups_10 }}</th>
+              <td class="ta-c">65</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.ups_11 }}</th>
+              <td class="ta-c">34</td>
+              <th scope="row">{{ lang.ups_12 }}</th>
+              <td class="ta-c">65</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ lang.ups_13 }}</th>
+              <td class="ta-c">34</td>
+              <th scope="row">{{ lang.ups_14 }}</th>
+              <td class="ta-c">65</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ui-thead-sticky" data-max-h="300">
+          <table class="table-type-a line">
+          <colgroup>
+            <col style="width:auto">
+          </colgroup>
+          <colgroup>
+            <col style="width:auto">
+            <col style="width:auto">
+            <col style="width:auto">
+          </colgroup>
+          <colgroup>
+            <col style="width:auto">
+            <col style="width:auto">
+            <col style="width:auto">
+            <col style="width:auto">
+          </colgroup>
+          <colgroup>
+            <col style="width:auto">
+            <col style="width:auto">
+            <col style="width:auto">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col" rowspan="2">{{ lang.ups_line_index }}</th>
+              <th scope="col" colspan="3">{{ lang.ups_line_input }}</th>
+              <th scope="col" colspan="4">{{ lang.ups_line_output }}</th>
+              <th scope="col" colspan="3">{{ lang.ups_line_bypass }}</th>
+            </tr>
+            <tr>
+              <th scope="col" class="l-line">{{ lang.ups_line_freq }}(Hz)</th>
+              <th scope="col">{{ lang.ups_line_voltage }}(V)</th>
+              <th scope="col">{{ lang.ups_line_current }}(A)</th>
+
+              <th scope="col">{{ lang.ups_line_voltage }}(V)</th>
+              <th scope="col">{{ lang.ups_line_current }}(A)</th>
+              <th scope="col">{{ lang.ups_line_power }}(W)</th>
+              <th scope="col">{{ lang.ups_line_loadrate }}(%)</th>
+
+              <th scope="col">{{ lang.ups_line_voltage }}(V)</th>
+              <th scope="col">{{ lang.ups_line_current }}(A)</th>
+              <th scope="col">{{ lang.ups_line_power }}(W)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="n in 20" :key="n">
+              <th scope="row">{{ n }}</th>
+
+              <td class="ta-c">30.2</td>
+              <td class="ta-c">42</td>
+              <td class="ta-c">32</td>
+
+              <td class="ta-c">10</td>
+              <td class="ta-c">04</td>
+              <td class="ta-c">20</td>
+              <td class="ta-c">23</td>
+
+              <td class="ta-c">60</td>
+              <td class="ta-c">40</td>
+              <td class="ta-c">40</td>
+            </tr>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </UiModal>
+
   <!-- modal 사용자단말 -->
   <UiModal
     v-model="modals.modalUserTerminal.show"
@@ -702,6 +972,30 @@ import imgNetwork3 from '@/assets/images/network/img3.png';
 import imgNetwork4 from '@/assets/images/network/img4.png';
 
 const ko = {
+  ups_line_index: "index",
+  ups_line_input: "입력라인",
+  ups_line_output: "출력라인",
+  ups_line_bypass: "바이패스",
+  ups_line_freq: "주파수",
+  ups_line_voltage: "전압",
+  ups_line_current: "전류",
+  ups_line_power: "전력",
+  ups_line_loadrate: "부하율",
+  ups_1: "배터리상태",
+  ups_2: "배터리 사용시간(초)",
+  ups_3: "배터리 잔여시간(분)",
+  ups_4: "잔여 배터리  충전량(%)",
+  ups_5: "배터리 전압 (Volt/DC)",
+  ups_6: "배터리 전류 (Ampare/DC)",
+  ups_7: "배터리 주변온도(섭씨)",
+  ups_8: "입력 라인 수",
+  ups_9: "입력라인 이상  발생 횟수",
+  ups_10: "출력전원 소스",
+  ups_11: "출력 주파수 (Hz)",
+  ups_12: "출력 라인 수",
+  ups_13: "바이패스 주파수 (Hz)",
+  ups_14: "바이패스 라인 수",
+
   info1: "운항/기상 정보",
   info1_1: "현재 온도",
   info1_2: "습도",
@@ -758,6 +1052,30 @@ const ko = {
   tbl_6_th8: "Disk 사용량",
 };
 const en = {
+  ups_line_index: "index",
+  ups_line_input: "입력라인",
+  ups_line_output: "출력라인",
+  ups_line_bypass: "바이패스",
+  ups_line_freq: "주파수",
+  ups_line_voltage: "전압",
+  ups_line_current: "전류",
+  ups_line_power: "전력",
+  ups_line_loadrate: "부하율",
+  ups_1: "배터리상태",
+  ups_2: "배터리 사용시간(초)",
+  ups_3: "배터리 잔여시간(분)",
+  ups_4: "잔여 배터리  충전량(%)",
+  ups_5: "배터리 전압 (Volt/DC)",
+  ups_6: "배터리 전류 (Ampare/DC)",
+  ups_7: "배터리 주변온도(섭씨)",
+  ups_8: "입력 라인 수",
+  ups_9: "입력라인 이상  발생 횟수",
+  ups_10: "출력전원 소스",
+  ups_11: "출력 주파수 (Hz)",
+  ups_12: "출력 라인 수",
+  ups_13: "바이패스 주파수 (Hz)",
+  ups_14: "바이패스 라인 수",
+
   info1: "기상 정보",
   info1_1: "현재 온도",
   info1_2: "습도",
@@ -818,6 +1136,10 @@ const modals = reactive({
     show: false,
     title: ''
   },
+  modalSwitchDetail2: {
+    show: false,
+    title: ''
+  },
   modalUserTerminal: {
     show: false,
     title: ''
@@ -831,6 +1153,10 @@ const modals = reactive({
 function openSwitchModal(e) {
   modals.modalSwitchDetail.show = true;
   modals.modalSwitchDetail.title = getTextFromEvent(e);
+}
+function openSwitchModal2(e) {
+  modals.modalSwitchDetail2.show = true;
+  modals.modalSwitchDetail2.title = getTextFromEvent(e);
 }
 function openUserTerminalModal(e) {
   modals.modalUserTerminal.show = true;
