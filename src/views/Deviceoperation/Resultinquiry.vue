@@ -139,7 +139,7 @@
 
           <tr>
             <th scope="row">{{ lang.modalTh3_7 }}</th>
-            <td color="5">성공(8), 실패(1), 타임아웃(1)</td>
+            <td colspan="5">성공(8), 실패(1), 타임아웃(1)</td>
           </tr>
         </tbody>
       </table>
@@ -148,11 +148,67 @@
     <!-- 추가 테이블 -->
     <div class="base-table mt-4">
       <BTable :items="extraItems" :fields="extraFields" bordered hover small responsive>
+        <template #cell(th7)="data">
+          <span @click.stop="onExtraInfoClick(data.item)">
+            {{ data.item.th7 }}
+          </span>
+        </template>
       </BTable>
     </div>
 
     <template #footer>
       <BButton class="gray28" @click="modals.modal1.show = false">{{ lang.btn2 }}</BButton>
+    </template>
+  </UiModal>
+
+  <UiModal
+    v-model="modals.modal2.show"
+    :title="lang.modalTitle2"
+    size="lg"
+    @close-btn-click="modals.modal2.show = false"
+  >
+    <div class="ui-flex" data-direction="col" data-gap="16">
+      <table class="table-type-a">
+        <colgroup>
+          <col style="width: 14rem" />
+          <col style="width: auto" />
+          <col style="width: 14rem" />
+          <col style="width: auto" />
+        </colgroup>
+        <tbody>
+        <tr>
+          <th scope="row">{{ lang.modalTh4_1 }}</th>
+          <td>GRDG1 CAPTS</td>
+          <th scope="row">{{ lang.modalTh4_2 }}</th>
+          <td>사용자단말</td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalTh4_3 }}</th>
+          <td>운영자요청(I-BIT)</td>
+          <th scope="row">{{ lang.modalTh4_4 }}</th>
+          <td>SN-UT0001234</td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalTh4_5 }}</th>
+          <td colspan="3">2025-04-04 11:23:10</td>
+        </tr>
+        <tr>
+          <th scope="row">{{ lang.modalTh4_6 }}</th>
+          <td colspan="3">Success</td>
+        </tr>
+
+        <tr>
+          <th scope="row">{{ lang.modalTh4_7 }}</th>
+          <td colspan="3">성공(8), 실패(1), 타임아웃(1)</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <template #footer>
+      <BButton class="gray28" @click="modals.modal2.show = false">
+        닫기
+      </BButton>
     </template>
   </UiModal>
 
@@ -201,6 +257,7 @@ const ko = {
   colTh8: '부가정보',
 
   modalTitle1: '수행이력 상세 조회',
+  modalTitle2: '자제 진단 보고(BIT) 상세조회',
 
   modalTh1_1: '장치유형',
   modalTh1_2: '장치 모델명',
@@ -216,14 +273,13 @@ const ko = {
   modalTh3_6: '결과',
   modalTh3_7: '부가정보',
 
-  modalTh4_1: 'No',
-  modalTh4_2: '장치명',
-  modalTh4_3: '장치유형',
-  modalTh4_4: '장치 모델명',
-  modalTh4_5: '응답결과',
-  modalTh4_6: '응답일시',
-  modalTh4_7: '부가정보',
-
+  modalTh4_1: '장치명',
+  modalTh4_2: '장치유형',
+  modalTh4_3: '진단유형',
+  modalTh4_4: '시리얼번호',
+  modalTh4_5: '보고일시',
+  modalTh4_6: '진단결과',
+  modalTh4_7: '상세결과',
 
 }
 const en = {
@@ -256,6 +312,7 @@ const en = {
   colTh8: '부가정보',
 
   modalTitle1: '수행이력 상세 조회',
+  modalTitle2: '자제 진단 보고(BIT) 상세조회',
 
   modalTh1_1: '장치유형',
   modalTh1_2: '장치 모델명',
@@ -271,13 +328,13 @@ const en = {
   modalTh3_6: '결과',
   modalTh3_7: '부가정보',
 
-  modalTh4_1: 'No',
-  modalTh4_2: '장치명',
-  modalTh4_3: '장치유형',
-  modalTh4_4: '장치 모델명',
-  modalTh4_5: '응답결과',
-  modalTh4_6: '응답일시',
-  modalTh4_7: '부가정보',
+  modalTh4_1: '장치명',
+  modalTh4_2: '장치유형',
+  modalTh4_3: '진단유형',
+  modalTh4_4: '시리얼번호',
+  modalTh4_5: '보고일시',
+  modalTh4_6: '진단결과',
+  modalTh4_7: '상세결과',
 }
 const lang = ref({})
 
@@ -286,6 +343,7 @@ const lang = ref({})
 // =========================
 const modals = reactive({
   modal1: { show: false },
+  modal2: { show: false },
 })
 
 // =========================
@@ -354,7 +412,7 @@ const extraFields = computed(() => {
     { key: 'th4', label: '장치 모델명', thStyle: { width: 'auto' } },
     { key: 'th5', label: '장치유형', thStyle: { width: '8rem' } },
     { key: 'th6', label: '응답결과', thStyle: { width: '14rem' } },
-    { key: 'th7', label: '부가정보', thStyle: { width: 'auto' } },
+    { key: 'th7', label: '부가정보', thStyle: { width: 'auto' }, tdClass:'ui-link-underline' },
   ];
 });
 
@@ -364,6 +422,13 @@ const paginatedItems = computed(() => {
   const start = (currentPage.value - 1) * perPage.value
   return filteredItems.value.slice(start, start + perPage.value)
 })
+
+const selectedExtraItem = ref(null)
+
+function onExtraInfoClick(item) {
+  selectedExtraItem.value = item
+  modals.modal2.show = true
+}
 
 
 // =========================
