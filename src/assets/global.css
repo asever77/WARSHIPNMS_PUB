@@ -288,12 +288,12 @@ td.yellow{color:#353535 !important; background-color:#FECF00 !important;}
 .search-base {display:flex;width:100%;gap:2rem;align-items:center;justify-content:space-between;}
 .search-base--form {display:flex;align-items:center;gap:2rem;}
 .search-total {font-size:1.6rem;font-weight:700;color:var(--color-font-primary)}
-.search-base--btns {display:flex;align-items:center;gap:.4rem;}
+.search-base--btns {display:flex;align-items:center;gap:.4rem;flex-shrink:0}
 .search-base .b-form-group {display:flex;align-items:center;gap:1rem;}
 .search-base .form-label {color:#627582;font-size:1.2rem;font-weight:700;white-space:nowrap;margin-bottom:0;}
 .search-base .form-select,
 .search-base .form-control {min-width:15rem;}
-.search-base .form-select.w-60 {min-width:6rem;}
+.search-base .form-select.w-60 {min-width:0;width:8.6rem;box-sizing:border-box;flex-shrink:0}
 .search-base .form-select.min-w-200 {min-width:20rem}
 .search-base .form-select.min-w-400 {min-width:40rem}
 .search-base-desc {font-size:1.3rem;color:var(--color-primary);font-weight:700;}
