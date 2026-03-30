@@ -19,6 +19,10 @@
             <div class="network-line" data-line="sfp"><div class="network-line--line"></div></div>
             광(SFP)
           </div>
+          <div class="network-legend-item">
+            <div class="network-line" data-line="sfp" data-state="abnormal"><div class="network-line--line"></div></div>
+            오류
+          </div>
         </div>
       </div>
 
@@ -29,7 +33,7 @@
           top="calc(50% - 1.9rem)"
           left="calc(50% - 5.2rem)"
           :img="imgNetwork1"
-          text="무선통신운용콘솔"
+          text="무선통신운용자콘솔"
           :callback="openSwitchModal"
         >
           <NetworkLine line="poe" ps="tr-bl" width="8rem" height="4rem" bottom="100%" left="70%">
@@ -42,7 +46,8 @@
               :callback="openUserTerminalModal"
             />
           </NetworkLine>
-          <NetworkLine line="poe" ps="tr-bl" width="9rem" height="3rem" top="100%" right="70%" >
+
+          <NetworkLine line="poe" ps="tr-bl" width="11.6rem" height="2.4rem" top="100%" right="70%" >
             <NetworkBox
               type="gray"
               top="100%"
@@ -51,16 +56,16 @@
               :callback="openDetailsModal"
             />
           </NetworkLine>
-          <NetworkLine line="poe" ps="tr-bl" width="4rem" height="3rem" top="100%" left="37%" >
+          <NetworkLine line="poe" ps="tr-bl" width="2.3rem" height="2.4rem" top="100%" left="48%" >
             <NetworkBox
               type="gray"
               top="100%"
-              left="calc(-2rem - 50%)"
+              right="-103%"
               text="VoIP 교환기"
               :callback="openDetailsModal"
             />
           </NetworkLine>
-          <NetworkLine line="poe" ps="tl-br" width="6rem" height="3rem" top="100%" left="84%" >
+          <NetworkLine line="poe" ps="tl-br" width="6rem" height="2.4rem" top="100%" left="84%" >
             <NetworkBox
               type="gray"
               top="100%"
@@ -77,19 +82,17 @@
           top="calc(50% - 19rem)"
           left="calc(50% - 13.8rem)"
           :img="imgNetwork1"
-          text="L3 스위치"
+          text="L3"
           :callback="openSwitchModal"
         >
-          <NetworkLine line="poe" ps="tl-br" width="10rem" height="4rem" bottom="100%" right="70%">
+          <NetworkLine line="poe" ps="tr-b" width="14.8rem" height="5rem" bottom="100%" left="30%">
             <NetworkBox
               type="gray"
-              bottom="100%"
-              left="-4rem"
-              text="군위성-II"
+              text="자동전화장치"
               :callback="openDetailsModal"
             />
           </NetworkLine>
-          <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="calc(50% - 0.4rem)">
+          <!-- <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="calc(50% - 0.4rem)">
             <NetworkBox
               type="gray"
               bottom="100%"
@@ -97,13 +100,13 @@
               text="CCTV"
               :callback="openDetailsModal"
             />
-          </NetworkLine>
-          <NetworkLine line="poe" ps="tr-bl" width="21rem" height="4rem" bottom="100%" left="70%">
+          </NetworkLine> -->
+
+
+          <NetworkLine line="poe" ps="tr-b" width="10rem" height="1.6rem" bottom="100%" left="70%">
             <NetworkBox
               type="gray"
-              bottom="100%"
-              left="calc(100% - 4.6rem)"
-              text="방송 및 경보"
+              text="MOSCOS-Ⅱ"
               :callback="openDetailsModal"
             />
           </NetworkLine>
@@ -119,13 +122,13 @@
           :callback="openSwitchModal"
         />
 
-        <!-- 무선통신기시스템 -->
+        <!-- No.3 ICS스위칭허브랙 -->
         <NetworkBox
           type="sub"
           top="calc(50% - 0.6rem)"
           left="calc(50% - 30rem)"
-          :img="imgNetwork2"
-          text="무선통신기시스템"
+          :img="imgNetwork1"
+          text="No.3 ICS스위칭허브랙"
           :callback="openSwitchModal"
         >
           <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="50%">
@@ -140,13 +143,13 @@
           </NetworkLine>
         </NetworkBox>
 
-        <!-- 비상통신시스템 -->
+        <!-- 무선통신기시스템 -->
         <NetworkBox
           type="sub"
           top="calc(50% - 0.6rem)"
           left="calc(50% + 18rem)"
-          :img="imgNetwork4"
-          text="비상통신시스템"
+          :img="imgNetwork1"
+          text="무선통신기시스템"
           :callback="openSwitchModal"
         >
           <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="50%">
@@ -161,16 +164,16 @@
           </NetworkLine>
         </NetworkBox>
 
-        <!-- 소형통신랙 #1 -->
+        <!-- 비상통신시스템 -->
         <NetworkBox
           type="sub"
-          top="calc(50% + 15rem)"
+          top="calc(50% + 16rem)"
           left="calc(50% - 30rem)"
           :img="imgNetwork1"
-          text="소형통신랙 #1"
+          text="비상통신시스템"
           :callback="openSwitchModal2"
         >
-          <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
+          <NetworkLine line="poe" ps="tb" height="3rem" top="100%" left="50%">
             <NetworkBox
               type="blue"
               top="100%"
@@ -180,18 +183,27 @@
               :callback="openUserTerminalModal"
             />
           </NetworkLine>
+          <NetworkLine line="poe" ps="tr-bl" width="9rem" height="2.4rem" bottom="100%" left="50%" >
+            <NetworkBox
+              type="gray"
+              bottom="100%"
+              right="calc(0rem - 50%)"
+              text="VolP 교환기"
+              :callback="openDetailsModal"
+            />
+          </NetworkLine>
         </NetworkBox>
 
-        <!-- 소형통신랙 #2 -->
+        <!-- No.2 ICS스위칭허브랙 -->
         <NetworkBox
           type="sub"
-          top="calc(50% + 15rem)"
-          left="calc(50% - 14rem)"
+          top="calc(50% + 16rem)"
+          left="calc(50% - 6rem)"
           :img="imgNetwork1"
-          text="소형통신랙 #2"
+          text="No.2 ICS스위칭허브랙"
           :callback="openSwitchModal2"
         >
-          <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
+          <NetworkLine line="poe" ps="tb" height="3rem" top="100%" left="50%">
             <NetworkBox
               type="blue"
               top="100%"
@@ -201,39 +213,27 @@
               :callback="openUserTerminalModal"
             />
           </NetworkLine>
-        </NetworkBox>
-
-        <!-- 소형통신랙 #3 -->
-        <NetworkBox
-          type="sub"
-          top="calc(50% + 15rem)"
-          left="calc(50% + 2rem)"
-          :img="imgNetwork1"
-          text="소형통신랙 #3"
-          :callback="openSwitchModal2"
-        >
-          <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
+          <NetworkLine line="poe" ps="tb" width="1rem" height="2.4rem" bottom="100%" left="calc(50% - 0.4rem)" >
             <NetworkBox
-              type="blue"
-              top="100%"
-              left="-4rem"
-              text="사용자단말"
-              :terminal="[4,0,2]"
-              :callback="openUserTerminalModal"
+              type="gray"
+              bottom="100%"
+              right="auto"
+              text="방송 및 경보"
+              :callback="openDetailsModal"
             />
           </NetworkLine>
         </NetworkBox>
 
-        <!-- 소형통신랙 #4 -->
+        <!-- No.1 ICS스위칭허브랙 -->
         <NetworkBox
           type="sub"
-          top="calc(50% + 15rem)"
+          top="calc(50% + 16rem)"
           left="calc(50% + 18rem)"
           :img="imgNetwork1"
-          text="소형통신랙 #4"
+          text="No.1 ICS스위칭허브랙"
           :callback="openSwitchModal2"
         >
-          <NetworkLine line="poe" ps="tb" height="4rem" top="100%" left="50%">
+          <NetworkLine line="poe" ps="tb" height="3rem" top="100%" left="50%">
             <NetworkBox
               type="blue"
               top="100%"
@@ -250,12 +250,16 @@
         <NetworkLine line="sfp" state="warning" ps="tb" height="3rem" top="calc(50% - 13.9rem)" left="calc(50% - 8.2rem)" />
         <NetworkLine line="sfp" ps="lr" width="12.8rem" top="calc(50% + 1.6rem)" left="calc(50% - 18rem)" />
         <NetworkLine line="sfp" ps="lr" width="12.8rem" top="calc(50% + 1.6rem)" left="calc(50% + 5.2rem)" />
-        <NetworkLine line="sfp" state="warning" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% - 18rem)" />
-        <NetworkLine line="sfp" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% - 2rem)" />
-        <NetworkLine line="sfp" state="warning" ps="lr" width="4rem" top="calc(50% + 17.1rem)" left="calc(50% + 14rem)" />
 
-        <NetworkLine line="sfp" state="abnormal" ps="tr-br" width="3rem" height="16rem" top="calc(50% + 1.8rem)" left="calc(50% - 32.9rem)" />
-        <NetworkLine line="sfp" ps="tl-bl" width="3rem" height="16rem" top="calc(50% + 1.8rem)" left="calc(50% + 30rem)" />
+        <!-- 비상통신시스템 -- No.2 ICS스위칭허브랙 -->
+        <NetworkLine line="sfp" state="warning" ps="lr" width="12rem" top="calc(50% + 18.1rem)" left="calc(50% - 18rem)" />
+        <!-- No.2 ICS스위칭허브랙 -- No.1 ICS스위칭허브랙 -->
+        <NetworkLine line="sfp" state="warning" ps="lr" width="12rem" top="calc(50% + 18.1rem)" left="calc(50% + 6rem)" />
+
+        <!-- No.3 ICS스위칭허브랙 -- 비상통신시스템 -->
+        <NetworkLine line="sfp" state="abnormal" ps="tr-br" width="3rem" height="17rem" top="calc(50% + 1.8rem)" left="calc(50% - 32.9rem)" />
+        <!-- No.1 ICS스위칭허브랙 -- 무선통신기시스템 -->
+        <NetworkLine line="sfp" ps="tl-bl" width="3rem" height="17rem" top="calc(50% + 1.8rem)" left="calc(50% + 30rem)" />
       </div>
     </div>
     <div class="network-side" >
@@ -271,7 +275,7 @@
             <li class="network-info--text">
               <i class="network-info--icon s2"></i>
               <em class="network-info--key">{{ lang.info2_2 }}</em>
-              <b class="network-info--value">33°06'N</b>
+              <b class="network-info--value">33°06'50.28" N</b>
             </li>
             <li class="network-info--text">
               <i class="network-info--icon w3"></i>
@@ -290,7 +294,7 @@
             <li class="network-info--text">
               <i class="network-info--icon s3"></i>
               <em class="network-info--key">{{ lang.info2_3 }}</em>
-              <b class="network-info--value">129°06'425E</b>
+              <b class="network-info--value">129°06'42.5" E</b>
             </li>
             <li class="network-info--text">
               <i class="network-info--icon w4"></i>

@@ -180,12 +180,38 @@ const tooltipPlacement = computed(() => {
   left:0;
 }
 
+.network-line[data-ps="tl-b"] .network-line--line{width: .4rem;height: 100%;}
+.network-line[data-ps="tl-b"]{flex-direction: column;align-items: flex-end;}
+
+.network-line[data-ps="tl-b"]::before{top:0;left:0;z-index: 1;transform: translate(-.4rem,-.2rem);}
+.network-line[data-ps="tl-b"]::after{bottom:0;left:0;z-index: 1;transform: translate(-.4rem,.2rem);}
+
+
+
+
+.network-line[data-ps="tl-b"] .network-line--line::after {bottom:0;right:0}
+.network-line[data-ps="tl-b"] .network-line--line::before {right:0}
+.network-line[data-ps="tl-b"] .network-line--line::after,
+.network-line[data-ps="tl-b"] .network-line--line::before{content:"";display: block;border-top:.4rem solid #ccc;width: 100%; height:0; position: absolute;}
+
+
+.network-line[data-ps="tr-b"]::before{top:0;right:0;z-index: 1;transform: translate(.2rem,-.2rem);}
+.network-line[data-ps="tr-b"]::after{bottom:0;left:0;z-index: 1;transform: translate(-.2rem,.4rem);}
+.network-line[data-ps="tr-b"] {align-items: start;}
+.network-line[data-ps="tr-b"] .network-line--line::after,
+.network-line[data-ps="tr-b"] .network-line--line::before {content:"";display: bock;border-left:.4rem solid #ccc;height: 50%;width: 1px;position: absolute;}
+.network-line[data-ps="tr-b"] .network-line--line::after {bottom:0;left: 0;height: 100%;}
+.network-line[data-ps="tr-b"] .network-line--line::before {top:0;right: 0;display:none;}
+.network-line[data-ps="tr-b"] .network-item{bottom:calc(100% - 1.3rem)!important;left:calc(100% - 0.2rem)!important;}
+
+
 .network-line[data-ps="tl-bl"] .network-line--line{width: .4rem;height: 100%;}
 .network-line[data-ps="tl-bl"]{flex-direction: column;align-items: flex-end;}
 .network-line[data-ps="tl-bl"]::before{top:0;left:0;z-index: 1;transform: translate(-.4rem,-.2rem);}
 .network-line[data-ps="tl-bl"]::after{bottom:0;left:0;z-index: 1;transform: translate(-.4rem,.2rem);}
 .network-line[data-ps="tl-bl"] .network-line--line::after {bottom:0;right:0}
 .network-line[data-ps="tl-bl"] .network-line--line::before {right:0}
+
 .network-line[data-ps="tr-br"] .network-line--line{width: .4rem;height: 100%;}
 .network-line[data-ps="tr-br"]{flex-direction: column;align-items: flex-start;}
 .network-line[data-ps="tr-br"]::before{top:0;right:0;z-index: 1;transform: translate(.4rem,-.2rem);}
