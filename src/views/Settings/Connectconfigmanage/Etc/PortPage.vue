@@ -7,13 +7,19 @@
       <div class="search-base--btns">
         <BFormSelect
           id="search-target"
-          class="ui-select"
+          class="ui-select-28"
             :options="[
               {value: '1', text: '음력전화연동장치 #1',},
               {value: '2', text: '텔레브리프연동장치 #1',}
             ]"
             v-model="searchTarget"
           ></BFormSelect>
+        <BFormSelect
+          id="per-page"
+          class="ui-select-28 w-60"
+          v-model="perPage"
+          :options="perPageOptions"
+        ></BFormSelect>
       </div>
     </div>
     <div class="base-table">
@@ -258,6 +264,11 @@ const fields = computed(() => [
 
 const currentPage = ref(1)
 const perPage = ref(10)
+const perPageOptions = [
+  { value: 10, text: '10' },
+  { value: 15, text: '15' },
+  { value: 20, text: '20' },
+]
 
 const paginatedItems = computed(() => {
   const start = (currentPage.value - 1) * perPage.value
