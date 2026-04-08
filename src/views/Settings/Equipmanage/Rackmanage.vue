@@ -287,7 +287,7 @@
           </div>
         </div>
 
-        <div class="network-rack" data-u="38">
+        <div class="network-rack" data-u="10">
           <div class="network-rack-u">
             <div class="network-rack-u-item" v-for="n in 10" :key="n">{{ n }}</div>
           </div>

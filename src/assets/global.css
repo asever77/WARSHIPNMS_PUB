@@ -527,7 +527,7 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
     #f1f1f1 calc(100% / 38)
   );
 }
-
+.network-rack[data-u="10"] {height:27%;align-self:center} /* align-self: start | center | end */
 [data-u="10"] .network-rack-wrap::after {
   content:"";
   position:absolute;
