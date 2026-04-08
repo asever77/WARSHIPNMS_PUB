@@ -183,7 +183,7 @@ div.table-type-a {display:grid; grid-template-columns:14rem 1fr 8rem 2fr;}
 .table-type-b thead th:first-child {z-index:10;left:0}
 .table-type-b thead th {font-size:1.2rem;font-weight:700;background-color:#E3EDF4;padding:.4rem;position:sticky;top:0;border-bottom:1px solid #D4E1E8;height:18rem;color:#627582;}
 /*.table-type-b thead th span {writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:flex-end;height:100%;white-space:nowrap}*/
-.table-type-b thead th span {writing-mode:vertical-rl;justify-content:flex-end;display:flex;align-items:flex-end;height:100%;white-space:nowrap}
+.table-type-b thead th span {writing-mode:sideways-lr;display:flex;align-items:flex-end;height:100%;white-space:nowrap}
 .table-type-b tbody th {background-color:#E3EDF4;border-right:1px solid #D4E1E8;white-space:nowrap;padding:.4rem;font-size:1.2rem;position:sticky;left:0;color:#627582;font-weight:700;text-align:right}
 .table-type-b tbody td {padding:.4rem;}
 .table-type-b thead th:not(:last-child),
@@ -255,11 +255,18 @@ div.table-type-a {display:grid; grid-template-columns:14rem 1fr 8rem 2fr;}
 .base-table td + td {border-left:1px solid #D4E1E8;}
 
 td.red{color:#fcdfdf !important; background-color:#DF0562 !important;}
+td.red-txt{color:#fcdfdf !important;font-weight:900;}
 td.green{color:#dffcdf !important; background-color:#00ACA9 !important;}
 td.green-txt{color:#00ACA9 !important;font-weight:900;}
 td.blue{color:#dfdffc !important; background-color:#2671db !important;}
 td.blue-txt{color:#2B77A9 !important;font-weight:900;}
 td.yellow{color:#353535 !important; background-color:#FECF00 !important;}
+
+td.critical{color:#fcdfdf !important; background-color:#DF0562 !important;}
+td.critical-txt{color:#fcdfdf !important;font-weight:900;}
+td.major {color: #fff3e0 !important;background-color: #ef6c00 !important;}
+td.major-txt {color: #ef6c00 !important;font-weight: 900;}
+td.minor{color:#353535 !important; background-color:#FECF00 !important;}
 
 .base-table thead th {background-color:#001B30;height:3rem;padding:.4rem;color:#fff;font-size:1.2rem;font-weight:700;text-align:center;line-height:1.2;vertical-align:middle;}
 .base-table thead tr:first-child th:first-child {border-top-left-radius:.5rem;}
@@ -358,6 +365,7 @@ td.yellow{color:#353535 !important; background-color:#FECF00 !important;}
 .network-info--text:last-child {border-bottom:0;}
 .network-info--key{display:block;font-size:1.2rem;color:#3E3E3E;font-style:normal;line-height:1.4;}
 .network-info--value{display:block;font-size:1.2rem;color:#3E3E3E;font-weight:900;}
+.network-info--long-value{display:block;font-size:1.2rem;color:#3E3E3E;font-weight:900;}
 .network-info--icon.w1-1 {background-image:url('/src/assets/images/icon/icon-aspect-weather1-1.svg');}
 .network-info--icon.w1-2 {background-image:url('/src/assets/images/icon/icon-aspect-weather1-2.svg');}
 .network-info--icon.w2 {background-image:url('/src/assets/images/icon/icon-aspect-weather2.svg');}
@@ -444,7 +452,7 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 .ui-drag-item-section {display:flex;flex:1;gap:1.6rem;overflow:hidden}
 .ui-drag-item-group {flex:1;border:1px solid #C5C5C5;border-radius:.5rem;padding:1rem;overflow-x:hidden;overflow-y:auto;}
 .ui-drag-item-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
-.ui-drag-item {height:5rem;border:1px solid transparent;border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:400;color:#000;position:relative}
+.ui-drag-item {height:5rem;border:1px solid transparent;border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:1.0rem;font-weight:400;color:#000;position:relative}
 .ui-drag-item[data-type="clone"]::after {content:'';display:block;position:absolute;top:50%;margin-top:-1rem;right:.4rem;height:2rem;width:2rem;background:url("/src/assets/images/icon/icon-aspect-plus.svg") no-repeat center center / contain;}
 .ui-drag-item[data-bg="sky"] {background-color:#F1F6F9;border-color:#91BBD3}
 .ui-drag-item[data-bg="yellow"] {background-color:#FAF7E5;border-color:#C8C089}
@@ -483,7 +491,7 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 .is-desktop .ui-drag-item-list-area::-webkit-scrollbar-thumb {width:.6rem;border-radius:999em;background-color:rgba(0,0,0,.1);background-clip:content-box;border:.2rem solid transparent}
 .ui-drag-item-list-area .ui-drag-item {flex-shrink:0;height:4rem}
 .ui-drag-area2-col .ui-search-with-btn {margin:0 1rem 1rem}
-.ui-drag-area2-section-group {border:1px dashed transparent;display:grid;grid-template-rows:repeat(8,minmax(0,1fr));flex:1}
+.ui-drag-area2-section-group {border:1px dashed transparent;display:grid;grid-template-rows:repeat(1,minmax(0,1fr));flex:1}
 .ui-drag-area2-section-group[data-bg="sky"] {background-color:#F1F6F9;border-color:#C2E2F5}
 .ui-drag-in-box {padding:1rem;position:relative}
 .ui-drag-in-box .ui-drag-item {height:100%}
@@ -491,6 +499,7 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 .ui-drag-area2-section-group[data-bg="yellow"] {background-color:#FAF7E5;border-color:#E7E1B8}
 [data-bg="yellow"] .ui-drag-in-box ~ .ui-drag-in-box {border-top:1px dashed #E7E1B8}
 .ui-drag-area2-section-group .icon-connection-status {position:absolute;display:block;margin:0;top:50%;right:-1.8rem;transform:translateY(-50%);z-index:2}
+.ui-drag-area2-section-group .icon-connection-status-left {left:-2.04rem !important;}
 
 /* 랙관리 */
 .network-rack {display:flex;padding:1rem;background-color:#333;border-radius:.4rem;justify-content:space-around;max-width:30rem;flex:1;}
@@ -527,6 +536,7 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
     #f1f1f1 calc(100% / 38)
   );
 }
+
 .network-rack[data-u="10"] {height:27%;align-self:center} /* align-self: start | center | end */
 [data-u="10"] .network-rack-wrap::after {
   content:"";
@@ -544,11 +554,17 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
     #f1f1f1 calc(100% / 10)
   );
 }
+
 .network-rack-u {display:flex;flex-direction:column;}
 .network-rack-u-item {display:flex;flex:1;text-align:right;justify-content:center;align-items:center;color:#fff;box-sizing:border-box;padding-right:.4rem;font-size:1rem;line-height:100%;}
-.network-rack-item {position:absolute;width:100%;z-index:2;}
+.network-rack-item {position:absolute;width:100%;z-index:2; cursor: default;}
+.network-rack-u-item:hover {cursor: pointer;}
+.network-rack-u-item[data-state="selected"] { color:rgb(48, 248, 155);  font-weight: bold;}
+
+
 .network-rack-item img {position:absolute;left:0;width:100%;height:100%;display:block;bottom:0;}
-.network-rack-item[data-state="selected"] img {outline:3px solid #ff7f10;outline-offset:-3px}
+.network-rack-item[data-state="selected"] img {outline:3px solid #ff7f10;outline-offset:-3px;}
+.network-rack-item:hover {cursor: pointer;}
 /* 0~ 42 까지 42개 규칙 자동 생성 */
 .network-rack[data-u="42"] .network-rack-item[data-sp="1"] {top:calc((100 / 42) * 0%)}
 .network-rack[data-u="42"] .network-rack-item[data-sp="2"] {top:calc((100 / 42) * 1%)}
@@ -616,75 +632,120 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 
 /* 0~38까지 38개 규칙 자동 생성 */
 .network-rack[data-u="38"] .network-rack-item[data-sp="1"] {top:calc((100 / 38) * 0%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="1.5"] {top:calc((100 / 38) * 0.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="2"] {top:calc((100 / 38) * 1%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="2.5"] {top:calc((100 / 38) * 1.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="3"] {top:calc((100 / 38) * 2%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="3.5"] {top:calc((100 / 38) * 2.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="4"] {top:calc((100 / 38) * 3%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="4.5"] {top:calc((100 / 38) * 3.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="5"] {top:calc((100 / 38) * 4%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="5.5"] {top:calc((100 / 38) * 4.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="6"] {top:calc((100 / 38) * 5%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="6.5"] {top:calc((100 / 38) * 5.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="7"] {top:calc((100 / 38) * 6%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="7.5"] {top:calc((100 / 38) * 6.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="8"] {top:calc((100 / 38) * 7%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="8.5"] {top:calc((100 / 38) * 7.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="9"] {top:calc((100 / 38) * 8%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="9.5"] {top:calc((100 / 38) * 8.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="10"] {top:calc((100 / 38) * 9%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="10.5"] {top:calc((100 / 38) * 9.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="11"] {top:calc((100 / 38) * 10%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="11.5"] {top:calc((100 / 38) * 10.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="12"] {top:calc((100 / 38) * 11%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="12.5"] {top:calc((100 / 38) * 11.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="13"] {top:calc((100 / 38) * 12%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="13.5"] {top:calc((100 / 38) * 12.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="14"] {top:calc((100 / 38) * 13%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="14.5"] {top:calc((100 / 38) * 13.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="15"] {top:calc((100 / 38) * 14%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="15.5"] {top:calc((100 / 38) * 14.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="16"] {top:calc((100 / 38) * 15%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="16.5"] {top:calc((100 / 38) * 15.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="17"] {top:calc((100 / 38) * 16%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="17.5"] {top:calc((100 / 38) * 16.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="18"] {top:calc((100 / 38) * 17%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="18.5"] {top:calc((100 / 38) * 17.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="19"] {top:calc((100 / 38) * 18%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="19.5"] {top:calc((100 / 38) * 18.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="20"] {top:calc((100 / 38) * 19%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="20.5"] {top:calc((100 / 38) * 19.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="21"] {top:calc((100 / 38) * 20%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="21.5"] {top:calc((100 / 38) * 20.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="22"] {top:calc((100 / 38) * 21%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="22.5"] {top:calc((100 / 38) * 21.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="23"] {top:calc((100 / 38) * 22%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="23.5"] {top:calc((100 / 38) * 22.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="24"] {top:calc((100 / 38) * 23%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="24.5"] {top:calc((100 / 38) * 23.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="25"] {top:calc((100 / 38) * 24%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="25.5"] {top:calc((100 / 38) * 24.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="26"] {top:calc((100 / 38) * 25%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="26.5"] {top:calc((100 / 38) * 25.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="27"] {top:calc((100 / 38) * 26%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="27.5"] {top:calc((100 / 38) * 26.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="28"] {top:calc((100 / 38) * 27%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="28.5"] {top:calc((100 / 38) * 27.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="29"] {top:calc((100 / 38) * 28%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="29.5"] {top:calc((100 / 38) * 28.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="30"] {top:calc((100 / 38) * 29%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="30.5"] {top:calc((100 / 38) * 29.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="31"] {top:calc((100 / 38) * 30%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="31.5"] {top:calc((100 / 38) * 30.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="32"] {top:calc((100 / 38) * 31%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="32.5"] {top:calc((100 / 38) * 31.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="33"] {top:calc((100 / 38) * 32%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="33.5"] {top:calc((100 / 38) * 32.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="34"] {top:calc((100 / 38) * 33%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="34.5"] {top:calc((100 / 38) * 33.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="35"] {top:calc((100 / 38) * 34%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="35.5"] {top:calc((100 / 38) * 34.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="36"] {top:calc((100 / 38) * 35%)}
+.network-rack[data-u="38"] .network-rack-item[data-sp="36.5"] {top:calc((100 / 38) * 35.5%)}
 .network-rack[data-u="38"] .network-rack-item[data-sp="37"] {top:calc((100 / 38) * 36%)}
-.network-rack[data-u="38"] .network-rack-item[data-sp="38"] {top:calc((100 / 38) * 37%)}
+
 .network-rack[data-u="38"] .network-rack-item[data-u="1"] {height:calc((100 / 38) * 1%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="1.5"] {height:calc((100 / 36) * 1.5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="2"] {height:calc((100 / 36) * 2%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="2.5"] {height:calc((100 / 36) * 2.5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="3"] {height:calc((100 / 36) * 3%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="3.5"] {height:calc((100 / 36) * 3.5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="4"] {height:calc((100 / 36) * 4%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="4.5"] {height:calc((100 / 36) * 4.5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="5"] {height:calc((100 / 36) * 5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="5.5"] {height:calc((100 / 36) * 5.5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="6"] {height:calc((100 / 36) * 6%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="6.5"] {height:calc((100 / 36) * 6.5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="7"] {height:calc((100 / 36) * 7%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="7.5"] {height:calc((100 / 36) * 7.5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="8"] {height:calc((100 / 36) * 8%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="8.5"] {height:calc((100 / 36) * 8.5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="9"] {height:calc((100 / 36) * 9%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="9.5"] {height:calc((100 / 36) * 9.5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="10"] {height:calc((100 / 36) * 10%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="10.5"] {height:calc((100 / 36) * 10.5%);}
-.network-rack[data-u="38"] .network-rack-item[data-u="11"] {height:calc((100 / 36) * 11%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="1.5"] {height:calc((100 / 38) * 1.5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="2"] {height:calc((100 / 38) * 2%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="2.5"] {height:calc((100 / 38) * 2.5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="3"] {height:calc((100 / 38) * 3%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="3.5"] {height:calc((100 / 38) * 3.5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="4"] {height:calc((100 / 38) * 4%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="4.5"] {height:calc((100 / 38) * 4.5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="5"] {height:calc((100 / 38) * 5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="5.5"] {height:calc((100 / 38) * 5.5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="6"] {height:calc((100 / 38) * 6%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="6.5"] {height:calc((100 / 38) * 6.5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="7"] {height:calc((100 / 38) * 7%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="7.5"] {height:calc((100 / 38) * 7.5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="8"] {height:calc((100 / 38) * 8%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="8.5"] {height:calc((100 / 38) * 8.5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="9"] {height:calc((100 / 38) * 9%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="9.5"] {height:calc((100 / 38) * 9.5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="10"] {height:calc((100 / 38) * 10%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="10.5"] {height:calc((100 / 38) * 10.5%);}
+.network-rack[data-u="38"] .network-rack-item[data-u="11"] {height:calc((100 / 38) * 11%);}
 
 /* 0~10까지 10개 규칙 자동 생성 */
 .network-rack[data-u="10"] .network-rack-item[data-sp="1"] {top:calc((100 / 10) * 0%)}
+.network-rack[data-u="10"] .network-rack-item[data-sp="1.5"] {top:calc((100 / 10) * 0.5%)}
 .network-rack[data-u="10"] .network-rack-item[data-sp="2"] {top:calc((100 / 10) * 1%)}
+.network-rack[data-u="10"] .network-rack-item[data-sp="2.5"] {top:calc((100 / 10) * 1.5%)}
 .network-rack[data-u="10"] .network-rack-item[data-sp="3"] {top:calc((100 / 10) * 2%)}
+.network-rack[data-u="10"] .network-rack-item[data-sp="3.5"] {top:calc((100 / 10) * 2.5%)}
 .network-rack[data-u="10"] .network-rack-item[data-sp="4"] {top:calc((100 / 10) * 3%)}
+.network-rack[data-u="10"] .network-rack-item[data-sp="4.5"] {top:calc((100 / 10) * 3.5%)}
 .network-rack[data-u="10"] .network-rack-item[data-sp="5"] {top:calc((100 / 10) * 4%)}
+.network-rack[data-u="10"] .network-rack-item[data-sp="5.5"] {top:calc((100 / 10) * 4.5%)}
 .network-rack[data-u="10"] .network-rack-item[data-sp="6"] {top:calc((100 / 10) * 5%)}
+.network-rack[data-u="10"] .network-rack-item[data-sp="6.5"] {top:calc((100 / 10) * 5.5%)}
 .network-rack[data-u="10"] .network-rack-item[data-sp="7"] {top:calc((100 / 10) * 6%)}
+.network-rack[data-u="10"] .network-rack-item[data-sp="7.5"] {top:calc((100 / 10) * 6.5%)}
 .network-rack[data-u="10"] .network-rack-item[data-sp="8"] {top:calc((100 / 10) * 7%)}
+.network-rack[data-u="10"] .network-rack-item[data-sp="8.5"] {top:calc((100 / 10) * 7.5%)}
 .network-rack[data-u="10"] .network-rack-item[data-sp="9"] {top:calc((100 / 10) * 8%)}
+.network-rack[data-u="10"] .network-rack-item[data-sp="9.5"] {top:calc((100 / 10) * 8.5%)}
 .network-rack[data-u="10"] .network-rack-item[data-sp="10"] {top:calc((100 / 10) * 9%)}
 .network-rack[data-u="10"] .network-rack-item[data-u="1"] {height:calc((100 / 10) * 1%);}
 .network-rack[data-u="10"] .network-rack-item[data-u="1.5"] {height:calc((100 / 10) * 1.5%);}
