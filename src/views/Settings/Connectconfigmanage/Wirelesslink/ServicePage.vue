@@ -38,19 +38,23 @@
     <div class="ui-drag-area2-section">
       <div class="ui-drag-area2-section-group" data-bg="sky">
         <div class="ui-drag-in-box">
-          <div class="ui-drag-item" data-bg="sky">사용자단말</div>
+          <div class="ui-drag-item" data-bg="sky" data-label="m">사용자단말</div>
           <i class="icon-connection-status" data-connection="true"></i>
         </div>
-        <div class="ui-drag-in-box" v-for="n in 7" :key="n">
+        <div class="ui-drag-in-box">
+          <div class="ui-drag-item" data-bg="sky" data-label="u2">사용자단말</div>
+          <i class="icon-connection-status" data-connection="true"></i>
+        </div>
+        <div class="ui-drag-in-box" v-for="n in 6" :key="n">
           <i class="icon-connection-status" data-connection="false"></i>
         </div>
       </div>
       <div class="ui-drag-area2-section-group" data-bg="yellow">
         <div class="ui-drag-in-box">
-          <div class="ui-drag-item" data-bg="yellow">HF송수신기 #1</div>
+          <div class="ui-drag-item" data-bg="yellow" data-label="m">HF송수신기 #1</div>
         </div>
         <div class="ui-drag-in-box">
-          <div class="ui-drag-item" data-bg="yellow">HF송수신기 #1</div>
+          <div class="ui-drag-item" data-bg="yellow" data-label="u2">HF송수신기 #1</div>
         </div>
         <div class="ui-drag-in-box" v-for="n in 6" :key="n">
         </div>
