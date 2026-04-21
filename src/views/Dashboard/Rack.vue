@@ -2,77 +2,77 @@
   <div class="rack-wrap" ref="rootEl">
     <div class="rack-item">
       <h2 class="table-title-box">무선통신기시스템</h2>
-      <div class="network-rack" data-u="38">
-        <div class="network-rack-u">
-          <div class="network-rack-u-item" v-for="n in 38" :key="n">{{ n }}</div>
-        </div>
-        <div class="network-rack-wrap" v-for="n in 3" :key="n">
-          <div class="network-rack-item" data-u="1" data-sp="1">
-            <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
-          </div>
-          <div class="network-rack-item" data-u="3.5" data-sp="9">
-            <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
-          </div>
-
-          <div class="network-rack-item" data-u="8" data-sp="23">
-            <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
-          </div>
-        </div>
-      </div>
+      <NetworkRack
+        :dataU="38"
+        :wraps="[
+          [
+            { dataU: 1, dataSp: 1, imgSrc: '@/assets/images/network/1u-apple_xserve.png', alt: '1u apple xserve' },
+            { dataU: 3.5, dataSp: 9, imgSrc: '@/assets/images/network/2u-ethernet_switchhub.png', alt: '3u raid array', link: '/dashboard/popup/rack2u' },
+            { dataU: 4, dataSp: 13, imgSrc: '@/assets/images/network/4u-managed_ups.png', alt: '4u managed ups', link: '/dashboard/popup/rack4u' },
+            { dataU: 1, dataSp: 23, imgSrc: '@/assets/images/network/1u-apple_xserve.png', alt: '1u apple xserve' , link: '/dashboard/popup/rack1u'},
+          ],
+          [
+            { dataU: 3.5, dataSp: 9, imgSrc: '@/assets/images/network/3u-raid_array.png', alt: '3u raid array', link: '/dashboard/popup/rackUPS' },
+          ],
+          [
+            { dataU: 3, dataSp: 13, imgSrc: '@/assets/images/network/3u-ups.png', alt: '4u managed ups' },
+          ]
+        ]"
+      />
     </div>
 
     <div class="rack-item">
       <h2 class="table-title-box">무선통신운용콘솔</h2>
-      <div class="network-rack" data-u="38">
-        <div class="network-rack-u">
-          <div class="network-rack-u-item" v-for="n in 38" :key="n">{{ n }}</div>
-        </div>
-        <div class="network-rack-wrap" v-for="n in 4" :key="n">
-          <div class="network-rack-item" data-u="1" data-sp="1">
-            <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
-          </div>
-          <div class="network-rack-item" data-u="3.5" data-sp="9">
-            <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
-          </div>
-
-          <div class="network-rack-item" data-u="8" data-sp="23">
-            <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
-          </div>
-        </div>
-
-      </div>
+      <NetworkRack
+        :dataU="38"
+        :wraps="[
+          [
+            { dataU: 1, dataSp: 1, imgSrc: '@/assets/images/network/1u-apple_xserve.png', alt: '1u apple xserve', link: '/dashboard/popup/rack4u' },
+            { dataU: 3.5, dataSp: 9, imgSrc: '@/assets/images/network/3u-raid_array.png', alt: '3u raid array' },
+            { dataU: 4, dataSp: 13, imgSrc: '@/assets/images/network/4u-managed_ups.png', alt: '4u managed ups' },
+            { dataU: 8, dataSp: 23, imgSrc: '@/assets/images/network/8u-rackmount_lcd.png', alt: '8u rackmount lcd' },
+          ],
+          [
+            { dataU: 3.5, dataSp: 9, imgSrc: '@/assets/images/network/3u-raid_array.png', alt: '3u raid array' },
+          ],
+          [
+            { dataU: 4, dataSp: 13, imgSrc: '@/assets/images/network/4u-managed_ups.png', alt: '4u managed ups' },
+          ],
+          [
+            { dataU: 4, dataSp: 13, imgSrc: '@/assets/images/network/4u-managed_ups.png', alt: '4u managed ups' },
+          ]
+        ]"
+      />
     </div>
 
     <div class="rack-item">
-      <h2 class="table-title-box">비상통신시스템</h2>
-      <div class="network-rack" data-u="38">
-        <div class="network-rack-u">
-          <div class="network-rack-u-item" v-for="n in 38" :key="n">{{ n }}</div>
-        </div>
-        <div class="network-rack-wrap" v-for="n in 2" :key="n">
-          <div class="network-rack-item" data-u="1" data-sp="1">
-            <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
-          </div>
-          <div class="network-rack-item" data-u="3.5" data-sp="9">
-            <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
-          </div>
-
-          <div class="network-rack-item" data-u="8" data-sp="23">
-            <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
-          </div>
-        </div>
-
-      </div>
+      <h2 class="table-title-box">비상통신기시스템</h2>
+      <NetworkRack
+        :dataU="38"
+        :wraps="[
+          [
+            { dataU: 1, dataSp: 1, imgSrc: '@/assets/images/network/1u-apple_xserve.png', alt: '1u apple xserve', link: '/dashboard/popup/rack4u' },
+            { dataU: 3.5, dataSp: 9, imgSrc: '@/assets/images/network/3u-raid_array.png', alt: '3u raid array' },
+            { dataU: 4, dataSp: 13, imgSrc: '@/assets/images/network/4u-managed_ups.png', alt: '4u managed ups' },
+            { dataU: 8, dataSp: 23, imgSrc: '@/assets/images/network/8u-rackmount_lcd.png', alt: '8u rackmount lcd' },
+          ],
+          [
+            { dataU: 3.5, dataSp: 9, imgSrc: '@/assets/images/network/3u-raid_array.png', alt: '3u raid array' },
+          ],
+        ]"
+      />
     </div>
   </div>
 </template>
 
+
 <script setup>
 import { ref, onMounted } from "vue";
 import G from "@/config/global.js";
+import NetworkRack from '@/components/NetworkRack.vue';
 
 const ko = {
-  "title": "랙 내용"
+  "title": "랙 내용",
 };
 
 const en = {

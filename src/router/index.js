@@ -4,6 +4,46 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
 
+      // 대시보드 팝업 Rack4U
+      {
+        path: '/dashboard/popup/rack4u',
+        name: 'DashboardPopupRack4U',
+        component: () => import('../views/Dashboard/Popup/Rack4U.vue'),
+        meta: { group: 'dashboard', isPopup: true },
+      },
+      {
+        path: '/dashboard/popup/rack2u',
+        name: 'DashboardPopupRack2U',
+        component: () => import('../views/Dashboard/Popup/Rack2U.vue'),
+        meta: { group: 'dashboard', isPopup: true },
+      },
+      {
+        path: '/dashboard/popup/rack1u',
+        name: 'DashboardPopupRack1U',
+        component: () => import('../views/Dashboard/Popup/Rack1U.vue'),
+        meta: { group: 'dashboard', isPopup: true },
+      },
+      {
+        path: '/dashboard/popup/rackUPS',
+        name: 'DashboardPopupRackUPS',
+        component: () => import('../views/Dashboard/Popup/RackUPS.vue'),
+        meta: { group: 'dashboard', isPopup: true },
+      },
+
+
+      {
+        path: '/dashboard/popup/rackbit',
+        name: 'DashboardPopupRackBIT',
+        component: () => import('../views/Dashboard/Popup/RackBIT.vue'),
+        meta: { group: 'dashboard', isPopup: true },
+      },
+       {
+        path: '/dashboard/popup/rackbitdetail',
+        name: 'DashboardPopupRackBITDetail',
+        component: () => import('../views/Dashboard/Popup/RackBITDetail.vue'),
+        meta: { group: 'dashboard', isPopup: true },
+      },
+
     // test page
     {
       path: '/guide/',
