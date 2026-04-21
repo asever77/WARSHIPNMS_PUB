@@ -367,6 +367,7 @@ td.minor{color:#353535 !important; background-color:#FECF00 !important;}
 .network-info--key{display:block;font-size:1.2rem;color:#3E3E3E;font-style:normal;line-height:1.4;}
 .network-info--value{display:block;font-size:1.2rem;color:#3E3E3E;font-weight:900;}
 .network-info--long-value{display:block;font-size:1.2rem;color:#3E3E3E;font-weight:900;}
+.network-info--icon.w0 {background-image:url('/src/assets/images/icon/icon-aspect-weather0.svg');}
 .network-info--icon.w1-1 {background-image:url('/src/assets/images/icon/icon-aspect-weather1-1.svg');}
 .network-info--icon.w1-2 {background-image:url('/src/assets/images/icon/icon-aspect-weather1-2.svg');}
 .network-info--icon.w2 {background-image:url('/src/assets/images/icon/icon-aspect-weather2.svg');}
@@ -376,6 +377,8 @@ td.minor{color:#353535 !important; background-color:#FECF00 !important;}
 .network-info--icon.s2 {background-image:url('/src/assets/images/icon/icon-aspect-sailing2.svg');}
 .network-info--icon.s3 {background-image:url('/src/assets/images/icon/icon-aspect-sailing3.svg');}
 .network-info--icon.s4 {background-image:url('/src/assets/images/icon/icon-aspect-sailing4.svg');}
+.network-info--icon.s5 {background-image:url('/src/assets/images/icon/icon-aspect-sailing5.svg');}
+.network-info--icon.s6 {background-image:url('/src/assets/images/icon/icon-aspect-sailing6.svg');}
 .network-info--table table,
 .network-info--table{width:100%;}
 .network-info--table thead th{height:3.6rem;background-color:var(--color-primary);color:#fff;font-size:1.2rem;font-weight:700;text-align:center;}

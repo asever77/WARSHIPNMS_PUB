@@ -268,7 +268,7 @@
         <div class="network-info--item" data-typ="full">
           <ul>
             <li class="network-info--text">
-              <i class="network-info--icon s1"></i>
+              <i class="network-info--icon w0"></i>
               <em class="network-info--key">{{ lang.info1_0 }}</em>
               <b class="network-info--value">2026-06-17 15:30:12</b>
             </li>
@@ -292,7 +292,7 @@
               <b class="network-info--value">4.26 m/s</b>
             </li>
             <li class="network-info--text">
-              <i class="network-info--icon w3"></i>
+              <i class="network-info--icon s5"></i>
               <em class="network-info--key">{{ lang.info1_5 }}</em>
               <b class="network-info--value">-10.4°</b>
             </li>
@@ -316,7 +316,7 @@
               <b class="network-info--value">170.17</b>
             </li>
             <li class="network-info--text">
-              <i class="network-info--icon w3"></i>
+              <i class="network-info--icon s6"></i>
               <em class="network-info--key">{{ lang.info2_5 }}</em>
               <b class="network-info--value">+26.7°</b>
             </li>
