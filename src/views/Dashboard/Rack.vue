@@ -2,91 +2,20 @@
   <div class="rack-wrap" ref="rootEl">
     <div class="rack-item">
       <h2 class="table-title-box">무선통신기시스템</h2>
-      <div class="rack-item-row">
-        <div class="rack-item-col">
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice2.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice2.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice2.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice3.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice3.png" alt="">
-          </div>
-
-          <div class="rack-item-col--item" data-col="4"></div>
-
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice4.png" alt="">
-          </div>
-
-          <div class="rack-item-col--item" data-col="1"></div>
-
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice5.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice5.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="10">
-            <img src="@/assets/images/network/dummy/Slice5.png" alt="">
-          </div>
+      <div class="network-rack" data-u="38">
+        <div class="network-rack-u">
+          <div class="network-rack-u-item" v-for="n in 38" :key="n">{{ n }}</div>
         </div>
-        <div class="rack-item-col">
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
+        <div class="network-rack-wrap" v-for="n in 3" :key="n">
+          <div class="network-rack-item" data-u="1" data-sp="1">
+            <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
           </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice6.png" alt="">
+          <div class="network-rack-item" data-u="3.5" data-sp="9">
+            <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
           </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2"></div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice7.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="8">
-            <img src="@/assets/images/network/dummy/Slice8.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1"></div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice9.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1"></div>
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice10.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1"></div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice11.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice13.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
+
+          <div class="network-rack-item" data-u="8" data-sp="23">
+            <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
           </div>
         </div>
       </div>
@@ -94,235 +23,45 @@
 
     <div class="rack-item">
       <h2 class="table-title-box">무선통신운용콘솔</h2>
-      <div class="rack-item-row">
-        <div class="rack-item-col">
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice12.png" alt="">
+      <div class="network-rack" data-u="38">
+        <div class="network-rack-u">
+          <div class="network-rack-u-item" v-for="n in 38" :key="n">{{ n }}</div>
+        </div>
+        <div class="network-rack-wrap" v-for="n in 4" :key="n">
+          <div class="network-rack-item" data-u="1" data-sp="1">
+            <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
           </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice14.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3" data-state="warn" v-bs-tooltip="careText" data-bs-placement="top">
-            <img src="@/assets/images/network/dummy/Slice14.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice14.png" alt="">
+          <div class="network-rack-item" data-u="3.5" data-sp="9">
+            <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
           </div>
 
-          <div class="rack-item-col--item" data-col="8">
-            <img src="@/assets/images/network/dummy/Slice8.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice12.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1"></div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice12.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice18.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice19.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice19.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice12.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice21.png" alt="">
-          </div>
-           <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice21.png" alt="">
-          </div>
-           <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
+          <div class="network-rack-item" data-u="8" data-sp="23">
+            <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
           </div>
         </div>
-        <div class="rack-item-col">
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice15.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice16.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
 
-          <div class="rack-item-col--item" data-col="6">
-            <img src="@/assets/images/network/dummy/Slice17.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1"></div>
-
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice18.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1"></div>
-
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice30.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3"></div>
-
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice22.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice23.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-        </div>
-        <div class="rack-item-col">
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice2.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice2.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice2.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice2.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice25.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice24.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3"></div>
-
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice12.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice11.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1"></div>
-
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice21.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="8">
-            <img src="@/assets/images/network/dummy/Slice26.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-        </div>
       </div>
     </div>
 
     <div class="rack-item">
       <h2 class="table-title-box">비상통신시스템</h2>
-      <div class="rack-item-row">
-        <div class="rack-item-col">
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
+      <div class="network-rack" data-u="38">
+        <div class="network-rack-u">
+          <div class="network-rack-u-item" v-for="n in 38" :key="n">{{ n }}</div>
+        </div>
+        <div class="network-rack-wrap" v-for="n in 2" :key="n">
+          <div class="network-rack-item" data-u="1" data-sp="1">
+            <img src="@/assets/images/network/1u-apple_xserve.png" alt="1u apple xserve" />
           </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
+          <div class="network-rack-item" data-u="3.5" data-sp="9">
+            <img src="@/assets/images/network/3u-raid_array.png" alt="3u raid array" />
           </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3"></div>
 
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice24.png" alt="">
-          </div>
-           <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice2.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice28.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1"></div>
-
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice24.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="5"></div>
-
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice33.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="9">
-            <img src="@/assets/images/network/dummy/Slice27.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
+          <div class="network-rack-item" data-u="8" data-sp="23">
+            <img src="@/assets/images/network/8u-rackmount_lcd.png" alt="8u rackmount lcd" />
           </div>
         </div>
-        <div class="rack-item-col">
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice29.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice30.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1"></div>
-          <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice31.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3"></div>
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice24.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="4">
-            <img src="@/assets/images/network/dummy/Slice32.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1"></div>
-           <div class="rack-item-col--item" data-col="3">
-            <img src="@/assets/images/network/dummy/Slice31.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="3"></div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="2">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-          <div class="rack-item-col--item" data-col="1">
-            <img src="@/assets/images/network/dummy/Slice1.png" alt="">
-          </div>
-        </div>
+
       </div>
     </div>
   </div>

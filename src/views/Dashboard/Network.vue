@@ -265,6 +265,15 @@
     <div class="network-side" >
       <div class="network-info">
         <h3>{{ lang.info1 }}</h3>
+        <div class="network-info--item" data-typ="full">
+          <ul>
+            <li class="network-info--text">
+              <i class="network-info--icon s1"></i>
+              <em class="network-info--key">{{ lang.info1_0 }}</em>
+              <b class="network-info--value">2026-06-17 15:30:12</b>
+            </li>
+          </ul>
+        </div>
         <div class="network-info--item">
           <ul>
             <li class="network-info--text">
@@ -281,6 +290,11 @@
               <i class="network-info--icon w3"></i>
               <em class="network-info--key">{{ lang.info1_3 }}</em>
               <b class="network-info--value">4.26 m/s</b>
+            </li>
+            <li class="network-info--text">
+              <i class="network-info--icon w3"></i>
+              <em class="network-info--key">{{ lang.info1_5 }}</em>
+              <b class="network-info--value">-10.4°</b>
             </li>
           </ul>
         </div>
@@ -300,6 +314,11 @@
               <i class="network-info--icon w4"></i>
               <em class="network-info--key">{{ lang.info1_4 }}</em>
               <b class="network-info--value">170.17</b>
+            </li>
+            <li class="network-info--text">
+              <i class="network-info--icon w3"></i>
+              <em class="network-info--key">{{ lang.info2_5 }}</em>
+              <b class="network-info--value">+26.7°</b>
             </li>
           </ul>
         </div>
@@ -1001,16 +1020,19 @@ const ko = {
   ups_14: "바이패스 라인 수",
 
   info1: "운항/기상 정보",
+  info1_0: "시간",
   info1_1: "현재 온도",
   info1_2: "습도",
   info1_3: "풍속",
   info1_4: "풍량",
+  info1_5: "Roll",
 
   info2: "운항 정보",
   info2_1: "항속",
   info2_2: "위도",
   info2_3: "경도",
   info2_4: "방위",
+  info2_5: "Pitch",
 
   tbl_1_title: "무선통신기 (연결장치)",
   tbl_1_th1: "구분",
@@ -1081,16 +1103,19 @@ const en = {
   ups_14: "바이패스 라인 수",
 
   info1: "기상 정보",
+  info1_0: "시간",
   info1_1: "현재 온도",
   info1_2: "습도",
   info1_3: "풍속",
   info1_4: "풍량",
+  info1_5: "Roll",
 
   info2: "운항 정보",
   info2_1: "항속",
   info2_2: "위도",
   info2_3: "경도",
   info2_4: "방위",
+  info2_5: "Pitch",
 
   tbl_1_title: "무선통신기 (연결장치)",
   tbl_1_th1: "구분",
