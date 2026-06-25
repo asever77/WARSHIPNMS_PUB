@@ -1,20 +1,30 @@
 <template>
   <table class="table-type-a">
     <colgroup>
-      <col style="width: 8rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
-      <col style="width: 8rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
     <tr>
-      <th scope="row">{{ lang.filter1 }}</th>
+      <th scope="row">
+        <div class="ui-flex" data-item-align="center" data-gap="4">
+          <span class="ui-flex-1">{{ lang.filter1 }}</span>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.filter1 }} {{ lang.sortAll }}"></BButton>
+        </div>
+      </th>
       <td>
         <BFormInput class="ui-input" placeholder=""></BFormInput>
       </td>
-      <th scope="row">{{ lang.filter2 }}</th>
+      <th scope="row">
+        <div class="ui-flex" data-item-align="center" data-gap="4">
+          <span class="ui-flex-1">{{ lang.filter2 }}</span>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.filter2 }} {{ lang.sortAll }}"></BButton>
+        </div>
+      </th>
       <td>
-         <BFormSelect class="ui-select-28" v-model="filterRepeat" :options="repeatOptions"></BFormSelect>
+         <BFormSelect class="ui-select" v-model="filterRepeat" :options="repeatOptions"></BFormSelect>
       </td>
     </tr>
     </tbody>
@@ -48,6 +58,7 @@
             ></button>
           </div>
         </BFormGroup>
+        <BFormSelect class="ui-select-28"></BFormSelect>
         <BFormSelect
           id="per-page"
           class="ui-select-28 w-60"
@@ -119,12 +130,14 @@
           <tr>
             <th scope="row">{{ lang.modalTh1_2 }}*</th>
             <td>
-              <div class="ui-flex" data-direction="col" data-gap="12">
+              <div class="ui-flex" data-direction="col" data-gap="4">
                 <div class="ui-flex" data-gap="16">
                   <BFormCheckbox v-model="form1.excludeHoliday" class="me-3">휴일제외</BFormCheckbox>
                   <BFormCheckbox v-model="form1.excludeWeekend">주말제외</BFormCheckbox>
                 </div>
-                <BFormSelect class="ui-select-28 w-100" :options="['매주', '매일', '매월']" v-model="form1.repeatType"></BFormSelect>
+                <div class="dot-line-tb">
+                  <BFormSelect class="ui-select w-100" :options="['매주', '매일', '매월']" v-model="form1.repeatType"></BFormSelect>
+                </div>
                 <div class="ui-flex" data-gap="12">
                   <BFormCheckbox v-model="form1.days" value="월">월</BFormCheckbox>
                   <BFormCheckbox v-model="form1.days" value="화">화</BFormCheckbox>
@@ -141,26 +154,23 @@
           <tr>
             <th scope="row">{{ lang.modalTh1_3 }}*</th>
             <td>
-              <div class="ui-flex" data-direction="col" data-gap="12">
-                <div class="ui-flex" data-item-align="center" data-gap="6">
-                  <BFormSelect class="ui-select-28" :options="hourOptions" v-model="timeForm.hour"></BFormSelect>
-                  <BFormSelect class="ui-select-28" :options="minuteOptions" v-model="timeForm.minute"></BFormSelect>
-                  <BFormSelect class="ui-select-28" :options="['오전', '오후']" v-model="timeForm.ampm"></BFormSelect>
-                  <BButton class="gray28" style="height: 2.8rem;" @click="addTime">시간추가</BButton>
+              <div class="ui-flex" data-direction="col" data-gap="4">
+                <div class="ui-flex" data-item-align="center" data-gap="4">
+                  <BFormSelect class="ui-select" :options="hourOptions" v-model="timeForm.hour"></BFormSelect>
+                  <BFormSelect class="ui-select" :options="minuteOptions" v-model="timeForm.minute"></BFormSelect>
+                  <BFormSelect class="ui-select" :options="['오전', '오후']" v-model="timeForm.ampm"></BFormSelect>
+                  <BButton class="gray24" @click="addTime">시간추가</BButton>
                 </div>
-                <div class="ui-flex mt-2" data-gap="8" style="flex-wrap: wrap; align-content: flex-start; min-height: 8rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; padding: 0.8rem; background-color: #f8fafc;">
+                <div class="time-list-box">
                   <div
                     v-for="(time, index) in form1.appliedTimes"
                     :key="index"
-                    class="ui-flex"
-                    data-item-align="center"
-                    data-gap="4"
-                    style="background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 9999px; padding: 0.4rem 1rem; font-size: 1.3rem; color: #334155;"
+                    class="time-list-item"
                   >
                     <span>{{ time }}</span>
                     <button
                       type="button"
-                      style="border: none; background: transparent; color: #94a3b8; font-size: 1.2rem; cursor: pointer; padding: 0 0.2rem; display: flex; align-items: center;"
+                      class="btn-time-del"
                       @click="removeTime(index)"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
@@ -319,9 +329,9 @@ const items = ref(Array.from({ length: 14 }, (_, i) => ({
 const fields = computed(() => [
   { key: 'select', label: '', thStyle: { width: '3rem' } },
   { key: 'th1', label: lang.value.colTh1, thStyle: { width: '5rem' } },
-  { key: 'th2', label: lang.value.colTh2, thStyle: { width: 'auto' }, tdClass: 'text-ellipsis' },
-  { key: 'th3', label: lang.value.colTh3, thStyle: { width: 'auto' }, tdClass: 'text-ellipsis' },
-  { key: 'th4', label: lang.value.colTh4, thStyle: { width: 'auto' }, tdClass: 'text-ellipsis' },
+  { key: 'th2', label: lang.value.colTh2, thStyle: { width: '24rem' }, tdClass: 'text-ellipsis' },
+  { key: 'th3', label: lang.value.colTh3, thStyle: { width: '24rem' }, tdClass: 'text-ellipsis' },
+  { key: 'th4', label: lang.value.colTh4, thStyle: { width: 'auto' }, tdClass: 'text-ellipsis text-start' },
 ])
 
 // 필터링/페이지네이션

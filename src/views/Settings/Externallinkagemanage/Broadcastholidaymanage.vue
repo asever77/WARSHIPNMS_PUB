@@ -19,43 +19,43 @@
     <div class="calendar-container ">
       <table class="calendar-table">
         <thead>
-          <tr>
-            <th>월</th>
-            <th>화</th>
-            <th>수</th>
-            <th>목</th>
-            <th>금</th>
-            <th>토</th>
-            <th>일</th>
-          </tr>
+        <tr>
+          <th>월</th>
+          <th>화</th>
+          <th>수</th>
+          <th>목</th>
+          <th>금</th>
+          <th>토</th>
+          <th>일</th>
+        </tr>
         </thead>
         <tbody>
-          <tr v-for="(week, wIndex) in calendarWeeks" :key="wIndex">
-            <td
-              v-for="(day, dIndex) in week"
-              :key="dIndex"
-              :class="{ 'other-month': !day.isCurrentMonth }"
-              @click="clickDay(day)"
-            >
-              <div class="day-cell">
-                <div class="day-header">
+        <tr v-for="(week, wIndex) in calendarWeeks" :key="wIndex">
+          <td
+            v-for="(day, dIndex) in week"
+            :key="dIndex"
+            :class="{ 'other-month': !day.isCurrentMonth }"
+            @click="clickDay(day)"
+          >
+            <div class="day-cell">
+              <div class="day-header">
                   <span class="day-number">
                     {{ day.month !== currentMonth && day.dayNumber === 1 ? day.month + '월 ' + day.dayNumber + '일' : (day.dayNumber === 1 && day.isCurrentMonth ? day.month + '월 ' + day.dayNumber + '일' : day.dayNumber) }}
                   </span>
-                </div>
-                <div class="day-body">
-                  <div
-                    v-for="holiday in getHolidaysForDay(day)"
-                    :key="holiday.id"
-                    class="holiday-pill"
-                    @click.stop="clickHoliday(holiday)"
-                  >
-                    {{ holiday.title }}
-                  </div>
+              </div>
+              <div class="day-body">
+                <div
+                  v-for="holiday in getHolidaysForDay(day)"
+                  :key="holiday.id"
+                  class="holiday-pill"
+                  @click.stop="clickHoliday(holiday)"
+                >
+                  {{ holiday.title }}
                 </div>
               </div>
-            </td>
-          </tr>
+            </div>
+          </td>
+        </tr>
         </tbody>
       </table>
     </div>
@@ -76,29 +76,29 @@
           <col style="width: auto" />
         </colgroup>
         <tbody>
-          <tr>
-            <th scope="row">제목</th>
-            <td>
-              <BFormInput type="text" class="ui-input" v-model="form.title" placeholder="휴일 제목 입력" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">기간</th>
-            <td>
-              <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4">
-                <BFormInput type="date" class="ui-input" v-model="form.datestart" />
-                ~
-                <BFormInput type="date" class="ui-input" v-model="form.dateend" />
-              </div>
-            </td>
-          </tr>
+        <tr>
+          <th scope="row">제목</th>
+          <td>
+            <BFormInput type="text" class="ui-input" v-model="form.title" placeholder="휴일 제목 입력" />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">기간</th>
+          <td>
+            <div class="ui-flex ui-data-box" data-item-align="center" data-gap="4">
+              <BFormInput type="date" class="ui-input" v-model="form.datestart" />
+              ~
+              <BFormInput type="date" class="ui-input" v-model="form.dateend" />
+            </div>
+          </td>
+        </tr>
         </tbody>
       </table>
     </div>
     <template #footer>
-        <BButton class="gray28" @click="modals.modal1.show = false">취소</BButton>
-        <BButton v-if="isEditMode" class="blue28" @click="deleteHoliday">삭제</BButton>
-        <BButton class="blue28" @click="saveHoliday">{{ isEditMode ? '수정' : '등록' }}</BButton>
+      <BButton class="gray28" @click="modals.modal1.show = false">취소</BButton>
+      <BButton v-if="isEditMode" class="blue28" @click="deleteHoliday">삭제</BButton>
+      <BButton class="blue28" @click="saveHoliday">{{ isEditMode ? '수정' : '등록' }}</BButton>
     </template>
   </UiModal>
 </template>
