@@ -302,6 +302,30 @@ const router = createRouter({
             meta: { group: 'settings' },
           },
           {
+            path: '/settings/externallinkagemanage/autobroadcastmanage',
+            name: 'SettingsExternallinkagemanageAutobroadcastmanageView',
+            component: () => import('../views/Settings/Externallinkagemanage/Autobroadcastmanage.vue'),
+            meta: { group: 'settings' },
+          },
+          {
+            path: '/settings/externallinkagemanage/broadcastsourcemanage',
+            name: 'SettingsExternallinkagemanageBroadcastsourcemanageView',
+            component: () => import('../views/Settings/Externallinkagemanage/Broadcastsourcemanage.vue'),
+            meta: { group: 'settings' },
+          },
+          {
+            path: '/settings/externallinkagemanage/broadcastschedulemanage',
+            name: 'SettingsExternallinkagemanageBroadcastschedulemanageView',
+            component: () => import('../views/Settings/Externallinkagemanage/Broadcastschedulemanage.vue'),
+            meta: { group: 'settings' },
+          },
+          {
+            path: '/settings/externallinkagemanage/broadcastholidaymanage',
+            name: 'SettingsExternallinkagemanageBroadcastholidaymanageView',
+            component: () => import('../views/Settings/Externallinkagemanage/Broadcastholidaymanage.vue'),
+            meta: { group: 'settings' },
+          },
+          {
             path: '/settings/externallinkagemanage/alarmdevicemanage',
             name: 'SettingsExternallinkagemanageAlarmdevicemanageView',
             component: () => import('../views/Settings/Externallinkagemanage/Alarmdevicemanage.vue'),

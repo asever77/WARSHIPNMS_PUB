@@ -24,17 +24,25 @@ import { useRouter } from "vue-router";
 import TabBase from '@/components/TabBase.vue';
 
 const ko = {
-  "title": "설정/외부연계관리",
+  "title": "설정/방송경보",
   "broadcastequipmanage": "방송장비관리",
-  "alarmdevicemanage": "경보장치관리",
+  "autobroadcastmanage": "자동방송관리",
+  "broadcastsourcemanage": "방송음원관리",
+  "broadcastschedulemanage": "방송스케줄관리",
+  "broadcastholidaymanage": "방송휴일관리",
+  "alarmdevicemanage": "경보관리",
   "cctvmanage": "CCTV 관리"
 };
 
 const en = {
-  "title": "Settings/Externallinkagemanage",
-  "broadcastequipmanage": "Broadcastequipmanage",
-  "alarmdevicemanage": "Alarmdevicemanage",
-  "cctvmanage": "CCTV manage"
+  "title": "Settings/BroadcastAlarm",
+  "broadcastequipmanage": "Broadcast Equip",
+  "autobroadcastmanage": "Auto Broadcast",
+  "broadcastsourcemanage": "Broadcast Source",
+  "broadcastschedulemanage": "Broadcast Schedule",
+  "broadcastholidaymanage": "Broadcast Holiday",
+  "alarmdevicemanage": "Alarm Manage",
+  "cctvmanage": "CCTV Manage"
 };
 
 const lang = ref({});
@@ -46,6 +54,10 @@ onMounted(() => {
   lang.value = (G.lang === "ko") ? ko : en;
   tabList.value = [
     { label: lang.value.broadcastequipmanage, path: '/settings/externallinkagemanage/broadcastequipmanage' },
+    { label: lang.value.autobroadcastmanage, path: '/settings/externallinkagemanage/autobroadcastmanage' },
+    { label: lang.value.broadcastsourcemanage, path: '/settings/externallinkagemanage/broadcastsourcemanage' },
+    { label: lang.value.broadcastschedulemanage, path: '/settings/externallinkagemanage/broadcastschedulemanage' },
+    { label: lang.value.broadcastholidaymanage, path: '/settings/externallinkagemanage/broadcastholidaymanage' },
     { label: lang.value.alarmdevicemanage, path: '/settings/externallinkagemanage/alarmdevicemanage' },
     { label: lang.value.cctvmanage, path: '/settings/externallinkagemanage/cctvmanage' },
   ];
