@@ -29,7 +29,7 @@
           [
             { dataU: 1, dataSp: 1, imgSrc: '@/assets/images/network/1u-apple_xserve.png', alt: '1u apple xserve', link: '/dashboard/popup/rack4u' },
             { dataU: 3.5, dataSp: 9, imgSrc: '@/assets/images/network/3u-raid_array.png', alt: '3u raid array' },
-            { dataU: 4, dataSp: 13, imgSrc: '@/assets/images/network/4u-managed_ups.png', alt: '4u managed ups' },
+            { dataU: 4, dataSp: 13, imgSrc: '@/assets/images/temp/sample1.png', alt: '4u managed ups' },
             { dataU: 8, dataSp: 23, imgSrc: '@/assets/images/network/8u-rackmount_lcd.png', alt: '8u rackmount lcd' },
           ],
           [
