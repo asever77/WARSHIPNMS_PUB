@@ -2,7 +2,7 @@
   <div
     :class="['network-item', (terminal && terminal[1] > 0) ? 'red' : '']"
     :data-type="type"
-    :style="boxStyle"
+    :style="[boxStyle, customStyle]"
     :data-name="text"
   >
     <button type="button" class="network-item--btn" @click="onClick"></button>
@@ -57,6 +57,10 @@ const props = defineProps({
   callback: {
     type: Function,
     default: null
+  },
+  customStyle: {
+    type: [Object, String],
+    default: ''
   }
 });
 
@@ -130,7 +134,8 @@ const boxStyle = computed(() => {
   color:#fff;
   background-color: #545454;
   padding:.6rem .8rem;
-  min-width:9rem;
+  min-width:6rem;
+  white-space: nowrap;
 }
 .network-item[data-type="blue"] {
   color:#000;
@@ -138,6 +143,7 @@ const boxStyle = computed(() => {
   border:1px solid #007BFF;
   padding:.6rem .8rem;
   min-width:9rem;
+
 }
 .network-item--terminal{
   display: flex;

@@ -27,6 +27,16 @@
       </div>
 
       <div class="network-dashboard--wrap">
+        <!-- 사용자단말 -->
+        <NetworkBox
+          type="blue"
+          bottom="calc(50% + 13rem)"
+          left="calc(50% - 28rem)"
+          text="사용자단말"
+          :terminal="[7,1,4]"
+          :callback="openUserTerminalModal"
+        />
+
         <!-- 무선통신운용콘솔 -->
         <NetworkBox
           type="major"
@@ -36,6 +46,7 @@
           text="무선통신운용자콘솔"
           :callback="openSwitchModal"
         >
+          <!-- 무선통신운용콘솔:사용자단말 -->
           <NetworkLine line="poe" ps="tr-bl" width="8rem" height="4rem" bottom="100%" left="70%">
             <NetworkBox
               type="blue"
@@ -46,34 +57,53 @@
               :callback="openUserTerminalModal"
             />
           </NetworkLine>
-
-          <NetworkLine line="poe" ps="tr-bl" width="11.6rem" height="2.4rem" top="100%" right="70%" >
+          <!-- 무선통신운용콘솔:연결스위치 -->
+          <NetworkLine line="poe" ps="tr-bl" width="7.8rem" height="2.4rem" top="100%" right="90%" >
             <NetworkBox
               type="gray"
               top="100%"
-              left="calc(0rem - 50%)"
-              text="NMS"
-              :callback="openDetailsModal"
-            />
-          </NetworkLine>
-          <NetworkLine line="poe" ps="tr-bl" width="2.3rem" height="2.4rem" top="100%" left="48%" >
-            <NetworkBox
-              type="gray"
-              top="100%"
-              right="-103%"
+              left="-4rem"
               text="VoIP 교환기"
               :callback="openDetailsModal"
             />
           </NetworkLine>
-          <NetworkLine line="poe" ps="tl-br" width="6rem" height="2.4rem" top="100%" left="84%" >
+          <NetworkLine line="poe" ps="tb" width="0.rem" height="2.4rem" top="100%" right="78%" >
             <NetworkBox
               type="gray"
               top="100%"
-              left="calc(50% - 1.4rem)"
+              right="-0.6rem"
               text="음성녹음장치"
               :callback="openDetailsModal"
             />
           </NetworkLine>
+          <NetworkLine line="poe" ps="tl-br" width="3rem" height="2.4rem" top="100%" left="30%" >
+            <NetworkBox
+              type="gray"
+              top="100%"
+              right="-3rem"
+              text="NMS"
+              :callback="openDetailsModal"
+            />
+          </NetworkLine>
+          <NetworkLine line="poe" ps="tl-br" width="7.5rem" height="2.4rem" top="100%" left="65%" >
+            <NetworkBox
+              type="gray"
+              top="100%"
+              right="-5rem"
+              text="KY-100연동장치 #1"
+              :callback="openDetailsModal"
+            />
+          </NetworkLine>
+          <NetworkLine line="poe" ps="tl-br" width="16.3rem" height="2.4rem" top="100%" left="80%" >
+            <NetworkBox
+              type="gray"
+              top="100%"
+              right="-5rem"
+              text="KY-100연동장치 #2"
+              :callback="openDetailsModal"
+            />
+          </NetworkLine>
+
         </NetworkBox>
 
         <!-- L3 스위치 -->
@@ -85,6 +115,7 @@
           text="L3"
           :callback="openSwitchModal"
         >
+          <!-- L3 스위치:연결스위치 -->
           <NetworkLine line="poe" ps="tr-b" width="14.8rem" height="5rem" bottom="100%" left="30%">
             <NetworkBox
               type="gray"
@@ -92,17 +123,6 @@
               :callback="openDetailsModal"
             />
           </NetworkLine>
-          <!-- <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="calc(50% - 0.4rem)">
-            <NetworkBox
-              type="gray"
-              bottom="100%"
-              left="calc(100% - 4.6rem)"
-              text="CCTV"
-              :callback="openDetailsModal"
-            />
-          </NetworkLine> -->
-
-
           <NetworkLine line="poe" ps="tr-b" width="10rem" height="1.6rem" bottom="100%" left="70%">
             <NetworkBox
               type="gray"
@@ -111,7 +131,6 @@
             />
           </NetworkLine>
         </NetworkBox>
-
         <!-- UTM -->
         <NetworkBox
           type="sub"
@@ -131,6 +150,7 @@
           text="No.3 ICS스위칭허브랙"
           :callback="openSwitchModal"
         >
+          <!-- No.3 ICS스위칭허브랙: 사용자단말 -->
           <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="50%">
             <NetworkBox
               type="blue"
@@ -142,7 +162,6 @@
             />
           </NetworkLine>
         </NetworkBox>
-
         <!-- 무선통신기시스템 -->
         <NetworkBox
           type="sub"
@@ -152,6 +171,7 @@
           text="무선통신기시스템"
           :callback="openSwitchModal"
         >
+          <!-- 무선통신기시스템: 사용자단말 -->
           <NetworkLine line="poe" ps="tb" height="4rem" bottom="100%" left="50%">
             <NetworkBox
               type="blue"
@@ -173,6 +193,7 @@
           text="비상통신시스템"
           :callback="openSwitchModal2"
         >
+          <!-- 비상통신시스템: 사용자단말 -->
           <NetworkLine line="poe" ps="tb" height="3rem" top="100%" left="50%">
             <NetworkBox
               type="blue"
@@ -183,11 +204,21 @@
               :callback="openUserTerminalModal"
             />
           </NetworkLine>
-          <NetworkLine line="poe" ps="tr-bl" width="9rem" height="2.4rem" bottom="100%" left="50%" >
+          <!-- 비상통신시스템: 연결스위치 -->
+          <NetworkLine line="poe" ps="tb" width="0rem" height="2.4rem" bottom="100%" left="20%" >
             <NetworkBox
               type="gray"
               bottom="100%"
-              right="calc(0rem - 50%)"
+              left="-3rem"
+              text="텔레브리프연동장치"
+              :callback="openDetailsModal"
+            />
+          </NetworkLine>
+          <NetworkLine line="poe" ps="tr-bl" width="6.6rem" height="2.4rem" bottom="100%" left="50%" >
+            <NetworkBox
+              type="gray"
+              bottom="100%"
+              right="-50%"
               text="VolP 교환기"
               :callback="openDetailsModal"
             />
@@ -203,6 +234,7 @@
           text="No.2 ICS스위칭허브랙"
           :callback="openSwitchModal2"
         >
+          <!-- No.2 ICS스위칭허브랙: 사용자단말 -->
           <NetworkLine line="poe" ps="tb" height="3rem" top="100%" left="50%">
             <NetworkBox
               type="blue"
@@ -213,6 +245,7 @@
               :callback="openUserTerminalModal"
             />
           </NetworkLine>
+          <!-- No.2 ICS스위칭허브랙: 연결스위치 -->
           <NetworkLine line="poe" ps="tb" width="1rem" height="2.4rem" bottom="100%" left="calc(50% - 0.4rem)" >
             <NetworkBox
               type="gray"
@@ -233,6 +266,7 @@
           text="No.1 ICS스위칭허브랙"
           :callback="openSwitchModal2"
         >
+          <!-- No.1 ICS스위칭허브랙: 사용자단말 -->
           <NetworkLine line="poe" ps="tb" height="3rem" top="100%" left="50%">
             <NetworkBox
               type="blue"
@@ -1214,3 +1248,4 @@ function getTextFromEvent(e) {
   return '';
 }
 </script>
+
