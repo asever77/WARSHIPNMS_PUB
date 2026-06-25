@@ -79,37 +79,55 @@
           <tr>
             <th scope="row">{{ lang.modalTh1_1 }}</th>
             <td>
-               <BFormInput type="text" class="ui-input" />
+              {{ form1.name }}
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_2 }}</th>
             <td>
-               <BFormSelect class="ui-select-28 w-60"></BFormSelect>
+               {{ form1.type }}
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_3 }}</th>
             <td>
-              <BFormInput type="text" class="ui-input" />
+               {{ form1.gender }}
             </td>
           </tr>
 
           <tr>
             <th scope="row">{{ lang.modalTh1_4 }}</th>
             <td>
-               <BFormSelect class="ui-select-28 w-60"></BFormSelect>
+               {{ form1.content }}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.modalTh1_5 }}</th>
+            <td>
+               {{ form1.datestart }} ~ {{ form1.dateend }}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ lang.modalTh1_6 }}</th>
+            <td>
+              {{ form1.scedule }}
             </td>
           </tr>
         </tbody>
       </table>
-
+      <div class="ui-flex mt-2" data-direction="col" data-gap="4">
+        <div class="ui-flex" data-direction="col" data-gap="4">
+          <audio controls class="w-100" style="height: 3.2rem;">
+            <source src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modal1.show = false">{{ lang.btn1 }}</BButton>
-      <BButton class="blue28">{{ lang.btn2 }}</BButton>
+      <BButton class="blue28">{{ lang.modal1Btn1 }}</BButton>
     </template>
   </UiModal>
 
@@ -128,6 +146,7 @@ import {
   BFormGroup,
   BTable,
   BFormCheckbox,
+  BFormTextarea,
 } from 'bootstrap-vue-next/components'
 import UiModal from '@/components/UiModal.vue'
 
@@ -153,17 +172,30 @@ const ko = {
   colTh6: '스케쥴',
   colTh7: '적용시간',
 
-  modalTitle1: '방송 음원 설정 수정',
-  modalTh1_1: '음원명',
-  modalTh1_2: '내선번호',
-  modalTh1_3: '설명/비고',
-  modalTh1_4: '사용여부',
+  modalTitle1: '방송음원 생성',
+  modalTh1_1: '이름',
+  modalTh1_2: '유형',
+  modalTh1_3: '목소리 성별',
+  modalTh1_4: '방송내용',
+  modalTh1_5: '적용기간',
+  modalTh1_6: '스케줄',
+  modal1Btn1: '즉시방송',
 }
 
 const en = {
 
 }
 const lang = ref({})
+
+const form1 = ref({
+  name: '테스트방송 ',
+  type: '항해중',
+  gender: '남성',
+  content: '음성합성이란 텍스트데이터를 음성으로 변환하는 기술로 임의의 문장을 입력받아 음성으로 표현하는 기술입니다',
+  datestart: '2026-05-10',
+  dateend: '2027-01-03',
+  scedule: '선택',
+})
 
 // =========================
 // [모달 상태 관리]

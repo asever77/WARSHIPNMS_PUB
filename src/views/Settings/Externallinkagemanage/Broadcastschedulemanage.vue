@@ -91,7 +91,7 @@
     </div>
   </div>
   <div class="ui-btn-group">
-    <BButton class="blue28">{{ lang.btn1 }}</BButton>
+    <BButton class="blue28" @click="modals.modal1.show = true">{{ lang.btn1 }}</BButton>
     <BButton class="gray28">{{ lang.btn2 }}</BButton>
   </div>
 
@@ -105,35 +105,71 @@
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width: 14rem" />
+          <col style="width:8rem" />
           <col style="width: auto" />
         </colgroup>
         <tbody>
           <tr>
-            <th scope="row">{{ lang.modalTh1_1 }}</th>
+            <th scope="row">{{ lang.modalTh1_1 }}*</th>
             <td>
-               <BFormInput type="text" class="ui-input" />
+              <BFormInput type="text" class="ui-input" v-model="form1.name" placeholder="평일 오전과업알림 15분전" />
             </td>
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.modalTh1_2 }}</th>
+            <th scope="row">{{ lang.modalTh1_2 }}*</th>
             <td>
-               <BFormSelect class="ui-select-28 w-60"></BFormSelect>
+              <div class="ui-flex" data-direction="col" data-gap="12">
+                <div class="ui-flex" data-gap="16">
+                  <BFormCheckbox v-model="form1.excludeHoliday" class="me-3">휴일제외</BFormCheckbox>
+                  <BFormCheckbox v-model="form1.excludeWeekend">주말제외</BFormCheckbox>
+                </div>
+                <BFormSelect class="ui-select-28 w-100" :options="['매주', '매일', '매월']" v-model="form1.repeatType"></BFormSelect>
+                <div class="ui-flex" data-gap="12">
+                  <BFormCheckbox v-model="form1.days" value="월">월</BFormCheckbox>
+                  <BFormCheckbox v-model="form1.days" value="화">화</BFormCheckbox>
+                  <BFormCheckbox v-model="form1.days" value="수">수</BFormCheckbox>
+                  <BFormCheckbox v-model="form1.days" value="목">목</BFormCheckbox>
+                  <BFormCheckbox v-model="form1.days" value="금">금</BFormCheckbox>
+                  <BFormCheckbox v-model="form1.days" value="토">토</BFormCheckbox>
+                  <BFormCheckbox v-model="form1.days" value="일">일</BFormCheckbox>
+                </div>
+              </div>
             </td>
           </tr>
 
           <tr>
-            <th scope="row">{{ lang.modalTh1_3 }}</th>
+            <th scope="row">{{ lang.modalTh1_3 }}*</th>
             <td>
-              <BFormInput type="text" class="ui-input" />
-            </td>
-          </tr>
-
-          <tr>
-            <th scope="row">{{ lang.modalTh1_4 }}</th>
-            <td>
-               <BFormSelect class="ui-select-28 w-60"></BFormSelect>
+              <div class="ui-flex" data-direction="col" data-gap="12">
+                <div class="ui-flex" data-item-align="center" data-gap="6">
+                  <BFormSelect class="ui-select-28" :options="hourOptions" v-model="timeForm.hour"></BFormSelect>
+                  <BFormSelect class="ui-select-28" :options="minuteOptions" v-model="timeForm.minute"></BFormSelect>
+                  <BFormSelect class="ui-select-28" :options="['오전', '오후']" v-model="timeForm.ampm"></BFormSelect>
+                  <BButton class="gray28" style="height: 2.8rem;" @click="addTime">시간추가</BButton>
+                </div>
+                <div class="ui-flex mt-2" data-gap="8" style="flex-wrap: wrap; align-content: flex-start; min-height: 8rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; padding: 0.8rem; background-color: #f8fafc;">
+                  <div
+                    v-for="(time, index) in form1.appliedTimes"
+                    :key="index"
+                    class="ui-flex"
+                    data-item-align="center"
+                    data-gap="4"
+                    style="background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 9999px; padding: 0.4rem 1rem; font-size: 1.3rem; color: #334155;"
+                  >
+                    <span>{{ time }}</span>
+                    <button
+                      type="button"
+                      style="border: none; background: transparent; color: #94a3b8; font-size: 1.2rem; cursor: pointer; padding: 0 0.2rem; display: flex; align-items: center;"
+                      @click="removeTime(index)"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -141,8 +177,8 @@
 
     </div>
     <template #footer>
-      <BButton class="gray28" @click="modals.modal1.show = false">{{ lang.btn1 }}</BButton>
-      <BButton class="blue28">{{ lang.btn2 }}</BButton>
+      <BButton class="gray28" @click="modals.modal1.show = false">{{ lang.modalBtnCancel }}</BButton>
+      <BButton class="blue28">{{ lang.modalBtnRegister }}</BButton>
     </template>
   </UiModal>
 
@@ -184,11 +220,12 @@ const ko = {
   colTh3: '반복여부',
   colTh4: '적용시간',
 
-  modalTitle1: '방송 음원 설정 수정',
-  modalTh1_1: '음원명',
-  modalTh1_2: '내선번호',
-  modalTh1_3: '설명/비고',
-  modalTh1_4: '사용여부',
+  modalTitle1: '스케줄 등록',
+  modalTh1_1: '이름',
+  modalTh1_2: '반복여부',
+  modalTh1_3: '적용시간',
+  modalBtnCancel: '취소',
+  modalBtnRegister: '등록하기',
 
   searchPlaceholder: '검색어 입력',
   searchSelect: '전체 선택/해제',
@@ -210,11 +247,12 @@ const en = {
   colTh3: 'Repeat',
   colTh4: 'Time',
 
-  modalTitle1: 'Edit Broadcast Source Settings',
-  modalTh1_1: 'Source Name',
-  modalTh1_2: 'Extension Number',
-  modalTh1_3: 'Description/Remarks',
-  modalTh1_4: 'Use Status',
+  modalTitle1: 'Schedule Register',
+  modalTh1_1: 'Name',
+  modalTh1_2: 'Repeat',
+  modalTh1_3: 'Applied Time',
+  modalBtnCancel: 'Cancel',
+  modalBtnRegister: 'Register',
 
   searchPlaceholder: 'Enter search term',
   searchSelect: 'Select/Deselect All',
@@ -233,6 +271,27 @@ const modals = reactive({
 // [상태/폼/리스트 관리]
 // =========================
 const currentPage = ref(1) // 현재 페이지
+const form1 = ref({
+  name: '평일 오전과업알림 15분전',
+  excludeHoliday: false,
+  excludeWeekend: false,
+  repeatType: '매주',
+  days: ['토', '일'],
+  appliedTimes: ['09:15 오전', '10:15 오전']
+})
+const timeForm = ref({
+  hour: '01',
+  minute: '01',
+  ampm: '오후'
+})
+const hourOptions = Array.from({ length: 12 }, (_, i) => {
+  const h = String(i + 1).padStart(2, '0')
+  return { value: h, text: h }
+})
+const minuteOptions = Array.from({ length: 60 }, (_, i) => {
+  const m = String(i).padStart(2, '0')
+  return { value: m, text: m }
+})
 const perPage = ref(10) // 페이지당 개수
 const selectedIds = ref([]) // 선택된 행 id
 const filterText = ref('') // 검색어
@@ -314,6 +373,15 @@ function toggleSelectAll(checked) {
 function onRowClicked() { modals.modal1.show = true }
 function onFilter() {
   currentPage.value = 1
+}
+function addTime() {
+  const newTime = `${timeForm.value.hour}:${timeForm.value.minute} ${timeForm.value.ampm}`
+  if (!form1.value.appliedTimes.includes(newTime)) {
+    form1.value.appliedTimes.push(newTime)
+  }
+}
+function removeTime(index) {
+  form1.value.appliedTimes.splice(index, 1)
 }
 
 // =========================
