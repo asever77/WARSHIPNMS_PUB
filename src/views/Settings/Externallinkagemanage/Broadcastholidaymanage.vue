@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="base-table">
-      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive @row-clicked="onRowClicked" data-type="clickable">
+      <BTable :items="filteredItems" :fields="fields" bordered hover small responsive @row-clicked="onRowClicked" data-type="clickable">
       </BTable>
     </div>
   </div>
@@ -157,7 +157,7 @@ const fields = computed(() => [
   { key: 'th1', label: lang.value.colTh1, thStyle: { width: '6rem' } },
   { key: 'th2', label: lang.value.colTh2, thStyle: { width: 'auto' } },
   { key: 'th3', label: lang.value.colTh3, thStyle: { width: '10rem' } },
-  { key: 'th4', label: lang.value.colTh4, thStyle: { width: 'auto' } },
+  { key: 'th4', label: lang.value.colTh4, thStyle: { width: 'auto' }, tdClass: 'text-ellipsis' },
   { key: 'th5', label: lang.value.colTh5, thStyle: { width: '12rem' } },
 ])
 

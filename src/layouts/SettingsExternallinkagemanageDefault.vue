@@ -1,4 +1,5 @@
 <template>
+
   <div class="base-content">
     <div class="base-content--header">
       <div class="base-content--header-title">

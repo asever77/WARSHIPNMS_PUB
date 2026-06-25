@@ -1,18 +1,66 @@
 <template>
-  <div class="base-wrap">
-    <div class="base-wrap-top-box">
-      <h3 class="text-14-700">{{ lang.title1 }}</h3>
-    </div>
+  <div class="base-wrap ">
     <div class="search-base">
       <div class="search-base--form">
         <span class="search-total">{{ lang.totalLabel }}:15</span>
       </div>
+      <div class="search-base--btns">
+        <!-- 검색어 입력 -->
+        <BFormGroup>
+          <div class="ui-search-with-btn">
+            <BFormInput
+              id="search-word-2"
+              v-model="filterText"
+              :placeholder="lang.searchPlaceholder"
+              class="ui-input-28"
+            />
+            <button
+              type="button"
+              class="btn-search-icon"
+              aria-label="{{ lang.btnSearch }}"
+              @click="onFilter"
+            ></button>
+          </div>
+        </BFormGroup>
+        <BFormSelect class="ui-select-28"></BFormSelect>
+
+      </div>
     </div>
     <div class="base-table">
-      <BTable :items="paginatedItems" :fields="fields" bordered hover small responsive @row-clicked="onRowClicked" data-type="clickable">
+      <BTable
+        :items="paginatedItems"
+        :fields="fields"
+        bordered
+        hover
+        small
+        responsive
+        @row-clicked="onRowClicked"
+        data-type="clickable"
+      >
+        <template #cell(th7)="{ item }">
+          <div class="form-switch--wrap">
+            <BFormCheckbox
+              v-model="item.th7"
+              switch
+              :inline="true"
+              :value="true"
+              :unchecked-value="false"
+              class="switch-checkbox"
+            />
+            <span>{{ item.th7 ? 'on' : 'off' }}</span>
+          </div>
+        </template>
       </BTable>
     </div>
   </div>
+  <div class="ui-btn-group">
+    <div class="ui-flex ml-auto" data-gap="8">
+      <BFormCheckbox switch :inline="true" :value="true" :unchecked-value="false" class="ui-switch" v-model="shipStatus">
+         <span>{{ shipStatus ? '함정운항상태: 항해중' : '함정운항상태: 정박중' }}</span>
+      </BFormCheckbox>
+    </div>
+  </div>
+
 
   <UiModal
     v-model="modals.modal1.show"
@@ -73,60 +121,47 @@
 // =========================
 import { ref, onMounted, computed, reactive } from 'vue'
 import G from '@/config/global.js'
-import { BFormInput, BButton, BFormSelect, BTable, BFormCheckbox } from 'bootstrap-vue-next/components'
+import {
+  BFormInput,
+  BFormSelect,
+  BButton,
+  BFormGroup,
+  BTable,
+  BFormCheckbox,
+} from 'bootstrap-vue-next/components'
 import UiModal from '@/components/UiModal.vue'
 
 // =========================
 // [언어/라벨 관리]
 // =========================
 const ko = {
-  title1: '자동 방송 관리',
+  title1: '방송 음원 관리',
   totalLabel: '전체',
 
-  filter1: '교환기이름',
-  filter2: '교환기주소',
-  filter3: '기압자정보',
+  filter1: '이름',
+  filter2: '반복여부',
 
-  btn1: '취소',
-  btn2: '저장',
+  btnSearch: '조회',
+  btn1: '등록',
+  btn2: '삭제',
 
   colTh1: 'No',
-  colTh2: '자동방송명',
-  colTh3: '내선번호',
-  colTh4: '설명/비고',
-  colTh5: '사용여부',
+  colTh2: '이름',
+  colTh3: '반복여부',
+  colTh4: '방송내용',
+  colTh5: '적용기간',
+  colTh6: '스케쥴',
+  colTh7: '적용시간',
 
-  modalTitle1: '자동 방송 설정 수정',
-
-  modalTh1_1: '자동방송명',
+  modalTitle1: '방송 음원 설정 수정',
+  modalTh1_1: '음원명',
   modalTh1_2: '내선번호',
   modalTh1_3: '설명/비고',
   modalTh1_4: '사용여부',
 }
 
 const en = {
-  title1: 'Auto Broadcast Manage',
-  totalLabel: 'Total',
 
-  filter1: 'Switch Name',
-  filter2: 'Switch Address',
-  filter3: 'Operator Info',
-
-  btn1: 'Cancel',
-  btn2: 'Save',
-
-  colTh1: 'No',
-  colTh2: 'Auto Broadcast Name',
-  colTh3: 'Extension Number',
-  colTh4: 'Description/Remarks',
-  colTh5: 'Use Status',
-
-  modalTitle1: 'Edit Auto Broadcast Settings',
-
-  modalTh1_1: 'Auto Broadcast Name',
-  modalTh1_2: 'Extension Number',
-  modalTh1_3: 'Description/Remarks',
-  modalTh1_4: 'Use Status',
 }
 const lang = ref({})
 
@@ -143,22 +178,27 @@ const modals = reactive({
 // =========================
 const currentPage = ref(1) // 현재 페이지
 const perPage = ref(10) // 페이지당 개수
-
+const filterText = ref('') // 검색어
+const shipStatus = ref(true) // true: 항해중, false: 정박중
 // 샘플 데이터 (JSON 배열)
 const items = ref(Array.from({ length: 14 }, (_, i) => ({
   id: i + 1,
   th1: String(i + 1),
-  th2: `자동방송${i + 1}`,
-  th3: String(2990 + i),
-  th4: `설명${i + 1}`,
-  th5: i % 2 === 0 ? '사용' : '미사용',
+  th2: `당직교대 15분전 휴일`,
+  th3: '항해중',
+  th4: `음성합성아란 텍스트데이터를 가지고서음성합성아란 텍스트데이터를 가지고서음성합성아란 텍스트데이터를 가지고서음성합성아란 텍스트데이터를 가지고서음성합성아란 텍스트데이터를 가지고서`,
+  th5: `2026-01-01~2026-01-01`,
+  th6: `평일 오전과 업알림 15분전`,
+  th7: false
 })))
 const fields = computed(() => [
-  { key: 'th1', label: lang.value.colTh1, thStyle: { width: '6rem' } },
-  { key: 'th2', label: lang.value.colTh2, thStyle: { width: 'auto' } },
-  { key: 'th3', label: lang.value.colTh3, thStyle: { width: '10rem' } },
-  { key: 'th4', label: lang.value.colTh4, thStyle: { width: 'auto' } },
-  { key: 'th5', label: lang.value.colTh5, thStyle: { width: '12rem' } },
+  { key: 'th1', label: lang.value.colTh1, thStyle: { width: '5rem' } },
+  { key: 'th2', label: lang.value.colTh2, thStyle: { width: '14rem' } },
+  { key: 'th3', label: lang.value.colTh3, thStyle: { width: '8rem' } },
+  { key: 'th4', label: lang.value.colTh4, thStyle: { width: 'auto' }, tdClass: 'text-ellipsis' },
+  { key: 'th5', label: lang.value.colTh5, thStyle: { width: '18rem' } },
+  { key: 'th6', label: lang.value.colTh6, tdAttr: { style: 'width: 15rem;' }, thAttr: { colspan: 2 } },
+  { key: 'th7', label: '',  tdAttr: { style: 'width: 8rem;' }, thAttr: { style: 'display: none' } },
 ])
 
 // 필터링/페이지네이션
