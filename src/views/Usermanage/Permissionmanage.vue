@@ -102,7 +102,7 @@ const menuTreeData = ref([
         { label: '회의통화관리', checked: false },
         { label: '그룹통화관리', checked: false }
       ] },
-      { label: '외부연계관리', checked: false },
+      { label: '방송경보', checked: false },
       { label: '장치관리', checked: false },
       { label: '도면관리', checked: false },
     ]
