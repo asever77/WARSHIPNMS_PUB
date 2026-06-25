@@ -26,7 +26,7 @@ import TabBase from '@/components/TabBase.vue';
 const ko = {
   "title": "설정/방송경보",
   "broadcastequipmanage": "방송장비관리",
-  "alarmdevicemanage": "경보장치관리",
+  "alarmdevicemanage": "경보관리",
   "cctvmanage": "CCTV 관리"
 };
 
