@@ -20,13 +20,13 @@
       <table class="calendar-table">
         <thead>
           <tr>
+            <th>일</th>
             <th>월</th>
             <th>화</th>
             <th>수</th>
             <th>목</th>
             <th>금</th>
             <th>토</th>
-            <th>일</th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +44,8 @@
                     :class="{
                       'is-sunday': day.dayOfWeek === 0,
                       'is-saturday': day.dayOfWeek === 6,
-                      'is-holiday': isHoliday(day)
+                      'is-holiday': isDefaultHoliday(day),
+                      'is-select': isCustomHoliday(day)
                     }"
                   >
                     {{ day.dayNumber }}
@@ -57,12 +58,12 @@
                     class="holiday-pill"
                     :class="{
                       'default-holiday': holiday.isDefault,
-                      'h-abs-start': day.dateString === holiday.start,
-                      'h-abs-end': day.dateString === holiday.end
+                      'h-abs-start': isAbsStart(holiday, day),
+                      'h-abs-end': isAbsEnd(holiday, day)
                     }"
                     @click.stop="clickHoliday(holiday)"
                   >
-                    <span v-if="day.dateString === holiday.start || day.dayOfWeek === 1">
+                    <span v-if="shouldShowTitle(holiday, day)">
                       {{ holiday.title }}
                     </span>
                   </div>
@@ -254,8 +255,8 @@ const calendarDays = computed(() => {
   const firstDayInstance = new Date(year, month - 1, 1)
   let firstDayOfWeek = firstDayInstance.getDay()
 
-  // Shift Sunday to index 6, Monday to 0, Tuesday to 1, etc.
-  let startOffset = firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1
+  // Sunday is 0, Monday is 1, ..., Saturday is 6
+  let startOffset = firstDayOfWeek
 
   // Total days in the month
   const totalDays = new Date(year, month, 0).getDate()
@@ -381,8 +382,25 @@ function getHolidaysForDay(day) {
   })
 }
 
-function isHoliday(day) {
-  return getHolidaysForDay(day).length > 0
+function isDefaultHoliday(day) {
+  return getHolidaysForDay(day).some(h => h.isDefault)
+}
+
+function isCustomHoliday(day) {
+  const list = getHolidaysForDay(day)
+  return list.some(h => !h.isDefault) && !list.some(h => h.isDefault)
+}
+
+function isAbsStart(holiday, day) {
+  return day.dateString === holiday.start
+}
+
+function isAbsEnd(holiday, day) {
+  return day.dateString === holiday.end
+}
+
+function shouldShowTitle(holiday, day) {
+  return day.dateString === holiday.start || day.dayOfWeek === 0
 }
 
 
@@ -551,6 +569,9 @@ onMounted(() => {
 .day-number.is-sunday {
   color: #ef4444 !important;
 }
+/* .day-number.is-select {
+  color: #10b981 !important;
+} */
 .default-holiday {
   display: none !important;
 }
