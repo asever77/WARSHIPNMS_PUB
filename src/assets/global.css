@@ -831,10 +831,8 @@ button.box-pp--item:hover {background-color:#E3EDF4;color:#002745;border-color:#
 .network-rack[data-u="10"] .network-rack-item[data-u="10"] {height:calc((100 / 10) * 10%);}
 
 /* Text ellipsis for long contents */
-.text-ellipsis {
-  max-width: 20rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
+.text-ellipsis {max-width:20rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.dot-line-tb {border-top:1px dashed #D4E1E8;border-bottom:1px dashed #D4E1E8;padding:.4rem 0;}
+.time-list-box {display:flex;flex-wrap:wrap;align-content:flex-start;max-height:12rem;border:1px solid #cbd5e1;border-radius:.4rem;padding:.4rem;background-color:#f8fafc;gap:.4rem;overflow-y:auto}
+.time-list-item {background-color:#fff;border:1px solid #cbd5e1;border-radius:99em;padding:.4rem .6rem .4rem 1rem;font-size:1.2rem;color:#334155;align-items:center;gap:.4rem;display:flex}
+.btn-time-del {border:none;background:transparent;color:#94a3b8;font-size:1.2rem;cursor:pointer;padding:0 .2rem;display:flex;align-items:center;}

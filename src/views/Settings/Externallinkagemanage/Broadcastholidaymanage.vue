@@ -590,7 +590,7 @@ onMounted(() => {
   border-top-left-radius: 0.4rem;
   border-bottom-left-radius: 0.4rem;
   margin-left: 0;
-  text-align: left;
+  text-align: center;
   padding-left: 0.4rem;
 }
 /* 휴일의 절대 종료 지점: 오른쪽 테두리와 라운드 적용 및 패딩 안으로 마진 조정 */

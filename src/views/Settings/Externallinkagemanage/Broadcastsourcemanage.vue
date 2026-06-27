@@ -1,31 +1,43 @@
 <template>
   <table class="table-type-a">
     <colgroup>
-      <col style="width: 8rem" />
-      <col style="width: 14rem" />
-      <col style="width: 8rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
-       <col style="width: 8rem" />
-      <col style="width: auto" />
-       <col style="width: 8rem" />
+      <col style="width: 16rem" />
       <col style="width: auto" />
     </colgroup>
     <tbody>
     <tr>
-      <th scope="row">{{ lang.filter1 }}</th>
+      <th scope="row">
+        <div class="ui-flex" data-item-align="center" data-gap="4">
+          <span class="ui-flex-1">{{ lang.filter1 }}</span>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.filter1 }} {{ lang.sortAll }}"></BButton>
+        </div>
+      </th>
       <td>
         <BFormInput class="ui-input" placeholder=""></BFormInput>
       </td>
-      <th scope="row">{{ lang.filter2 }}</th>
+      <th scope="row">
+        <div class="ui-flex" data-item-align="center" data-gap="4">
+          <span class="ui-flex-1">{{ lang.filter2 }}</span>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.filter2 }} {{ lang.sortAll }}"></BButton>
+        </div>
+      </th>
       <td>
-        <BFormInput class="ui-input" placeholder=""></BFormInput>
+        <BFormSelect class="ui-select"></BFormSelect>
       </td>
-
+    </tr>
+    <tr>
       <th scope="row">{{ lang.filter3 }}</th>
       <td>
         <BFormInput class="ui-input" placeholder=""></BFormInput>
       </td>
-      <th scope="row">{{ lang.filter4 }}</th>
+      <th scope="row">
+        <div class="ui-flex" data-item-align="center" data-gap="4">
+          <span class="ui-flex-1">{{ lang.filter4 }}</span>
+          <BButton class="btn-sort ui-shrink-0" aria-sort="none" aria-label="{{ lang.filter4 }} {{ lang.sortAll }}"></BButton>
+        </div>
+      </th>
       <td>
         <BFormInput class="ui-input" placeholder=""></BFormInput>
       </td>
@@ -62,6 +74,7 @@
             ></button>
           </div>
         </BFormGroup>
+        <BFormSelect class="ui-select-28"></BFormSelect>
         <BFormSelect
           id="per-page"
           class="ui-select-28 w-60"
