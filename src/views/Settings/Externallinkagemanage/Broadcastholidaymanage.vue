@@ -1,8 +1,8 @@
 <template>
   <div class="base-wrap">
     <!-- Calendar Navigation Header -->
-    <div class="calendar-header-actions ui-flex" data-justify-align="center" data-item-align="center" style="position: relative;">
-      <div style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);">
+    <div class="calendar-header-actions ui-flex" data-justify-align="center" data-item-align="center" style="position:relative;">
+      <div style="position:absolute; left:0; top:50%; transform:translateY(-50%);">
         <BButton class="gray28" @click="goToToday">오늘</BButton>
       </div>
       <div class="ui-flex" data-item-align="center" data-gap="12">
@@ -34,7 +34,7 @@
             <td
               v-for="(day, dIndex) in week"
               :key="dIndex"
-              :class="{ 'other-month': !day.isCurrentMonth }"
+              :class="{ 'other-month':!day.isCurrentMonth }"
               @click="clickDay(day)"
             >
               <div class="day-cell">
@@ -42,10 +42,10 @@
                   <span
                     class="day-number"
                     :class="{
-                      'is-sunday': day.dayOfWeek === 0,
-                      'is-saturday': day.dayOfWeek === 6,
-                      'is-holiday': isDefaultHoliday(day),
-                      'is-select': isCustomHoliday(day)
+                      'is-sunday':day.dayOfWeek === 0,
+                      'is-saturday':day.dayOfWeek === 6,
+                      'is-holiday':isDefaultHoliday(day),
+                      'is-select':isCustomHoliday(day)
                     }"
                   >
                     {{ day.dayNumber }}
@@ -57,9 +57,9 @@
                     :key="holiday.id"
                     class="holiday-pill"
                     :class="{
-                      'default-holiday': holiday.isDefault,
-                      'h-abs-start': isAbsStart(holiday, day),
-                      'h-abs-end': isAbsEnd(holiday, day)
+                      'default-holiday':holiday.isDefault,
+                      'h-abs-start':isAbsStart(holiday, day),
+                      'h-abs-end':isAbsEnd(holiday, day)
                     }"
                     @click.stop="clickHoliday(holiday)"
                   >
@@ -79,7 +79,7 @@
   <!-- Holiday Registration Modal -->
   <UiModal
     v-model="modals.modal1.show"
-    :title="isEditMode ? '휴일 수정' : '휴일 등록'"
+    :title="isEditMode ? '휴일 수정' :'휴일 등록'"
     type="modal"
     size="md"
     @close-btn-click="modals.modal1.show = false"
@@ -87,8 +87,8 @@
     <div class="ui-flex" data-direction="col" data-gap="16">
       <table class="table-type-a">
         <colgroup>
-          <col style="width: 14rem" />
-          <col style="width: auto" />
+          <col style="width:14rem" />
+          <col style="width:auto" />
         </colgroup>
         <tbody>
           <tr>
@@ -113,7 +113,7 @@
     <template #footer>
         <BButton class="gray28" @click="modals.modal1.show = false">취소</BButton>
         <BButton v-if="isEditMode" class="blue28" @click="deleteHoliday">삭제</BButton>
-        <BButton class="blue28" @click="saveHoliday">{{ isEditMode ? '수정' : '등록' }}</BButton>
+        <BButton class="blue28" @click="saveHoliday">{{ isEditMode ? '수정' :'등록' }}</BButton>
     </template>
   </UiModal>
 </template>
@@ -131,11 +131,11 @@ import UiModal from '@/components/UiModal.vue'
 // [언어/라벨 관리]
 // =========================
 const ko = {
-  title1: '방송 휴일 관리',
+  title1:'방송 휴일 관리',
 }
 
 const en = {
-  title1: 'Broadcast Holiday Manage',
+  title1:'Broadcast Holiday Manage',
 }
 const lang = ref({})
 
@@ -143,86 +143,86 @@ const lang = ref({})
 // [모달 상태 관리]
 // =========================
 const modals = reactive({
-  modal1: { show: false },
+  modal1:{ show:false },
 })
 
 // =========================
 // [상태/폼/리스트 관리]
 // =========================
 const currentYear = ref(2026)
-const currentMonth = ref(5) // Default to May 2026 to match mockup
+const currentMonth = ref(6) // Default mockup
 
 // Holidays list (User's custom holidays):
 const holidays = ref([])
 
 const isEditMode = ref(false)
 const form = ref({
-  id: null,
-  title: '',
-  datestart: '',
-  dateend: ''
+  id:null,
+  title:'',
+  datestart:'',
+  dateend:''
 })
 
 // Default South Korean holidays list/calculation helper
 function getDefaultHolidays(year) {
   const list = [
-    { title: '신정', start: `${year}-01-01`, end: `${year}-01-01`, isDefault: true },
-    { title: '삼일절', start: `${year}-03-01`, end: `${year}-03-01`, isDefault: true },
-    { title: '노동절', start: `${year}-05-01`, end: `${year}-05-01`, isDefault: true },
-    { title: '어린이날', start: `${year}-05-05`, end: `${year}-05-05`, isDefault: true },
-    { title: '현충일', start: `${year}-06-06`, end: `${year}-06-06`, isDefault: true },
-    { title: '광복절', start: `${year}-08-15`, end: `${year}-08-15`, isDefault: true },
-    { title: '개천절', start: `${year}-10-03`, end: `${year}-10-03`, isDefault: true },
-    { title: '한글날', start: `${year}-10-09`, end: `${year}-10-09`, isDefault: true },
-    { title: '기독탄신일', start: `${year}-12-25`, end: `${year}-12-25`, isDefault: true },
+    { title:'신정', start:`${year}-01-01`, end:`${year}-01-01`, isDefault:true },
+    { title:'삼일절', start:`${year}-03-01`, end:`${year}-03-01`, isDefault:true },
+    { title:'노동절', start:`${year}-05-01`, end:`${year}-05-01`, isDefault:true },
+    { title:'어린이날', start:`${year}-05-05`, end:`${year}-05-05`, isDefault:true },
+    { title:'현충일', start:`${year}-06-06`, end:`${year}-06-06`, isDefault:true },
+    { title:'광복절', start:`${year}-08-15`, end:`${year}-08-15`, isDefault:true },
+    { title:'개천절', start:`${year}-10-03`, end:`${year}-10-03`, isDefault:true },
+    { title:'한글날', start:`${year}-10-09`, end:`${year}-10-09`, isDefault:true },
+    { title:'기독탄신일', start:`${year}-12-25`, end:`${year}-12-25`, isDefault:true },
   ]
 
   // Add lunar calendar holidays for years 2025 to 2030
   if (year === 2025) {
     list.push(
-      { title: '설날', start: '2025-01-28', end: '2025-01-30', isDefault: true },
-      { title: '석가탄신일', start: '2025-05-05', end: '2025-05-05', isDefault: true },
-      { title: '대체공휴일(석가탄신일)', start: '2025-05-06', end: '2025-05-06', isDefault: true },
-      { title: '추석', start: '2025-10-05', end: '2025-10-07', isDefault: true },
-      { title: '대체공휴일(추석)', start: '2025-10-08', end: '2025-10-08', isDefault: true }
+      { title:'설날', start:'2025-01-28', end:'2025-01-30', isDefault:true },
+      { title:'석가탄신일', start:'2025-05-05', end:'2025-05-05', isDefault:true },
+      { title:'대체공휴일(석가탄신일)', start:'2025-05-06', end:'2025-05-06', isDefault:true },
+      { title:'추석', start:'2025-10-05', end:'2025-10-07', isDefault:true },
+      { title:'대체공휴일(추석)', start:'2025-10-08', end:'2025-10-08', isDefault:true }
     )
   } else if (year === 2026) {
     list.push(
-      { title: '설날', start: '2026-02-16', end: '2026-02-18', isDefault: true },
-      { title: '석가탄신일', start: '2026-05-24', end: '2026-05-24', isDefault: true },
-      { title: '대체공휴일(석가탄신일)', start: '2026-05-25', end: '2026-05-25', isDefault: true },
-      { title: '추석', start: '2026-09-24', end: '2026-09-26', isDefault: true },
-      { title: '대체공휴일(추석)', start: '2026-09-28', end: '2026-09-28', isDefault: true }
+      { title:'설날', start:'2026-02-16', end:'2026-02-18', isDefault:true },
+      { title:'석가탄신일', start:'2026-05-24', end:'2026-05-24', isDefault:true },
+      { title:'대체공휴일(석가탄신일)', start:'2026-05-25', end:'2026-05-25', isDefault:true },
+      { title:'추석', start:'2026-09-24', end:'2026-09-26', isDefault:true },
+      { title:'대체공휴일(추석)', start:'2026-09-28', end:'2026-09-28', isDefault:true }
     )
   } else if (year === 2027) {
     list.push(
-      { title: '설날', start: '2027-02-06', end: '2027-02-08', isDefault: true },
-      { title: '대체공휴일(설날)', start: '2027-02-09', end: '2027-02-09', isDefault: true },
-      { title: '석가탄신일', start: '2027-05-13', end: '2027-05-13', isDefault: true },
-      { title: '추석', start: '2027-09-14', end: '2027-09-16', isDefault: true }
+      { title:'설날', start:'2027-02-06', end:'2027-02-08', isDefault:true },
+      { title:'대체공휴일(설날)', start:'2027-02-09', end:'2027-02-09', isDefault:true },
+      { title:'석가탄신일', start:'2027-05-13', end:'2027-05-13', isDefault:true },
+      { title:'추석', start:'2027-09-14', end:'2027-09-16', isDefault:true }
     )
   } else if (year === 2028) {
     list.push(
-      { title: '설날', start: '2028-01-26', end: '2028-01-28', isDefault: true },
-      { title: '석가탄신일', start: '2028-05-02', end: '2028-05-02', isDefault: true },
-      { title: '추석', start: '2028-10-02', end: '2028-10-04', isDefault: true },
-      { title: '대체공휴일(추석)', start: '2028-10-05', end: '2028-10-05', isDefault: true }
+      { title:'설날', start:'2028-01-26', end:'2028-01-28', isDefault:true },
+      { title:'석가탄신일', start:'2028-05-02', end:'2028-05-02', isDefault:true },
+      { title:'추석', start:'2028-10-02', end:'2028-10-04', isDefault:true },
+      { title:'대체공휴일(추석)', start:'2028-10-05', end:'2028-10-05', isDefault:true }
     )
   } else if (year === 2029) {
     list.push(
-      { title: '설날', start: '2029-02-12', end: '2029-02-14', isDefault: true },
-      { title: '석가탄신일', start: '2029-05-20', end: '2029-05-20', isDefault: true },
-      { title: '대체공휴일(석가탄신일)', start: '2029-05-21', end: '2029-05-21', isDefault: true },
-      { title: '추석', start: '2029-09-21', end: '2029-09-23', isDefault: true },
-      { title: '대체공휴일(추석)', start: '2029-09-24', end: '2029-09-24', isDefault: true }
+      { title:'설날', start:'2029-02-12', end:'2029-02-14', isDefault:true },
+      { title:'석가탄신일', start:'2029-05-20', end:'2029-05-20', isDefault:true },
+      { title:'대체공휴일(석가탄신일)', start:'2029-05-21', end:'2029-05-21', isDefault:true },
+      { title:'추석', start:'2029-09-21', end:'2029-09-23', isDefault:true },
+      { title:'대체공휴일(추석)', start:'2029-09-24', end:'2029-09-24', isDefault:true }
     )
   } else if (year === 2030) {
     list.push(
-      { title: '설날', start: '2030-02-02', end: '2030-02-04', isDefault: true },
-      { title: '대체공휴일(설날)', start: '2030-02-05', end: '2030-02-05', isDefault: true },
-      { title: '석가탄신일', start: '2030-05-10', end: '2030-05-10', isDefault: true },
-      { title: '추석', start: '2030-10-05', end: '2030-10-07', isDefault: true },
-      { title: '대체공휴일(추석)', start: '2030-10-08', end: '2030-10-08', isDefault: true }
+      { title:'설날', start:'2030-02-02', end:'2030-02-04', isDefault:true },
+      { title:'대체공휴일(설날)', start:'2030-02-05', end:'2030-02-05', isDefault:true },
+      { title:'석가탄신일', start:'2030-05-10', end:'2030-05-10', isDefault:true },
+      { title:'추석', start:'2030-10-05', end:'2030-10-07', isDefault:true },
+      { title:'대체공휴일(추석)', start:'2030-10-08', end:'2030-10-08', isDefault:true }
     )
   }
 
@@ -235,7 +235,7 @@ function getDefaultHolidays(year) {
 
 // Combine custom and default holidays
 const allHolidays = computed(() => {
-  const customList = holidays.value.map(h => ({ ...h, isDefault: false }))
+  const customList = holidays.value.map(h => ({ ...h, isDefault:false }))
   const defaults = [
     ...getDefaultHolidays(currentYear.value - 1),
     ...getDefaultHolidays(currentYear.value),
@@ -269,27 +269,27 @@ const calendarDays = computed(() => {
   // Fill previous month's days
   for (let i = startOffset - 1; i >= 0; i--) {
     const dayNum = prevMonthTotalDays - i
-    const m = month === 1 ? 12 : month - 1
-    const y = month === 1 ? year - 1 : year
+    const m = month === 1 ? 12 :month - 1
+    const y = month === 1 ? year - 1 :year
     days.push({
-      dayNumber: dayNum,
-      month: m,
-      year: y,
-      isCurrentMonth: false,
-      dateString: `${y}-${String(m).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`,
-      dayOfWeek: new Date(y, m - 1, dayNum).getDay()
+      dayNumber:dayNum,
+      month:m,
+      year:y,
+      isCurrentMonth:false,
+      dateString:`${y}-${String(m).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`,
+      dayOfWeek:new Date(y, m - 1, dayNum).getDay()
     })
   }
 
   // Fill current month's days
   for (let i = 1; i <= totalDays; i++) {
     days.push({
-      dayNumber: i,
-      month: month,
-      year: year,
-      isCurrentMonth: true,
-      dateString: `${year}-${String(month).padStart(2, '0')}-${String(i).padStart(2, '0')}`,
-      dayOfWeek: new Date(year, month - 1, i).getDay()
+      dayNumber:i,
+      month:month,
+      year:year,
+      isCurrentMonth:true,
+      dateString:`${year}-${String(month).padStart(2, '0')}-${String(i).padStart(2, '0')}`,
+      dayOfWeek:new Date(year, month - 1, i).getDay()
     })
   }
 
@@ -298,33 +298,33 @@ const calendarDays = computed(() => {
   if (remaining > 0) {
     const nextDaysCount = 7 - remaining
     for (let i = 1; i <= nextDaysCount; i++) {
-      const m = month === 12 ? 1 : month + 1
-      const y = month === 12 ? year + 1 : year
+      const m = month === 12 ? 1 :month + 1
+      const y = month === 12 ? year + 1 :year
       days.push({
-        dayNumber: i,
-        month: m,
-        year: y,
-        isCurrentMonth: false,
-        dateString: `${y}-${String(m).padStart(2, '0')}-${String(i).padStart(2, '0')}`,
-        dayOfWeek: new Date(y, m - 1, i).getDay()
+        dayNumber:i,
+        month:m,
+        year:y,
+        isCurrentMonth:false,
+        dateString:`${y}-${String(m).padStart(2, '0')}-${String(i).padStart(2, '0')}`,
+        dayOfWeek:new Date(y, m - 1, i).getDay()
       })
     }
   }
 
   // Ensure 6 weeks are rendered for spacing (42 cells)
   if (days.length === 35) {
-    const startDay = days[days.length - 1].isCurrentMonth ? 1 : days[days.length - 1].dayNumber + 1
-    const m = month === 12 ? 1 : month + 1
-    const y = month === 12 ? year + 1 : year
+    const startDay = days[days.length - 1].isCurrentMonth ? 1 :days[days.length - 1].dayNumber + 1
+    const m = month === 12 ? 1 :month + 1
+    const y = month === 12 ? year + 1 :year
     for (let i = 0; i < 7; i++) {
       const dayNum = startDay + i
       days.push({
-        dayNumber: dayNum,
-        month: m,
-        year: y,
-        isCurrentMonth: false,
-        dateString: `${y}-${String(m).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`,
-        dayOfWeek: new Date(y, m - 1, dayNum).getDay()
+        dayNumber:dayNum,
+        month:m,
+        year:y,
+        isCurrentMonth:false,
+        dateString:`${y}-${String(m).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`,
+        dayOfWeek:new Date(y, m - 1, dayNum).getDay()
       })
     }
   }
@@ -411,10 +411,10 @@ function clickHoliday(holiday) {
   if (holiday.isDefault) return
   isEditMode.value = true
   form.value = {
-    id: holiday.id,
-    title: holiday.title,
-    datestart: holiday.start,
-    dateend: holiday.end
+    id:holiday.id,
+    title:holiday.title,
+    datestart:holiday.start,
+    dateend:holiday.end
   }
   modals.modal1.show = true
 }
@@ -441,18 +441,18 @@ function saveHoliday() {
     const idx = holidays.value.findIndex(h => h.id === form.value.id)
     if (idx !== -1) {
       holidays.value[idx] = {
-        id: form.value.id,
-        title: form.value.title,
-        start: form.value.datestart,
-        end: form.value.dateend
+        id:form.value.id,
+        title:form.value.title,
+        start:form.value.datestart,
+        end:form.value.dateend
       }
     }
   } else {
     holidays.value.push({
-      id: Date.now(),
-      title: form.value.title,
-      start: form.value.datestart,
-      end: form.value.dateend
+      id:Date.now(),
+      title:form.value.title,
+      start:form.value.datestart,
+      end:form.value.dateend
     })
   }
   modals.modal1.show = false
@@ -472,10 +472,10 @@ function deleteHoliday() {
 function clickDay(day) {
   isEditMode.value = false
   form.value = {
-    id: null,
-    title: '',
-    datestart: day.dateString,
-    dateend: day.dateString
+    id:null,
+    title:'',
+    datestart:day.dateString,
+    dateend:day.dateString
   }
   modals.modal1.show = true
 }
@@ -484,145 +484,54 @@ function clickDay(day) {
 // [초기화]
 // =========================
 onMounted(() => {
-  lang.value = (G.lang === 'ko') ? ko : en
+  lang.value = (G.lang === 'ko') ? ko :en
 })
 </script>
 
 <style scoped>
-.calendar-header-actions {
-  margin-top: 0;
-}
-.calendar-title {
-  min-width: 18rem;
-  text-align: center;
-  user-select: none;
-}
-.nav-arrow {
-  background: transparent;
-  border: none;
-  font-size: 1.8rem;
-  font-weight: bold;
-  cursor: pointer;
-  color: #64748b;
-  padding: 0.2rem 0.8rem;
-  transition: color 0.2s ease;
-}
-.nav-arrow:hover {
-  color: #0f172a;
-}
-.calendar-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-}
-.calendar-table th {
-  padding: 0.4rem;
-  border: 1px solid #cbd5e1;
-  background-color: #f8fafc;
-  font-weight: bold;
-  text-align: center;
-  color: #334155;
-  font-size: 1.4rem;
-}
-.calendar-table td {
-  border: 1px solid #cbd5e1;
-  height: 10rem;
-  vertical-align: top;
-  padding: 0.6rem;
-  width: 14.28%;
-  cursor: pointer;
-  background-color: #ffffff;
-  transition: background-color 0.15s ease;
-  position: relative; /* 호버 시 outline 노출을 위한 relative 처리 */
-}
-.calendar-table td:hover {
-  background-color: #f8fafc;
-  outline: 2px solid #3b82f6 !important; /* 마우스 호버 시 외곽선을 파란색으로 두껍게 강조 */
-  outline-offset: -2px;
-  z-index: 10;
-}
-.calendar-table td.other-month {
-  background-color: #f8fafc;
-  opacity: 0.55;
-}
-
-.day-cell {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.day-header {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 0.5rem;
-}
-.day-number {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #475569;
-}
-.day-number.is-saturday {
-  color: #3b82f6 !important;
-}
+.calendar-header-actions {margin-top:0;}
+.calendar-title {min-width:18rem;text-align:center;user-select:none;}
+.nav-arrow {background:transparent;border:none;font-size:1.8rem;font-weight:bold;cursor:pointer;color:#64748b;padding:.2rem .8rem;transition:color 0.2s ease;}
+.nav-arrow:hover {color:#0f172a;}
+.calendar-table {width:100%;border-collapse:collapse;background-color:#ffffff;border:1px solid #cbd5e1;table-layout:fixed;}
+.calendar-table th {padding:.4rem;border:1px solid #cbd5e1;background-color:#f8fafc;font-weight:bold;text-align:center;color:#334155;font-size:1.4rem;}
+.calendar-table td {border:1px solid #cbd5e1;height:10rem;vertical-align:top;padding:.6rem;width:14.28%;cursor:pointer;background-color:#ffffff;transition:background-color 0.15s ease;position:relative;}
+.calendar-table td:hover {background-color:#f8fafc;outline:2px solid #3b82f6 !important;outline-offset:-2px;z-index:10;}
+.calendar-table td.other-month {background-color:#f8fafc;opacity:0.55;}
+.day-cell {display:flex;flex-direction:column;height:100%;}
+.day-header {display:flex;justify-content:flex-start;margin-bottom:0.5rem;}
+.day-number {font-size:1.2rem;font-weight:500;color:#475569;}
+.day-number.is-saturday {color:#3b82f6 !important;}
 .day-number.is-holiday,
-.day-number.is-sunday {
-  color: #ef4444 !important;
-}
-/* .day-number.is-select {
-  color: #10b981 !important;
-} */
-.default-holiday {
-  display: none !important;
-}
-.day-body {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
+.day-number.is-sunday {color:#ef4444 !important;}
+.default-holiday {display:none !important;}
+.day-body {flex-grow:1;display:flex;flex-direction:column;gap:.4rem;}
 .holiday-pill {
-  background-color: #fee2e2;
-  border: 1px solid #fca5a5;
-  border-radius: 0.4rem;
-  padding: 0.2rem 0.4rem;
-  font-size: 1.2rem;
-  color: #b91c1c;
-  margin-top: 0.4rem;
-  min-height:2.5rem;
-  cursor: pointer;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 600;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  background-color:#fee2e2;
+  border:1px solid #fca5a5;
+  padding:.2rem .4rem;
+  font-size:1.2rem;
+  color:#b91c1c;
+  line-height:1.1;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:center;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-weight:600;
+  transition:background-color 0.15s ease, border-color 0.15s ease;
 
   /* 연속된 휴일 연결을 위한 기본 마진 및 보더 제어 (중간 및 주간 연결 세그먼트) */
-  border-left: none;
-  border-right: none;
-  border-radius: 0;
-  margin-left: -0.6rem;
-  margin-right: -0.6rem;
+  border-left:none;
+  border-right:none;
+  border-radius:0;
+  margin-left:-.6rem;
+  margin-right:-.6rem;
 }
-/* 휴일의 절대 시작 지점: 왼쪽 테두리와 라운드 적용 및 패딩 안으로 마진 조정 */
-.holiday-pill.h-abs-start {
-  border-left: 1px solid #fca5a5;
-  border-top-left-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-  margin-left: 0;
-  text-align: center;
-  padding-left: 0.4rem;
-}
-/* 휴일의 절대 종료 지점: 오른쪽 테두리와 라운드 적용 및 패딩 안으로 마진 조정 */
-.holiday-pill.h-abs-end {
-  border-right: 1px solid #fca5a5;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  margin-right: 0;
-}
-.holiday-pill:hover {
-  background-color: #fca5a5;
-  border-color: #ef4444;
-}
+/* 휴일의 절대 시작 지점:왼쪽 테두리와 라운드 적용 및 패딩 안으로 마진 조정 */
+.holiday-pill.h-abs-start {border-left:1px solid #fca5a5;border-top-left-radius:.4rem;border-bottom-left-radius:.4rem;margin-left:0;text-align:center;padding-left:.4rem;}
+/* 휴일의 절대 종료 지점:오른쪽 테두리와 라운드 적용 및 패딩 안으로 마진 조정 */
+.holiday-pill.h-abs-end {border-right:1px solid #fca5a5;border-top-right-radius:.4rem;border-bottom-right-radius:.4rem;margin-right:0;}
+.holiday-pill:hover {background-color:#fca5a5;border-color:#ef4444;}
 </style>
